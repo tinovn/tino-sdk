@@ -50,7 +50,12 @@ EMAIL_RE = re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+")
 # Some payloads embed absolute deep links into Tino's internal panel. They carry record
 # ids and are not part of the public contract, so they are replaced wholesale.
 PANEL_LINK_RE = re.compile(r"https?://[\w.-]*manage\.tino\.vn\S*")
-IPV4_RE = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
+# Infrastructure details that identify the captured account's machines.
+SSH_KEY_RE = re.compile(r"(ssh-(?:rsa|ed25519|dss)|ecdsa-sha2-\S+)\s+\S+(\s+\S+)?")
+MAC_RE = re.compile(r"\b(?:[0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}\b")
+# IPv6 addresses and prefixes assigned to the captured account's machines.
+IPV6_RE = re.compile(r"\b(?:[0-9A-Fa-f]{0,4}:){2,7}[0-9A-Fa-f]{0,4}(?:/\d{1,3})?\b")
+IPV4_RE = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}(?:/\d{1,2})?\b")
 PHONE_RE = re.compile(r"\+?84[\s.]?\d{8,10}")
 MAX_ITEMS = 2          # keep arrays short: a sample, not a data dump
 MAX_KEYS = 20          # some endpoints return whole translation tables
@@ -70,6 +75,9 @@ def scrub_text(text: str) -> str:
     for literal, replacement in EXTRA_SCRUB.items():
         text = text.replace(literal, replacement)
     text = PANEL_LINK_RE.sub("<panel-link>", text)
+    text = SSH_KEY_RE.sub("ssh-ed25519 AAAA<public-key> user@example.com", text)
+    text = MAC_RE.sub("00:00:5E:00:53:00", text)
+    text = IPV6_RE.sub("2001:db8::1", text)
     text = EMAIL_RE.sub("user@example.com", text)
     text = IPV4_RE.sub("203.0.113.10", text)
     text = PHONE_RE.sub("+84.900000000", text)
@@ -139,9 +147,13 @@ def main() -> None:
         with open(path, encoding="utf-8") as handle:
             captured = json.load(handle)
         for key, result in captured.items():
-            if result.get("status") != 200 or result.get("body") is None:
+            # Keep successes only: an error body documents a rejection, not the
+            # shape callers should expect from a working request.
+            if result.get("status") != 200 or result.get("body") is None or result.get("error"):
                 continue
             method, _, request_path = key.partition(" ")
+            # Sweep keys carry disambiguating suffixes ("#2", " (legacy)", " (1.2.3.4)").
+            request_path = request_path.split(" ")[0].split("#")[0]
             clean_path = scrub_text(request_path.split("?")[0])
             samples[f"{method} {clean_path}"] = {
                 "method": method,

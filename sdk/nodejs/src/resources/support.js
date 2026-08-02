@@ -8,7 +8,7 @@ export class SupportResource extends Resource {
   /**
    * Close ticket
    *
-   * PUT /tickets/{number}/close — Bearer token required, from the API specification.
+   * PUT /tickets/{number}/close — Bearer token required, verified against the live API.
    *
    * Send request to close a ticket
    *
@@ -27,9 +27,12 @@ export class SupportResource extends Resource {
   /**
    * Create Ticket
    *
-   * POST /tickets — Bearer token required, from the API specification.
+   * POST /tickets — Bearer token required, verified against the live API.
    *
    * Submit new ticket
+   *
+   * Note: Returns the new ticket number as {"ticket": 690686} — the field is `ticket`, not
+   * `ticket_number`. Use it as the {number} path parameter of the other ticket calls.
    *
    * Body fields:
    *   - dept_id (integer): Department id
@@ -97,7 +100,7 @@ export class SupportResource extends Resource {
   /**
    * Get news item
    *
-   * GET /news/{news_id} — Bearer token required, from the API specification.
+   * GET /news/{news_id} — Bearer token required, verified against the live API.
    *
    * Returns details of the news item
    * @param {string|number} newsId
@@ -192,7 +195,7 @@ export class SupportResource extends Resource {
   /**
    * Re-open ticket
    *
-   * PUT /tickets/{number}/open — Bearer token required, from the API specification.
+   * PUT /tickets/{number}/open — Bearer token required, verified against the live API.
    *
    * Try to re-open closed ticket
    *
@@ -211,7 +214,7 @@ export class SupportResource extends Resource {
   /**
    * Create Reply
    *
-   * POST /tickets/{number} — Bearer token required, from the API specification.
+   * POST /tickets/{number} — Bearer token required, verified against the live API.
    *
    * Reply to ticket
    *

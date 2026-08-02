@@ -17,9 +17,7 @@ import { LocationResource } from './location.js';
 import { SecurityResource } from './security.js';
 import { ServicesResource } from './services.js';
 import { SupportResource } from './support.js';
-import { TinomailResource } from './tinomail.js';
 import { TinositeResource } from './tinosite.js';
-import { UsageMonitorResource } from './usage-monitor.js';
 import { VmsResource } from './vms.js';
 
 export { Resource };
@@ -39,9 +37,7 @@ export const RESOURCE_CLASSES = {
   security: SecurityResource,
   services: ServicesResource,
   support: SupportResource,
-  tinomail: TinomailResource,
   tinosite: TinositeResource,
-  usageMonitor: UsageMonitorResource,
   vms: VmsResource,
 };
 
@@ -61,8 +57,6 @@ export {
   SecurityResource,
   ServicesResource,
   SupportResource,
-  TinomailResource,
   TinositeResource,
-  UsageMonitorResource,
   VmsResource,
 };

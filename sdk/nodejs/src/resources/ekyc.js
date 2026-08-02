@@ -12,16 +12,14 @@ export class EkycResource extends Resource {
    *
    * Kiểm tra thông tin hộ kinh doanh.
    *
-   * Path parameters:
-   *   - taxid: id
-   * @param {string|number} taxid id
+   * Body fields:
+   *   - taxid (string, required): id
    * @param {object} [body] Request payload.
    * @param {object} [query] Extra query-string parameters.
    * @returns {Promise<any>}
    */
-  checkHousehold(taxid, body = undefined, query = {}) {
-    const path = this._path('/ekyc/households', { taxid: taxid });
-    return this._call('POST', path, { query, body });
+  checkHousehold(body = undefined, query = {}) {
+    return this._call('POST', '/ekyc/households', { query, body });
   }
 
   /**
@@ -31,35 +29,31 @@ export class EkycResource extends Resource {
    *
    * Bóc tách dữ liệu cccd.
    *
-   * Path parameters:
-   *   - idnumber: id
-   * @param {string|number} idnumber id
+   * Body fields:
+   *   - idnumber (string, required): id
    * @param {object} [body] Request payload.
    * @param {object} [query] Extra query-string parameters.
    * @returns {Promise<any>}
    */
-  checkNationalId(idnumber, body = undefined, query = {}) {
-    const path = this._path('/ekyc/checkid', { idnumber: idnumber });
-    return this._call('POST', path, { query, body });
+  checkNationalId(body = undefined, query = {}) {
+    return this._call('POST', '/ekyc/checkid', { query, body });
   }
 
   /**
    * Check Url eKYC Status
    *
-   * POST /ekyc/check-status-url-ekyc — Bearer token required, from the API specification.
+   * POST /ekyc/check-status-url-ekyc — Bearer token required, verified against the live API.
    *
    * Bóc tách dữ liệu cccd.
    *
-   * Path parameters:
-   *   - request_id: id
-   * @param {string|number} requestId id
+   * Body fields:
+   *   - request_id (string, required): id
    * @param {object} [body] Request payload.
    * @param {object} [query] Extra query-string parameters.
    * @returns {Promise<any>}
    */
-  checkUrlStatus(requestId, body = undefined, query = {}) {
-    const path = this._path('/ekyc/check-status-url-ekyc', { request_id: requestId });
-    return this._call('POST', path, { query, body });
+  checkUrlStatus(body = undefined, query = {}) {
+    return this._call('POST', '/ekyc/check-status-url-ekyc', { query, body });
   }
 
   /**
@@ -90,45 +84,36 @@ export class EkycResource extends Resource {
    * Kiểm tra nhanh số CCCD đã có EKYC hay chưa. Trả true/false, không lộ thông tin khách
    * hàng.
    *
-   * Path parameters:
-   *   - idnumber: Số CCCD cần kiểm tra
-   * @param {string|number} idnumber Số CCCD cần kiểm tra
+   * Body fields:
+   *   - idnumber (string, required): Số CCCD cần kiểm tra
    * @param {object} [body] Request payload.
    * @param {object} [query] Extra query-string parameters.
    * @returns {Promise<any>}
    */
-  exists(idnumber, body = undefined, query = {}) {
-    const path = this._path('/ekyc/exists', { idnumber: idnumber });
-    return this._call('POST', path, { query, body });
+  exists(body = undefined, query = {}) {
+    return this._call('POST', '/ekyc/exists', { query, body });
   }
 
   /**
    * Faceid verification
    *
-   * POST /ekyc/faceid/verification — Bearer token required, from the API specification.
+   * POST /ekyc/faceid/verification — Bearer token required, verified against the live API.
    *
    * Kiểm tra so sánh CCCD với khuôn mặt.
    *
-   * Path parameters:
-   *   - request_id: Request id, Phải trùng khớp với RequestID của OCR 2 mặt CCCD
-   *   - image_live: Live Face Image
-   *   - image_live_1 : Live Face Image
-   *   - image_live_2: Live Face Image
-   *   - image_live_3: Live Face Image
-   *   - token: Domain Token
-   * @param {string|number} requestId Request id, Phải trùng khớp với RequestID của OCR 2 mặt CCCD
-   * @param {string|number} imageLive Live Face Image
-   * @param {string|number} imageLive1 Live Face Image
-   * @param {string|number} imageLive2 Live Face Image
-   * @param {string|number} imageLive3 Live Face Image
-   * @param {string|number} token Domain Token
+   * Body fields:
+   *   - request_id (string, required): Request id, Phải trùng khớp với RequestID của OCR 2 mặt CCCD
+   *   - image_live (string, required): Live Face Image
+   *   - image_live_1 (string, required): Live Face Image
+   *   - image_live_2 (string, required): Live Face Image
+   *   - image_live_3 (string, required): Live Face Image
+   *   - token (string, required): Domain Token
    * @param {object} [body] Request payload.
    * @param {object} [query] Extra query-string parameters.
    * @returns {Promise<any>}
    */
-  faceIdVerification(requestId, imageLive, imageLive1, imageLive2, imageLive3, token, body = undefined, query = {}) {
-    const path = this._path('/ekyc/faceid/verification', { request_id: requestId, image_live: imageLive, image_live_1 : imageLive1, image_live_2: imageLive2, image_live_3: imageLive3, token: token });
-    return this._call('POST', path, { query, body });
+  faceIdVerification(body = undefined, query = {}) {
+    return this._call('POST', '/ekyc/faceid/verification', { query, body });
   }
 
   /**
@@ -138,15 +123,13 @@ export class EkycResource extends Resource {
    *
    * Kiểm tra thông tin hộ kinh doanh.
    *
-   * Path parameters:
-   *   - taxid: id
-   * @param {string|number} taxid id
+   * Query parameters:
+   *   - taxid (required): id
    * @param {object} [query] Extra query-string parameters.
    * @returns {Promise<any>}
    */
-  getHousehold(taxid, query = {}) {
-    const path = this._path('/ekyc/households', { taxid: taxid });
-    return this._call('GET', path, { query });
+  getHousehold(query = {}) {
+    return this._call('GET', '/ekyc/households', { query });
   }
 
   /**
@@ -156,18 +139,15 @@ export class EkycResource extends Resource {
    *
    * Lấy mã giảm giá tên miền miễn phí.
    *
-   * Path parameters:
-   *   - idnumber: Số CCCD/Mã số thuế
-   *   - domain: domain name
-   * @param {string|number} idnumber Số CCCD/Mã số thuế
-   * @param {string|number} domain domain name
+   * Body fields:
+   *   - idnumber (integer, required): Số CCCD/Mã số thuế
+   *   - domain (string, required): domain name
    * @param {object} [body] Request payload.
    * @param {object} [query] Extra query-string parameters.
    * @returns {Promise<any>}
    */
-  getVnnicPromoCode(idnumber, domain, body = undefined, query = {}) {
-    const path = this._path('/domain/vnnic/promocode', { idnumber: idnumber, domain: domain });
-    return this._call('POST', path, { query, body });
+  getVnnicPromoCode(body = undefined, query = {}) {
+    return this._call('POST', '/domain/vnnic/promocode', { query, body });
   }
 
   /**
@@ -191,23 +171,20 @@ export class EkycResource extends Resource {
   /**
    * OCR Recognition
    *
-   * POST /ekyc/ocr/recognition — Bearer token required, from the API specification.
+   * POST /ekyc/ocr/recognition — Bearer token required, verified against the live API.
    *
    * Bóc tách dữ liệu cccd.
    *
-   * Path parameters:
-   *   - request_id: Request id, Phải trùng khớp với RequestID OCR 2 mặt CCCD
-   *   - image: Image card
-   * @param {string|number} requestId Request id, Phải trùng khớp với RequestID OCR 2 mặt CCCD
-   * @param {string|number} type
-   * @param {string|number} image Image card
+   * Body fields:
+   *   - request_id (string, required): Request id, Phải trùng khớp với RequestID OCR 2 mặt CCCD
+   *   - type (string, required, one of cardFront, cardBack)
+   *   - image (string, required): Image card
    * @param {object} [body] Request payload.
    * @param {object} [query] Extra query-string parameters.
    * @returns {Promise<any>}
    */
-  ocrRecognition(requestId, type, image, body = undefined, query = {}) {
-    const path = this._path('/ekyc/ocr/recognition', { request_id: requestId, type: type, image: image });
-    return this._call('POST', path, { query, body });
+  ocrRecognition(body = undefined, query = {}) {
+    return this._call('POST', '/ekyc/ocr/recognition', { query, body });
   }
 
   /**
@@ -231,7 +208,7 @@ export class EkycResource extends Resource {
   /**
    * Company Profile Signatured
    *
-   * POST /domain/documents/companyprofile — Bearer token required, from the API specification.
+   * POST /domain/documents/companyprofile — Bearer token required, verified against the live API.
    *
    * Company Profile upload
    *
@@ -274,7 +251,7 @@ export class EkycResource extends Resource {
   /**
    * Document Sign
    *
-   * GET /domain/documents/view/{token} — Bearer token required, from the API specification.
+   * GET /domain/documents/view/{token} — Bearer token required, verified against the live API.
    *
    * View document signed.
    *

@@ -20,9 +20,7 @@ from .location import LocationResource
 from .security import SecurityResource
 from .services import ServicesResource
 from .support import SupportResource
-from .tinomail import TinomailResource
 from .tinosite import TinositeResource
-from .usage_monitor import UsageMonitorResource
 from .vms import VmsResource
 
 # Attribute name on the client -> resource class.
@@ -42,9 +40,7 @@ RESOURCE_CLASSES = {
     "security": SecurityResource,
     "services": ServicesResource,
     "support": SupportResource,
-    "tinomail": TinomailResource,
     "tinosite": TinositeResource,
-    "usage_monitor": UsageMonitorResource,
     "vms": VmsResource,
 }
 
@@ -66,8 +62,6 @@ __all__ = [
     "SecurityResource",
     "ServicesResource",
     "SupportResource",
-    "TinomailResource",
     "TinositeResource",
-    "UsageMonitorResource",
     "VmsResource",
 ]

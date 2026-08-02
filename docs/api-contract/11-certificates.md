@@ -2,7 +2,7 @@
 
 SDK namespace: `client.certificates` (Python) · `client.certificates` (Node.js, PHP).
 
-6 operation(s) in this chapter, 3 with a captured live response.
+6 operation(s) in this chapter, 5 with a captured live response.
 
 | Method | Path | SDK | Auth |
 | --- | --- | --- | --- |
@@ -93,11 +93,13 @@ $client->certificates->listProducts();
 
 ### `certificates.order`
 
-`POST /certificate/order` — Bearer token · spec only
+`POST /certificate/order` — Bearer token · spec only · **deprecated**
 
 **Order new certificates**
 
 Create new order for a certificate
+
+> **Note.** Certificates are ordered through cart.order together with any other item. This route remains for the standalone certificate flow.
 
 **Request body**
 
@@ -203,7 +205,7 @@ $client->certificates->listServerSoftware($productId);
 
 ### `certificates.get`
 
-`GET /certificate/{id}` — Bearer token · spec only
+`GET /certificate/{id}` — Bearer token · verified live
 
 **Certificate details**
 
@@ -283,7 +285,7 @@ $client->certificates->get($id);
 
 ### `certificates.download`
 
-`GET /certificate/{service_id}/crt` — Bearer token · spec only
+`GET /certificate/{service_id}/crt` — Bearer token · verified live
 
 **Download certificate**
 

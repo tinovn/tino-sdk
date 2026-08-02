@@ -13,7 +13,7 @@ export declare class AccountResource extends Resource {
   /** GET /download/{id} */
   downloadFile(id: string | number, query?: Record<string, any>): Promise<any>;
   /** GET /clientarea/businessinfo */
-  getBusinessInfo(taxid: string | number, query?: Record<string, any>): Promise<any>;
+  getBusinessInfo(query?: Record<string, any>): Promise<any>;
   /** GET /contact/{id} */
   getContact(id: string | number, query?: Record<string, any>): Promise<any>;
   /** GET /contact/privileges */
@@ -61,5 +61,5 @@ export declare class AccountResource extends Resource {
   /** POST /clientarea/settings */
   updateSettings(body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** POST /clientarea/uploadprofile */
-  uploadSignedBusinessProfile(base64Content: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
+  uploadSignedBusinessProfile(body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
 }

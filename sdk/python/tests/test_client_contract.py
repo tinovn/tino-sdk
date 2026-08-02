@@ -150,10 +150,17 @@ def test_protected_endpoints_send_the_token(transport):
 
 # ------------------------------------------------------------- body handling
 
-def test_body_fields_merge_over_explicit_body(transport):
+def test_body_fields_merge_over_explicit_payload(transport):
     fake = transport((200, {}))
-    TinoClient(token="t").support.create_ticket(body={"dept_id": 2}, subject="Hi")
+    TinoClient(token="t").support.create_ticket(payload={"dept_id": 2}, subject="Hi")
     assert fake.calls[0]["body"] == {"dept_id": 2, "subject": "Hi"}
+
+
+def test_payload_argument_never_shadows_a_body_field(transport):
+    """POST /tickets has a field literally called "body" — it must stay reachable."""
+    fake = transport((200, {}))
+    TinoClient(token="t").support.create_ticket(dept_id=2, subject="Hi", body="the message")
+    assert fake.calls[0]["body"] == {"dept_id": 2, "subject": "Hi", "body": "the message"}
 
 
 def test_no_body_is_sent_when_none_supplied(transport):

@@ -149,6 +149,11 @@ class Cart extends Resource
      *
      * • `POST /certificate/order` - use `certificate` for item type
      *
+     * Note: The single entry point for placing an order. It accepts several items of any
+     * product type in one call — hosting, VPS, domains, SSL — so the per-product and per-
+     * domain order routes are not needed. Preview the price first with cart.quote, which takes
+     * the same payload and creates nothing.
+     *
      * Body fields:
      *   - pay_method (integer): Payment method ID
      *   - ignore_errors (boolean): Process order even if some of the items were rejected due to errors
@@ -170,10 +175,15 @@ class Cart extends Resource
      *
      * POST /order/{product_id} — Bearer token required, from the API specification.
      *
+     * DEPRECATED — kept for compatibility; see the note below for the replacement.
+     *
      * Create and submit new order for selected product.
      *
      * To get available cycle and configuration options lookup product details
      * using `GET /order/@product_id`
+     *
+     * Note: Legacy single-product form. Use cart.order instead — it is the supported way to
+     * place an order and handles multiple items in one call.
      *
      * Path parameters:
      *   - product_id: Product ID
@@ -205,6 +215,9 @@ class Cart extends Resource
      *
      * Calculate order cost and recurring prices for selected items.
      * Use the same parameters as for `POST /order`
+     *
+     * Note: Price preview for a cart.order payload. Returns the subtotal, tax, discounts and
+     * recurring amounts without creating an order or an invoice.
      *
      * Body fields:
      *   - pay_method (integer): Payment method ID

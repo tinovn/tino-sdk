@@ -45,7 +45,8 @@
    "tag": "Clientarea",
    "summary": "Get business info",
    "description": "",
-   "pathParams": [
+   "pathParams": [],
+   "query": [
     {
      "name": "taxid",
      "type": "string",
@@ -55,7 +56,6 @@
      "default": null
     }
    ],
-   "query": [],
    "body": null,
    "verified": "live"
   },
@@ -304,18 +304,22 @@
    "tag": "Clientarea",
    "summary": "Upload profile signed",
    "description": "",
-   "pathParams": [
-    {
-     "name": "base64Content",
-     "type": "string",
-     "required": true,
-     "description": "",
-     "enum": null,
-     "default": null
-    }
-   ],
+   "pathParams": [],
    "query": [],
-   "body": null,
+   "body": {
+    "fields": [
+     {
+      "name": "base64Content",
+      "type": "string",
+      "required": true,
+      "description": "",
+      "enum": null,
+      "default": null,
+      "example": null
+     }
+    ],
+    "example": null
+   },
    "verified": "spec"
   },
   {
@@ -1286,7 +1290,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "account.status",
@@ -1475,7 +1479,8 @@
    "tag": "Affiliate",
    "summary": "Affiliate Delete Vouchers",
    "description": "",
-   "pathParams": [
+   "pathParams": [],
+   "query": [
     {
      "name": "id",
      "type": "integer",
@@ -1485,7 +1490,6 @@
      "default": null
     }
    ],
-   "query": [],
    "body": null,
    "verified": "spec"
   },
@@ -2271,7 +2275,7 @@
      "refresh_token": "refresh_tokenValue"
     }
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "auth.resendVerification",
@@ -2439,7 +2443,7 @@
      "gateway": "gatewayValue"
     }
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "billing.getBalance",
@@ -2491,7 +2495,7 @@
     ],
     "example": null
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "billing.getCreditLogs",
@@ -2785,7 +2789,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "billing.getInvoiceDetails",
@@ -3008,7 +3012,7 @@
     ],
     "example": null
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "billing.listPaymentMethods",
@@ -3190,7 +3194,8 @@
      "aff_id": 55
     }
    },
-   "verified": "spec"
+   "verified": "spec",
+   "notes": "The single entry point for placing an order. It accepts several items of any product type in one call — hosting, VPS, domains, SSL — so the per-product and per-domain order routes are not needed. Preview the price first with cart.quote, which takes the same payload and creates nothing."
   },
   {
    "id": "cart.getProduct",
@@ -3303,7 +3308,9 @@
      "aff_id": 55
     }
    },
-   "verified": "spec"
+   "verified": "spec",
+   "notes": "Legacy single-product form. Use cart.order instead — it is the supported way to place an order and handles multiple items in one call.",
+   "deprecated": true
   },
   {
    "id": "cart.quote",
@@ -3361,7 +3368,8 @@
      ]
     }
    },
-   "verified": "live"
+   "verified": "live",
+   "notes": "Price preview for a cart.order payload. Returns the subtotal, tax, discounts and recurring amounts without creating an order or an invoice."
   },
   {
    "id": "cart.listDomainTldsV2",
@@ -3531,7 +3539,9 @@
      "aff_id": 55
     }
    },
-   "verified": "spec"
+   "verified": "spec",
+   "notes": "Certificates are ordered through cart.order together with any other item. This route remains for the standalone certificate flow.",
+   "deprecated": true
   },
   {
    "id": "certificates.listServerSoftware",
@@ -3579,7 +3589,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "certificates.download",
@@ -3603,7 +3613,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "certificates.list",
@@ -3672,19 +3682,24 @@
      "description": "",
      "enum": null,
      "default": null
-    },
-    {
-     "name": "domain",
-     "type": "string",
-     "required": true,
-     "description": "",
-     "enum": null,
-     "default": null
     }
    ],
    "query": [],
-   "body": null,
-   "verified": "spec"
+   "body": {
+    "fields": [
+     {
+      "name": "domain",
+      "type": "string",
+      "required": true,
+      "description": "",
+      "enum": null,
+      "default": null,
+      "example": null
+     }
+    ],
+    "example": null
+   },
+   "verified": "live"
   },
   {
    "id": "cpanel.changePassword",
@@ -3780,7 +3795,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "cpanel.getStatistics",
@@ -4055,18 +4070,23 @@
      "description": "Zone ID",
      "enum": null,
      "default": null
-    },
-    {
-     "name": "widgetdo",
-     "type": "string",
-     "required": true,
-     "description": "widgetdo action",
-     "enum": null,
-     "default": null
     }
    ],
    "query": [],
-   "body": null,
+   "body": {
+    "fields": [
+     {
+      "name": "widgetdo",
+      "type": "string",
+      "required": true,
+      "description": "widgetdo action",
+      "enum": null,
+      "default": null,
+      "example": null
+     }
+    ],
+    "example": null
+   },
    "verified": "spec"
   },
   {
@@ -4099,7 +4119,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "dns.createRecord",
@@ -4206,7 +4226,7 @@
      "content": "192.168.1.2"
     }
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "dns.deleteRecord",
@@ -4246,7 +4266,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "dns.updateRecord",
@@ -4371,7 +4391,7 @@
      "content": "192.168.1.2"
     }
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "domains.listLegacy",
@@ -4624,7 +4644,9 @@
      "aff_id": 55
     }
    },
-   "verified": "spec"
+   "verified": "spec",
+   "notes": "Domains are ordered through cart.order together with any other item. This route remains for the standalone domain flow.",
+   "deprecated": true
   },
   {
    "id": "domains.getTldForm",
@@ -4756,19 +4778,24 @@
      "description": "Domain id",
      "enum": null,
      "default": null
-    },
-    {
-     "name": "autorenew",
-     "type": "boolean",
-     "required": true,
-     "description": "true|false",
-     "enum": null,
-     "default": null
     }
    ],
    "query": [],
-   "body": null,
-   "verified": "spec"
+   "body": {
+    "fields": [
+     {
+      "name": "autorenew",
+      "type": "boolean",
+      "required": true,
+      "description": "true|false",
+      "enum": null,
+      "default": null,
+      "example": null
+     }
+    ],
+    "example": null
+   },
+   "verified": "live"
   },
   {
    "id": "domains.getContacts",
@@ -4793,55 +4820,6 @@
    "query": [],
    "body": null,
    "verified": "live"
-  },
-  {
-   "id": "domains.updateContacts",
-   "group": "domains",
-   "name": "updateContacts",
-   "method": "PUT",
-   "path": "/domain/{id}/contact",
-   "auth": true,
-   "tag": "Domains",
-   "summary": "Update domain contact (WHOIS) information",
-   "description": "Update the registrant, admin, tech and billing contacts of a domain.",
-   "pathParams": [
-    {
-     "name": "id",
-     "type": "string",
-     "required": true,
-     "description": "Domain id"
-    }
-   ],
-   "body": {
-    "fields": [
-     {
-      "name": "registrant",
-      "type": "object",
-      "required": false,
-      "description": "Registrant contact fields"
-     },
-     {
-      "name": "admin",
-      "type": "object",
-      "required": false,
-      "description": "Administrative contact fields"
-     },
-     {
-      "name": "tech",
-      "type": "object",
-      "required": false,
-      "description": "Technical contact fields"
-     },
-     {
-      "name": "billing",
-      "type": "object",
-      "required": false,
-      "description": "Billing contact fields"
-     }
-    ]
-   },
-   "verified": "spec",
-   "query": []
   },
   {
    "id": "domains.listDnssecKeys",
@@ -4904,7 +4882,7 @@
      "id": "idValue"
     }
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "domains.getDnssecFlags",
@@ -5053,7 +5031,7 @@
      "records": "recordsValue"
     }
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "domains.getEppCode",
@@ -5116,7 +5094,7 @@
      "id": "idValue"
     }
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "domains.updateIdProtection",
@@ -5252,7 +5230,7 @@
      "nameservers": "nameserversValue"
     }
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "domains.getRegisteredNameservers",
@@ -5365,7 +5343,7 @@
      "newip": "5.6.7.8"
     }
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "domains.getRegistrarLock",
@@ -5428,7 +5406,7 @@
      "switch": "true|false"
     }
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "domains.renew",
@@ -5477,7 +5455,7 @@
      "pay_method": "pay_methodValue"
     }
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "domains.sync",
@@ -5614,7 +5592,7 @@
      "image": "idValue"
     }
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "ekyc.signDocument",
@@ -5678,7 +5656,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "ekyc.getVnnicPromoCode",
@@ -5690,26 +5668,31 @@
    "tag": "Domains Documents",
    "summary": "Get Coupon VN Free",
    "description": "Lấy mã giảm giá tên miền miễn phí.",
-   "pathParams": [
-    {
-     "name": "idnumber",
-     "type": "integer",
-     "required": true,
-     "description": "Số CCCD/Mã số thuế",
-     "enum": null,
-     "default": null
-    },
-    {
-     "name": "domain",
-     "type": "string",
-     "required": true,
-     "description": "domain name",
-     "enum": null,
-     "default": null
-    }
-   ],
+   "pathParams": [],
    "query": [],
-   "body": null,
+   "body": {
+    "fields": [
+     {
+      "name": "idnumber",
+      "type": "integer",
+      "required": true,
+      "description": "Số CCCD/Mã số thuế",
+      "enum": null,
+      "default": null,
+      "example": null
+     },
+     {
+      "name": "domain",
+      "type": "string",
+      "required": true,
+      "description": "domain name",
+      "enum": null,
+      "default": null,
+      "example": null
+     }
+    ],
+    "example": null
+   },
    "verified": "spec"
   },
   {
@@ -5834,19 +5817,23 @@
    "tag": "Domains Documents",
    "summary": "Check Url eKYC Status",
    "description": "Bóc tách dữ liệu cccd.",
-   "pathParams": [
-    {
-     "name": "request_id",
-     "type": "string",
-     "required": true,
-     "description": "id",
-     "enum": null,
-     "default": null
-    }
-   ],
+   "pathParams": [],
    "query": [],
-   "body": null,
-   "verified": "spec"
+   "body": {
+    "fields": [
+     {
+      "name": "request_id",
+      "type": "string",
+      "required": true,
+      "description": "id",
+      "enum": null,
+      "default": null,
+      "example": null
+     }
+    ],
+    "example": null
+   },
+   "verified": "live"
   },
   {
    "id": "ekyc.checkNationalId",
@@ -5858,18 +5845,22 @@
    "tag": "Domains Documents",
    "summary": "Nationalid check",
    "description": "Bóc tách dữ liệu cccd.",
-   "pathParams": [
-    {
-     "name": "idnumber",
-     "type": "string",
-     "required": true,
-     "description": "id",
-     "enum": null,
-     "default": null
-    }
-   ],
+   "pathParams": [],
    "query": [],
-   "body": null,
+   "body": {
+    "fields": [
+     {
+      "name": "idnumber",
+      "type": "string",
+      "required": true,
+      "description": "id",
+      "enum": null,
+      "default": null,
+      "example": null
+     }
+    ],
+    "example": null
+   },
    "verified": "live"
   },
   {
@@ -5882,18 +5873,22 @@
    "tag": "Domains Documents",
    "summary": "Ekyc exists check",
    "description": "Kiểm tra nhanh số CCCD đã có EKYC hay chưa. Trả true/false, không lộ thông tin khách hàng.",
-   "pathParams": [
-    {
-     "name": "idnumber",
-     "type": "string",
-     "required": true,
-     "description": "Số CCCD cần kiểm tra",
-     "enum": null,
-     "default": null
-    }
-   ],
+   "pathParams": [],
    "query": [],
-   "body": null,
+   "body": {
+    "fields": [
+     {
+      "name": "idnumber",
+      "type": "string",
+      "required": true,
+      "description": "Số CCCD cần kiểm tra",
+      "enum": null,
+      "default": null,
+      "example": null
+     }
+    ],
+    "example": null
+   },
    "verified": "live"
   },
   {
@@ -5906,59 +5901,68 @@
    "tag": "Domains Documents",
    "summary": "Faceid verification",
    "description": "Kiểm tra so sánh CCCD với khuôn mặt.",
-   "pathParams": [
-    {
-     "name": "request_id",
-     "type": "string",
-     "required": true,
-     "description": "Request id, Phải trùng khớp với RequestID của OCR 2 mặt CCCD",
-     "enum": null,
-     "default": null
-    },
-    {
-     "name": "image_live",
-     "type": "string",
-     "required": true,
-     "description": "Live Face Image",
-     "enum": null,
-     "default": null
-    },
-    {
-     "name": "image_live_1 ",
-     "type": "string",
-     "required": true,
-     "description": "Live Face Image",
-     "enum": null,
-     "default": null
-    },
-    {
-     "name": "image_live_2",
-     "type": "string",
-     "required": true,
-     "description": "Live Face Image",
-     "enum": null,
-     "default": null
-    },
-    {
-     "name": "image_live_3",
-     "type": "string",
-     "required": true,
-     "description": "Live Face Image",
-     "enum": null,
-     "default": null
-    },
-    {
-     "name": "token",
-     "type": "string",
-     "required": true,
-     "description": "Domain Token",
-     "enum": null,
-     "default": null
-    }
-   ],
+   "pathParams": [],
    "query": [],
-   "body": null,
-   "verified": "spec"
+   "body": {
+    "fields": [
+     {
+      "name": "request_id",
+      "type": "string",
+      "required": true,
+      "description": "Request id, Phải trùng khớp với RequestID của OCR 2 mặt CCCD",
+      "enum": null,
+      "default": null,
+      "example": null
+     },
+     {
+      "name": "image_live",
+      "type": "string",
+      "required": true,
+      "description": "Live Face Image",
+      "enum": null,
+      "default": null,
+      "example": null
+     },
+     {
+      "name": "image_live_1",
+      "type": "string",
+      "required": true,
+      "description": "Live Face Image",
+      "enum": null,
+      "default": null,
+      "example": null
+     },
+     {
+      "name": "image_live_2",
+      "type": "string",
+      "required": true,
+      "description": "Live Face Image",
+      "enum": null,
+      "default": null,
+      "example": null
+     },
+     {
+      "name": "image_live_3",
+      "type": "string",
+      "required": true,
+      "description": "Live Face Image",
+      "enum": null,
+      "default": null,
+      "example": null
+     },
+     {
+      "name": "token",
+      "type": "string",
+      "required": true,
+      "description": "Domain Token",
+      "enum": null,
+      "default": null,
+      "example": null
+     }
+    ],
+    "example": null
+   },
+   "verified": "live"
   },
   {
    "id": "ekyc.getHousehold",
@@ -5970,7 +5974,8 @@
    "tag": "Domains Documents",
    "summary": "TaxID HKD",
    "description": "Kiểm tra thông tin hộ kinh doanh.",
-   "pathParams": [
+   "pathParams": [],
+   "query": [
     {
      "name": "taxid",
      "type": "string",
@@ -5980,7 +5985,6 @@
      "default": null
     }
    ],
-   "query": [],
    "body": null,
    "verified": "live"
   },
@@ -5994,18 +5998,22 @@
    "tag": "Domains Documents",
    "summary": "TaxID HKD",
    "description": "Kiểm tra thông tin hộ kinh doanh.",
-   "pathParams": [
-    {
-     "name": "taxid",
-     "type": "string",
-     "required": true,
-     "description": "id",
-     "enum": null,
-     "default": null
-    }
-   ],
+   "pathParams": [],
    "query": [],
-   "body": null,
+   "body": {
+    "fields": [
+     {
+      "name": "taxid",
+      "type": "string",
+      "required": true,
+      "description": "id",
+      "enum": null,
+      "default": null,
+      "example": null
+     }
+    ],
+    "example": null
+   },
    "verified": "spec"
   },
   {
@@ -6018,38 +6026,44 @@
    "tag": "Domains Documents",
    "summary": "OCR Recognition",
    "description": "Bóc tách dữ liệu cccd.",
-   "pathParams": [
-    {
-     "name": "request_id",
-     "type": "string",
-     "required": true,
-     "description": "Request id, Phải trùng khớp với RequestID OCR 2 mặt CCCD",
-     "enum": null,
-     "default": null
-    },
-    {
-     "name": "type",
-     "type": "string",
-     "required": true,
-     "description": "",
-     "enum": [
-      "cardFront",
-      "cardBack"
-     ],
-     "default": null
-    },
-    {
-     "name": "image",
-     "type": "string",
-     "required": true,
-     "description": "Image card",
-     "enum": null,
-     "default": null
-    }
-   ],
+   "pathParams": [],
    "query": [],
-   "body": null,
-   "verified": "spec"
+   "body": {
+    "fields": [
+     {
+      "name": "request_id",
+      "type": "string",
+      "required": true,
+      "description": "Request id, Phải trùng khớp với RequestID OCR 2 mặt CCCD",
+      "enum": null,
+      "default": null,
+      "example": null
+     },
+     {
+      "name": "type",
+      "type": "string",
+      "required": true,
+      "description": "",
+      "enum": [
+       "cardFront",
+       "cardBack"
+      ],
+      "default": null,
+      "example": null
+     },
+     {
+      "name": "image",
+      "type": "string",
+      "required": true,
+      "description": "Image card",
+      "enum": null,
+      "default": null,
+      "example": null
+     }
+    ],
+    "example": null
+   },
+   "verified": "live"
   },
   {
    "id": "languages.list",
@@ -6100,7 +6114,8 @@
    "tag": "Language",
    "summary": "Billing cycle labels in the active language",
    "description": "Return languages translate",
-   "pathParams": [
+   "pathParams": [],
+   "query": [
     {
      "name": "key",
      "type": "string",
@@ -6110,7 +6125,6 @@
      "default": null
     }
    ],
-   "query": [],
    "body": null,
    "verified": "live"
   },
@@ -6166,7 +6180,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "location.listCitiesByStateName",
@@ -6331,7 +6345,8 @@
      "rule": "10.10.10.10/32"
     }
    },
-   "verified": "spec"
+   "verified": "live",
+   "notes": "The first rule switches the account into whitelist mode: every address that is not listed is refused, including the one you are calling from. Add your own address before adding any other, and remove it last."
   },
   {
    "id": "security.removeIpAccess",
@@ -6355,7 +6370,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "security.addSshKey",
@@ -6548,7 +6563,7 @@
      "reason": "reasonValue"
     }
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "services.getBillingCycles",
@@ -6641,7 +6656,9 @@
      "description": "Service ID",
      "enum": null,
      "default": null
-    },
+    }
+   ],
+   "query": [
     {
      "name": "module",
      "type": "string",
@@ -6651,7 +6668,6 @@
      "default": null
     }
    ],
-   "query": [],
    "body": null,
    "verified": "live"
   },
@@ -6673,51 +6689,60 @@
      "description": "Service ID",
      "enum": null,
      "default": null
-    },
-    {
-     "name": "module",
-     "type": "string",
-     "required": true,
-     "description": "Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)",
-     "enum": null,
-     "default": null
-    },
-    {
-     "name": "name",
-     "type": "string",
-     "required": true,
-     "description": "Email account without domain",
-     "enum": null,
-     "default": null
-    },
-    {
-     "name": "passmain",
-     "type": "string",
-     "required": true,
-     "description": "Password for email account",
-     "enum": null,
-     "default": null
-    },
-    {
-     "name": "passcheck",
-     "type": "string",
-     "required": true,
-     "description": "Password confirm for email account",
-     "enum": null,
-     "default": null
-    },
-    {
-     "name": "quota",
-     "type": "integer",
-     "required": true,
-     "description": "Email Quote (Megabytes)",
-     "enum": null,
-     "default": null
     }
    ],
    "query": [],
-   "body": null,
-   "verified": "spec"
+   "body": {
+    "fields": [
+     {
+      "name": "module",
+      "type": "string",
+      "required": true,
+      "description": "Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)",
+      "enum": null,
+      "default": null,
+      "example": null
+     },
+     {
+      "name": "name",
+      "type": "string",
+      "required": true,
+      "description": "Email account without domain",
+      "enum": null,
+      "default": null,
+      "example": null
+     },
+     {
+      "name": "passmain",
+      "type": "string",
+      "required": true,
+      "description": "Password for email account",
+      "enum": null,
+      "default": null,
+      "example": null
+     },
+     {
+      "name": "passcheck",
+      "type": "string",
+      "required": true,
+      "description": "Password confirm for email account",
+      "enum": null,
+      "default": null,
+      "example": null
+     },
+     {
+      "name": "quota",
+      "type": "integer",
+      "required": true,
+      "description": "Email Quote (Megabytes)",
+      "enum": null,
+      "default": null,
+      "example": null
+     }
+    ],
+    "example": null
+   },
+   "verified": "live"
   },
   {
    "id": "services.updateEmailAccount",
@@ -6737,27 +6762,33 @@
      "description": "Service ID",
      "enum": null,
      "default": null
-    },
-    {
-     "name": "module",
-     "type": "string",
-     "required": true,
-     "description": "Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)",
-     "enum": null,
-     "default": null
-    },
-    {
-     "name": "change",
-     "type": "Array",
-     "required": true,
-     "description": "",
-     "enum": null,
-     "default": null
     }
    ],
    "query": [],
-   "body": null,
-   "verified": "spec"
+   "body": {
+    "fields": [
+     {
+      "name": "module",
+      "type": "string",
+      "required": true,
+      "description": "Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)",
+      "enum": null,
+      "default": null,
+      "example": null
+     },
+     {
+      "name": "change",
+      "type": "Array",
+      "required": true,
+      "description": "",
+      "enum": null,
+      "default": null,
+      "example": null
+     }
+    ],
+    "example": null
+   },
+   "verified": "live"
   },
   {
    "id": "services.deleteEmailAccount",
@@ -6777,35 +6808,42 @@
      "description": "Service ID",
      "enum": null,
      "default": null
-    },
-    {
-     "name": "module",
-     "type": "string",
-     "required": true,
-     "description": "Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)",
-     "enum": null,
-     "default": null
-    },
-    {
-     "name": "deluser",
-     "type": "string",
-     "required": true,
-     "description": "Email account",
-     "enum": null,
-     "default": null
-    },
-    {
-     "name": "domain",
-     "type": "string",
-     "required": true,
-     "description": "Password for email account",
-     "enum": null,
-     "default": null
     }
    ],
    "query": [],
-   "body": null,
-   "verified": "spec"
+   "body": {
+    "fields": [
+     {
+      "name": "module",
+      "type": "string",
+      "required": true,
+      "description": "Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)",
+      "enum": null,
+      "default": null,
+      "example": null
+     },
+     {
+      "name": "deluser",
+      "type": "string",
+      "required": true,
+      "description": "Email account",
+      "enum": null,
+      "default": null,
+      "example": null
+     },
+     {
+      "name": "domain",
+      "type": "string",
+      "required": true,
+      "description": "Password for email account",
+      "enum": null,
+      "default": null,
+      "example": null
+     }
+    ],
+    "example": null
+   },
+   "verified": "live"
   },
   {
    "id": "services.listInvoices",
@@ -6926,7 +6964,7 @@
      "label": "labelValue"
     }
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "services.manualRenew",
@@ -6950,7 +6988,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "services.listMethods",
@@ -7261,7 +7299,7 @@
      "send": "sendValue"
     }
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "services.listWidgets",
@@ -7528,7 +7566,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "support.getAttachment",
@@ -7675,7 +7713,8 @@
      "body": "Message ..."
     }
    },
-   "verified": "spec"
+   "verified": "live",
+   "notes": "Returns the new ticket number as {\"ticket\": 690686} — the field is `ticket`, not `ticket_number`. Use it as the {number} path parameter of the other ticket calls."
   },
   {
    "id": "support.getTicket",
@@ -7748,7 +7787,7 @@
      "body": "reply text .."
     }
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "support.closeTicket",
@@ -7787,7 +7826,7 @@
      "number": "numberValue"
     }
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "support.reopenTicket",
@@ -7826,73 +7865,7 @@
      "number": "numberValue"
     }
    },
-   "verified": "spec"
-  },
-  {
-   "id": "tinomail.listLogs",
-   "group": "tinomail",
-   "name": "listLogs",
-   "method": "GET",
-   "path": "/service/{idtinomail}/logs",
-   "auth": true,
-   "tag": "TinoMail",
-   "summary": "Email logs",
-   "description": "Email logs",
-   "pathParams": [
-    {
-     "name": "idtinomail",
-     "type": "string",
-     "required": true,
-     "description": "",
-     "enum": null,
-     "default": null
-    },
-    {
-     "name": "id",
-     "type": "integer",
-     "required": true,
-     "description": "",
-     "enum": null,
-     "default": null
-    }
-   ],
-   "query": [],
-   "body": null,
-   "verified": "spec",
-   "notes": "Only valid for a TinoMail service id. Calling it on another service type returns 404 invalid method."
-  },
-  {
-   "id": "tinomail.getSummary",
-   "group": "tinomail",
-   "name": "getSummary",
-   "method": "GET",
-   "path": "/service/{idtinomail}/summary",
-   "auth": true,
-   "tag": "TinoMail",
-   "summary": "Email Summary",
-   "description": "Email details",
-   "pathParams": [
-    {
-     "name": "idtinomail",
-     "type": "string",
-     "required": true,
-     "description": "",
-     "enum": null,
-     "default": null
-    },
-    {
-     "name": "id",
-     "type": "integer",
-     "required": true,
-     "description": "",
-     "enum": null,
-     "default": null
-    }
-   ],
-   "query": [],
-   "body": null,
-   "verified": "spec",
-   "notes": "Only valid for a TinoMail service id. Calling it on another service type returns 404 invalid method."
+   "verified": "live"
   },
   {
    "id": "tinosite.autoLogin",
@@ -7912,19 +7885,24 @@
      "description": "",
      "enum": null,
      "default": null
-    },
-    {
-     "name": "email",
-     "type": "string",
-     "required": true,
-     "description": "",
-     "enum": null,
-     "default": null
     }
    ],
    "query": [],
-   "body": null,
-   "verified": "spec"
+   "body": {
+    "fields": [
+     {
+      "name": "email",
+      "type": "string",
+      "required": true,
+      "description": "",
+      "enum": null,
+      "default": null,
+      "example": null
+     }
+    ],
+    "example": null
+   },
+   "verified": "live"
   },
   {
    "id": "tinosite.backup",
@@ -7948,7 +7926,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "tinosite.domainPointerAction",
@@ -7972,7 +7950,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "tinosite.getMetrics",
@@ -7996,7 +7974,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "tinosite.listPlugins",
@@ -8044,7 +8022,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "tinosite.toggleSslCertificate",
@@ -8068,7 +8046,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "tinosite.listThemes",
@@ -8116,7 +8094,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "tinosite.createUser",
@@ -8136,128 +8114,42 @@
      "description": "",
      "enum": null,
      "default": null
-    },
-    {
-     "name": "email",
-     "type": "string",
-     "required": true,
-     "description": "",
-     "enum": null,
-     "default": null
-    },
-    {
-     "name": "role",
-     "type": "string",
-     "required": true,
-     "description": "",
-     "enum": null,
-     "default": null
-    },
-    {
-     "name": "password",
-     "type": "string",
-     "required": true,
-     "description": "",
-     "enum": null,
-     "default": null
     }
    ],
    "query": [],
-   "body": null,
-   "verified": "spec"
-  },
-  {
-   "id": "usageMonitor.getAccountUsage",
-   "group": "usageMonitor",
-   "name": "getAccountUsage",
-   "method": "GET",
-   "path": "/usage-monitor/account/{id}",
-   "auth": true,
-   "tag": "API Routes for Proxmox2 Usage Monitor",
-   "summary": "Get usage for a specific account",
-   "description": "",
-   "pathParams": [
-    {
-     "name": "id",
-     "type": "string",
-     "required": true,
-     "description": "",
-     "enum": null,
-     "default": null
-    }
-   ],
-   "query": [],
-   "body": null,
-   "verified": "spec"
-  },
-  {
-   "id": "usageMonitor.getNodeStatus",
-   "group": "usageMonitor",
-   "name": "getNodeStatus",
-   "method": "GET",
-   "path": "/usage-monitor/nodes/{server_id}",
-   "auth": true,
-   "tag": "API Routes for Proxmox2 Usage Monitor",
-   "summary": "Get node status for a server (via Proxmox2 module)",
-   "description": "",
-   "pathParams": [
-    {
-     "name": "server_id",
-     "type": "string",
-     "required": true,
-     "description": "",
-     "enum": null,
-     "default": null
-    }
-   ],
-   "query": [],
-   "body": null,
-   "verified": "spec"
-  },
-  {
-   "id": "usageMonitor.listOverage",
-   "group": "usageMonitor",
-   "name": "listOverage",
-   "method": "POST",
-   "path": "/usage-monitor/overage",
-   "auth": true,
-   "tag": "API Routes for Proxmox2 Usage Monitor",
-   "summary": "Get overage list with custom thresholds",
-   "description": "",
-   "pathParams": [],
-   "query": [],
-   "body": null,
-   "verified": "spec"
-  },
-  {
-   "id": "usageMonitor.listProducts",
-   "group": "usageMonitor",
-   "name": "listProducts",
-   "method": "GET",
-   "path": "/usage-monitor/products",
-   "auth": true,
-   "tag": "API Routes for Proxmox2 Usage Monitor",
-   "summary": "List available Proxmox2 products",
-   "description": "",
-   "pathParams": [],
-   "query": [],
-   "body": null,
+   "body": {
+    "fields": [
+     {
+      "name": "email",
+      "type": "string",
+      "required": true,
+      "description": "",
+      "enum": null,
+      "default": null,
+      "example": null
+     },
+     {
+      "name": "role",
+      "type": "string",
+      "required": true,
+      "description": "",
+      "enum": null,
+      "default": null,
+      "example": null
+     },
+     {
+      "name": "password",
+      "type": "string",
+      "required": true,
+      "description": "",
+      "enum": null,
+      "default": null,
+      "example": null
+     }
+    ],
+    "example": null
+   },
    "verified": "live"
-  },
-  {
-   "id": "usageMonitor.scan",
-   "group": "usageMonitor",
-   "name": "scan",
-   "method": "POST",
-   "path": "/usage-monitor/scan",
-   "auth": true,
-   "tag": "API Routes for Proxmox2 Usage Monitor",
-   "summary": "Scan by product IDs and return full usage summary",
-   "description": "",
-   "pathParams": [],
-   "query": [],
-   "body": null,
-   "verified": "spec"
   },
   {
    "id": "vms.list",
@@ -8529,18 +8421,23 @@
      "description": "Virtual server id",
      "enum": null,
      "default": null
-    },
-    {
-     "name": "keys",
-     "type": "array",
-     "required": true,
-     "description": "SSK Key ID",
-     "enum": null,
-     "default": null
     }
    ],
    "query": [],
-   "body": null,
+   "body": {
+    "fields": [
+     {
+      "name": "keys",
+      "type": "array",
+      "required": true,
+      "description": "SSK Key ID",
+      "enum": null,
+      "default": null,
+      "example": null
+     }
+    ],
+    "example": null
+   },
    "verified": "spec"
   },
   {
@@ -8581,7 +8478,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "vms.listBackups",
@@ -8645,7 +8542,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "vms.restoreBackup",
@@ -8717,7 +8614,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "vms.changeHostname",
@@ -8745,19 +8642,24 @@
      "description": "Virtual server id",
      "enum": null,
      "default": null
-    },
-    {
-     "name": "server_name",
-     "type": "string",
-     "required": true,
-     "description": "Virtual server name",
-     "enum": null,
-     "default": null
     }
    ],
    "query": [],
-   "body": null,
-   "verified": "spec"
+   "body": {
+    "fields": [
+     {
+      "name": "server_name",
+      "type": "string",
+      "required": true,
+      "description": "Virtual server name",
+      "enum": null,
+      "default": null,
+      "example": null
+     }
+    ],
+    "example": null
+   },
+   "verified": "live"
   },
   {
    "id": "vms.listInterfaces",
@@ -8866,7 +8768,7 @@
      "ipv6": "ipv6Value"
     }
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "vms.removeInterface",
@@ -8946,7 +8848,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "vms.updateInterface",
@@ -9373,7 +9275,7 @@
      "vmid": "vmidValue"
     }
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "vms.resetRootPassword",
@@ -9405,7 +9307,7 @@
    ],
    "query": [],
    "body": null,
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "vms.shutdown",
@@ -9452,7 +9354,7 @@
      "vmid": "vmidValue"
     }
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "vms.listSnapshots",
@@ -9512,27 +9414,34 @@
      "description": "Virtual server id",
      "enum": null,
      "default": null
-    },
-    {
-     "name": "description",
-     "type": "string",
-     "required": true,
-     "description": "description",
-     "enum": null,
-     "default": null
-    },
-    {
-     "name": "vmstate",
-     "type": "integer",
-     "required": true,
-     "description": "vmstate",
-     "enum": null,
-     "default": null
     }
    ],
    "query": [],
-   "body": null,
-   "verified": "spec"
+   "body": {
+    "fields": [
+     {
+      "name": "description",
+      "type": "string",
+      "required": true,
+      "description": "description",
+      "enum": null,
+      "default": null,
+      "example": null
+     },
+     {
+      "name": "vmstate",
+      "type": "integer",
+      "required": true,
+      "description": "vmstate",
+      "enum": null,
+      "default": null,
+      "example": null
+     }
+    ],
+    "example": null
+   },
+   "verified": "live",
+   "notes": "The snapshot name is generated by the platform (A<unix-timestamp>); a name sent in the request is ignored. Read it back from vms.listSnapshots before deleting."
   },
   {
    "id": "vms.restoreSnapshot",
@@ -9672,42 +9581,50 @@
      "description": "Virtual server id",
      "enum": null,
      "default": null
-    },
-    {
-     "name": "dow",
-     "type": "string",
-     "required": true,
-     "description": "Array thứ",
-     "enum": null,
-     "default": null
-    },
-    {
-     "name": "hour",
-     "type": "string",
-     "required": true,
-     "description": "Giờ",
-     "enum": null,
-     "default": null
-    },
-    {
-     "name": "min",
-     "type": "string",
-     "required": true,
-     "description": "Phút",
-     "enum": null,
-     "default": null
-    },
-    {
-     "name": "vmstate",
-     "type": "integer",
-     "required": true,
-     "description": "vmstate",
-     "enum": null,
-     "default": null
     }
    ],
    "query": [],
-   "body": null,
+   "body": {
+    "fields": [
+     {
+      "name": "dow",
+      "type": "string",
+      "required": true,
+      "description": "Array thứ",
+      "enum": null,
+      "default": null,
+      "example": null
+     },
+     {
+      "name": "hour",
+      "type": "string",
+      "required": true,
+      "description": "Giờ",
+      "enum": null,
+      "default": null,
+      "example": null
+     },
+     {
+      "name": "min",
+      "type": "string",
+      "required": true,
+      "description": "Phút",
+      "enum": null,
+      "default": null,
+      "example": null
+     },
+     {
+      "name": "vmstate",
+      "type": "integer",
+      "required": true,
+      "description": "vmstate",
+      "enum": null,
+      "default": null,
+      "example": null
+     }
+    ],
+    "example": null
+   },
    "verified": "spec"
   },
   {
@@ -9795,7 +9712,7 @@
      "vmid": "vmidValue"
     }
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "vms.stop",
@@ -9842,7 +9759,7 @@
      "vmid": "vmidValue"
     }
    },
-   "verified": "spec"
+   "verified": "live"
   },
   {
    "id": "vms.getUsage",

@@ -2,7 +2,7 @@
 
 SDK namespace: `client.ekyc` (Python) · `client.ekyc` (Node.js, PHP).
 
-14 operation(s) in this chapter, 4 with a captured live response.
+14 operation(s) in this chapter, 9 with a captured live response.
 
 | Method | Path | SDK | Auth |
 | --- | --- | --- | --- |
@@ -25,7 +25,7 @@ SDK namespace: `client.ekyc` (Python) · `client.ekyc` (Node.js, PHP).
 
 ### `ekyc.uploadCompanyProfile`
 
-`POST /domain/documents/companyprofile` — Bearer token · spec only
+`POST /domain/documents/companyprofile` — Bearer token · verified live
 
 **Company Profile Signatured**
 
@@ -47,7 +47,13 @@ Company Profile upload
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+[]
+```
+
+</details>
 
 **SDK**
 
@@ -105,7 +111,7 @@ $client->ekyc->signDocument(['token' => ...]);
 
 ### `ekyc.viewSignableDocument`
 
-`GET /domain/documents/view/{token}` — Bearer token · spec only
+`GET /domain/documents/view/{token}` — Bearer token · verified live
 
 **Document Sign**
 
@@ -149,14 +155,19 @@ $client->ekyc->viewSignableDocument($token);
 
 Lấy mã giảm giá tên miền miễn phí.
 
-**Parameters**
+**Request body**
 
-| Name | In | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| `idnumber` | path | integer | yes | Số CCCD/Mã số thuế |
-| `domain` | path | string | yes | domain name |
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `idnumber` | integer | yes | Số CCCD/Mã số thuế |
+| `domain` | string | yes | domain name |
 
-**Request body** — none documented; any JSON object is forwarded as-is.
+```json
+{
+  "idnumber": 0,
+  "domain": "<domain>"
+}
+```
 
 **Response** `200`
 
@@ -165,13 +176,13 @@ _Not captured live — this endpoint changes state, or it needs data the documen
 **SDK**
 
 ```python
-client.ekyc.get_vnnic_promo_code(idnumber, domain)
+client.ekyc.get_vnnic_promo_code(idnumber=...)
 ```
 ```javascript
-await client.ekyc.getVnnicPromoCode(idnumber, domain);
+await client.ekyc.getVnnicPromoCode({ idnumber: ... });
 ```
 ```php
-$client->ekyc->getVnnicPromoCode($idnumber, $domain);
+$client->ekyc->getVnnicPromoCode(['idnumber' => ...]);
 ```
 
 ---
@@ -299,34 +310,46 @@ $client->ekyc->uploadDomainDocument($id, $documentId, ['filename' => ...]);
 
 ### `ekyc.checkUrlStatus`
 
-`POST /ekyc/check-status-url-ekyc` — Bearer token · spec only
+`POST /ekyc/check-status-url-ekyc` — Bearer token · verified live
 
 **Check Url eKYC Status**
 
 Bóc tách dữ liệu cccd.
 
-**Parameters**
+**Request body**
 
-| Name | In | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| `request_id` | path | string | yes | id |
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `request_id` | string | yes | id |
 
-**Request body** — none documented; any JSON object is forwarded as-is.
+```json
+{
+  "request_id": "<request_id>"
+}
+```
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true
+}
+```
+
+</details>
 
 **SDK**
 
 ```python
-client.ekyc.check_url_status(request_id)
+client.ekyc.check_url_status(request_id=...)
 ```
 ```javascript
-await client.ekyc.checkUrlStatus(requestId);
+await client.ekyc.checkUrlStatus({ request_id: ... });
 ```
 ```php
-$client->ekyc->checkUrlStatus($requestId);
+$client->ekyc->checkUrlStatus(['request_id' => ...]);
 ```
 
 ---
@@ -339,13 +362,17 @@ $client->ekyc->checkUrlStatus($requestId);
 
 Bóc tách dữ liệu cccd.
 
-**Parameters**
+**Request body**
 
-| Name | In | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| `idnumber` | path | string | yes | id |
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `idnumber` | string | yes | id |
 
-**Request body** — none documented; any JSON object is forwarded as-is.
+```json
+{
+  "idnumber": "<idnumber>"
+}
+```
 
 **Response** `200`
 
@@ -363,13 +390,13 @@ Bóc tách dữ liệu cccd.
 **SDK**
 
 ```python
-client.ekyc.check_national_id(idnumber)
+client.ekyc.check_national_id(idnumber=...)
 ```
 ```javascript
-await client.ekyc.checkNationalId(idnumber);
+await client.ekyc.checkNationalId({ idnumber: ... });
 ```
 ```php
-$client->ekyc->checkNationalId($idnumber);
+$client->ekyc->checkNationalId(['idnumber' => ...]);
 ```
 
 ---
@@ -382,13 +409,17 @@ $client->ekyc->checkNationalId($idnumber);
 
 Kiểm tra nhanh số CCCD đã có EKYC hay chưa. Trả true/false, không lộ thông tin khách hàng.
 
-**Parameters**
+**Request body**
 
-| Name | In | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| `idnumber` | path | string | yes | Số CCCD cần kiểm tra |
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `idnumber` | string | yes | Số CCCD cần kiểm tra |
 
-**Request body** — none documented; any JSON object is forwarded as-is.
+```json
+{
+  "idnumber": "<idnumber>"
+}
+```
 
 **Response** `200`
 
@@ -406,52 +437,69 @@ Kiểm tra nhanh số CCCD đã có EKYC hay chưa. Trả true/false, không l�
 **SDK**
 
 ```python
-client.ekyc.exists(idnumber)
+client.ekyc.exists(idnumber=...)
 ```
 ```javascript
-await client.ekyc.exists(idnumber);
+await client.ekyc.exists({ idnumber: ... });
 ```
 ```php
-$client->ekyc->exists($idnumber);
+$client->ekyc->exists(['idnumber' => ...]);
 ```
 
 ---
 
 ### `ekyc.faceIdVerification`
 
-`POST /ekyc/faceid/verification` — Bearer token · spec only
+`POST /ekyc/faceid/verification` — Bearer token · verified live
 
 **Faceid verification**
 
 Kiểm tra so sánh CCCD với khuôn mặt.
 
-**Parameters**
+**Request body**
 
-| Name | In | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| `request_id` | path | string | yes | Request id, Phải trùng khớp với RequestID của OCR 2 mặt CCCD |
-| `image_live` | path | string | yes | Live Face Image |
-| `image_live_1 ` | path | string | yes | Live Face Image |
-| `image_live_2` | path | string | yes | Live Face Image |
-| `image_live_3` | path | string | yes | Live Face Image |
-| `token` | path | string | yes | Domain Token |
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `request_id` | string | yes | Request id, Phải trùng khớp với RequestID của OCR 2 mặt CCCD |
+| `image_live` | string | yes | Live Face Image |
+| `image_live_1` | string | yes | Live Face Image |
+| `image_live_2` | string | yes | Live Face Image |
+| `image_live_3` | string | yes | Live Face Image |
+| `token` | string | yes | Domain Token |
 
-**Request body** — none documented; any JSON object is forwarded as-is.
+```json
+{
+  "request_id": "<request_id>",
+  "image_live": "<image_live>",
+  "image_live_1": "<image_live_1>",
+  "image_live_2": "<image_live_2>",
+  "image_live_3": "<image_live_3>",
+  "token": "<token>"
+}
+```
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": false
+}
+```
+
+</details>
 
 **SDK**
 
 ```python
-client.ekyc.face_id_verification(request_id, image_live, image_live_1, image_live_2, image_live_3, token)
+client.ekyc.face_id_verification(request_id=...)
 ```
 ```javascript
-await client.ekyc.faceIdVerification(requestId, imageLive, imageLive1, imageLive2, imageLive3, token);
+await client.ekyc.faceIdVerification({ request_id: ... });
 ```
 ```php
-$client->ekyc->faceIdVerification($requestId, $imageLive, $imageLive1, $imageLive2, $imageLive3, $token);
+$client->ekyc->faceIdVerification(['request_id' => ...]);
 ```
 
 ---
@@ -468,7 +516,7 @@ Kiểm tra thông tin hộ kinh doanh.
 
 | Name | In | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| `taxid` | path | string | yes | id |
+| `taxid` | query | string | yes | id |
 
 **Response** `200`
 
@@ -488,13 +536,13 @@ Kiểm tra thông tin hộ kinh doanh.
 **SDK**
 
 ```python
-client.ekyc.get_household(taxid)
+client.ekyc.get_household()
 ```
 ```javascript
-await client.ekyc.getHousehold(taxid);
+await client.ekyc.getHousehold();
 ```
 ```php
-$client->ekyc->getHousehold($taxid);
+$client->ekyc->getHousehold();
 ```
 
 ---
@@ -507,13 +555,17 @@ $client->ekyc->getHousehold($taxid);
 
 Kiểm tra thông tin hộ kinh doanh.
 
-**Parameters**
+**Request body**
 
-| Name | In | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| `taxid` | path | string | yes | id |
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `taxid` | string | yes | id |
 
-**Request body** — none documented; any JSON object is forwarded as-is.
+```json
+{
+  "taxid": "<taxid>"
+}
+```
 
 **Response** `200`
 
@@ -522,49 +574,63 @@ _Not captured live — this endpoint changes state, or it needs data the documen
 **SDK**
 
 ```python
-client.ekyc.check_household(taxid)
+client.ekyc.check_household(taxid=...)
 ```
 ```javascript
-await client.ekyc.checkHousehold(taxid);
+await client.ekyc.checkHousehold({ taxid: ... });
 ```
 ```php
-$client->ekyc->checkHousehold($taxid);
+$client->ekyc->checkHousehold(['taxid' => ...]);
 ```
 
 ---
 
 ### `ekyc.ocrRecognition`
 
-`POST /ekyc/ocr/recognition` — Bearer token · spec only
+`POST /ekyc/ocr/recognition` — Bearer token · verified live
 
 **OCR Recognition**
 
 Bóc tách dữ liệu cccd.
 
-**Parameters**
+**Request body**
 
-| Name | In | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| `request_id` | path | string | yes | Request id, Phải trùng khớp với RequestID OCR 2 mặt CCCD |
-| `type` | path | string | yes | One of: `cardFront`, `cardBack` |
-| `image` | path | string | yes | Image card |
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `request_id` | string | yes | Request id, Phải trùng khớp với RequestID OCR 2 mặt CCCD |
+| `type` | string | yes |  One of: `cardFront`, `cardBack` |
+| `image` | string | yes | Image card |
 
-**Request body** — none documented; any JSON object is forwarded as-is.
+```json
+{
+  "request_id": "<request_id>",
+  "type": "cardFront",
+  "image": "<image>"
+}
+```
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": false
+}
+```
+
+</details>
 
 **SDK**
 
 ```python
-client.ekyc.ocr_recognition(request_id, type, image)
+client.ekyc.ocr_recognition(request_id=...)
 ```
 ```javascript
-await client.ekyc.ocrRecognition(requestId, type, image);
+await client.ekyc.ocrRecognition({ request_id: ... });
 ```
 ```php
-$client->ekyc->ocrRecognition($requestId, $type, $image);
+$client->ekyc->ocrRecognition(['request_id' => ...]);
 ```
 
 ---

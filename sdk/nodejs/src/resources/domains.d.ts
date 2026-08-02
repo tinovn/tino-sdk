@@ -51,9 +51,7 @@ export declare class DomainsResource extends Resource {
   /** GET /domain/{id}/sync */
   sync(id: string | number, query?: Record<string, any>): Promise<any>;
   /** PUT /domain/{id}/autorenew */
-  updateAutoRenew(id: string | number, autorenew: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
-  /** PUT /domain/{id}/contact */
-  updateContacts(id: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
+  updateAutoRenew(id: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** PUT /domain/{id}/emforwarding */
   updateEmailForwarding(id: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** PUT /domain/{id}/forwarding */

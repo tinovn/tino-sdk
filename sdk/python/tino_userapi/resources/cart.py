@@ -83,7 +83,7 @@ class CartResource(Resource):
         path = self._path("/category/{category_id}/product", category_id=category_id)
         return self._call("GET", path, query=query)
 
-    def order(self, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def order(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Order multiple services
 
         POST /order — Bearer token required, from the API specification.
@@ -95,23 +95,33 @@ class CartResource(Resource):
 
         • `POST /certificate/order` - use `certificate` for item type
 
+        Note: The single entry point for placing an order. It accepts several items of any
+        product type in one call — hosting, VPS, domains, SSL — so the per-product and per-
+        domain order routes are not needed. Preview the price first with cart.quote, which takes
+        the same payload and creates nothing.
+
         Body fields:
           - pay_method (integer): Payment method ID
           - ignore_errors (boolean): Process order even if some of the items were rejected due to errors
           - items (array): list with order items
           - aff_id (integer): Affiliate ID
         """
-        return self._call("POST", "/order", body=self._body(body, fields))
+        return self._call("POST", "/order", body=self._body(payload, fields))
 
-    def order_product(self, product_id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def order_product(self, product_id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Order new service
 
         POST /order/{product_id} — Bearer token required, from the API specification.
+
+        DEPRECATED — kept for compatibility; see the note below for the replacement.
 
         Create and submit new order for selected product.
 
         To get available cycle and configuration options lookup product details
         using `GET /order/@product_id`
+
+        Note: Legacy single-product form. Use cart.order instead — it is the supported way to
+        place an order and handles multiple items in one call.
 
         Path parameters:
           - product_id: Product ID
@@ -125,9 +135,9 @@ class CartResource(Resource):
           - aff_id (integer): Affiliate ID
         """
         path = self._path("/order/{product_id}", product_id=product_id)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", path, body=self._body(payload, fields))
 
-    def quote(self, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def quote(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Get order quote
 
         POST /quote — Bearer token required, verified against the live API.
@@ -135,9 +145,12 @@ class CartResource(Resource):
         Calculate order cost and recurring prices for selected items.
         Use the same parameters as for `POST /order`
 
+        Note: Price preview for a cart.order payload. Returns the subtotal, tax, discounts and
+        recurring amounts without creating an order or an invoice.
+
         Body fields:
           - pay_method (integer): Payment method ID
           - output (string): Type of output, default is short. Possible options    short</code> - Basic details about the item in cart</li>  config</code>- Basic details and form components</li>  full</code> - All details available in cart</li> </ul>
           - items (array): list with order items
         """
-        return self._call("POST", "/quote", body=self._body(body, fields))
+        return self._call("POST", "/quote", body=self._body(payload, fields))

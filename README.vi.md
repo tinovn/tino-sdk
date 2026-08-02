@@ -9,7 +9,7 @@ của một tài khoản Tino.
 ```
 Base URL   https://api.tino.vn
 Auth       Authorization: Bearer <JWT>
-Phạm vi    263 endpoint · 19 nhóm tài nguyên
+Phạm vi    255 endpoint · 17 nhóm tài nguyên
 ```
 
 | | |
@@ -81,7 +81,7 @@ Tino UserAPI có vài điểm dễ sập bẫy. SDK xử lý sẵn:
 
 ```
 spec/
-  tino-userapi-catalog.json    catalog chuẩn — nguồn sự thật duy nhất (263 endpoint)
+  tino-userapi-catalog.json    catalog chuẩn — nguồn sự thật duy nhất (255 endpoint)
   response-samples.json        response thật đã che thông tin, dùng làm ví dụ
 docs/
   getting-started.md           base URL, các luồng đăng nhập, vòng đời token
@@ -103,10 +103,10 @@ Mỗi endpoint được đối chiếu từ ba góc: đặc tả chính thức c
 gọi nó trong production, và những gì dịch vụ thật sự trả về — khi ba nguồn mâu thuẫn,
 kết quả gọi thật là chuẩn.
 
-134 endpoint đã được gọi thật vào `https://api.tino.vn` bằng một tài khoản thật; response
-được ghi lại, che thông tin nhạy cảm và nhúng vào tài liệu. Những endpoint tạo mới, tính
-tiền hoặc xoá thì cố ý **không** gọi — chúng vẫn được mô tả đầy đủ và đánh dấu
-*spec only*.
+195 endpoint đã được gọi thật vào `https://api.tino.vn` bằng một tài khoản thật; response
+được ghi lại, che thông tin nhạy cảm và nhúng vào tài liệu. Đợt quét bao gồm cả endpoint ghi — đặt hàng, ticket, bản ghi DNS, thao tác nguồn VM,
+huỷ dịch vụ — trên tài khoản sandbox, mỗi bước đều khôi phục lại thứ nó đã đổi. Số còn
+lại đánh dấu *spec only*: cần dữ liệu sandbox không có, hoặc sẽ kết thúc phiên đăng nhập.
 
 Catalog đã được commit sẵn, nên clone về là chạy lại được bộ sinh mà không cần thêm gì.
 
@@ -124,8 +124,8 @@ luôn khớp nhau.
 
 ## Trạng thái
 
-Phiên bản 1.0.0. Catalog và lớp resource của cả ba SDK đã đầy đủ; response mẫu phủ 134
-endpoint an toàn để gọi ở chế độ chỉ đọc. Hoan nghênh đóng góp thêm response mẫu đã kiểm
+Phiên bản 1.0.0. Catalog và lớp resource của cả ba SDK đã đầy đủ; response mẫu phủ 195
+endpoint đã gọi được trên tài khoản sandbox. Hoan nghênh đóng góp thêm response mẫu đã kiểm
 chứng cho các endpoint còn lại — quy tắc che dữ liệu mà một mẫu phải vượt qua nằm ở
 [`tools/sanitize-samples.py`](tools/sanitize-samples.py).
 

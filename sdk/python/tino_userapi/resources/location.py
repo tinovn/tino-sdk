@@ -15,7 +15,7 @@ class LocationResource(Resource):
     def get_city_by_state_name_v2(self, name, **query: Any) -> Any:
         """Get city by State Name V2
 
-        GET /location/state/city-v2/{name} — Bearer token required, from the API specification.
+        GET /location/state/city-v2/{name} — Bearer token required, verified against the live API.
 
         Path parameters:
           - name: State name

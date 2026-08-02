@@ -75,11 +75,13 @@ Rules that hold everywhere:
   percent-encoded for you.
 * **Query parameters are keyword-only.** Documented ones are named; anything else goes
   through `**query`. Because `filter` shadows a builtin it is spelled `filters`.
-* **Write operations take a body**, either as keyword fields or as `body={...}`:
+* **Write operations take a payload**, either as keyword fields or as `payload={...}`.
+  The explicit argument is called `payload`, not `body`, so it never shadows an API
+  field of that name — `POST /tickets` really does have a field called `body`:
 
   ```python
-  client.support.create_ticket(dept_id=2, subject="Hi", body="…")
-  client.support.create_ticket(body={"dept_id": 2, "subject": "Hi", "body": "…"})
+  client.support.create_ticket(dept_id=2, subject="Hi", body="the message")
+  client.support.create_ticket(payload={"dept_id": 2, "subject": "Hi", "body": "…"})
   ```
 
 * **Responses are plain dicts and lists** — the raw JSON, unmodified. Nothing is

@@ -2,7 +2,7 @@
 
 SDK namespace: `client.account` (Python) · `client.account` (Node.js, PHP).
 
-5 operation(s) in this chapter, 3 with a captured live response.
+5 operation(s) in this chapter, 4 with a captured live response.
 
 | Method | Path | SDK | Auth |
 | --- | --- | --- | --- |
@@ -50,7 +50,7 @@ Return a list of all portal notifications.
    "body": "Dear B&igrave;nh Trần Tran,<br />\n<br />\nTh&ocirc;ng tin t&agrave;i khoản hosting của bạn đ&atilde; được khởi tạo.<br />\n<br />\nTh&ocirc;ng tin dịch vụ<br />\n<br />\nDịch vụ: WH 1<br />\nT&ecirc;n miền: example.com<br />\nThanh to&aacute;n lần đầu: 79,000 đ<br />\nThanh to&aacute;n gia hạn: 79,000 đ<br …",
    "metadata": "[]",
    "type": "direct",
-   "date_added": "2026-07-26 11:33:20",
+   "date_added": "2026-07-26 2001:db8::1",
    "date_seen": null,
    "url": false
   },
@@ -64,7 +64,7 @@ Return a list of all portal notifications.
    "body": "On 24 Jul 2026, at 20:18, B&igrave;nh Trần &lt;user@example.com&gt; wrote:  Nơi tiếp nhận những y&ecirc;u cầu hỗ trợ bản khai, x&aacute;c thực t&ecirc;n miền. Kh&aacute;ch h&agrave;ng c&oacute; thể li&ecirc;n hệ trực tiếp qua hotline 0364.333.333 nhấn ph&iacute;m 2 \n\nBest Regards!\n\n/----------------…",
    "metadata": "[]",
    "type": "direct",
-   "date_added": "2026-07-24 20:25:23",
+   "date_added": "2026-07-24 2001:db8::1",
    "date_seen": null,
    "url": false
   },
@@ -128,7 +128,7 @@ Return only new portal notifications.
    "subject": "Thông tin tài khoản Hosting tại TinoGroup.",
    "body": "Dear B&igrave;nh Trần Tran,<br />\n<br />\nTh&ocirc;ng tin t&agrave;i khoản hosting của bạn đ&atilde; được khởi tạo.<br />\n<br />\nTh&ocirc;ng tin dịch vụ<br />\n<br />\nDịch vụ: WH 1<br />\nT&ecirc;n miền: example.com<br />\nThanh to&aacute;n lần đầu: 79,000 đ<br />\nThanh to&aacute;n gia hạn: 79,000 đ<br …",
    "metadata": "[]",
-   "date_added": "2026-07-26 11:33:20",
+   "date_added": "2026-07-26 2001:db8::1",
    "date_seen": null,
    "url": false
   },
@@ -140,7 +140,7 @@ Return only new portal notifications.
    "subject": "Nhân viên hỗ trợ đã phản hồi ticket",
    "body": "On 24 Jul 2026, at 20:18, B&igrave;nh Trần &lt;user@example.com&gt; wrote:  Nơi tiếp nhận những y&ecirc;u cầu hỗ trợ bản khai, x&aacute;c thực t&ecirc;n miền. Kh&aacute;ch h&agrave;ng c&oacute; thể li&ecirc;n hệ trực tiếp qua hotline 0364.333.333 nhấn ph&iacute;m 2 \n\nBest Regards!\n\n/----------------…",
    "metadata": "[]",
-   "date_added": "2026-07-24 20:25:23",
+   "date_added": "2026-07-24 2001:db8::1",
    "date_seen": null,
    "url": false
   },
@@ -168,7 +168,7 @@ $client->account->listNewNotifications();
 
 ### `account.acknowledgeNotification`
 
-`PUT /notifications/{id}/ack` — Bearer token · spec only
+`PUT /notifications/{id}/ack` — Bearer token · verified live
 
 **Acknowledge notification**
 
@@ -186,7 +186,16 @@ thêm params['seen_all']=true để mark real all notifications
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "id": "171464",
+ "success": true
+}
+```
+
+</details>
 
 **SDK**
 

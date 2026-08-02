@@ -2,7 +2,7 @@
 
 SDK namespace: `client.support` (Python) · `client.support` (Node.js, PHP).
 
-13 operation(s) in this chapter, 8 with a captured live response.
+13 operation(s) in this chapter, 13 with a captured live response.
 
 | Method | Path | SDK | Auth |
 | --- | --- | --- | --- |
@@ -180,7 +180,7 @@ $client->support->listNews();
 
 ### `support.getNews`
 
-`GET /news/{news_id}` — Bearer token · spec only
+`GET /news/{news_id}` — Bearer token · verified live
 
 **Get news item**
 
@@ -337,20 +337,20 @@ List support tickets under my account
   {
    "client_read": "1",
    "ticket_number": "400001",
-   "date": "2026-07-24 20:20:01",
+   "date": "2026-07-24 2001:db8::1",
    "deptname": "Phòng hỗ trợ kỹ thuật",
    "subject": "test suport.org",
    "status": "Closed",
-   "lastreply": "2026-07-24 20:20:01"
+   "lastreply": "2026-07-24 2001:db8::1"
   },
   {
    "client_read": "1",
    "ticket_number": "400002",
-   "date": "2026-07-24 20:15:07",
+   "date": "2026-07-24 2001:db8::1",
    "deptname": "Phòng quản lý tên miền",
    "subject": "test email",
    "status": "Answered",
-   "lastreply": "2026-07-24 20:15:07"
+   "lastreply": "2026-07-24 2001:db8::1"
   },
   "… 5 more item(s)"
  ],
@@ -379,11 +379,13 @@ $client->support->listTickets();
 
 ### `support.createTicket`
 
-`POST /tickets` — Bearer token · spec only
+`POST /tickets` — Bearer token · verified live
 
 **Create Ticket**
 
 Submit new ticket
+
+> **Note.** Returns the new ticket number as {"ticket": 690686} — the field is `ticket`, not `ticket_number`. Use it as the {number} path parameter of the other ticket calls.
 
 **Request body**
 
@@ -403,7 +405,15 @@ Submit new ticket
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "ticket": 886174
+}
+```
+
+</details>
 
 **SDK**
 
@@ -440,7 +450,7 @@ Get ticket details, including all replies
 ```json
 {
  "ticket": {
-  "date": "2026-07-24 20:20:01",
+  "date": "2026-07-24 2001:db8::1",
   "ticket_number": "400001",
   "name": "Nguyen Van A",
   "email": "user@example.com",
@@ -474,7 +484,7 @@ $client->support->getTicket($number);
 
 ### `support.replyTicket`
 
-`POST /tickets/{number}` — Bearer token · spec only
+`POST /tickets/{number}` — Bearer token · verified live
 
 **Create Reply**
 
@@ -502,7 +512,17 @@ Reply to ticket
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "info": [
+  "reply_added"
+ ]
+}
+```
+
+</details>
 
 **SDK**
 
@@ -520,7 +540,7 @@ $client->support->replyTicket($number, ['number' => ...]);
 
 ### `support.closeTicket`
 
-`PUT /tickets/{number}/close` — Bearer token · spec only
+`PUT /tickets/{number}/close` — Bearer token · verified live
 
 **Close ticket**
 
@@ -546,7 +566,15 @@ Send request to close a ticket
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "status": true
+}
+```
+
+</details>
 
 **SDK**
 
@@ -564,7 +592,7 @@ $client->support->closeTicket($number, ['number' => ...]);
 
 ### `support.reopenTicket`
 
-`PUT /tickets/{number}/open` — Bearer token · spec only
+`PUT /tickets/{number}/open` — Bearer token · verified live
 
 **Re-open ticket**
 
@@ -590,7 +618,15 @@ Try to re-open closed ticket
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "status": true
+}
+```
+
+</details>
 
 **SDK**
 

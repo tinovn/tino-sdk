@@ -18,7 +18,7 @@ class Services extends Resource
     /**
      * Cancel Service
      *
-     * POST /service/{id}/cancel — Bearer token required, from the API specification.
+     * POST /service/{id}/cancel — Bearer token required, verified against the live API.
      *
      * Request service cancellation
      *
@@ -42,60 +42,56 @@ class Services extends Resource
     /**
      * Create Emails Account
      *
-     * POST /service/{id}/emails — Bearer token required, from the API specification.
+     * POST /service/{id}/emails — Bearer token required, verified against the live API.
      *
      * Get the details of a particular virtual server
      *
      * Path parameters:
      *   - id: Service ID
-     *   - module: Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)
-     *   - name: Email account without domain
-     *   - passmain: Password for email account
-     *   - passcheck: Password confirm for email account
-     *   - quota: Email Quote (Megabytes)
+     *
+     * Body fields:
+     *   - module (string, required): Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)
+     *   - name (string, required): Email account without domain
+     *   - passmain (string, required): Password for email account
+     *   - passcheck (string, required): Password confirm for email account
+     *   - quota (integer, required): Email Quote (Megabytes)
      *
      * @param string|int $id Service ID
-     * @param string|int $module Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)
-     * @param string|int $name Email account without domain
-     * @param string|int $passmain Password for email account
-     * @param string|int $passcheck Password confirm for email account
-     * @param string|int $quota Email Quote (Megabytes)
      * @param array<string,mixed> $body Request payload.
      * @param array<string,mixed> $query Extra query-string parameters.
      *
      * @return mixed Decoded response body.
      */
-    public function createEmailAccount($id, $module, $name, $passmain, $passcheck, $quota, array $body = [], array $query = [])
+    public function createEmailAccount($id, array $body = [], array $query = [])
     {
-        $path = $this->path('/service/{id}/emails', ['id' => $id, 'module' => $module, 'name' => $name, 'passmain' => $passmain, 'passcheck' => $passcheck, 'quota' => $quota]);
+        $path = $this->path('/service/{id}/emails', ['id' => $id]);
         return $this->call('POST', $path, ['query' => $query, 'body' => $body]);
     }
 
     /**
      * Delete Email Account
      *
-     * POST /service/{id}/emails/delete — Bearer token required, from the API specification.
+     * POST /service/{id}/emails/delete — Bearer token required, verified against the live API.
      *
      * Get the details of a particular virtual server
      *
      * Path parameters:
      *   - id: Service ID
-     *   - module: Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)
-     *   - deluser: Email account
-     *   - domain: Password for email account
+     *
+     * Body fields:
+     *   - module (string, required): Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)
+     *   - deluser (string, required): Email account
+     *   - domain (string, required): Password for email account
      *
      * @param string|int $id Service ID
-     * @param string|int $module Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)
-     * @param string|int $deluser Email account
-     * @param string|int $domain Password for email account
      * @param array<string,mixed> $body Request payload.
      * @param array<string,mixed> $query Extra query-string parameters.
      *
      * @return mixed Decoded response body.
      */
-    public function deleteEmailAccount($id, $module, $deluser, $domain, array $body = [], array $query = [])
+    public function deleteEmailAccount($id, array $body = [], array $query = [])
     {
-        $path = $this->path('/service/{id}/emails/delete', ['id' => $id, 'module' => $module, 'deluser' => $deluser, 'domain' => $domain]);
+        $path = $this->path('/service/{id}/emails/delete', ['id' => $id]);
         return $this->call('POST', $path, ['query' => $query, 'body' => $body]);
     }
 
@@ -299,17 +295,18 @@ class Services extends Resource
      *
      * Path parameters:
      *   - id: Service ID
-     *   - module: Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)
+     *
+     * Query parameters:
+     *   - module (required): Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)
      *
      * @param string|int $id Service ID
-     * @param string|int $module Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)
      * @param array<string,mixed> $query Extra query-string parameters.
      *
      * @return mixed Decoded response body.
      */
-    public function listEmailAccounts($id, $module, array $query = [])
+    public function listEmailAccounts($id, array $query = [])
     {
-        $path = $this->path('/service/{id}/emails', ['id' => $id, 'module' => $module]);
+        $path = $this->path('/service/{id}/emails', ['id' => $id]);
         return $this->call('GET', $path, ['query' => $query]);
     }
 
@@ -433,7 +430,7 @@ class Services extends Resource
     /**
      * Manual renew Service
      *
-     * POST /service/{id}/manualrenew — Bearer token required, from the API specification.
+     * POST /service/{id}/manualrenew — Bearer token required, verified against the live API.
      *
      * Check if domain is available for registration. Returns status: "ok" if domain is
      * available, empty response otherwise
@@ -475,7 +472,7 @@ class Services extends Resource
     /**
      * Upgrade Request
      *
-     * POST /service/{id}/upgrade — Bearer token required, from the API specification.
+     * POST /service/{id}/upgrade — Bearer token required, verified against the live API.
      *
      * Estimate or request upgrade
      *
@@ -535,7 +532,7 @@ class Services extends Resource
     /**
      * Change service label
      *
-     * POST /service/{id}/label — Bearer token required, from the API specification.
+     * POST /service/{id}/label — Bearer token required, verified against the live API.
      *
      * Set new custom label to identify this service
      *
@@ -558,25 +555,26 @@ class Services extends Resource
     /**
      * Update Emails Account
      *
-     * POST /service/{id}/emails/change — Bearer token required, from the API specification.
+     * POST /service/{id}/emails/change — Bearer token required, verified against the live API.
      *
      * Get the details of a particular virtual server
      *
      * Path parameters:
      *   - id: Service ID
-     *   - module: Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)
+     *
+     * Body fields:
+     *   - module (string, required): Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)
+     *   - change (Array, required)
      *
      * @param string|int $id Service ID
-     * @param string|int $module Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)
-     * @param string|int $change
      * @param array<string,mixed> $body Request payload.
      * @param array<string,mixed> $query Extra query-string parameters.
      *
      * @return mixed Decoded response body.
      */
-    public function updateEmailAccount($id, $module, $change, array $body = [], array $query = [])
+    public function updateEmailAccount($id, array $body = [], array $query = [])
     {
-        $path = $this->path('/service/{id}/emails/change', ['id' => $id, 'module' => $module, 'change' => $change]);
+        $path = $this->path('/service/{id}/emails/change', ['id' => $id]);
         return $this->call('POST', $path, ['query' => $query, 'body' => $body]);
     }
 

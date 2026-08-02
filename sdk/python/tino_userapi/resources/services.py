@@ -12,10 +12,10 @@ from .base import Resource
 class ServicesResource(Resource):
     """Services (hosting, VPS, ...) — 26 operations."""
 
-    def cancel(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def cancel(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Cancel Service
 
-        POST /service/{id}/cancel — Bearer token required, from the API specification.
+        POST /service/{id}/cancel — Bearer token required, verified against the live API.
 
         Request service cancellation
 
@@ -25,41 +25,45 @@ class ServicesResource(Resource):
           - reason (string): Reason for this request
         """
         path = self._path("/service/{id}/cancel", id=id)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", path, body=self._body(payload, fields))
 
-    def create_email_account(self, id, module, name, passmain, passcheck, quota, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def create_email_account(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Create Emails Account
 
-        POST /service/{id}/emails — Bearer token required, from the API specification.
+        POST /service/{id}/emails — Bearer token required, verified against the live API.
 
         Get the details of a particular virtual server
 
         Path parameters:
           - id: Service ID
-          - module: Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)
-          - name: Email account without domain
-          - passmain: Password for email account
-          - passcheck: Password confirm for email account
-          - quota: Email Quote (Megabytes)
-        """
-        path = self._path("/service/{id}/emails", id=id, module=module, name=name, passmain=passmain, passcheck=passcheck, quota=quota)
-        return self._call("POST", path, body=self._body(body, fields))
 
-    def delete_email_account(self, id, module, deluser, domain, *, body: Optional[dict] = None, **fields: Any) -> Any:
+        Body fields:
+          - module (string, required): Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)
+          - name (string, required): Email account without domain
+          - passmain (string, required): Password for email account
+          - passcheck (string, required): Password confirm for email account
+          - quota (integer, required): Email Quote (Megabytes)
+        """
+        path = self._path("/service/{id}/emails", id=id)
+        return self._call("POST", path, body=self._body(payload, fields))
+
+    def delete_email_account(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Delete Email Account
 
-        POST /service/{id}/emails/delete — Bearer token required, from the API specification.
+        POST /service/{id}/emails/delete — Bearer token required, verified against the live API.
 
         Get the details of a particular virtual server
 
         Path parameters:
           - id: Service ID
-          - module: Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)
-          - deluser: Email account
-          - domain: Password for email account
+
+        Body fields:
+          - module (string, required): Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)
+          - deluser (string, required): Email account
+          - domain (string, required): Password for email account
         """
-        path = self._path("/service/{id}/emails/delete", id=id, module=module, deluser=deluser, domain=domain)
-        return self._call("POST", path, body=self._body(body, fields))
+        path = self._path("/service/{id}/emails/delete", id=id)
+        return self._call("POST", path, body=self._body(payload, fields))
 
     def get(self, id, **query: Any) -> Any:
         """Service details
@@ -185,7 +189,7 @@ class ServicesResource(Resource):
         params = self._query({"page": page, "perpage": perpage, "orderby": orderby, "filter": filters}, query)
         return self._call("GET", path, query=params)
 
-    def list_email_accounts(self, id, module, **query: Any) -> Any:
+    def list_email_accounts(self, id, *, module: Any = None, **query: Any) -> Any:
         """Get Emails Account
 
         GET /service/{id}/emails — Bearer token required, verified against the live API.
@@ -194,10 +198,13 @@ class ServicesResource(Resource):
 
         Path parameters:
           - id: Service ID
-          - module: Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)
+
+        Query parameters:
+          - module (required): Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)
         """
-        path = self._path("/service/{id}/emails", id=id, module=module)
-        return self._call("GET", path, query=query)
+        path = self._path("/service/{id}/emails", id=id)
+        params = self._query({"module": module}, query)
+        return self._call("GET", path, query=params)
 
     def list_invoices(self, id, **query: Any) -> Any:
         """Service Invoice Related
@@ -268,18 +275,18 @@ class ServicesResource(Resource):
         path = self._path("/service/{id}/widgets", id=id)
         return self._call("GET", path, query=query)
 
-    def manual_renew(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def manual_renew(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Manual renew Service
 
-        POST /service/{id}/manualrenew — Bearer token required, from the API specification.
+        POST /service/{id}/manualrenew — Bearer token required, verified against the live API.
 
         Check if domain is available for registration. Returns status: "ok" if domain is
         available, empty response otherwise
         """
         path = self._path("/service/{id}/manualrenew", id=id)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", path, body=self._body(payload, fields))
 
-    def renew(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def renew(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Manual Service Renew
 
         POST /service/{id}/renew — Bearer token required, from the API specification.
@@ -290,12 +297,12 @@ class ServicesResource(Resource):
           - id (integer): Service id
         """
         path = self._path("/service/{id}/renew", id=id)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", path, body=self._body(payload, fields))
 
-    def request_upgrade(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def request_upgrade(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Upgrade Request
 
-        POST /service/{id}/upgrade — Bearer token required, from the API specification.
+        POST /service/{id}/upgrade — Bearer token required, verified against the live API.
 
         Estimate or request upgrade
 
@@ -318,9 +325,9 @@ class ServicesResource(Resource):
           - send (boolean): Set to true when you want to send your upgrade request
         """
         path = self._path("/service/{id}/upgrade", id=id)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", path, body=self._body(payload, fields))
 
-    def set_billing_cycle(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def set_billing_cycle(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Change Billing Cycle
 
         POST /service/{id}/cycle — Bearer token required, from the API specification.
@@ -332,12 +339,12 @@ class ServicesResource(Resource):
           - cycle (string): New billing cycle
         """
         path = self._path("/service/{id}/cycle", id=id)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", path, body=self._body(payload, fields))
 
-    def set_label(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def set_label(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Change service label
 
-        POST /service/{id}/label — Bearer token required, from the API specification.
+        POST /service/{id}/label — Bearer token required, verified against the live API.
 
         Set new custom label to identify this service
 
@@ -346,23 +353,26 @@ class ServicesResource(Resource):
           - label (string): New label
         """
         path = self._path("/service/{id}/label", id=id)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", path, body=self._body(payload, fields))
 
-    def update_email_account(self, id, module, change, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def update_email_account(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Update Emails Account
 
-        POST /service/{id}/emails/change — Bearer token required, from the API specification.
+        POST /service/{id}/emails/change — Bearer token required, verified against the live API.
 
         Get the details of a particular virtual server
 
         Path parameters:
           - id: Service ID
-          - module: Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)
-        """
-        path = self._path("/service/{id}/emails/change", id=id, module=module, change=change)
-        return self._call("POST", path, body=self._body(body, fields))
 
-    def update_reverse_dns(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+        Body fields:
+          - module (string, required): Service type module (Cpanel2|DirectAdmin2|Zimbra|Wilduck)
+          - change (Array, required)
+        """
+        path = self._path("/service/{id}/emails/change", id=id)
+        return self._call("POST", path, body=self._body(payload, fields))
+
+    def update_reverse_dns(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Update rDNS
 
         POST /service/{id}/rdns — Bearer token required, from the API specification.
@@ -374,4 +384,4 @@ class ServicesResource(Resource):
           - ipaddress (array): Use Ip address as parameter key and hostname as value
         """
         path = self._path("/service/{id}/rdns", id=id)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", path, body=self._body(payload, fields))

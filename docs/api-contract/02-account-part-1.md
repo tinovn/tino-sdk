@@ -103,7 +103,7 @@ $client->account->getSummary();
 
 | Name | In | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| `taxid` | path | string | yes | — |
+| `taxid` | query | string | yes | — |
 
 **Response** `200`
 
@@ -122,13 +122,13 @@ $client->account->getSummary();
 **SDK**
 
 ```python
-client.account.get_business_info(taxid)
+client.account.get_business_info()
 ```
 ```javascript
-await client.account.getBusinessInfo(taxid);
+await client.account.getBusinessInfo();
 ```
 ```php
-$client->account->getBusinessInfo($taxid);
+$client->account->getBusinessInfo();
 ```
 
 ---
@@ -187,7 +187,7 @@ $client->account->downloadBusinessProfile();
  "logs": [
   {
    "logid": "940001",
-   "date": "2026-08-02 18:53:50",
+   "date": "2026-08-02 2001:db8::1",
    "description": "Update Extended Info #ID 200001 ",
    "result": "1",
    "type": "domain",
@@ -196,7 +196,7 @@ $client->account->downloadBusinessProfile();
   },
   {
    "logid": "1149966",
-   "date": "2026-08-02 18:53:47",
+   "date": "2026-08-02 2001:db8::1",
    "description": "Update Extended Info #ID 200001 ",
    "result": "1",
    "type": "domain",
@@ -254,13 +254,13 @@ $client->account->listHistories();
   {
    "id": "800001",
    "subject": "[Y&ecirc;u cầu hỗ trợ #400001] test suport.org",
-   "date": "2026-07-27 20:25:06",
+   "date": "2026-07-27 2001:db8::1",
    "email": "user@example.com"
   },
   {
    "id": "2769212",
    "subject": "Th&ocirc;ng tin t&agrave;i khoản Hosting tại TinoGroup.",
-   "date": "2026-07-26 11:33:20",
+   "date": "2026-07-26 2001:db8::1",
    "email": "user@example.com"
   },
   "… 31 more item(s)"
@@ -312,7 +312,7 @@ $client->account->listEmails();
   "email": "user@example.com",
   "subject": "[Y&ecirc;u cầu hỗ trợ #400001] test suport.org",
   "message": "Xin ch&agrave;o, B&igrave;nh Trần Tran,<br />\n<br />\nY&ecirc;u cầu hỗ trợ/Ticket: #400001 đ&atilde; được thay đổi trạng th&aacute;i từ mở sang đ&oacute;ng.<br />\nThời gian trả lời cuối: 72 giờ trước.<br />\n<br />\nNếu vấn đề của bạn chưa được ho&agrave;n tất v&agrave; đ&acirc;y l&agrave; một sự nhầm …",
-  "date": "2026-07-27 20:25:06",
+  "date": "2026-07-27 2001:db8::1",
   "status": "1",
   "flag": "email"
  }
@@ -674,13 +674,17 @@ $client->account->listStatuses();
 
 **Upload profile signed**
 
-**Parameters**
+**Request body**
 
-| Name | In | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| `base64Content` | path | string | yes | — |
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `base64Content` | string | yes | — |
 
-**Request body** — none documented; any JSON object is forwarded as-is.
+```json
+{
+  "base64Content": "<base64Content>"
+}
+```
 
 **Response** `200`
 
@@ -689,13 +693,13 @@ _Not captured live — this endpoint changes state, or it needs data the documen
 **SDK**
 
 ```python
-client.account.upload_signed_business_profile(base64_content)
+client.account.upload_signed_business_profile(base64_content=...)
 ```
 ```javascript
-await client.account.uploadSignedBusinessProfile(base64Content);
+await client.account.uploadSignedBusinessProfile({ base64Content: ... });
 ```
 ```php
-$client->account->uploadSignedBusinessProfile($base64Content);
+$client->account->uploadSignedBusinessProfile(['base64Content' => ...]);
 ```
 
 ---

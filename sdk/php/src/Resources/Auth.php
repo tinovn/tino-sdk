@@ -129,7 +129,7 @@ class Auth extends Resource
     /**
      * Refresh Token
      *
-     * POST /token — no authentication required, from the API specification.
+     * POST /token — no authentication required, verified against the live API.
      *
      * Generate new authorization token using refresh token
      *

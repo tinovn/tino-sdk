@@ -7,7 +7,7 @@ export declare class CpanelResource extends Resource {
   /** GET /service/cpanel2/{id}/changepasss */
   changePassword(id: string | number, query?: Record<string, any>): Promise<any>;
   /** POST /service/cpanel2/{id}/changedomain */
-  changePrimaryDomain(id: string | number, domain: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
+  changePrimaryDomain(id: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** GET /service/cpanel2/{id}/login */
   getLoginLink(id: string | number, query?: Record<string, any>): Promise<any>;
   /** GET /service/cpanel2/{id}/phpmyadminlogin */

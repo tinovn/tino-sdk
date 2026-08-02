@@ -99,7 +99,7 @@ def _sdk_snippets(operation: Dict[str, Any]) -> List[str]:
     js_args = [cat.js_arg(p["name"]) for p in params]
     if cat.has_body(operation) and cat.body_fields(operation):
         first = cat.body_fields(operation)[0]["name"]
-        py_args.append(f"{cat.python_arg(first)}=...")
+        py_args.append(f"{cat.python_arg(first)}=...")   # keyword fields build the payload
         js_args.append("{ " + f"{first}: ... " + "}")
     php_args = [f"${cat.php_arg(p['name'])}" for p in params]
     if cat.has_body(operation) and cat.body_fields(operation):
@@ -121,6 +121,8 @@ def _sdk_snippets(operation: Dict[str, Any]) -> List[str]:
 def _operation_section(operation: Dict[str, Any], sample: Optional[Any]) -> List[str]:
     badges = ["Bearer token" if operation.get("auth") else "Public"]
     badges.append("verified live" if operation.get("verified") == "live" else "spec only")
+    if operation.get("deprecated"):
+        badges.append("**deprecated**")
 
     lines = [
         f"### `{operation['id']}`",

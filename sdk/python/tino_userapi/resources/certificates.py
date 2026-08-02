@@ -15,7 +15,7 @@ class CertificatesResource(Resource):
     def download(self, service_id, **query: Any) -> Any:
         """Download certificate
 
-        GET /certificate/{service_id}/crt — Bearer token required, from the API specification.
+        GET /certificate/{service_id}/crt — Bearer token required, verified against the live API.
 
         Return X.509 certificate data
 
@@ -28,7 +28,7 @@ class CertificatesResource(Resource):
     def get(self, id, **query: Any) -> Any:
         """Certificate details
 
-        GET /certificate/{id} — Bearer token required, from the API specification.
+        GET /certificate/{id} — Bearer token required, verified against the live API.
         """
         path = self._path("/certificate/{id}", id=id)
         return self._call("GET", path, query=query)
@@ -71,12 +71,17 @@ class CertificatesResource(Resource):
         path = self._path("/certificate/order/{product_id}/software", product_id=product_id)
         return self._call("GET", path, query=query)
 
-    def order(self, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def order(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Order new certificates
 
         POST /certificate/order — Bearer token required, from the API specification.
 
+        DEPRECATED — kept for compatibility; see the note below for the replacement.
+
         Create new order for a certificate
+
+        Note: Certificates are ordered through cart.order together with any other item. This
+        route remains for the standalone certificate flow.
 
         Body fields:
           - product_id (integer): Certificate product ID
@@ -92,4 +97,4 @@ class CertificatesResource(Resource):
           - data (array): Addditional data required for some products
           - aff_id (integer): Affiliate ID
         """
-        return self._call("POST", "/certificate/order", body=self._body(body, fields))
+        return self._call("POST", "/certificate/order", body=self._body(payload, fields))

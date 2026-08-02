@@ -29,9 +29,7 @@ final class ResourceRegistry
         'security' => Security::class,
         'services' => Services::class,
         'support' => Support::class,
-        'tinomail' => Tinomail::class,
         'tinosite' => Tinosite::class,
-        'usageMonitor' => UsageMonitor::class,
         'vms' => Vms::class,
     ];
 }

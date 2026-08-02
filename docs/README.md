@@ -9,7 +9,7 @@
 ## Quick orientation
 
 The API is the customer-facing surface of Tino's HostBill deployment. One token = one
-client account. There are 263 operations across 19 resource groups:
+client account. There are 255 operations across 17 resource groups:
 
 | Group | What lives there |
 | --- | --- |
@@ -30,8 +30,6 @@ client account. There are 263 operations across 19 resource groups:
 | `languages` | language list and translation files |
 | `ekyc` | domain documents, OCR, face verification, national id checks |
 | `tinosite` | managed WordPress: themes, plugins, users, SSL, backups |
-| `tinomail` | mailbox summary and logs |
-| `usageMonitor` | Proxmox2 usage and overage reporting |
 
 ## How this documentation was produced
 
@@ -39,10 +37,10 @@ The contract reconciles three views of the API — its formal specification, the
 Tino's own client calls it in production, and what the live service answers. Where they
 disagreed, the live service won.
 
-134 operations were called against `https://api.tino.vn` with a real account; their
-responses are captured, redacted and embedded as samples. Endpoints marked *spec only*
-change state or need data the documentation account does not have, so they were not
-called.
+195 operations were called against `https://api.tino.vn` with a real account; their
+responses are captured, redacted and embedded as samples. Endpoints marked *spec only* need data the sandbox account does not have — a TinoSite
+service, a verified eKYC identity, an affiliate plan, a second contact — or they end the
+session, so they could not be exercised.
 
 Operations carry a `verified` field: `live` (called, response captured) or `spec`
 (documented, not called). The index lists it per endpoint.

@@ -18,7 +18,7 @@ class Account extends Resource
     /**
      * Acknowledge notification
      *
-     * PUT /notifications/{id}/ack — Bearer token required, from the API specification.
+     * PUT /notifications/{id}/ack — Bearer token required, verified against the live API.
      *
      * Marks the notification as read
      *
@@ -110,15 +110,16 @@ class Account extends Resource
      *
      * GET /clientarea/businessinfo — Bearer token required, verified against the live API.
      *
-     * @param string|int $taxid
+     * Query parameters:
+     *   - taxid (required)
+     *
      * @param array<string,mixed> $query Extra query-string parameters.
      *
      * @return mixed Decoded response body.
      */
-    public function getBusinessInfo($taxid, array $query = [])
+    public function getBusinessInfo(array $query = [])
     {
-        $path = $this->path('/clientarea/businessinfo', ['taxid' => $taxid]);
-        return $this->call('GET', $path, ['query' => $query]);
+        return $this->call('GET', '/clientarea/businessinfo', ['query' => $query]);
     }
 
     /**
@@ -594,16 +595,17 @@ class Account extends Resource
      *
      * POST /clientarea/uploadprofile — Bearer token required, from the API specification.
      *
-     * @param string|int $base64Content
+     * Body fields:
+     *   - base64Content (string, required)
+     *
      * @param array<string,mixed> $body Request payload.
      * @param array<string,mixed> $query Extra query-string parameters.
      *
      * @return mixed Decoded response body.
      */
-    public function uploadSignedBusinessProfile($base64Content, array $body = [], array $query = [])
+    public function uploadSignedBusinessProfile(array $body = [], array $query = [])
     {
-        $path = $this->path('/clientarea/uploadprofile', ['base64Content' => $base64Content]);
-        return $this->call('POST', $path, ['query' => $query, 'body' => $body]);
+        return $this->call('POST', '/clientarea/uploadprofile', ['query' => $query, 'body' => $body]);
     }
 
 }

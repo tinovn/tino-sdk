@@ -18,25 +18,27 @@ class Tinosite extends Resource
     /**
      * Auto Login
      *
-     * POST /tinosite/{id}/autologin — Bearer token required, from the API specification.
+     * POST /tinosite/{id}/autologin — Bearer token required, verified against the live API.
+     *
+     * Body fields:
+     *   - email (string, required)
      *
      * @param string|int $id
-     * @param string|int $email
      * @param array<string,mixed> $body Request payload.
      * @param array<string,mixed> $query Extra query-string parameters.
      *
      * @return mixed Decoded response body.
      */
-    public function autoLogin($id, $email, array $body = [], array $query = [])
+    public function autoLogin($id, array $body = [], array $query = [])
     {
-        $path = $this->path('/tinosite/{id}/autologin', ['id' => $id, 'email' => $email]);
+        $path = $this->path('/tinosite/{id}/autologin', ['id' => $id]);
         return $this->call('POST', $path, ['query' => $query, 'body' => $body]);
     }
 
     /**
      * Backups
      *
-     * POST /tinosite/{id}/backups — Bearer token required, from the API specification.
+     * POST /tinosite/{id}/backups — Bearer token required, verified against the live API.
      *
      * @param string|int $id
      * @param array<string,mixed> $body Request payload.
@@ -53,27 +55,29 @@ class Tinosite extends Resource
     /**
      * Add User
      *
-     * POST /tinosite/{id}/users — Bearer token required, from the API specification.
+     * POST /tinosite/{id}/users — Bearer token required, verified against the live API.
+     *
+     * Body fields:
+     *   - email (string, required)
+     *   - role (string, required)
+     *   - password (string, required)
      *
      * @param string|int $id
-     * @param string|int $email
-     * @param string|int $role
-     * @param string|int $password
      * @param array<string,mixed> $body Request payload.
      * @param array<string,mixed> $query Extra query-string parameters.
      *
      * @return mixed Decoded response body.
      */
-    public function createUser($id, $email, $role, $password, array $body = [], array $query = [])
+    public function createUser($id, array $body = [], array $query = [])
     {
-        $path = $this->path('/tinosite/{id}/users', ['id' => $id, 'email' => $email, 'role' => $role, 'password' => $password]);
+        $path = $this->path('/tinosite/{id}/users', ['id' => $id]);
         return $this->call('POST', $path, ['query' => $query, 'body' => $body]);
     }
 
     /**
      * Domain Pointer
      *
-     * POST /tinosite/{id}/domainpointers — Bearer token required, from the API specification.
+     * POST /tinosite/{id}/domainpointers — Bearer token required, verified against the live API.
      *
      * @param string|int $id
      * @param array<string,mixed> $body Request payload.
@@ -90,7 +94,7 @@ class Tinosite extends Resource
     /**
      * Metrics
      *
-     * GET /tinosite/{id}/metrics — Bearer token required, from the API specification.
+     * GET /tinosite/{id}/metrics — Bearer token required, verified against the live API.
      *
      * @param string|int $id
      * @param array<string,mixed> $query Extra query-string parameters.
@@ -138,7 +142,7 @@ class Tinosite extends Resource
     /**
      * List User
      *
-     * GET /tinosite/{id}/users — Bearer token required, from the API specification.
+     * GET /tinosite/{id}/users — Bearer token required, verified against the live API.
      *
      * @param string|int $id
      * @param array<string,mixed> $query Extra query-string parameters.
@@ -154,7 +158,7 @@ class Tinosite extends Resource
     /**
      * Action SSL
      *
-     * POST /tinosite/{id}/sslcerts — Bearer token required, from the API specification.
+     * POST /tinosite/{id}/sslcerts — Bearer token required, verified against the live API.
      *
      * @param string|int $id
      * @param array<string,mixed> $body Request payload.
@@ -171,7 +175,7 @@ class Tinosite extends Resource
     /**
      * on/off ssl certs
      *
-     * POST /tinosite/{id}/sslcerts/onoff — Bearer token required, from the API specification.
+     * POST /tinosite/{id}/sslcerts/onoff — Bearer token required, verified against the live API.
      *
      * @param string|int $id
      * @param array<string,mixed> $body Request payload.

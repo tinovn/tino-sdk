@@ -22,18 +22,16 @@ class Languages extends Resource
      *
      * Return languages translate
      *
-     * Path parameters:
-     *   - key: lang keyword
+     * Query parameters:
+     *   - key (required): lang keyword
      *
-     * @param string|int $key lang keyword
      * @param array<string,mixed> $query Extra query-string parameters.
      *
      * @return mixed Decoded response body.
      */
-    public function getBillingCycleLabels($key, array $query = [])
+    public function getBillingCycleLabels(array $query = [])
     {
-        $path = $this->path('/languages/translate', ['key' => $key]);
-        return $this->call('GET', $path, ['query' => $query, 'authenticated' => false]);
+        return $this->call('GET', '/languages/translate', ['query' => $query, 'authenticated' => false]);
     }
 
     /**

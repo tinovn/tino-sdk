@@ -27,5 +27,5 @@ export declare class AffiliateResource extends Resource {
   /** DELETE /affiliates/vouchers/{id}/remove */
   removeVoucher(id: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** DELETE /affiliate/removevoucher */
-  removeVoucherLegacy(id: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
+  removeVoucherLegacy(body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
 }

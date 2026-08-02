@@ -2,7 +2,7 @@
 
 SDK namespace: `client.dns` (Python) · `client.dns` (Node.js, PHP).
 
-12 operation(s) in this chapter, 5 with a captured live response.
+12 operation(s) in this chapter, 9 with a captured live response.
 
 | Method | Path | SDK | Auth |
 | --- | --- | --- | --- |
@@ -407,9 +407,18 @@ Returns details of the DNS DNSSEC
 | --- | --- | --- | --- | --- |
 | `service_id` | path | integer | yes | Service ID |
 | `zone_id` | path | integer | yes | Zone ID |
-| `widgetdo` | path | string | yes | widgetdo action |
 
-**Request body** — none documented; any JSON object is forwarded as-is.
+**Request body**
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `widgetdo` | string | yes | widgetdo action |
+
+```json
+{
+  "widgetdo": "<widgetdo>"
+}
+```
 
 **Response** `200`
 
@@ -418,20 +427,20 @@ _Not captured live — this endpoint changes state, or it needs data the documen
 **SDK**
 
 ```python
-client.dns.update_zone_dnssec(service_id, zone_id, widgetdo)
+client.dns.update_zone_dnssec(service_id, zone_id, widgetdo=...)
 ```
 ```javascript
-await client.dns.updateZoneDnssec(serviceId, zoneId, widgetdo);
+await client.dns.updateZoneDnssec(serviceId, zoneId, { widgetdo: ... });
 ```
 ```php
-$client->dns->updateZoneDnssec($serviceId, $zoneId, $widgetdo);
+$client->dns->updateZoneDnssec($serviceId, $zoneId, ['widgetdo' => ...]);
 ```
 
 ---
 
 ### `dns.resetZonePassword`
 
-`GET /service/{service_id}/dns/{zone_id}/password` — Bearer token · spec only
+`GET /service/{service_id}/dns/{zone_id}/password` — Bearer token · verified live
 
 **Change Zone DNS**
 
@@ -473,7 +482,7 @@ $client->dns->resetZonePassword($serviceId, $zoneId);
 
 ### `dns.createRecord`
 
-`POST /service/{service_id}/dns/{zone_id}/records` — Bearer token · spec only
+`POST /service/{service_id}/dns/{zone_id}/records` — Bearer token · verified live
 
 **Add DNS Record**
 
@@ -512,7 +521,28 @@ Creates a new record in the DNS zone
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true,
+ "record": {
+  "name": "tino-sdk-capture",
+  "type": "TXT",
+  "ttl": 3600,
+  "priority": 0,
+  "content": "<redacted>"
+ },
+ "info": [
+  [
+   "dnsnewrecordadded",
+   "TXT"
+  ]
+ ]
+}
+```
+
+</details>
 
 **SDK**
 
@@ -530,7 +560,7 @@ $client->dns->createRecord($serviceId, $zoneId, ['service_id' => ...]);
 
 ### `dns.deleteRecord`
 
-`DELETE /service/{service_id}/dns/{zone_id}/records/{record_id}` — Bearer token · spec only
+`DELETE /service/{service_id}/dns/{zone_id}/records/{record_id}` — Bearer token · verified live
 
 **Remove DNS Record**
 
@@ -548,7 +578,15 @@ Removes the selected DNS zone record
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true
+}
+```
+
+</details>
 
 **SDK**
 
@@ -566,7 +604,7 @@ $client->dns->deleteRecord($serviceId, $zoneId, $recordId);
 
 ### `dns.updateRecord`
 
-`PUT /service/{service_id}/dns/{zone_id}/records/{record_id}` — Bearer token · spec only
+`PUT /service/{service_id}/dns/{zone_id}/records/{record_id}` — Bearer token · verified live
 
 **Edit DNS Record**
 
@@ -608,7 +646,26 @@ Edits the selected DNS zone record
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true,
+ "record": {
+  "id": "419192",
+  "type": "TXT",
+  "ttl": 3600,
+  "name": "tino-sdk-capture",
+  "priority": 0,
+  "content": "<redacted>"
+ },
+ "info": [
+  "dnsrecordupdated"
+ ]
+}
+```
+
+</details>
 
 **SDK**
 

@@ -12,19 +12,19 @@ from .base import Resource
 class AccountResource(Resource):
     """Client area & account — 29 operations."""
 
-    def acknowledge_notification(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def acknowledge_notification(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Acknowledge notification
 
-        PUT /notifications/{id}/ack — Bearer token required, from the API specification.
+        PUT /notifications/{id}/ack — Bearer token required, verified against the live API.
 
         Marks the notification as read
 
         thêm params['seen_all']=true để mark real all notifications
         """
         path = self._path("/notifications/{id}/ack", id=id)
-        return self._call("PUT", path, body=self._body(body, fields))
+        return self._call("PUT", path, body=self._body(payload, fields))
 
-    def create_contact(self, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def create_contact(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Add contact
 
         POST /contact — Bearer token required, from the API specification.
@@ -53,7 +53,7 @@ class AccountResource(Resource):
           - bankaccount (string): Số tài khoản
           - bankaccountname (string): Tên tài khoản
         """
-        return self._call("POST", "/contact", body=self._body(body, fields))
+        return self._call("POST", "/contact", body=self._body(payload, fields))
 
     def download_business_profile(self, **query: Any) -> Any:
         """Get business file
@@ -70,13 +70,16 @@ class AccountResource(Resource):
         path = self._path("/download/{id}", id=id)
         return self._call("GET", path, query=query)
 
-    def get_business_info(self, taxid, **query: Any) -> Any:
+    def get_business_info(self, *, taxid: Any = None, **query: Any) -> Any:
         """Get business info
 
         GET /clientarea/businessinfo — Bearer token required, verified against the live API.
+
+        Query parameters:
+          - taxid (required)
         """
-        path = self._path("/clientarea/businessinfo", taxid=taxid)
-        return self._call("GET", path, query=query)
+        params = self._query({"taxid": taxid}, query)
+        return self._call("GET", "/clientarea/businessinfo", query=params)
 
     def get_contact(self, id, **query: Any) -> Any:
         """Get contacts details
@@ -280,7 +283,7 @@ class AccountResource(Resource):
         """
         return self._call("GET", "/clientarea/statuses", query=query)
 
-    def search(self, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def search(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Search Service/Product
 
         POST /clientarea/search/ — Bearer token required, verified against the live API.
@@ -290,7 +293,7 @@ class AccountResource(Resource):
         Body fields:
           - query (string, required): Search keyword (service domain, invoice number, ticket subject, ...)
         """
-        return self._call("POST", "/clientarea/search/", body=self._body(body, fields))
+        return self._call("POST", "/clientarea/search/", body=self._body(payload, fields))
 
     def status(self, **query: Any) -> Any:
         """status server api
@@ -301,7 +304,7 @@ class AccountResource(Resource):
         """
         return self._call("GET", "/status", query=query, authenticated=False)
 
-    def submit_contact_form(self, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def submit_contact_form(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """submit contact form
 
         POST /submit_contactform — no authentication required, from the API specification.
@@ -314,9 +317,9 @@ class AccountResource(Resource):
           - cfmEmail (string): Your acount email address
           - cfmMessage (string): Your acount email address
         """
-        return self._call("POST", "/submit_contactform", body=self._body(body, fields), authenticated=False)
+        return self._call("POST", "/submit_contactform", body=self._body(payload, fields), authenticated=False)
 
-    def update_contact(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def update_contact(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Edit contact
 
         PUT /contact/{id} — Bearer token required, from the API specification.
@@ -345,9 +348,9 @@ class AccountResource(Resource):
           - bankaccountname (string): Tên tài khoản
         """
         path = self._path("/contact/{id}", id=id)
-        return self._call("PUT", path, body=self._body(body, fields))
+        return self._call("PUT", path, body=self._body(payload, fields))
 
-    def update_details(self, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def update_details(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Update User Details
 
         PUT /details — Bearer token required, from the API specification.
@@ -372,9 +375,9 @@ class AccountResource(Resource):
           - bankaccount (string): Số tài khoản
           - bankaccountname (string): Tên tài khoản
         """
-        return self._call("PUT", "/details", body=self._body(body, fields))
+        return self._call("PUT", "/details", body=self._body(payload, fields))
 
-    def update_settings(self, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def update_settings(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Update Client Settings
 
         POST /clientarea/settings — Bearer token required, from the API specification.
@@ -382,12 +385,14 @@ class AccountResource(Resource):
         Body fields:
           - configs (array): Value to setting: RecordsPerPage, DefaultTimezone, DefaultPaymentModule, CreditAutoApply, ClientNotifications, DefaultNameservers
         """
-        return self._call("POST", "/clientarea/settings", body=self._body(body, fields))
+        return self._call("POST", "/clientarea/settings", body=self._body(payload, fields))
 
-    def upload_signed_business_profile(self, base64_content, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def upload_signed_business_profile(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Upload profile signed
 
         POST /clientarea/uploadprofile — Bearer token required, from the API specification.
+
+        Body fields:
+          - base64Content (string, required)
         """
-        path = self._path("/clientarea/uploadprofile", base64Content=base64_content)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", "/clientarea/uploadprofile", body=self._body(payload, fields))

@@ -12,15 +12,13 @@ export class LanguagesResource extends Resource {
    *
    * Return languages translate
    *
-   * Path parameters:
-   *   - key: lang keyword
-   * @param {string|number} key lang keyword
+   * Query parameters:
+   *   - key (required): lang keyword
    * @param {object} [query] Extra query-string parameters.
    * @returns {Promise<any>}
    */
-  getBillingCycleLabels(key, query = {}) {
-    const path = this._path('/languages/translate', { key: key });
-    return this._call('GET', path, { query, authenticated: false });
+  getBillingCycleLabels(query = {}) {
+    return this._call('GET', '/languages/translate', { query, authenticated: false });
   }
 
   /**

@@ -2,7 +2,7 @@
 
 SDK namespace: `client.location` (Python) · `client.location` (Node.js, PHP).
 
-8 operation(s) in this chapter, 7 with a captured live response.
+8 operation(s) in this chapter, 8 with a captured live response.
 
 | Method | Path | SDK | Auth |
 | --- | --- | --- | --- |
@@ -148,7 +148,7 @@ $client->location->listCountries();
 
 ### `location.getCityByStateNameV2`
 
-`GET /location/state/city-v2/{name}` — Bearer token · spec only
+`GET /location/state/city-v2/{name}` — Bearer token · verified live
 
 **Get city by State Name V2**
 

@@ -11,14 +11,14 @@ declare(strict_types=1);
 namespace Tino\UserApi\Resources;
 
 /**
- * Domain names — 31 operations.
+ * Domain names — 30 operations.
  */
 class Domains extends Resource
 {
     /**
      * Adds the DNSSEC key
      *
-     * PUT /domain/{id}/dnssec — Bearer token required, from the API specification.
+     * PUT /domain/{id}/dnssec — Bearer token required, verified against the live API.
      *
      * Body fields:
      *   - id (integer): Domain id
@@ -368,8 +368,13 @@ class Domains extends Resource
      *
      * POST /domain/order — Bearer token required, from the API specification.
      *
+     * DEPRECATED — kept for compatibility; see the note below for the replacement.
+     *
      * Create new order for a domain, please check if requested domain is available first,
      * otherwise your order may get cancelled.
+     *
+     * Note: Domains are ordered through cart.order together with any other item. This route
+     * remains for the standalone domain flow.
      *
      * Body fields:
      *   - name (string): Domain name
@@ -399,7 +404,7 @@ class Domains extends Resource
     /**
      * Register domain nameservers
      *
-     * POST /domain/{id}/reg — Bearer token required, from the API specification.
+     * POST /domain/{id}/reg — Bearer token required, verified against the live API.
      *
      * Manage private/glue nameservers for a domain. Use the `action` parameter to select the
      * operation:
@@ -452,7 +457,7 @@ class Domains extends Resource
     /**
      * Renew domain
      *
-     * POST /domain/{id}/renew — Bearer token required, from the API specification.
+     * POST /domain/{id}/renew — Bearer token required, verified against the live API.
      *
      * Create new renew order for a domain, please check if requested domain is available
      * first, otherwise your order may get cancelled.
@@ -516,40 +521,13 @@ class Domains extends Resource
     /**
      * Enable/disable domain autorenew
      *
-     * PUT /domain/{id}/autorenew — Bearer token required, from the API specification.
-     *
-     * Path parameters:
-     *   - id: Domain id
-     *   - autorenew: true|false
-     *
-     * @param string|int $id Domain id
-     * @param string|int $autorenew true|false
-     * @param array<string,mixed> $body Request payload.
-     * @param array<string,mixed> $query Extra query-string parameters.
-     *
-     * @return mixed Decoded response body.
-     */
-    public function updateAutoRenew($id, $autorenew, array $body = [], array $query = [])
-    {
-        $path = $this->path('/domain/{id}/autorenew', ['id' => $id, 'autorenew' => $autorenew]);
-        return $this->call('PUT', $path, ['query' => $query, 'body' => $body]);
-    }
-
-    /**
-     * Update domain contact (WHOIS) information
-     *
-     * PUT /domain/{id}/contact — Bearer token required, from the API specification.
-     *
-     * Update the registrant, admin, tech and billing contacts of a domain.
+     * PUT /domain/{id}/autorenew — Bearer token required, verified against the live API.
      *
      * Path parameters:
      *   - id: Domain id
      *
      * Body fields:
-     *   - registrant (object): Registrant contact fields
-     *   - admin (object): Administrative contact fields
-     *   - tech (object): Technical contact fields
-     *   - billing (object): Billing contact fields
+     *   - autorenew (boolean, required): true|false
      *
      * @param string|int $id Domain id
      * @param array<string,mixed> $body Request payload.
@@ -557,16 +535,16 @@ class Domains extends Resource
      *
      * @return mixed Decoded response body.
      */
-    public function updateContacts($id, array $body = [], array $query = [])
+    public function updateAutoRenew($id, array $body = [], array $query = [])
     {
-        $path = $this->path('/domain/{id}/contact', ['id' => $id]);
+        $path = $this->path('/domain/{id}/autorenew', ['id' => $id]);
         return $this->call('PUT', $path, ['query' => $query, 'body' => $body]);
     }
 
     /**
      * Update email forwarding
      *
-     * PUT /domain/{id}/emforwarding — Bearer token required, from the API specification.
+     * PUT /domain/{id}/emforwarding — Bearer token required, verified against the live API.
      *
      * Body fields:
      *   - id (integer): Domain id
@@ -589,7 +567,7 @@ class Domains extends Resource
     /**
      * Update domain forwarding
      *
-     * PUT /domain/{id}/forwarding — Bearer token required, from the API specification.
+     * PUT /domain/{id}/forwarding — Bearer token required, verified against the live API.
      *
      * Body fields:
      *   - id (integer): Domain id
@@ -632,7 +610,7 @@ class Domains extends Resource
     /**
      * Update domain nameservers
      *
-     * PUT /domain/{id}/ns — Bearer token required, from the API specification.
+     * PUT /domain/{id}/ns — Bearer token required, verified against the live API.
      *
      * Change domain nameservers, if `$nameservers` is left empty, default namesevers will be
      * used
@@ -656,7 +634,7 @@ class Domains extends Resource
     /**
      * Update domain lock
      *
-     * PUT /domain/{id}/reglock — Bearer token required, from the API specification.
+     * PUT /domain/{id}/reglock — Bearer token required, verified against the live API.
      *
      * Path parameters:
      *   - id: Domain id

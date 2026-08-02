@@ -22,19 +22,17 @@ class Ekyc extends Resource
      *
      * Kiểm tra thông tin hộ kinh doanh.
      *
-     * Path parameters:
-     *   - taxid: id
+     * Body fields:
+     *   - taxid (string, required): id
      *
-     * @param string|int $taxid id
      * @param array<string,mixed> $body Request payload.
      * @param array<string,mixed> $query Extra query-string parameters.
      *
      * @return mixed Decoded response body.
      */
-    public function checkHousehold($taxid, array $body = [], array $query = [])
+    public function checkHousehold(array $body = [], array $query = [])
     {
-        $path = $this->path('/ekyc/households', ['taxid' => $taxid]);
-        return $this->call('POST', $path, ['query' => $query, 'body' => $body]);
+        return $this->call('POST', '/ekyc/households', ['query' => $query, 'body' => $body]);
     }
 
     /**
@@ -44,41 +42,37 @@ class Ekyc extends Resource
      *
      * Bóc tách dữ liệu cccd.
      *
-     * Path parameters:
-     *   - idnumber: id
+     * Body fields:
+     *   - idnumber (string, required): id
      *
-     * @param string|int $idnumber id
      * @param array<string,mixed> $body Request payload.
      * @param array<string,mixed> $query Extra query-string parameters.
      *
      * @return mixed Decoded response body.
      */
-    public function checkNationalId($idnumber, array $body = [], array $query = [])
+    public function checkNationalId(array $body = [], array $query = [])
     {
-        $path = $this->path('/ekyc/checkid', ['idnumber' => $idnumber]);
-        return $this->call('POST', $path, ['query' => $query, 'body' => $body]);
+        return $this->call('POST', '/ekyc/checkid', ['query' => $query, 'body' => $body]);
     }
 
     /**
      * Check Url eKYC Status
      *
-     * POST /ekyc/check-status-url-ekyc — Bearer token required, from the API specification.
+     * POST /ekyc/check-status-url-ekyc — Bearer token required, verified against the live API.
      *
      * Bóc tách dữ liệu cccd.
      *
-     * Path parameters:
-     *   - request_id: id
+     * Body fields:
+     *   - request_id (string, required): id
      *
-     * @param string|int $requestId id
      * @param array<string,mixed> $body Request payload.
      * @param array<string,mixed> $query Extra query-string parameters.
      *
      * @return mixed Decoded response body.
      */
-    public function checkUrlStatus($requestId, array $body = [], array $query = [])
+    public function checkUrlStatus(array $body = [], array $query = [])
     {
-        $path = $this->path('/ekyc/check-status-url-ekyc', ['request_id' => $requestId]);
-        return $this->call('POST', $path, ['query' => $query, 'body' => $body]);
+        return $this->call('POST', '/ekyc/check-status-url-ekyc', ['query' => $query, 'body' => $body]);
     }
 
     /**
@@ -112,51 +106,42 @@ class Ekyc extends Resource
      * Kiểm tra nhanh số CCCD đã có EKYC hay chưa. Trả true/false, không lộ thông tin khách
      * hàng.
      *
-     * Path parameters:
-     *   - idnumber: Số CCCD cần kiểm tra
+     * Body fields:
+     *   - idnumber (string, required): Số CCCD cần kiểm tra
      *
-     * @param string|int $idnumber Số CCCD cần kiểm tra
      * @param array<string,mixed> $body Request payload.
      * @param array<string,mixed> $query Extra query-string parameters.
      *
      * @return mixed Decoded response body.
      */
-    public function exists($idnumber, array $body = [], array $query = [])
+    public function exists(array $body = [], array $query = [])
     {
-        $path = $this->path('/ekyc/exists', ['idnumber' => $idnumber]);
-        return $this->call('POST', $path, ['query' => $query, 'body' => $body]);
+        return $this->call('POST', '/ekyc/exists', ['query' => $query, 'body' => $body]);
     }
 
     /**
      * Faceid verification
      *
-     * POST /ekyc/faceid/verification — Bearer token required, from the API specification.
+     * POST /ekyc/faceid/verification — Bearer token required, verified against the live API.
      *
      * Kiểm tra so sánh CCCD với khuôn mặt.
      *
-     * Path parameters:
-     *   - request_id: Request id, Phải trùng khớp với RequestID của OCR 2 mặt CCCD
-     *   - image_live: Live Face Image
-     *   - image_live_1 : Live Face Image
-     *   - image_live_2: Live Face Image
-     *   - image_live_3: Live Face Image
-     *   - token: Domain Token
+     * Body fields:
+     *   - request_id (string, required): Request id, Phải trùng khớp với RequestID của OCR 2 mặt CCCD
+     *   - image_live (string, required): Live Face Image
+     *   - image_live_1 (string, required): Live Face Image
+     *   - image_live_2 (string, required): Live Face Image
+     *   - image_live_3 (string, required): Live Face Image
+     *   - token (string, required): Domain Token
      *
-     * @param string|int $requestId Request id, Phải trùng khớp với RequestID của OCR 2 mặt CCCD
-     * @param string|int $imageLive Live Face Image
-     * @param string|int $imageLive1 Live Face Image
-     * @param string|int $imageLive2 Live Face Image
-     * @param string|int $imageLive3 Live Face Image
-     * @param string|int $token Domain Token
      * @param array<string,mixed> $body Request payload.
      * @param array<string,mixed> $query Extra query-string parameters.
      *
      * @return mixed Decoded response body.
      */
-    public function faceIdVerification($requestId, $imageLive, $imageLive1, $imageLive2, $imageLive3, $token, array $body = [], array $query = [])
+    public function faceIdVerification(array $body = [], array $query = [])
     {
-        $path = $this->path('/ekyc/faceid/verification', ['request_id' => $requestId, 'image_live' => $imageLive, 'image_live_1 ' => $imageLive1, 'image_live_2' => $imageLive2, 'image_live_3' => $imageLive3, 'token' => $token]);
-        return $this->call('POST', $path, ['query' => $query, 'body' => $body]);
+        return $this->call('POST', '/ekyc/faceid/verification', ['query' => $query, 'body' => $body]);
     }
 
     /**
@@ -166,18 +151,16 @@ class Ekyc extends Resource
      *
      * Kiểm tra thông tin hộ kinh doanh.
      *
-     * Path parameters:
-     *   - taxid: id
+     * Query parameters:
+     *   - taxid (required): id
      *
-     * @param string|int $taxid id
      * @param array<string,mixed> $query Extra query-string parameters.
      *
      * @return mixed Decoded response body.
      */
-    public function getHousehold($taxid, array $query = [])
+    public function getHousehold(array $query = [])
     {
-        $path = $this->path('/ekyc/households', ['taxid' => $taxid]);
-        return $this->call('GET', $path, ['query' => $query]);
+        return $this->call('GET', '/ekyc/households', ['query' => $query]);
     }
 
     /**
@@ -187,21 +170,18 @@ class Ekyc extends Resource
      *
      * Lấy mã giảm giá tên miền miễn phí.
      *
-     * Path parameters:
-     *   - idnumber: Số CCCD/Mã số thuế
-     *   - domain: domain name
+     * Body fields:
+     *   - idnumber (integer, required): Số CCCD/Mã số thuế
+     *   - domain (string, required): domain name
      *
-     * @param string|int $idnumber Số CCCD/Mã số thuế
-     * @param string|int $domain domain name
      * @param array<string,mixed> $body Request payload.
      * @param array<string,mixed> $query Extra query-string parameters.
      *
      * @return mixed Decoded response body.
      */
-    public function getVnnicPromoCode($idnumber, $domain, array $body = [], array $query = [])
+    public function getVnnicPromoCode(array $body = [], array $query = [])
     {
-        $path = $this->path('/domain/vnnic/promocode', ['idnumber' => $idnumber, 'domain' => $domain]);
-        return $this->call('POST', $path, ['query' => $query, 'body' => $body]);
+        return $this->call('POST', '/domain/vnnic/promocode', ['query' => $query, 'body' => $body]);
     }
 
     /**
@@ -228,26 +208,23 @@ class Ekyc extends Resource
     /**
      * OCR Recognition
      *
-     * POST /ekyc/ocr/recognition — Bearer token required, from the API specification.
+     * POST /ekyc/ocr/recognition — Bearer token required, verified against the live API.
      *
      * Bóc tách dữ liệu cccd.
      *
-     * Path parameters:
-     *   - request_id: Request id, Phải trùng khớp với RequestID OCR 2 mặt CCCD
-     *   - image: Image card
+     * Body fields:
+     *   - request_id (string, required): Request id, Phải trùng khớp với RequestID OCR 2 mặt CCCD
+     *   - type (string, required, one of cardFront, cardBack)
+     *   - image (string, required): Image card
      *
-     * @param string|int $requestId Request id, Phải trùng khớp với RequestID OCR 2 mặt CCCD
-     * @param string|int $type
-     * @param string|int $image Image card
      * @param array<string,mixed> $body Request payload.
      * @param array<string,mixed> $query Extra query-string parameters.
      *
      * @return mixed Decoded response body.
      */
-    public function ocrRecognition($requestId, $type, $image, array $body = [], array $query = [])
+    public function ocrRecognition(array $body = [], array $query = [])
     {
-        $path = $this->path('/ekyc/ocr/recognition', ['request_id' => $requestId, 'type' => $type, 'image' => $image]);
-        return $this->call('POST', $path, ['query' => $query, 'body' => $body]);
+        return $this->call('POST', '/ekyc/ocr/recognition', ['query' => $query, 'body' => $body]);
     }
 
     /**
@@ -274,7 +251,7 @@ class Ekyc extends Resource
     /**
      * Company Profile Signatured
      *
-     * POST /domain/documents/companyprofile — Bearer token required, from the API specification.
+     * POST /domain/documents/companyprofile — Bearer token required, verified against the live API.
      *
      * Company Profile upload
      *
@@ -323,7 +300,7 @@ class Ekyc extends Resource
     /**
      * Document Sign
      *
-     * GET /domain/documents/view/{token} — Bearer token required, from the API specification.
+     * GET /domain/documents/view/{token} — Bearer token required, verified against the live API.
      *
      * View document signed.
      *

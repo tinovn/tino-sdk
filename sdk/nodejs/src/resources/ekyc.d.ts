@@ -5,25 +5,25 @@ import { Resource } from './base.js';
 
 export declare class EkycResource extends Resource {
   /** POST /ekyc/households */
-  checkHousehold(taxid: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
+  checkHousehold(body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** POST /ekyc/checkid */
-  checkNationalId(idnumber: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
+  checkNationalId(body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** POST /ekyc/check-status-url-ekyc */
-  checkUrlStatus(requestId: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
+  checkUrlStatus(body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** GET /domain/{id}/documents/{document_id}/download */
   downloadDomainDocument(id: string | number, documentId: string | number, query?: Record<string, any>): Promise<any>;
   /** POST /ekyc/exists */
-  exists(idnumber: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
+  exists(body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** POST /ekyc/faceid/verification */
-  faceIdVerification(requestId: string | number, imageLive: string | number, imageLive1: string | number, imageLive2: string | number, imageLive3: string | number, token: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
+  faceIdVerification(body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** GET /ekyc/households */
-  getHousehold(taxid: string | number, query?: Record<string, any>): Promise<any>;
+  getHousehold(query?: Record<string, any>): Promise<any>;
   /** POST /domain/vnnic/promocode */
-  getVnnicPromoCode(idnumber: string | number, domain: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
+  getVnnicPromoCode(body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** GET /domain/{id}/documents */
   listDomainDocuments(id: string | number, query?: Record<string, any>): Promise<any>;
   /** POST /ekyc/ocr/recognition */
-  ocrRecognition(requestId: string | number, type: string | number, image: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
+  ocrRecognition(body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** POST /domain/documents/signed */
   signDocument(body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** POST /domain/documents/companyprofile */

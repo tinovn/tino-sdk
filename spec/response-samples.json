@@ -527,7 +527,7 @@
    "logs": [
     {
      "logid": "950001",
-     "date": "2025-10-21 14:31:00",
+     "date": "2025-10-21 2001:db8::1",
      "description": "Client placed new order #960001  (203.0.113.10)",
      "result": "1",
      "type": "client",
@@ -536,7 +536,7 @@
     },
     {
      "logid": "44640",
-     "date": "2026-03-30 20:05:44",
+     "date": "2026-03-30 2001:db8::1",
      "description": "Client placed new order #1143928092  (203.0.113.10)",
      "result": "1",
      "type": "client",
@@ -675,7 +675,7 @@
     "id": "700001",
     "group_id": "0",
     "email": "user@example.com",
-    "lastlogin": "2026-08-02 21:01:40",
+    "lastlogin": "2026-08-02 2001:db8::1",
     "ip": "203.0.113.10",
     "host": "host.example",
     "firstname": "Nguyen Van",
@@ -761,7 +761,7 @@
    "logs": [
     {
      "logid": "940001",
-     "date": "2026-08-02 18:53:50",
+     "date": "2026-08-02 2001:db8::1",
      "description": "Update Extended Info #ID 200001 ",
      "result": "1",
      "type": "domain",
@@ -770,7 +770,7 @@
     },
     {
      "logid": "1149966",
-     "date": "2026-08-02 18:53:47",
+     "date": "2026-08-02 2001:db8::1",
      "description": "Update Extended Info #ID 200001 ",
      "result": "1",
      "type": "domain",
@@ -795,13 +795,13 @@
     {
      "id": "800001",
      "subject": "[Y&ecirc;u cầu hỗ trợ #400001] test suport.org",
-     "date": "2026-07-27 20:25:06",
+     "date": "2026-07-27 2001:db8::1",
      "email": "user@example.com"
     },
     {
      "id": "2769212",
      "subject": "Th&ocirc;ng tin t&agrave;i khoản Hosting tại TinoGroup.",
-     "date": "2026-07-26 11:33:20",
+     "date": "2026-07-26 2001:db8::1",
      "email": "user@example.com"
     },
     "… 31 more item(s)"
@@ -1455,7 +1455,7 @@
      "body": "Dear B&igrave;nh Trần Tran,<br />\n<br />\nTh&ocirc;ng tin t&agrave;i khoản hosting của bạn đ&atilde; được khởi tạo.<br />\n<br />\nTh&ocirc;ng tin dịch vụ<br />\n<br />\nDịch vụ: WH 1<br />\nT&ecirc;n miền: example.com<br />\nThanh to&aacute;n lần đầu: 79,000 đ<br />\nThanh to&aacute;n gia hạn: 79,000 đ<br …",
      "metadata": "[]",
      "type": "direct",
-     "date_added": "2026-07-26 11:33:20",
+     "date_added": "2026-07-26 2001:db8::1",
      "date_seen": null,
      "url": false
     },
@@ -1469,7 +1469,7 @@
      "body": "On 24 Jul 2026, at 20:18, B&igrave;nh Trần &lt;user@example.com&gt; wrote:  Nơi tiếp nhận những y&ecirc;u cầu hỗ trợ bản khai, x&aacute;c thực t&ecirc;n miền. Kh&aacute;ch h&agrave;ng c&oacute; thể li&ecirc;n hệ trực tiếp qua hotline 0364.333.333 nhấn ph&iacute;m 2 \n\nBest Regards!\n\n/----------------…",
      "metadata": "[]",
      "type": "direct",
-     "date_added": "2026-07-24 20:25:23",
+     "date_added": "2026-07-24 2001:db8::1",
      "date_seen": null,
      "url": false
     },
@@ -1496,7 +1496,7 @@
      "subject": "Thông tin tài khoản Hosting tại TinoGroup.",
      "body": "Dear B&igrave;nh Trần Tran,<br />\n<br />\nTh&ocirc;ng tin t&agrave;i khoản hosting của bạn đ&atilde; được khởi tạo.<br />\n<br />\nTh&ocirc;ng tin dịch vụ<br />\n<br />\nDịch vụ: WH 1<br />\nT&ecirc;n miền: example.com<br />\nThanh to&aacute;n lần đầu: 79,000 đ<br />\nThanh to&aacute;n gia hạn: 79,000 đ<br …",
      "metadata": "[]",
-     "date_added": "2026-07-26 11:33:20",
+     "date_added": "2026-07-26 2001:db8::1",
      "date_seen": null,
      "url": false
     },
@@ -1508,7 +1508,7 @@
      "subject": "Nhân viên hỗ trợ đã phản hồi ticket",
      "body": "On 24 Jul 2026, at 20:18, B&igrave;nh Trần &lt;user@example.com&gt; wrote:  Nơi tiếp nhận những y&ecirc;u cầu hỗ trợ bản khai, x&aacute;c thực t&ecirc;n miền. Kh&aacute;ch h&agrave;ng c&oacute; thể li&ecirc;n hệ trực tiếp qua hotline 0364.333.333 nhấn ph&iacute;m 2 \n\nBest Regards!\n\n/----------------…",
      "metadata": "[]",
-     "date_added": "2026-07-24 20:25:23",
+     "date_added": "2026-07-24 2001:db8::1",
      "date_seen": null,
      "url": false
     },
@@ -1562,7 +1562,7 @@
      "subtotal": "532151.00",
      "tax": "42572.00",
      "tax2": "0.00",
-     "datepaid": "0000-00-00 00:00:00",
+     "datepaid": "0000-00-00 2001:db8::1",
      "status": "Unpaid",
      "merge_id": null,
      "number": "TNG300001",
@@ -1621,7 +1621,7 @@
      "subtotal": "532151.00",
      "tax": "42572.00",
      "tax2": "0.00",
-     "datepaid": "0000-00-00 00:00:00",
+     "datepaid": "0000-00-00 2001:db8::1",
      "status": "Unpaid",
      "merge_id": null,
      "number": "TNG300001",
@@ -1686,20 +1686,20 @@
     {
      "client_read": "1",
      "ticket_number": "400001",
-     "date": "2026-07-24 20:20:01",
+     "date": "2026-07-24 2001:db8::1",
      "deptname": "Phòng hỗ trợ kỹ thuật",
      "subject": "test suport.org",
      "status": "Closed",
-     "lastreply": "2026-07-24 20:20:01"
+     "lastreply": "2026-07-24 2001:db8::1"
     },
     {
      "client_read": "1",
      "ticket_number": "400002",
-     "date": "2026-07-24 20:15:07",
+     "date": "2026-07-24 2001:db8::1",
      "deptname": "Phòng quản lý tên miền",
      "subject": "test email",
      "status": "Answered",
-     "lastreply": "2026-07-24 20:15:07"
+     "lastreply": "2026-07-24 2001:db8::1"
     },
     "… 5 more item(s)"
    ],
@@ -2289,7 +2289,7 @@
     "email": "user@example.com",
     "subject": "[Y&ecirc;u cầu hỗ trợ #400001] test suport.org",
     "message": "Xin ch&agrave;o, B&igrave;nh Trần Tran,<br />\n<br />\nY&ecirc;u cầu hỗ trợ/Ticket: #400001 đ&atilde; được thay đổi trạng th&aacute;i từ mở sang đ&oacute;ng.<br />\nThời gian trả lời cuối: 72 giờ trước.<br />\n<br />\nNếu vấn đề của bạn chưa được ho&agrave;n tất v&agrave; đ&acirc;y l&agrave; một sự nhầm …",
-    "date": "2026-07-27 20:25:06",
+    "date": "2026-07-27 2001:db8::1",
     "status": "1",
     "flag": "email"
    }
@@ -2307,7 +2307,7 @@
     "date": "2026-03-30",
     "duedate": "2026-12-07",
     "paybefore": "2026-12-07",
-    "datepaid": "0000-00-00 00:00:00",
+    "datepaid": "0000-00-00 2001:db8::1",
     "subtotal": 532151,
     "credit": 0,
     "tax": 42572,
@@ -2351,7 +2351,7 @@
   "status": 200,
   "sample": {
    "ticket": {
-    "date": "2026-07-24 20:20:01",
+    "date": "2026-07-24 2001:db8::1",
     "ticket_number": "400001",
     "name": "Nguyen Van A",
     "email": "user@example.com",
@@ -2655,7 +2655,7 @@
      "subtotal": "532151.00",
      "tax": "42572.00",
      "tax2": "0.00",
-     "datepaid": "0000-00-00 00:00:00",
+     "datepaid": "0000-00-00 2001:db8::1",
      "status": "Unpaid",
      "merge_id": "300001"
     }
@@ -2724,9 +2724,9 @@
    "whois": {
     "domain": "example.com",
     "registrar": "Web Commerce Communications Ltd.",
-    "createDate": "2025-12-07T11:33:03.471Z",
-    "expiredDate": "2026-12-07T11:33:03.471Z",
-    "updatedDate": "2026-03-30T16:45:54.697Z",
+    "createDate": "2025-12-07T112001:db8::1.471Z",
+    "expiredDate": "2026-12-07T112001:db8::1.471Z",
+    "updatedDate": "2026-03-30T162001:db8::1.697Z",
     "nameservers": [
      "ns1.tino.vn",
      "ns2.tino.vn"
@@ -2738,7 +2738,7 @@
     ],
     "WhoisServer": "whois.webnic.cc"
    },
-   "raw": "Domain Name: example.com<br />Registry Domain ID: DO_d59b4fbe41112c70f4c72e6116f376a3-ARUBA<br />Registrar WHOIS Server: whois.webnic.cc<br />Registrar URL: https://www.webnic.cc<br />Updated Date: 2026-03-30T16:45:54.697Z<br />Creation Date: 2025-12-07T11:33:03.471Z<br />Registry Expiry Date: 2026-…"
+   "raw": "Domain Name: example.com<br />Registry Domain ID: DO_d59b4fbe41112c70f4c72e6116f376a3-ARUBA<br />Registrar WHOIS Server: whois.webnic.cc<br />Registrar URL: https://www.webnic.cc<br />Updated Date: 2026-03-30T162001:db8::1.697Z<br />Creation Date: 2025-12-07T112001:db8::1.471Z<br />Registry Expiry D…"
   }
  },
  "GET /domain/order/200001/form": {
@@ -3107,7 +3107,7 @@
      "percent20": 0,
      "feature": "ftpaccts",
      "is_maxed": 0,
-     "module": "API::Ftp",
+     "module": "API2001:db8::1Ftp",
      "id": "ftpaccounts",
      "percent": 0,
      "_maxed": 0,
@@ -3294,7 +3294,7 @@
      "status_lang": "vm_state_running",
      "password": "<redacted>",
      "sshkeys": [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII+Gmwk9Yz3YLyc/2h1PxmTY8Wedfr3+LUra/sgZnG3T task29-verify-1785204819"
+      "ssh-ed25519 AAAA<public-key> user@example.com"
      ],
      "username": "root",
      "memory": 1024,
@@ -3319,8 +3319,8 @@
   "sample": {
    "ips": [
     {
-     "ipaddress": "2405:2840:0:136::14d",
-     "mask": "ffff:ffff:ffff:ffff::",
+     "ipaddress": "2001:db8::1",
+     "mask": "2001:db8::1::",
      "client_description": "",
      "status": "assigned"
     },
@@ -3339,7 +3339,7 @@
   "status": 200,
   "sample": {
    "rdns": {
-    "180.93.136.34": {
+    "203.0.113.34": {
      "ipaddress": "203.0.113.10"
     }
    },
@@ -4029,7 +4029,7 @@
     "status_lang": "vm_state_running",
     "password": "<redacted>",
     "sshkeys": [
-     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII+Gmwk9Yz3YLyc/2h1PxmTY8Wedfr3+LUra/sgZnG3T task29-verify-1785204819"
+     "ssh-ed25519 AAAA<public-key> user@example.com"
     ],
     "username": "root",
     "memory": 1024,
@@ -4054,11 +4054,11 @@
    {
     "id": 930001,
     "interface": 0,
-    "mac": "A0:35:D1:3B:C3:A8",
+    "mac": "2001:db8::1",
     "ip": "203.0.113.10",
     "wanip": "",
     "mask": "/24",
-    "network": "203.0.113.10/24",
+    "network": "203.0.113.10",
     "gateway": "203.0.113.10",
     "main": 1,
     "type": "ipv4"
@@ -4066,12 +4066,12 @@
    {
     "id": 27930,
     "interface": 0,
-    "mac": "A0:35:D1:3B:C3:A8",
+    "mac": "2001:db8::1",
     "ip": "203.0.113.10",
     "wanip": "",
     "mask": "/64",
-    "network": "2405:2840:0:136::/64",
-    "gateway": "2405:2840:0:136::1",
+    "network": "2001:db8::1",
+    "gateway": "2001:db8::1",
     "main": 1,
     "type": "ipv6"
    }
@@ -4096,9 +4096,9 @@
     "name": "Public IP(s)",
     "type": "ipv6",
     "vlan_id": "42",
-    "firstip": "2405:2840:0:137::",
+    "firstip": "2001:db8::1::",
     "mask": "/64",
-    "gateway": "2405:2840:0:137::1"
+    "gateway": "2001:db8::1"
    }
   ]
  },
@@ -4111,17 +4111,17 @@
     "id": 0,
     "name": "net0",
     "model": "virtio",
-    "mac": "A0:35:D1:3B:C3:A8",
+    "mac": "2001:db8::1",
     "firewall": "1",
     "ip": [
      {
       "id": 930001,
       "interface": 0,
-      "mac": "A0:35:D1:3B:C3:A8",
+      "mac": "2001:db8::1",
       "ip": "203.0.113.10",
       "wanip": "",
       "mask": "/24",
-      "network": "203.0.113.10/24",
+      "network": "203.0.113.10",
       "gateway": "203.0.113.10",
       "main": 1,
       "type": "ipv4"
@@ -4129,12 +4129,12 @@
      {
       "id": 27930,
       "interface": 0,
-      "mac": "A0:35:D1:3B:C3:A8",
+      "mac": "2001:db8::1",
       "ip": "203.0.113.10",
       "wanip": "",
       "mask": "/64",
-      "network": "2405:2840:0:136::/64",
-      "gateway": "2405:2840:0:136::1",
+      "network": "2001:db8::1",
+      "gateway": "2001:db8::1",
       "main": 1,
       "type": "ipv6"
      }
@@ -4164,7 +4164,7 @@
     "disk": 0,
     "netin": 966.106666666666,
     "diskwrite": 20964.6933333333,
-    "date_time": "2026-08-02 21:04:00"
+    "date_time": "2026-08-02 2001:db8::1"
    },
    "usage": [
     {
@@ -4179,7 +4179,7 @@
      "cpu": 1.24,
      "time": 1785675300,
      "maxmem": 1073741824,
-     "date_time": "2026-08-02 19:55:00"
+     "date_time": "2026-08-02 2001:db8::1"
     },
     {
      "diskwrite": 23278.9333333333,
@@ -4193,7 +4193,7 @@
      "maxdisk": 21474836480,
      "maxmem": 1073741824,
      "time": 1785675360,
-     "date_time": "2026-08-02 19:56:00"
+     "date_time": "2026-08-02 2001:db8::1"
     },
     "… 68 more item(s)"
    ]
@@ -4207,7 +4207,7 @@
    "backups": [
     {
      "vmid": 600001,
-     "date": "2026-08-02 01:08:08",
+     "date": "2026-08-02 2001:db8::1",
      "size": 21474838049,
      "id": 900001,
      "status": "created",
@@ -4830,6 +4830,620 @@
    "status": false,
    "message": "If this account exists, an OTP has been sent.",
    "via": "email"
+  }
+ },
+ "POST /tickets": {
+  "method": "POST",
+  "path": "/tickets",
+  "status": 200,
+  "sample": {
+   "ticket": 886174
+  }
+ },
+ "POST /tickets/{number}": {
+  "method": "POST",
+  "path": "/tickets/{number}",
+  "status": 200,
+  "sample": {
+   "info": [
+    "reply_added"
+   ]
+  }
+ },
+ "PUT /tickets/{number}/close": {
+  "method": "PUT",
+  "path": "/tickets/{number}/close",
+  "status": 200,
+  "sample": {
+   "status": true
+  }
+ },
+ "PUT /tickets/{number}/open": {
+  "method": "PUT",
+  "path": "/tickets/{number}/open",
+  "status": 200,
+  "sample": {
+   "status": true
+  }
+ },
+ "POST /service/{sid}/dns/{zid}/records": {
+  "method": "POST",
+  "path": "/service/{sid}/dns/{zid}/records",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "record": {
+    "name": "tino-sdk-capture",
+    "type": "TXT",
+    "ttl": 3600,
+    "priority": 0,
+    "content": "<redacted>"
+   },
+   "info": [
+    [
+     "dnsnewrecordadded",
+     "TXT"
+    ]
+   ]
+  }
+ },
+ "PUT /service/{sid}/dns/{zid}/records/{rid}": {
+  "method": "PUT",
+  "path": "/service/{sid}/dns/{zid}/records/{rid}",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "record": {
+    "id": "419192",
+    "type": "TXT",
+    "ttl": 3600,
+    "name": "tino-sdk-capture",
+    "priority": 0,
+    "content": "<redacted>"
+   },
+   "info": [
+    "dnsrecordupdated"
+   ]
+  }
+ },
+ "DELETE /service/{sid}/dns/{zid}/records/{rid}": {
+  "method": "DELETE",
+  "path": "/service/{sid}/dns/{zid}/records/{rid}",
+  "status": 200,
+  "sample": {
+   "success": true
+  }
+ },
+ "POST /security/ipaccess": {
+  "method": "POST",
+  "path": "/security/ipaccess",
+  "status": 200,
+  "sample": {
+   "info": [
+    "addediprestriction"
+   ]
+  }
+ },
+ "DELETE /security/ipaccess/{id}": {
+  "method": "DELETE",
+  "path": "/security/ipaccess/{id}",
+  "status": 200,
+  "sample": {
+   "info": [
+    "removediprestriction"
+   ]
+  }
+ },
+ "POST /service/{id}/label": {
+  "method": "POST",
+  "path": "/service/{id}/label",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "info": [
+    "service_label_updated"
+   ]
+  }
+ },
+ "PUT /domain/{id}/autorenew": {
+  "method": "PUT",
+  "path": "/domain/{id}/autorenew",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "info": [
+    "success_changes_save"
+   ]
+  }
+ },
+ "PUT /domain/{id}/reglock": {
+  "method": "PUT",
+  "path": "/domain/{id}/reglock",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "info": [
+    "success_changes_save"
+   ]
+  }
+ },
+ "PUT /domain/{id}/ns": {
+  "method": "PUT",
+  "path": "/domain/{id}/ns",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "info": [
+    "success_changes_save"
+   ]
+  }
+ },
+ "PUT /domain/{id}/emforwarding": {
+  "method": "PUT",
+  "path": "/domain/{id}/emforwarding",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "info": [
+    "success_changes_save"
+   ]
+  }
+ },
+ "PUT /domain/{id}/forwarding": {
+  "method": "PUT",
+  "path": "/domain/{id}/forwarding",
+  "status": 200,
+  "sample": []
+ },
+ "PUT /domain/{id}/dnssec": {
+  "method": "PUT",
+  "path": "/domain/{id}/dnssec",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "info": [
+    "success_changes_save"
+   ]
+  }
+ },
+ "PUT /notifications/{id}/ack": {
+  "method": "PUT",
+  "path": "/notifications/{id}/ack",
+  "status": 200,
+  "sample": {
+   "id": "171464",
+   "success": true
+  }
+ },
+ "POST /service/{id}/vms/{vmid}/snapshots/create": {
+  "method": "POST",
+  "path": "/service/{id}/vms/{vmid}/snapshots/create",
+  "status": 200,
+  "sample": {
+   "success": false
+  }
+ },
+ "POST /ekyc/ocr/recognition": {
+  "method": "POST",
+  "path": "/ekyc/ocr/recognition",
+  "status": 200,
+  "sample": {
+   "success": false
+  }
+ },
+ "POST /ekyc/faceid/verification": {
+  "method": "POST",
+  "path": "/ekyc/faceid/verification",
+  "status": 200,
+  "sample": {
+   "success": false
+  }
+ },
+ "POST /billing/addfunds": {
+  "method": "POST",
+  "path": "/billing/addfunds",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "invoice_id": "1201937",
+   "info": [
+    "An invoice add credits have created"
+   ]
+  }
+ },
+ "POST /addfunds": {
+  "method": "POST",
+  "path": "/addfunds",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "invoice_id": 1201937
+  }
+ },
+ "DELETE /invoice/{id}": {
+  "method": "DELETE",
+  "path": "/invoice/{id}",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "info": [
+    "invs_deleted"
+   ]
+  }
+ },
+ "POST /invoices/payall": {
+  "method": "POST",
+  "path": "/invoices/payall",
+  "status": 200,
+  "sample": {
+   "invoice_id": null
+  }
+ },
+ "POST /service/{id}/vms/{vmid}/backups/create": {
+  "method": "POST",
+  "path": "/service/{id}/vms/{vmid}/backups/create",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "info": [
+    "bckp_create_info"
+   ]
+  }
+ },
+ "DELETE /service/{id}/vms/{vmid}/backup/{id}/delete": {
+  "method": "DELETE",
+  "path": "/service/{id}/vms/{vmid}/backup/{id}/delete",
+  "status": 200,
+  "sample": {
+   "backups": null,
+   "limit": null,
+   "info": [
+    "bckp_delete_info"
+   ]
+  }
+ },
+ "POST /service/{id}/vms/{vmid}/interfaces": {
+  "method": "POST",
+  "path": "/service/{id}/vms/{vmid}/interfaces",
+  "status": 200,
+  "sample": {
+   "status": 1
+  }
+ },
+ "POST /service/{id}/vms/{vmid}/console": {
+  "method": "POST",
+  "path": "/service/{id}/vms/{vmid}/console",
+  "status": 200,
+  "sample": {
+   "status": true,
+   "console": "qRMLlfK/Pxqo03/UY/qCxVlTNzB5V2JqQ1MydmNvc0t6WWlHSkwrK1dZbVJsTnQrUVZlRkhjV1BrRm9wM3FOVjE2L016bXhjYU16YzBlT3FZMWVrUHQydUdwMmxMOWVTSUJ1VzA1YW4wV0x1Y2VGQVkyQnVORnZVemhmWlVaZzZ0VlhiMnJoYW9RVTZ6b0wrUDBwaXJjVWdNOVBYSWFHTUp2WEI4Y2UvNTZmU1ZiKyt4UVZhcnpnb2NUcjdnWmFkcGQ0ZjlpWHMrU090VEJwM3h2eWNDd1I3aUNGSDI0Q1hl…"
+  }
+ },
+ "POST /service/{id}/vms/{vmid}/hostname": {
+  "method": "POST",
+  "path": "/service/{id}/vms/{vmid}/hostname",
+  "status": 200,
+  "sample": {
+   "status": 1
+  }
+ },
+ "POST /service/{id}/vms/{vmid}/resetpwd": {
+  "method": "POST",
+  "path": "/service/{id}/vms/{vmid}/resetpwd",
+  "status": 200,
+  "sample": {
+   "status": true
+  }
+ },
+ "POST /service/{id}/vms/{vmid}/shutdown": {
+  "method": "POST",
+  "path": "/service/{id}/vms/{vmid}/shutdown",
+  "status": 200,
+  "sample": {
+   "status": true
+  }
+ },
+ "POST /service/{id}/vms/{vmid}/stop": {
+  "method": "POST",
+  "path": "/service/{id}/vms/{vmid}/stop",
+  "status": 200,
+  "sample": {
+   "status": true
+  }
+ },
+ "POST /service/{id}/vms/{vmid}/start": {
+  "method": "POST",
+  "path": "/service/{id}/vms/{vmid}/start",
+  "status": 200,
+  "sample": {
+   "status": true
+  }
+ },
+ "POST /service/{id}/vms/{vmid}/reset": {
+  "method": "POST",
+  "path": "/service/{id}/vms/{vmid}/reset",
+  "status": 200,
+  "sample": {
+   "status": true
+  }
+ },
+ "POST /service/{id}/emails": {
+  "method": "POST",
+  "path": "/service/{id}/emails",
+  "status": 200,
+  "sample": {
+   "success": true
+  }
+ },
+ "POST /service/{id}/emails/change": {
+  "method": "POST",
+  "path": "/service/{id}/emails/change",
+  "status": 200,
+  "sample": {
+   "success": true
+  }
+ },
+ "POST /service/{id}/emails/delete": {
+  "method": "POST",
+  "path": "/service/{id}/emails/delete",
+  "status": 200,
+  "sample": {
+   "success": true
+  }
+ },
+ "POST /service/{id}/upgrade": {
+  "method": "POST",
+  "path": "/service/{id}/upgrade",
+  "status": 200,
+  "sample": {
+   "total": {
+    "subtotal": 0,
+    "total": 0,
+    "credit": 0,
+    "items": [
+     {
+      "amount": 0,
+      "taxed": 1,
+      "tax_group_id": 3,
+      "type": "Other",
+      "qty": 1,
+      "tax_rate": null,
+      "level": {
+       "L1": {
+        "priority": 1,
+        "type": "L1",
+        "name": "VAT",
+        "rate": "8.00",
+        "tax_group_id": 3,
+        "applyto": "net",
+        "negative": true,
+        "condition": null,
+        "id": "4",
+        "country": "0",
+        "state": "0",
+        "source": "region",
+        "taxtotal": 8,
+        "tax": 0
+       }
+      },
+      "linetotal": 0,
+      "discount": 0,
+      "net_discount": 0,
+      "off": 0,
+      "net_off": 0,
+      "net": 0,
+      "gross": 0,
+      "tax": 0
+     }
+    ],
+    "recurring": {
+     "m_taxed": "85320"
+    },
+    "taxes": {
+     "4": {
+      "priority": 1,
+      "type": "L1",
+      "name": "VAT",
+      "rate": "8.00",
+      "tax_group_id": 3,
+      "applyto": "net",
+      "negative": true,
+      "condition": null,
+      "id": "4",
+      "country": "0",
+      "state": "0",
+      "source": "region",
+      "taxtotal": 8,
+      "tax": 0
+     }
+    },
+    "tax1": "8",
+    "tax1name": "VAT",
+    "taxed1": 0,
+    "tax2": null
+   },
+   "contents": {
+    "product": {
+     "name": "Host 5GB NVMe",
+     "old_name": "WH 1",
+     "category_name": "Hosting NVMe",
+     "old_category_name": "Platinum Hosting",
+     "upgrade_name": "Platinum Hosting: WH 1 -> Hosting NVMe: Host 5GB NVMe",
+     "product_id": "2122",
+     "new_product_id": "2007",
+     "tax": "1",
+     "tax_group_id": "3",
+     "charge": 0,
+     "billingtype": "PrePay",
+     "account_id": "100001",
+     "invoice_queue": false,
+     "next_due": "2026-08-26",
+     "next_invoice": "2026-08-11"
+    },
+    "config": [],
+    "is_same": false,
+    "order_data": null,
+    "cancel_url": "?cmd=clientarea&action=services&service=100001&make=cancelupgrade"
+   },
+   "subtotal": {
+    "total": 0,
+    "recurring": {
+     "m": 79000
+    }
+   }
+  }
+ },
+ "POST /service/{id}/manualrenew": {
+  "method": "POST",
+  "path": "/service/{id}/manualrenew",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "invoice_id": null,
+   "info": [
+    "manualrenew_ok"
+   ]
+  }
+ },
+ "POST /service/cpanel2/{id}/changedomain": {
+  "method": "POST",
+  "path": "/service/cpanel2/{id}/changedomain",
+  "status": 200,
+  "sample": {
+   "info": [
+    "cpanel_cpd_domain_change"
+   ]
+  }
+ },
+ "POST /service/cpanel2/{id}/resetacount": {
+  "method": "POST",
+  "path": "/service/cpanel2/{id}/resetacount",
+  "status": 200,
+  "sample": {
+   "info": [
+    "cpanel_reset_success"
+   ]
+  }
+ },
+ "POST /domain/{id}/reg": {
+  "method": "POST",
+  "path": "/domain/{id}/reg",
+  "status": 200,
+  "sample": {
+   "info": [
+    "0 of 1 events processed",
+    "actionsuccess"
+   ]
+  }
+ },
+ "POST /domain/{id}/renew": {
+  "method": "POST",
+  "path": "/domain/{id}/renew",
+  "status": 200,
+  "sample": {
+   "order_num": 626303876,
+   "invoice_id": "1201939",
+   "total": "588109",
+   "items": [
+    {
+     "type": "Domain Renew",
+     "id": "200001",
+     "name": "example.com",
+     "product_id": "1435"
+    }
+   ]
+  }
+ },
+ "POST /tinosite/{id}/autologin": {
+  "method": "POST",
+  "path": "/tinosite/{id}/autologin",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "service_id": "100001",
+   "login_url": null
+  }
+ },
+ "POST /tinosite/{id}/users": {
+  "method": "POST",
+  "path": "/tinosite/{id}/users",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "service_id": "100001"
+  }
+ },
+ "POST /tinosite/{id}/backups": {
+  "method": "POST",
+  "path": "/tinosite/{id}/backups",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "service_id": "100001",
+   "backups": null
+  }
+ },
+ "POST /tinosite/{id}/sslcerts": {
+  "method": "POST",
+  "path": "/tinosite/{id}/sslcerts",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "service_id": "100001",
+   "certs": null
+  }
+ },
+ "POST /tinosite/{id}/sslcerts/onoff": {
+  "method": "POST",
+  "path": "/tinosite/{id}/sslcerts/onoff",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "service_id": "100001",
+   "certs": null
+  }
+ },
+ "POST /tinosite/{id}/domainpointers": {
+  "method": "POST",
+  "path": "/tinosite/{id}/domainpointers",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "service_id": "100001",
+   "pointers": null
+  }
+ },
+ "POST /domain/documents/companyprofile": {
+  "method": "POST",
+  "path": "/domain/documents/companyprofile",
+  "status": 200,
+  "sample": []
+ },
+ "POST /ekyc/check-status-url-ekyc": {
+  "method": "POST",
+  "path": "/ekyc/check-status-url-ekyc",
+  "status": 200,
+  "sample": {
+   "success": true
+  }
+ },
+ "POST /service/{id}/cancel": {
+  "method": "POST",
+  "path": "/service/{id}/cancel",
+  "status": 200,
+  "sample": {
+   "info": [
+    "cancell_sent"
+   ]
+  }
+ },
+ "POST /token": {
+  "method": "POST",
+  "path": "/token",
+  "status": 200,
+  "sample": {
+   "token": "<redacted>",
+   "refresh": "<redacted>"
   }
  }
 }

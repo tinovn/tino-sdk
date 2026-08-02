@@ -414,7 +414,7 @@ Return registration details for my account
   "id": "700001",
   "group_id": "0",
   "email": "user@example.com",
-  "lastlogin": "2026-08-02 21:01:40",
+  "lastlogin": "2026-08-02 2001:db8::1",
   "ip": "203.0.113.10",
   "host": "host.example",
   "firstname": "Nguyen Van",
@@ -663,7 +663,7 @@ Returns logs from history
  "logs": [
   {
    "logid": "950001",
-   "date": "2025-10-21 14:31:00",
+   "date": "2025-10-21 2001:db8::1",
    "description": "Client placed new order #960001  (203.0.113.10)",
    "result": "1",
    "type": "client",
@@ -672,7 +672,7 @@ Returns logs from history
   },
   {
    "logid": "44640",
-   "date": "2026-03-30 20:05:44",
+   "date": "2026-03-30 2001:db8::1",
    "description": "Client placed new order #1143928092  (203.0.113.10)",
    "result": "1",
    "type": "client",

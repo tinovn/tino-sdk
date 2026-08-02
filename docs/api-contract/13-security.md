@@ -2,7 +2,7 @@
 
 SDK namespace: `client.security` (Python) · `client.security` (Node.js, PHP).
 
-5 operation(s) in this chapter, 1 with a captured live response.
+5 operation(s) in this chapter, 3 with a captured live response.
 
 | Method | Path | SDK | Auth |
 | --- | --- | --- | --- |
@@ -62,7 +62,7 @@ $client->security->get();
 
 ### `security.addIpAccess`
 
-`POST /security/ipaccess` — Bearer token · spec only
+`POST /security/ipaccess` — Bearer token · verified live
 
 **Add IP access**
 
@@ -70,6 +70,8 @@ all - keyword matching all
 IPs xxx.xxx.xxx.xxx - IP single
 xxx.xxx.xxx.xxx/M - IP with Mask in CIDR format
 xxx.xxx.xxx.xxx/mmm.mmm.mmm.mmm - IP with Mask in dotted quad format
+
+> **Note.** The first rule switches the account into whitelist mode: every address that is not listed is refused, including the one you are calling from. Add your own address before adding any other, and remove it last.
 
 **Request body**
 
@@ -85,7 +87,17 @@ xxx.xxx.xxx.xxx/mmm.mmm.mmm.mmm - IP with Mask in dotted quad format
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "info": [
+  "addediprestriction"
+ ]
+}
+```
+
+</details>
 
 **SDK**
 
@@ -103,7 +115,7 @@ $client->security->addIpAccess(['rule' => ...]);
 
 ### `security.removeIpAccess`
 
-`DELETE /security/ipaccess/{id}` — Bearer token · spec only
+`DELETE /security/ipaccess/{id}` — Bearer token · verified live
 
 **Remove IP access**
 
@@ -117,7 +129,17 @@ $client->security->addIpAccess(['rule' => ...]);
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "info": [
+  "removediprestriction"
+ ]
+}
+```
+
+</details>
 
 **SDK**
 

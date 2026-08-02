@@ -36,18 +36,20 @@ class Cpanel extends Resource
     /**
      * Change Domain cPanel
      *
-     * POST /service/cpanel2/{id}/changedomain — Bearer token required, from the API specification.
+     * POST /service/cpanel2/{id}/changedomain — Bearer token required, verified against the live API.
+     *
+     * Body fields:
+     *   - domain (string, required)
      *
      * @param string|int $id
-     * @param string|int $domain
      * @param array<string,mixed> $body Request payload.
      * @param array<string,mixed> $query Extra query-string parameters.
      *
      * @return mixed Decoded response body.
      */
-    public function changePrimaryDomain($id, $domain, array $body = [], array $query = [])
+    public function changePrimaryDomain($id, array $body = [], array $query = [])
     {
-        $path = $this->path('/service/cpanel2/{id}/changedomain', ['id' => $id, 'domain' => $domain]);
+        $path = $this->path('/service/cpanel2/{id}/changedomain', ['id' => $id]);
         return $this->call('POST', $path, ['query' => $query, 'body' => $body]);
     }
 
@@ -108,7 +110,7 @@ class Cpanel extends Resource
     /**
      * Reset Acount cPanel
      *
-     * POST /service/cpanel2/{id}/resetacount — Bearer token required, from the API specification.
+     * POST /service/cpanel2/{id}/resetacount — Bearer token required, verified against the live API.
      *
      * @param string|int $id
      * @param array<string,mixed> $body Request payload.

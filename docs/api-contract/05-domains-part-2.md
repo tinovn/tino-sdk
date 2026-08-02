@@ -2,7 +2,7 @@
 
 SDK namespace: `client.domains` (Python) · `client.domains` (Node.js, PHP).
 
-16 operation(s) in this chapter, 7 with a captured live response.
+14 operation(s) in this chapter, 12 with a captured live response.
 
 | Method | Path | SDK | Auth |
 | --- | --- | --- | --- |
@@ -20,14 +20,12 @@ SDK namespace: `client.domains` (Python) · `client.domains` (Node.js, PHP).
 | `GET` | `/domain/{id}/reg` | [`getRegisteredNameservers`](#domainsgetregisterednameservers) | Bearer |
 | `POST` | `/domain/{id}/reg` | [`registerNameserver`](#domainsregisternameserver) | Bearer |
 | `GET` | `/domain/{id}/reglock` | [`getRegistrarLock`](#domainsgetregistrarlock) | Bearer |
-| `PUT` | `/domain/{id}/reglock` | [`updateRegistrarLock`](#domainsupdateregistrarlock) | Bearer |
-| `POST` | `/domain/{id}/renew` | [`renew`](#domainsrenew) | Bearer |
 
 ---
 
 ### `domains.addDnssecKey`
 
-`PUT /domain/{id}/dnssec` — Bearer token · spec only
+`PUT /domain/{id}/dnssec` — Bearer token · verified live
 
 **Adds the DNSSEC key**
 
@@ -51,7 +49,18 @@ SDK namespace: `client.domains` (Python) · `client.domains` (Node.js, PHP).
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true,
+ "info": [
+  "success_changes_save"
+ ]
+}
+```
+
+</details>
 
 **SDK**
 
@@ -183,7 +192,7 @@ $client->domains->getEmailForwarding($id);
 
 ### `domains.updateEmailForwarding`
 
-`PUT /domain/{id}/emforwarding` — Bearer token · spec only
+`PUT /domain/{id}/emforwarding` — Bearer token · verified live
 
 **Update email forwarding**
 
@@ -213,7 +222,18 @@ $client->domains->getEmailForwarding($id);
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true,
+ "info": [
+  "success_changes_save"
+ ]
+}
+```
+
+</details>
 
 **SDK**
 
@@ -271,7 +291,7 @@ $client->domains->getEppCode($id);
 
 ### `domains.updateForwarding`
 
-`PUT /domain/{id}/forwarding` — Bearer token · spec only
+`PUT /domain/{id}/forwarding` — Bearer token · verified live
 
 **Update domain forwarding**
 
@@ -295,7 +315,13 @@ $client->domains->getEppCode($id);
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+[]
+```
+
+</details>
 
 **SDK**
 
@@ -388,7 +414,7 @@ Returns details of the DNS zone
    "subtotal": "532151.00",
    "tax": "42572.00",
    "tax2": "0.00",
-   "datepaid": "0000-00-00 00:00:00",
+   "datepaid": "0000-00-00 2001:db8::1",
    "status": "Unpaid",
    "merge_id": "300001"
   }
@@ -457,7 +483,7 @@ $client->domains->getNameservers($id);
 
 ### `domains.updateNameservers`
 
-`PUT /domain/{id}/ns` — Bearer token · spec only
+`PUT /domain/{id}/ns` — Bearer token · verified live
 
 **Update domain nameservers**
 
@@ -485,7 +511,18 @@ Change domain nameservers, if `$nameservers` is left empty, default namesevers w
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true,
+ "info": [
+  "success_changes_save"
+ ]
+}
+```
+
+</details>
 
 **SDK**
 
@@ -547,7 +584,7 @@ $client->domains->getRegisteredNameservers($id);
 
 ### `domains.registerNameserver`
 
-`POST /domain/{id}/reg` — Bearer token · spec only
+`POST /domain/{id}/reg` — Bearer token · verified live
 
 **Register domain nameservers**
 
@@ -586,7 +623,18 @@ Manage private/glue nameservers for a domain. Use the `action` parameter to sele
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "info": [
+  "0 of 1 events processed",
+  "actionsuccess"
+ ]
+}
+```
+
+</details>
 
 **SDK**
 
@@ -637,94 +685,6 @@ await client.domains.getRegistrarLock(id);
 ```
 ```php
 $client->domains->getRegistrarLock($id);
-```
-
----
-
-### `domains.updateRegistrarLock`
-
-`PUT /domain/{id}/reglock` — Bearer token · spec only
-
-**Update domain lock**
-
-**Parameters**
-
-| Name | In | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| `id` | path | integer | yes | Domain id |
-
-**Request body**
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `switch` | boolean | no | true\|false |
-
-```json
-{
-  "switch": "true|false"
-}
-```
-
-**Response** `200`
-
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
-
-**SDK**
-
-```python
-client.domains.update_registrar_lock(id, switch=...)
-```
-```javascript
-await client.domains.updateRegistrarLock(id, { switch: ... });
-```
-```php
-$client->domains->updateRegistrarLock($id, ['switch' => ...]);
-```
-
----
-
-### `domains.renew`
-
-`POST /domain/{id}/renew` — Bearer token · spec only
-
-**Renew domain**
-
-Create new renew order for a domain, please check if requested domain is available first, otherwise your order may get cancelled.
-
-**Parameters**
-
-| Name | In | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| `id` | path | string | yes | — |
-
-**Request body**
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `years` | string | no | Number of years |
-| `pay_method` | integer | no | Payment method ID |
-
-```json
-{
-  "years": "yearsValue",
-  "pay_method": "pay_methodValue"
-}
-```
-
-**Response** `200`
-
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
-
-**SDK**
-
-```python
-client.domains.renew(id, years=...)
-```
-```javascript
-await client.domains.renew(id, { years: ... });
-```
-```php
-$client->domains->renew($id, ['years' => ...]);
 ```
 
 ---

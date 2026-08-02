@@ -3,12 +3,12 @@
 
 import { Resource } from './base.js';
 
-/** Domain names — 31 operations. */
+/** Domain names — 30 operations. */
 export class DomainsResource extends Resource {
   /**
    * Adds the DNSSEC key
    *
-   * PUT /domain/{id}/dnssec — Bearer token required, from the API specification.
+   * PUT /domain/{id}/dnssec — Bearer token required, verified against the live API.
    *
    * Body fields:
    *   - id (integer): Domain id
@@ -307,8 +307,13 @@ export class DomainsResource extends Resource {
    *
    * POST /domain/order — Bearer token required, from the API specification.
    *
+   * DEPRECATED — kept for compatibility; see the note below for the replacement.
+   *
    * Create new order for a domain, please check if requested domain is available first,
    * otherwise your order may get cancelled.
+   *
+   * Note: Domains are ordered through cart.order together with any other item. This route
+   * remains for the standalone domain flow.
    *
    * Body fields:
    *   - name (string): Domain name
@@ -335,7 +340,7 @@ export class DomainsResource extends Resource {
   /**
    * Register domain nameservers
    *
-   * POST /domain/{id}/reg — Bearer token required, from the API specification.
+   * POST /domain/{id}/reg — Bearer token required, verified against the live API.
    *
    * Manage private/glue nameservers for a domain. Use the `action` parameter to select the
    * operation:
@@ -382,7 +387,7 @@ export class DomainsResource extends Resource {
   /**
    * Renew domain
    *
-   * POST /domain/{id}/renew — Bearer token required, from the API specification.
+   * POST /domain/{id}/renew — Bearer token required, verified against the live API.
    *
    * Create new renew order for a domain, please check if requested domain is available
    * first, otherwise your order may get cancelled.
@@ -437,51 +442,27 @@ export class DomainsResource extends Resource {
   /**
    * Enable/disable domain autorenew
    *
-   * PUT /domain/{id}/autorenew — Bearer token required, from the API specification.
-   *
-   * Path parameters:
-   *   - id: Domain id
-   *   - autorenew: true|false
-   * @param {string|number} id Domain id
-   * @param {string|number} autorenew true|false
-   * @param {object} [body] Request payload.
-   * @param {object} [query] Extra query-string parameters.
-   * @returns {Promise<any>}
-   */
-  updateAutoRenew(id, autorenew, body = undefined, query = {}) {
-    const path = this._path('/domain/{id}/autorenew', { id: id, autorenew: autorenew });
-    return this._call('PUT', path, { query, body });
-  }
-
-  /**
-   * Update domain contact (WHOIS) information
-   *
-   * PUT /domain/{id}/contact — Bearer token required, from the API specification.
-   *
-   * Update the registrant, admin, tech and billing contacts of a domain.
+   * PUT /domain/{id}/autorenew — Bearer token required, verified against the live API.
    *
    * Path parameters:
    *   - id: Domain id
    *
    * Body fields:
-   *   - registrant (object): Registrant contact fields
-   *   - admin (object): Administrative contact fields
-   *   - tech (object): Technical contact fields
-   *   - billing (object): Billing contact fields
+   *   - autorenew (boolean, required): true|false
    * @param {string|number} id Domain id
    * @param {object} [body] Request payload.
    * @param {object} [query] Extra query-string parameters.
    * @returns {Promise<any>}
    */
-  updateContacts(id, body = undefined, query = {}) {
-    const path = this._path('/domain/{id}/contact', { id: id });
+  updateAutoRenew(id, body = undefined, query = {}) {
+    const path = this._path('/domain/{id}/autorenew', { id: id });
     return this._call('PUT', path, { query, body });
   }
 
   /**
    * Update email forwarding
    *
-   * PUT /domain/{id}/emforwarding — Bearer token required, from the API specification.
+   * PUT /domain/{id}/emforwarding — Bearer token required, verified against the live API.
    *
    * Body fields:
    *   - id (integer): Domain id
@@ -501,7 +482,7 @@ export class DomainsResource extends Resource {
   /**
    * Update domain forwarding
    *
-   * PUT /domain/{id}/forwarding — Bearer token required, from the API specification.
+   * PUT /domain/{id}/forwarding — Bearer token required, verified against the live API.
    *
    * Body fields:
    *   - id (integer): Domain id
@@ -538,7 +519,7 @@ export class DomainsResource extends Resource {
   /**
    * Update domain nameservers
    *
-   * PUT /domain/{id}/ns — Bearer token required, from the API specification.
+   * PUT /domain/{id}/ns — Bearer token required, verified against the live API.
    *
    * Change domain nameservers, if `$nameservers` is left empty, default namesevers will be
    * used
@@ -559,7 +540,7 @@ export class DomainsResource extends Resource {
   /**
    * Update domain lock
    *
-   * PUT /domain/{id}/reglock — Bearer token required, from the API specification.
+   * PUT /domain/{id}/reglock — Bearer token required, verified against the live API.
    *
    * Path parameters:
    *   - id: Domain id

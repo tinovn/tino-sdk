@@ -5,11 +5,11 @@ import { Resource } from './base.js';
 
 export declare class TinositeResource extends Resource {
   /** POST /tinosite/{id}/autologin */
-  autoLogin(id: string | number, email: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
+  autoLogin(id: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** POST /tinosite/{id}/backups */
   backup(id: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** POST /tinosite/{id}/users */
-  createUser(id: string | number, email: string | number, role: string | number, password: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
+  createUser(id: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** POST /tinosite/{id}/domainpointers */
   domainPointerAction(id: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** GET /tinosite/{id}/metrics */

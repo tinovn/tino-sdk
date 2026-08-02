@@ -2,7 +2,7 @@
 
 SDK namespace: `client.billing` (Python) · `client.billing` (Node.js, PHP).
 
-16 operation(s) in this chapter, 9 with a captured live response.
+15 operation(s) in this chapter, 11 with a captured live response.
 
 | Method | Path | SDK | Auth |
 | --- | --- | --- | --- |
@@ -21,7 +21,6 @@ SDK namespace: `client.billing` (Python) · `client.billing` (Node.js, PHP).
 | `DELETE` | `/invoice/{id}` | [`deleteInvoice`](#billingdeleteinvoice) | Bearer |
 | `GET` | `/invoice/{id}` | [`getInvoiceDetails`](#billinggetinvoicedetails) | Bearer |
 | `POST` | `/invoice/{id}/credit` | [`applyCredit`](#billingapplycredit) | Bearer |
-| `GET` | `/invoice/{id}/pdf` | [`getInvoicePdf`](#billinggetinvoicepdf) | Bearer |
 
 ---
 
@@ -73,7 +72,7 @@ $client->billing->getAddFundsInfo();
 
 ### `billing.addFundsLegacy`
 
-`POST /addfunds` — Bearer token · spec only
+`POST /addfunds` — Bearer token · verified live
 
 **Add Funds**
 
@@ -95,7 +94,16 @@ Generate add funds invoice
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true,
+ "invoice_id": 1201937
+}
+```
+
+</details>
 
 **SDK**
 
@@ -152,7 +160,7 @@ $client->billing->getBalance();
 
 ### `billing.addFunds`
 
-`POST /billing/addfunds` — Bearer token · spec only
+`POST /billing/addfunds` — Bearer token · verified live
 
 **Add Funds**
 
@@ -174,7 +182,19 @@ Create Invoice Add Credits
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true,
+ "invoice_id": "1201937",
+ "info": [
+  "An invoice add credits have created"
+ ]
+}
+```
+
+</details>
 
 **SDK**
 
@@ -506,7 +526,7 @@ List all invoices under my account
    "subtotal": "532151.00",
    "tax": "42572.00",
    "tax2": "0.00",
-   "datepaid": "0000-00-00 00:00:00",
+   "datepaid": "0000-00-00 2001:db8::1",
    "status": "Unpaid",
    "merge_id": null,
    "number": "TNG300001",
@@ -534,7 +554,7 @@ $client->billing->listInvoicesLegacy();
 
 ### `billing.deleteInvoice`
 
-`DELETE /invoice/{id}` — Bearer token · spec only
+`DELETE /invoice/{id}` — Bearer token · verified live
 
 **Delete Invoice**
 
@@ -548,7 +568,18 @@ $client->billing->listInvoicesLegacy();
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true,
+ "info": [
+  "invs_deleted"
+ ]
+}
+```
+
+</details>
 
 **SDK**
 
@@ -591,7 +622,7 @@ Get invoice details
   "date": "2026-03-30",
   "duedate": "2026-12-07",
   "paybefore": "2026-12-07",
-  "datepaid": "0000-00-00 00:00:00",
+  "datepaid": "0000-00-00 2001:db8::1",
   "subtotal": 532151,
   "credit": 0,
   "tax": 42572,
@@ -672,46 +703,6 @@ await client.billing.applyCredit(id, { id: ... });
 ```
 ```php
 $client->billing->applyCredit($id, ['id' => ...]);
-```
-
----
-
-### `billing.getInvoicePdf`
-
-`GET /invoice/{id}/pdf` — Bearer token · verified live
-
-**Invoice PDF**
-
-Get specific invoice PDF as base64 string
-
-**Parameters**
-
-| Name | In | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| `id` | path | string | yes | — |
-
-**Response** `200`
-
-<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
-
-```json
-{
- "invoice": "JVBERi0xLjQKJeLjz9MKMyAwIG9iago8PC9UeXBlIC9QYWdlCi9QYXJlbnQgMSAwIFIKL01lZGlhQm94IFswIDAgNTk1LjI4MCA4NDEuODkwXQovVHJpbUJveCBbMC4wMDAgMC4wMDAgNTk1LjI4MCA4NDEuODkwXQovUmVzb3VyY2VzIDIgMCBSCi9Hcm91cCA8PCAvVHlwZSAvR3JvdXAgL1MgL1RyYW5zcGFyZW5jeSAvQ1MgL0RldmljZVJHQiA+PiAKL0NvbnRlbnRzIDQgMCBSPj4KZW5kb2JqCjQg…"
-}
-```
-
-</details>
-
-**SDK**
-
-```python
-client.billing.get_invoice_pdf(id)
-```
-```javascript
-await client.billing.getInvoicePdf(id);
-```
-```php
-$client->billing->getInvoicePdf($id);
 ```
 
 ---

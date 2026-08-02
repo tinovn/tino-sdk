@@ -2,7 +2,7 @@
 
 SDK namespace: `client.vms` (Python) · `client.vms` (Node.js, PHP).
 
-15 operation(s) in this chapter, 4 with a captured live response.
+13 operation(s) in this chapter, 8 with a captured live response.
 
 | Method | Path | SDK | Auth |
 | --- | --- | --- | --- |
@@ -19,8 +19,6 @@ SDK namespace: `client.vms` (Python) · `client.vms` (Node.js, PHP).
 | `POST` | `/service/{id}/vms/{vmid}/console` | [`openConsole`](#vmsopenconsole) | Bearer |
 | `POST` | `/service/{id}/vms/{vmid}/hostname` | [`changeHostname`](#vmschangehostname) | Bearer |
 | `GET` | `/service/{id}/vms/{vmid}/interfaces` | [`listInterfaces`](#vmslistinterfaces) | Bearer |
-| `POST` | `/service/{id}/vms/{vmid}/interfaces` | [`createInterface`](#vmscreateinterface) | Bearer |
-| `DELETE` | `/service/{id}/vms/{vmid}/interfaces/{iface}` | [`removeInterface`](#vmsremoveinterface) | Bearer |
 
 ---
 
@@ -55,7 +53,7 @@ List virtual servers
    "status_lang": "vm_state_running",
    "password": "<redacted>",
    "sshkeys": [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII+Gmwk9Yz3YLyc/2h1PxmTY8Wedfr3+LUra/sgZnG3T task29-verify-1785204819"
+    "ssh-ed25519 AAAA<public-key> user@example.com"
    ],
    "username": "root",
    "memory": 1024,
@@ -210,7 +208,7 @@ Get the details of a particular virtual server
   "status_lang": "vm_state_running",
   "password": "<redacted>",
   "sshkeys": [
-   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII+Gmwk9Yz3YLyc/2h1PxmTY8Wedfr3+LUra/sgZnG3T task29-verify-1785204819"
+   "ssh-ed25519 AAAA<public-key> user@example.com"
   ],
   "username": "root",
   "memory": 1024,
@@ -307,9 +305,18 @@ Get the details of a particular virtual server
 | --- | --- | --- | --- | --- |
 | `id` | path | integer | yes | — |
 | `vmid` | path | string | yes | Virtual server id |
-| `keys` | path | array | yes | SSK Key ID |
 
-**Request body** — none documented; any JSON object is forwarded as-is.
+**Request body**
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `keys` | array | yes | SSK Key ID |
+
+```json
+{
+  "keys": []
+}
+```
 
 **Response** `200`
 
@@ -318,20 +325,20 @@ _Not captured live — this endpoint changes state, or it needs data the documen
 **SDK**
 
 ```python
-client.vms.set_ssh_keys(id, vmid, keys)
+client.vms.set_ssh_keys(id, vmid, keys=...)
 ```
 ```javascript
-await client.vms.setSshKeys(id, vmid, keys);
+await client.vms.setSshKeys(id, vmid, { keys: ... });
 ```
 ```php
-$client->vms->setSshKeys($id, $vmid, $keys);
+$client->vms->setSshKeys($id, $vmid, ['keys' => ...]);
 ```
 
 ---
 
 ### `vms.deleteBackup`
 
-`DELETE /service/{id}/vms/{vmid}/backup/{backup_id}/delete` — Bearer token · spec only
+`DELETE /service/{id}/vms/{vmid}/backup/{backup_id}/delete` — Bearer token · verified live
 
 **VM Delete Backup**
 
@@ -347,7 +354,19 @@ $client->vms->setSshKeys($id, $vmid, $keys);
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "backups": null,
+ "limit": null,
+ "info": [
+  "bckp_delete_info"
+ ]
+}
+```
+
+</details>
 
 **SDK**
 
@@ -385,7 +404,7 @@ $client->vms->deleteBackup($id, $vmid, $backupId);
  "backups": [
   {
    "vmid": 600001,
-   "date": "2026-08-02 01:08:08",
+   "date": "2026-08-02 2001:db8::1",
    "size": 21474838049,
    "id": 900001,
    "status": "created",
@@ -428,7 +447,7 @@ $client->vms->listBackups($id, $vmid);
 
 ### `vms.createBackup`
 
-`POST /service/{id}/vms/{vmid}/backups/create` — Bearer token · spec only
+`POST /service/{id}/vms/{vmid}/backups/create` — Bearer token · verified live
 
 **VM Create Backup**
 
@@ -443,7 +462,18 @@ $client->vms->listBackups($id, $vmid);
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true,
+ "info": [
+  "bckp_create_info"
+ ]
+}
+```
+
+</details>
 
 **SDK**
 
@@ -495,7 +525,7 @@ $client->vms->restoreBackup($id, $vmid, $backupId);
 
 ### `vms.openConsole`
 
-`POST /service/{id}/vms/{vmid}/console` — Bearer token · spec only
+`POST /service/{id}/vms/{vmid}/console` — Bearer token · verified live
 
 **console VM**
 
@@ -510,7 +540,16 @@ $client->vms->restoreBackup($id, $vmid, $backupId);
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "status": true,
+ "console": "qRMLlfK/Pxqo03/UY/qCxVlTNzB5V2JqQ1MydmNvc0t6WWlHSkwrK1dZbVJsTnQrUVZlRkhjV1BrRm9wM3FOVjE2L016bXhjYU16YzBlT3FZMWVrUHQydUdwMmxMOWVTSUJ1VzA1YW4wV0x1Y2VGQVkyQnVORnZVemhmWlVaZzZ0VlhiMnJoYW9RVTZ6b0wrUDBwaXJjVWdNOVBYSWFHTUp2WEI4Y2UvNTZmU1ZiKyt4UVZhcnpnb2NUcjdnWmFkcGQ0ZjlpWHMrU090VEJwM3h2eWNDd1I3aUNGSDI0Q1hl…"
+}
+```
+
+</details>
 
 **SDK**
 
@@ -528,7 +567,7 @@ $client->vms->openConsole($id, $vmid);
 
 ### `vms.changeHostname`
 
-`POST /service/{id}/vms/{vmid}/hostname` — Bearer token · spec only
+`POST /service/{id}/vms/{vmid}/hostname` — Bearer token · verified live
 
 **Change Hostname VM**
 
@@ -538,24 +577,41 @@ $client->vms->openConsole($id, $vmid);
 | --- | --- | --- | --- | --- |
 | `id` | path | integer | yes | — |
 | `vmid` | path | string | yes | Virtual server id |
-| `server_name` | path | string | yes | Virtual server name |
 
-**Request body** — none documented; any JSON object is forwarded as-is.
+**Request body**
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `server_name` | string | yes | Virtual server name |
+
+```json
+{
+  "server_name": "<server_name>"
+}
+```
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "status": 1
+}
+```
+
+</details>
 
 **SDK**
 
 ```python
-client.vms.change_hostname(id, vmid, server_name)
+client.vms.change_hostname(id, vmid, server_name=...)
 ```
 ```javascript
-await client.vms.changeHostname(id, vmid, serverName);
+await client.vms.changeHostname(id, vmid, { server_name: ... });
 ```
 ```php
-$client->vms->changeHostname($id, $vmid, $serverName);
+$client->vms->changeHostname($id, $vmid, ['server_name' => ...]);
 ```
 
 ---
@@ -585,17 +641,17 @@ Get network interfaces assigned to virtual server
   "id": 0,
   "name": "net0",
   "model": "virtio",
-  "mac": "A0:35:D1:3B:C3:A8",
+  "mac": "2001:db8::1",
   "firewall": "1",
   "ip": [
    {
     "id": 930001,
     "interface": 0,
-    "mac": "A0:35:D1:3B:C3:A8",
+    "mac": "2001:db8::1",
     "ip": "203.0.113.10",
     "wanip": "",
     "mask": "/24",
-    "network": "203.0.113.10/24",
+    "network": "203.0.113.10",
     "gateway": "203.0.113.10",
     "main": 1,
     "type": "ipv4"
@@ -603,12 +659,12 @@ Get network interfaces assigned to virtual server
    {
     "id": 27930,
     "interface": 0,
-    "mac": "A0:35:D1:3B:C3:A8",
+    "mac": "2001:db8::1",
     "ip": "203.0.113.10",
     "wanip": "",
     "mask": "/64",
-    "network": "2405:2840:0:136::/64",
-    "gateway": "2405:2840:0:136::1",
+    "network": "2001:db8::1",
+    "gateway": "2001:db8::1",
     "main": 1,
     "type": "ipv6"
    }
@@ -634,93 +690,6 @@ await client.vms.listInterfaces(id, vmid);
 ```
 ```php
 $client->vms->listInterfaces($id, $vmid);
-```
-
----
-
-### `vms.createInterface`
-
-`POST /service/{id}/vms/{vmid}/interfaces` — Bearer token · spec only
-
-**Add Network Interface**
-
-Add new network interface to VM
-
-**Parameters**
-
-| Name | In | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| `id` | path | string | yes | — |
-| `vmid` | path | string | yes | — |
-
-**Request body**
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `bridge` | string | no | Network bridge |
-| `firewall` | integer | no | Enable or disable firewall (may require specific permissions) |
-| `ipv4` | array | no | List of IP v4 IDs |
-| `ipv6` | array | no | List of IP v6 IDs |
-
-```json
-{
-  "bridge": "bridgeValue",
-  "firewall": "firewallValue",
-  "ipv4": "ipv4Value",
-  "ipv6": "ipv6Value"
-}
-```
-
-**Response** `200`
-
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
-
-**SDK**
-
-```python
-client.vms.create_interface(id, vmid, bridge=...)
-```
-```javascript
-await client.vms.createInterface(id, vmid, { bridge: ... });
-```
-```php
-$client->vms->createInterface($id, $vmid, ['bridge' => ...]);
-```
-
----
-
-### `vms.removeInterface`
-
-`DELETE /service/{id}/vms/{vmid}/interfaces/{iface}` — Bearer token · spec only
-
-**Remove Network Interface**
-
-Remove network interface from VM
-
-**Parameters**
-
-| Name | In | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| `id` | path | string | yes | — |
-| `vmid` | path | string | yes | — |
-| `iface` | path | string | yes | Interface name or id to remove |
-
-**Request body** — none documented; any JSON object is forwarded as-is.
-
-**Response** `200`
-
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
-
-**SDK**
-
-```python
-client.vms.remove_interface(id, vmid, iface)
-```
-```javascript
-await client.vms.removeInterface(id, vmid, iface);
-```
-```php
-$client->vms->removeInterface($id, $vmid, $iface);
 ```
 
 ---

@@ -18,7 +18,7 @@ class Dns extends Resource
     /**
      * Add DNS Record
      *
-     * POST /service/{service_id}/dns/{zone_id}/records — Bearer token required, from the API specification.
+     * POST /service/{service_id}/dns/{zone_id}/records — Bearer token required, verified against the live API.
      *
      * Creates a new record in the DNS zone
      *
@@ -70,7 +70,7 @@ class Dns extends Resource
     /**
      * Remove DNS Record
      *
-     * DELETE /service/{service_id}/dns/{zone_id}/records/{record_id} — Bearer token required, from the API specification.
+     * DELETE /service/{service_id}/dns/{zone_id}/records/{record_id} — Bearer token required, verified against the live API.
      *
      * Removes the selected DNS zone record
      *
@@ -219,7 +219,7 @@ class Dns extends Resource
     /**
      * Change Zone DNS
      *
-     * GET /service/{service_id}/dns/{zone_id}/password — Bearer token required, from the API specification.
+     * GET /service/{service_id}/dns/{zone_id}/password — Bearer token required, verified against the live API.
      *
      * Returns details of the DNS zone
      *
@@ -242,7 +242,7 @@ class Dns extends Resource
     /**
      * Edit DNS Record
      *
-     * PUT /service/{service_id}/dns/{zone_id}/records/{record_id} — Bearer token required, from the API specification.
+     * PUT /service/{service_id}/dns/{zone_id}/records/{record_id} — Bearer token required, verified against the live API.
      *
      * Edits the selected DNS zone record
      *
@@ -280,19 +280,20 @@ class Dns extends Resource
      * Path parameters:
      *   - service_id: Service ID
      *   - zone_id: Zone ID
-     *   - widgetdo: widgetdo action
+     *
+     * Body fields:
+     *   - widgetdo (string, required): widgetdo action
      *
      * @param string|int $serviceId Service ID
      * @param string|int $zoneId Zone ID
-     * @param string|int $widgetdo widgetdo action
      * @param array<string,mixed> $body Request payload.
      * @param array<string,mixed> $query Extra query-string parameters.
      *
      * @return mixed Decoded response body.
      */
-    public function updateZoneDnssec($serviceId, $zoneId, $widgetdo, array $body = [], array $query = [])
+    public function updateZoneDnssec($serviceId, $zoneId, array $body = [], array $query = [])
     {
-        $path = $this->path('/service/{service_id}/dns/{zone_id}/dnssec', ['service_id' => $serviceId, 'zone_id' => $zoneId, 'widgetdo' => $widgetdo]);
+        $path = $this->path('/service/{service_id}/dns/{zone_id}/dnssec', ['service_id' => $serviceId, 'zone_id' => $zoneId]);
         return $this->call('PUT', $path, ['query' => $query, 'body' => $body]);
     }
 

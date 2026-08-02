@@ -38,8 +38,14 @@ def _signature(operation: Dict[str, Any]) -> tuple[str, List[str], str]:
         keyword_args.append(f"{arg}: Any = {default}")
         query_map.append(f'"{name}": {arg}')
 
+    # The explicit payload argument must not collide with a body field of the same
+    # name — POST /tickets really does have a field called "body".
+    payload_arg = "payload"
+    field_names = {f["name"] for f in cat.body_fields(operation)}
+    while payload_arg in field_names:
+        payload_arg += "_"
     if cat.has_body(operation):
-        keyword_args.append("body: Optional[dict] = None")
+        keyword_args.append(f"{payload_arg}: Optional[dict] = None")
 
     if keyword_args:
         args.append("*")
@@ -48,9 +54,9 @@ def _signature(operation: Dict[str, Any]) -> tuple[str, List[str], str]:
     body_call = ""
     if cat.has_body(operation):
         args.append("**fields: Any")
-        body_call = "body=self._body(body, fields), "
+        body_call = f"body=self._body({payload_arg}, fields), "
     else:
-        args.append("**query: Any")
+        args.append("**query: Any")   # free-form query string parameters
 
     return ", ".join(args), query_map, body_call
 

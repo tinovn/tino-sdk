@@ -22,13 +22,16 @@ class CpanelResource(Resource):
         path = self._path("/service/cpanel2/{id}/changepasss", id=id)
         return self._call("GET", path, query=query)
 
-    def change_primary_domain(self, id, domain, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def change_primary_domain(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Change Domain cPanel
 
-        POST /service/cpanel2/{id}/changedomain — Bearer token required, from the API specification.
+        POST /service/cpanel2/{id}/changedomain — Bearer token required, verified against the live API.
+
+        Body fields:
+          - domain (string, required)
         """
-        path = self._path("/service/cpanel2/{id}/changedomain", id=id, domain=domain)
-        return self._call("POST", path, body=self._body(body, fields))
+        path = self._path("/service/cpanel2/{id}/changedomain", id=id)
+        return self._call("POST", path, body=self._body(payload, fields))
 
     def get_login_link(self, id, **query: Any) -> Any:
         """Get cPanel link login
@@ -60,15 +63,15 @@ class CpanelResource(Resource):
         path = self._path("/service/cpanel2/{id}/statistics", id=id)
         return self._call("GET", path, query=query)
 
-    def reset_account(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def reset_account(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Reset Acount cPanel
 
-        POST /service/cpanel2/{id}/resetacount — Bearer token required, from the API specification.
+        POST /service/cpanel2/{id}/resetacount — Bearer token required, verified against the live API.
         """
         path = self._path("/service/cpanel2/{id}/resetacount", id=id)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", path, body=self._body(payload, fields))
 
-    def unblock_ip(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def unblock_ip(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Get cPanel unblock ip
 
         POST /service/cpanel2/{id}/unblock — Bearer token required, from the API specification.
@@ -76,4 +79,4 @@ class CpanelResource(Resource):
         Get the details of a particular virtual server
         """
         path = self._path("/service/cpanel2/{id}/unblock", id=id)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", path, body=self._body(payload, fields))

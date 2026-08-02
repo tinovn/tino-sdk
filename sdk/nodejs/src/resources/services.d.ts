@@ -7,9 +7,9 @@ export declare class ServicesResource extends Resource {
   /** POST /service/{id}/cancel */
   cancel(id: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** POST /service/{id}/emails */
-  createEmailAccount(id: string | number, module: string | number, name: string | number, passmain: string | number, passcheck: string | number, quota: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
+  createEmailAccount(id: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** POST /service/{id}/emails/delete */
-  deleteEmailAccount(id: string | number, module: string | number, deluser: string | number, domain: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
+  deleteEmailAccount(id: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** GET /service/{id} */
   get(id: string | number, query?: Record<string, any>): Promise<any>;
   /** GET /service/{id}/cycle */
@@ -29,7 +29,7 @@ export declare class ServicesResource extends Resource {
   /** GET /services/{cid} */
   listByCategory(cid: string | number, query?: Record<string, any>): Promise<any>;
   /** GET /service/{id}/emails */
-  listEmailAccounts(id: string | number, module: string | number, query?: Record<string, any>): Promise<any>;
+  listEmailAccounts(id: string | number, query?: Record<string, any>): Promise<any>;
   /** GET /service/{id}/invoices */
   listInvoices(id: string | number, query?: Record<string, any>): Promise<any>;
   /** GET /service/{id}/ip */
@@ -53,7 +53,7 @@ export declare class ServicesResource extends Resource {
   /** POST /service/{id}/label */
   setLabel(id: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** POST /service/{id}/emails/change */
-  updateEmailAccount(id: string | number, module: string | number, change: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
+  updateEmailAccount(id: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** POST /service/{id}/rdns */
   updateReverseDns(id: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
 }

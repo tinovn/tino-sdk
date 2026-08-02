@@ -1,8 +1,8 @@
-# Services (hosting, VPS, ...) (part 1/2)
+# Services (hosting, VPS, ...) (part 1/3)
 
 SDK namespace: `client.services` (Python) · `client.services` (Node.js, PHP).
 
-15 operation(s) in this chapter, 8 with a captured live response.
+13 operation(s) in this chapter, 12 with a captured live response.
 
 | Method | Path | SDK | Auth |
 | --- | --- | --- | --- |
@@ -19,8 +19,6 @@ SDK namespace: `client.services` (Python) · `client.services` (Node.js, PHP).
 | `GET` | `/service/{id}/ip` | [`listIps`](#serviceslistips) | Bearer |
 | `GET` | `/service/{id}/label` | [`getLabel`](#servicesgetlabel) | Bearer |
 | `POST` | `/service/{id}/label` | [`setLabel`](#servicessetlabel) | Bearer |
-| `POST` | `/service/{id}/manualrenew` | [`manualRenew`](#servicesmanualrenew) | Bearer |
-| `GET` | `/service/{id}/methods` | [`listMethods`](#serviceslistmethods) | Bearer |
 
 ---
 
@@ -160,7 +158,7 @@ $client->services->get($id);
 
 ### `services.cancel`
 
-`POST /service/{id}/cancel` — Bearer token · spec only
+`POST /service/{id}/cancel` — Bearer token · verified live
 
 **Cancel Service**
 
@@ -190,7 +188,17 @@ Request service cancellation
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "info": [
+  "cancell_sent"
+ ]
+}
+```
+
+</details>
 
 **SDK**
 
@@ -306,7 +314,10 @@ Get the details of a particular virtual server
 | Name | In | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | `id` | path | integer | yes | Service ID |
-| `module` | path | string | yes | Service type module (Cpanel2\|DirectAdmin2\|Zimbra\|Wilduck) |
+
+| Name | In | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| `module` | query | string | yes | Service type module (Cpanel2\|DirectAdmin2\|Zimbra\|Wilduck) |
 
 **Response** `200`
 
@@ -324,20 +335,20 @@ Get the details of a particular virtual server
 **SDK**
 
 ```python
-client.services.list_email_accounts(id, module)
+client.services.list_email_accounts(id)
 ```
 ```javascript
-await client.services.listEmailAccounts(id, module);
+await client.services.listEmailAccounts(id);
 ```
 ```php
-$client->services->listEmailAccounts($id, $module);
+$client->services->listEmailAccounts($id);
 ```
 
 ---
 
 ### `services.createEmailAccount`
 
-`POST /service/{id}/emails` — Bearer token · spec only
+`POST /service/{id}/emails` — Bearer token · verified live
 
 **Create Emails Account**
 
@@ -348,35 +359,56 @@ Get the details of a particular virtual server
 | Name | In | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | `id` | path | integer | yes | Service ID |
-| `module` | path | string | yes | Service type module (Cpanel2\|DirectAdmin2\|Zimbra\|Wilduck) |
-| `name` | path | string | yes | Email account without domain |
-| `passmain` | path | string | yes | Password for email account |
-| `passcheck` | path | string | yes | Password confirm for email account |
-| `quota` | path | integer | yes | Email Quote (Megabytes) |
 
-**Request body** — none documented; any JSON object is forwarded as-is.
+**Request body**
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `module` | string | yes | Service type module (Cpanel2\|DirectAdmin2\|Zimbra\|Wilduck) |
+| `name` | string | yes | Email account without domain |
+| `passmain` | string | yes | Password for email account |
+| `passcheck` | string | yes | Password confirm for email account |
+| `quota` | integer | yes | Email Quote (Megabytes) |
+
+```json
+{
+  "module": "<module>",
+  "name": "<name>",
+  "passmain": "<passmain>",
+  "passcheck": "<passcheck>",
+  "quota": 0
+}
+```
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true
+}
+```
+
+</details>
 
 **SDK**
 
 ```python
-client.services.create_email_account(id, module, name, passmain, passcheck, quota)
+client.services.create_email_account(id, module=...)
 ```
 ```javascript
-await client.services.createEmailAccount(id, module, name, passmain, passcheck, quota);
+await client.services.createEmailAccount(id, { module: ... });
 ```
 ```php
-$client->services->createEmailAccount($id, $module, $name, $passmain, $passcheck, $quota);
+$client->services->createEmailAccount($id, ['module' => ...]);
 ```
 
 ---
 
 ### `services.updateEmailAccount`
 
-`POST /service/{id}/emails/change` — Bearer token · spec only
+`POST /service/{id}/emails/change` — Bearer token · verified live
 
 **Update Emails Account**
 
@@ -387,32 +419,50 @@ Get the details of a particular virtual server
 | Name | In | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | `id` | path | integer | yes | Service ID |
-| `module` | path | string | yes | Service type module (Cpanel2\|DirectAdmin2\|Zimbra\|Wilduck) |
-| `change` | path | Array | yes | — |
 
-**Request body** — none documented; any JSON object is forwarded as-is.
+**Request body**
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `module` | string | yes | Service type module (Cpanel2\|DirectAdmin2\|Zimbra\|Wilduck) |
+| `change` | Array | yes | — |
+
+```json
+{
+  "module": "<module>",
+  "change": "<change>"
+}
+```
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true
+}
+```
+
+</details>
 
 **SDK**
 
 ```python
-client.services.update_email_account(id, module, change)
+client.services.update_email_account(id, module=...)
 ```
 ```javascript
-await client.services.updateEmailAccount(id, module, change);
+await client.services.updateEmailAccount(id, { module: ... });
 ```
 ```php
-$client->services->updateEmailAccount($id, $module, $change);
+$client->services->updateEmailAccount($id, ['module' => ...]);
 ```
 
 ---
 
 ### `services.deleteEmailAccount`
 
-`POST /service/{id}/emails/delete` — Bearer token · spec only
+`POST /service/{id}/emails/delete` — Bearer token · verified live
 
 **Delete Email Account**
 
@@ -423,26 +473,45 @@ Get the details of a particular virtual server
 | Name | In | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | `id` | path | integer | yes | Service ID |
-| `module` | path | string | yes | Service type module (Cpanel2\|DirectAdmin2\|Zimbra\|Wilduck) |
-| `deluser` | path | string | yes | Email account |
-| `domain` | path | string | yes | Password for email account |
 
-**Request body** — none documented; any JSON object is forwarded as-is.
+**Request body**
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `module` | string | yes | Service type module (Cpanel2\|DirectAdmin2\|Zimbra\|Wilduck) |
+| `deluser` | string | yes | Email account |
+| `domain` | string | yes | Password for email account |
+
+```json
+{
+  "module": "<module>",
+  "deluser": "<deluser>",
+  "domain": "<domain>"
+}
+```
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true
+}
+```
+
+</details>
 
 **SDK**
 
 ```python
-client.services.delete_email_account(id, module, deluser, domain)
+client.services.delete_email_account(id, module=...)
 ```
 ```javascript
-await client.services.deleteEmailAccount(id, module, deluser, domain);
+await client.services.deleteEmailAccount(id, { module: ... });
 ```
 ```php
-$client->services->deleteEmailAccount($id, $module, $deluser, $domain);
+$client->services->deleteEmailAccount($id, ['module' => ...]);
 ```
 
 ---
@@ -570,7 +639,7 @@ $client->services->getLabel($id);
 
 ### `services.setLabel`
 
-`POST /service/{id}/label` — Bearer token · spec only
+`POST /service/{id}/label` — Bearer token · verified live
 
 **Change service label**
 
@@ -598,7 +667,18 @@ Set new custom label to identify this service
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true,
+ "info": [
+  "service_label_updated"
+ ]
+}
+```
+
+</details>
 
 **SDK**
 
@@ -610,92 +690,6 @@ await client.services.setLabel(id, { id: ... });
 ```
 ```php
 $client->services->setLabel($id, ['id' => ...]);
-```
-
----
-
-### `services.manualRenew`
-
-`POST /service/{id}/manualrenew` — Bearer token · spec only
-
-**Manual renew Service**
-
-Check if domain is available for registration. Returns status: "ok" if domain is available, empty response otherwise
-
-**Parameters**
-
-| Name | In | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| `id` | path | string | yes | — |
-
-**Request body** — none documented; any JSON object is forwarded as-is.
-
-**Response** `200`
-
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
-
-**SDK**
-
-```python
-client.services.manual_renew(id)
-```
-```javascript
-await client.services.manualRenew(id);
-```
-```php
-$client->services->manualRenew($id);
-```
-
----
-
-### `services.listMethods`
-
-`GET /service/{id}/methods` — Bearer token · verified live
-
-**List service methods**
-
-List methods available for service
-
-**Parameters**
-
-| Name | In | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| `id` | path | string | yes | — |
-
-**Response** `200`
-
-<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
-
-```json
-{
- "methods": [
-  {
-   "name": "Upgrade Options",
-   "method": "GET",
-   "route": "/service/@id/upgrade"
-  },
-  {
-   "name": "Upgrade Request",
-   "method": "POST",
-   "route": "/service/@id/upgrade"
-  },
-  "… 30 more item(s)"
- ]
-}
-```
-
-</details>
-
-**SDK**
-
-```python
-client.services.list_methods(id)
-```
-```javascript
-await client.services.listMethods(id);
-```
-```php
-$client->services->listMethods($id);
 ```
 
 ---

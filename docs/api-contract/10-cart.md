@@ -326,6 +326,8 @@ by one of the method listed below:
 
 • `POST /certificate/order` - use `certificate` for item type
 
+> **Note.** The single entry point for placing an order. It accepts several items of any product type in one call — hosting, VPS, domains, SSL — so the per-product and per-domain order routes are not needed. Preview the price first with cart.quote, which takes the same payload and creates nothing.
+
 **Request body**
 
 | Field | Type | Required | Description |
@@ -455,7 +457,7 @@ $client->cart->getProduct($productId);
 
 ### `cart.orderProduct`
 
-`POST /order/{product_id}` — Bearer token · spec only
+`POST /order/{product_id}` — Bearer token · spec only · **deprecated**
 
 **Order new service**
 
@@ -463,6 +465,8 @@ Create and submit new order for selected product.
 
 To get available cycle and configuration options lookup product details
 using `GET /order/@product_id`
+
+> **Note.** Legacy single-product form. Use cart.order instead — it is the supported way to place an order and handles multiple items in one call.
 
 **Parameters**
 
@@ -518,6 +522,8 @@ $client->cart->orderProduct($productId, ['domain' => ...]);
 
 Calculate order cost and recurring prices for selected items.
 Use the same parameters as for `POST /order`
+
+> **Note.** Price preview for a cart.order payload. Returns the subtotal, tax, discounts and recurring amounts without creating an order or an invoice.
 
 **Request body**
 

@@ -2,7 +2,7 @@
 
 SDK namespace: `client.domains` (Python) · `client.domains` (Node.js, PHP).
 
-12 operation(s) in this chapter, 9 with a captured live response.
+11 operation(s) in this chapter, 10 with a captured live response.
 
 | Method | Path | SDK | Auth |
 | --- | --- | --- | --- |
@@ -16,7 +16,6 @@ SDK namespace: `client.domains` (Python) · `client.domains` (Node.js, PHP).
 | `GET` | `/domain/{id}/autorenew` | [`getAutoRenew`](#domainsgetautorenew) | Bearer |
 | `PUT` | `/domain/{id}/autorenew` | [`updateAutoRenew`](#domainsupdateautorenew) | Bearer |
 | `GET` | `/domain/{id}/contact` | [`getContacts`](#domainsgetcontacts) | Bearer |
-| `PUT` | `/domain/{id}/contact` | [`updateContacts`](#domainsupdatecontacts) | Bearer |
 | `GET` | `/domain/{id}/dnssec` | [`listDnssecKeys`](#domainslistdnsseckeys) | Bearer |
 
 ---
@@ -227,12 +226,14 @@ $client->domains->getByName($name);
 
 ### `domains.order`
 
-`POST /domain/order` — Bearer token · spec only
+`POST /domain/order` — Bearer token · spec only · **deprecated**
 
 **Order new domain**
 
 Create new order for a domain, please check if requested domain is available first,
 otherwise your order may get cancelled.
+
+> **Note.** Domains are ordered through cart.order together with any other item. This route remains for the standalone domain flow.
 
 **Request body**
 
@@ -520,7 +521,7 @@ $client->domains->getAutoRenew($id);
 
 ### `domains.updateAutoRenew`
 
-`PUT /domain/{id}/autorenew` — Bearer token · spec only
+`PUT /domain/{id}/autorenew` — Bearer token · verified live
 
 **Enable/disable domain autorenew**
 
@@ -529,24 +530,44 @@ $client->domains->getAutoRenew($id);
 | Name | In | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | `id` | path | integer | yes | Domain id |
-| `autorenew` | path | boolean | yes | true\|false |
 
-**Request body** — none documented; any JSON object is forwarded as-is.
+**Request body**
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `autorenew` | boolean | yes | true\|false |
+
+```json
+{
+  "autorenew": true
+}
+```
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true,
+ "info": [
+  "success_changes_save"
+ ]
+}
+```
+
+</details>
 
 **SDK**
 
 ```python
-client.domains.update_auto_renew(id, autorenew)
+client.domains.update_auto_renew(id, autorenew=...)
 ```
 ```javascript
-await client.domains.updateAutoRenew(id, autorenew);
+await client.domains.updateAutoRenew(id, { autorenew: ... });
 ```
 ```php
-$client->domains->updateAutoRenew($id, $autorenew);
+$client->domains->updateAutoRenew($id, ['autorenew' => ...]);
 ```
 
 ---
@@ -628,56 +649,6 @@ await client.domains.getContacts(id);
 ```
 ```php
 $client->domains->getContacts($id);
-```
-
----
-
-### `domains.updateContacts`
-
-`PUT /domain/{id}/contact` — Bearer token · spec only
-
-**Update domain contact (WHOIS) information**
-
-Update the registrant, admin, tech and billing contacts of a domain.
-
-**Parameters**
-
-| Name | In | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| `id` | path | string | yes | Domain id |
-
-**Request body**
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `registrant` | object | no | Registrant contact fields |
-| `admin` | object | no | Administrative contact fields |
-| `tech` | object | no | Technical contact fields |
-| `billing` | object | no | Billing contact fields |
-
-```json
-{
-  "registrant": {},
-  "admin": {},
-  "tech": {},
-  "billing": {}
-}
-```
-
-**Response** `200`
-
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
-
-**SDK**
-
-```python
-client.domains.update_contacts(id, registrant=...)
-```
-```javascript
-await client.domains.updateContacts(id, { registrant: ... });
-```
-```php
-$client->domains->updateContacts($id, ['registrant' => ...]);
 ```
 
 ---

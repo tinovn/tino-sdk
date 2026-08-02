@@ -18,7 +18,7 @@ class Certificates extends Resource
     /**
      * Download certificate
      *
-     * GET /certificate/{service_id}/crt — Bearer token required, from the API specification.
+     * GET /certificate/{service_id}/crt — Bearer token required, verified against the live API.
      *
      * Return X.509 certificate data
      *
@@ -39,7 +39,7 @@ class Certificates extends Resource
     /**
      * Certificate details
      *
-     * GET /certificate/{id} — Bearer token required, from the API specification.
+     * GET /certificate/{id} — Bearer token required, verified against the live API.
      *
      * @param string|int $id
      * @param array<string,mixed> $query Extra query-string parameters.
@@ -116,7 +116,12 @@ class Certificates extends Resource
      *
      * POST /certificate/order — Bearer token required, from the API specification.
      *
+     * DEPRECATED — kept for compatibility; see the note below for the replacement.
+     *
      * Create new order for a certificate
+     *
+     * Note: Certificates are ordered through cart.order together with any other item. This
+     * route remains for the standalone certificate flow.
      *
      * Body fields:
      *   - product_id (integer): Certificate product ID

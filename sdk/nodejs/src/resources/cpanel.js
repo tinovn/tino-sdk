@@ -23,15 +23,17 @@ export class CpanelResource extends Resource {
   /**
    * Change Domain cPanel
    *
-   * POST /service/cpanel2/{id}/changedomain — Bearer token required, from the API specification.
+   * POST /service/cpanel2/{id}/changedomain — Bearer token required, verified against the live API.
+   *
+   * Body fields:
+   *   - domain (string, required)
    * @param {string|number} id
-   * @param {string|number} domain
    * @param {object} [body] Request payload.
    * @param {object} [query] Extra query-string parameters.
    * @returns {Promise<any>}
    */
-  changePrimaryDomain(id, domain, body = undefined, query = {}) {
-    const path = this._path('/service/cpanel2/{id}/changedomain', { id: id, domain: domain });
+  changePrimaryDomain(id, body = undefined, query = {}) {
+    const path = this._path('/service/cpanel2/{id}/changedomain', { id: id });
     return this._call('POST', path, { query, body });
   }
 
@@ -83,7 +85,7 @@ export class CpanelResource extends Resource {
   /**
    * Reset Acount cPanel
    *
-   * POST /service/cpanel2/{id}/resetacount — Bearer token required, from the API specification.
+   * POST /service/cpanel2/{id}/resetacount — Bearer token required, verified against the live API.
    * @param {string|number} id
    * @param {object} [body] Request payload.
    * @param {object} [query] Extra query-string parameters.

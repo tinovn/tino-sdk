@@ -139,7 +139,7 @@ Return languages translate
 
 | Name | In | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| `key` | path | string | yes | lang keyword |
+| `key` | query | string | yes | lang keyword |
 
 **Response** `200`
 
@@ -163,13 +163,13 @@ Return languages translate
 **SDK**
 
 ```python
-client.languages.get_billing_cycle_labels(key)
+client.languages.get_billing_cycle_labels()
 ```
 ```javascript
-await client.languages.getBillingCycleLabels(key);
+await client.languages.getBillingCycleLabels();
 ```
 ```php
-$client->languages->getBillingCycleLabels($key);
+$client->languages->getBillingCycleLabels();
 ```
 
 ---

@@ -224,19 +224,17 @@ class Affiliate extends Resource
      *
      * DELETE /affiliate/removevoucher — Bearer token required, from the API specification.
      *
-     * Path parameters:
-     *   - id: Plan ID, Empty if get list plans
+     * Query parameters:
+     *   - id (required): Plan ID, Empty if get list plans
      *
-     * @param string|int $id Plan ID, Empty if get list plans
      * @param array<string,mixed> $body Request payload.
      * @param array<string,mixed> $query Extra query-string parameters.
      *
      * @return mixed Decoded response body.
      */
-    public function removeVoucherLegacy($id, array $body = [], array $query = [])
+    public function removeVoucherLegacy(array $body = [], array $query = [])
     {
-        $path = $this->path('/affiliate/removevoucher', ['id' => $id]);
-        return $this->call('DELETE', $path, ['query' => $query, 'body' => $body]);
+        return $this->call('DELETE', '/affiliate/removevoucher', ['query' => $query, 'body' => $body]);
     }
 
 }

@@ -8,7 +8,7 @@ export class DnsResource extends Resource {
   /**
    * Add DNS Record
    *
-   * POST /service/{service_id}/dns/{zone_id}/records — Bearer token required, from the API specification.
+   * POST /service/{service_id}/dns/{zone_id}/records — Bearer token required, verified against the live API.
    *
    * Creates a new record in the DNS zone
    *
@@ -54,7 +54,7 @@ export class DnsResource extends Resource {
   /**
    * Remove DNS Record
    *
-   * DELETE /service/{service_id}/dns/{zone_id}/records/{record_id} — Bearer token required, from the API specification.
+   * DELETE /service/{service_id}/dns/{zone_id}/records/{record_id} — Bearer token required, verified against the live API.
    *
    * Removes the selected DNS zone record
    *
@@ -182,7 +182,7 @@ export class DnsResource extends Resource {
   /**
    * Change Zone DNS
    *
-   * GET /service/{service_id}/dns/{zone_id}/password — Bearer token required, from the API specification.
+   * GET /service/{service_id}/dns/{zone_id}/password — Bearer token required, verified against the live API.
    *
    * Returns details of the DNS zone
    *
@@ -202,7 +202,7 @@ export class DnsResource extends Resource {
   /**
    * Edit DNS Record
    *
-   * PUT /service/{service_id}/dns/{zone_id}/records/{record_id} — Bearer token required, from the API specification.
+   * PUT /service/{service_id}/dns/{zone_id}/records/{record_id} — Bearer token required, verified against the live API.
    *
    * Edits the selected DNS zone record
    *
@@ -237,16 +237,17 @@ export class DnsResource extends Resource {
    * Path parameters:
    *   - service_id: Service ID
    *   - zone_id: Zone ID
-   *   - widgetdo: widgetdo action
+   *
+   * Body fields:
+   *   - widgetdo (string, required): widgetdo action
    * @param {string|number} serviceId Service ID
    * @param {string|number} zoneId Zone ID
-   * @param {string|number} widgetdo widgetdo action
    * @param {object} [body] Request payload.
    * @param {object} [query] Extra query-string parameters.
    * @returns {Promise<any>}
    */
-  updateZoneDnssec(serviceId, zoneId, widgetdo, body = undefined, query = {}) {
-    const path = this._path('/service/{service_id}/dns/{zone_id}/dnssec', { service_id: serviceId, zone_id: zoneId, widgetdo: widgetdo });
+  updateZoneDnssec(serviceId, zoneId, body = undefined, query = {}) {
+    const path = this._path('/service/{service_id}/dns/{zone_id}/dnssec', { service_id: serviceId, zone_id: zoneId });
     return this._call('PUT', path, { query, body });
   }
 

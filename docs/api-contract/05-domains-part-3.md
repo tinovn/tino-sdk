@@ -2,13 +2,132 @@
 
 SDK namespace: `client.domains` (Python) · `client.domains` (Node.js, PHP).
 
-3 operation(s) in this chapter, 3 with a captured live response.
+5 operation(s) in this chapter, 5 with a captured live response.
 
 | Method | Path | SDK | Auth |
 | --- | --- | --- | --- |
+| `PUT` | `/domain/{id}/reglock` | [`updateRegistrarLock`](#domainsupdateregistrarlock) | Bearer |
+| `POST` | `/domain/{id}/renew` | [`renew`](#domainsrenew) | Bearer |
 | `GET` | `/domain/{id}/sync` | [`sync`](#domainssync) | Bearer |
 | `GET` | `/domains` | [`list`](#domainslist) | Bearer |
 | `GET` | `/whois/{domain}` | [`whois`](#domainswhois) | Bearer |
+
+---
+
+### `domains.updateRegistrarLock`
+
+`PUT /domain/{id}/reglock` — Bearer token · verified live
+
+**Update domain lock**
+
+**Parameters**
+
+| Name | In | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| `id` | path | integer | yes | Domain id |
+
+**Request body**
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `switch` | boolean | no | true\|false |
+
+```json
+{
+  "switch": "true|false"
+}
+```
+
+**Response** `200`
+
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true,
+ "info": [
+  "success_changes_save"
+ ]
+}
+```
+
+</details>
+
+**SDK**
+
+```python
+client.domains.update_registrar_lock(id, switch=...)
+```
+```javascript
+await client.domains.updateRegistrarLock(id, { switch: ... });
+```
+```php
+$client->domains->updateRegistrarLock($id, ['switch' => ...]);
+```
+
+---
+
+### `domains.renew`
+
+`POST /domain/{id}/renew` — Bearer token · verified live
+
+**Renew domain**
+
+Create new renew order for a domain, please check if requested domain is available first, otherwise your order may get cancelled.
+
+**Parameters**
+
+| Name | In | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| `id` | path | string | yes | — |
+
+**Request body**
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `years` | string | no | Number of years |
+| `pay_method` | integer | no | Payment method ID |
+
+```json
+{
+  "years": "yearsValue",
+  "pay_method": "pay_methodValue"
+}
+```
+
+**Response** `200`
+
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "order_num": 626303876,
+ "invoice_id": "1201939",
+ "total": "588109",
+ "items": [
+  {
+   "type": "Domain Renew",
+   "id": "200001",
+   "name": "example.com",
+   "product_id": "1435"
+  }
+ ]
+}
+```
+
+</details>
+
+**SDK**
+
+```python
+client.domains.renew(id, years=...)
+```
+```javascript
+await client.domains.renew(id, { years: ... });
+```
+```php
+$client->domains->renew($id, ['years' => ...]);
+```
 
 ---
 
@@ -139,9 +258,9 @@ $client->domains->list();
  "whois": {
   "domain": "example.com",
   "registrar": "Web Commerce Communications Ltd.",
-  "createDate": "2025-12-07T11:33:03.471Z",
-  "expiredDate": "2026-12-07T11:33:03.471Z",
-  "updatedDate": "2026-03-30T16:45:54.697Z",
+  "createDate": "2025-12-07T112001:db8::1.471Z",
+  "expiredDate": "2026-12-07T112001:db8::1.471Z",
+  "updatedDate": "2026-03-30T162001:db8::1.697Z",
   "nameservers": [
    "ns1.tino.vn",
    "ns2.tino.vn"
@@ -153,7 +272,7 @@ $client->domains->list();
   ],
   "WhoisServer": "whois.webnic.cc"
  },
- "raw": "Domain Name: example.com<br />Registry Domain ID: DO_d59b4fbe41112c70f4c72e6116f376a3-ARUBA<br />Registrar WHOIS Server: whois.webnic.cc<br />Registrar URL: https://www.webnic.cc<br />Updated Date: 2026-03-30T16:45:54.697Z<br />Creation Date: 2025-12-07T11:33:03.471Z<br />Registry Expiry Date: 2026-…"
+ "raw": "Domain Name: example.com<br />Registry Domain ID: DO_d59b4fbe41112c70f4c72e6116f376a3-ARUBA<br />Registrar WHOIS Server: whois.webnic.cc<br />Registrar URL: https://www.webnic.cc<br />Updated Date: 2026-03-30T162001:db8::1.697Z<br />Creation Date: 2025-12-07T112001:db8::1.471Z<br />Registry Expiry D…"
 }
 ```
 

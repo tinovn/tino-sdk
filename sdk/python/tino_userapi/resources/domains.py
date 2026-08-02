@@ -10,18 +10,18 @@ from .base import Resource
 
 
 class DomainsResource(Resource):
-    """Domain names — 31 operations."""
+    """Domain names — 30 operations."""
 
-    def add_dnssec_key(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def add_dnssec_key(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Adds the DNSSEC key
 
-        PUT /domain/{id}/dnssec — Bearer token required, from the API specification.
+        PUT /domain/{id}/dnssec — Bearer token required, verified against the live API.
 
         Body fields:
           - id (integer): Domain id
         """
         path = self._path("/domain/{id}/dnssec", id=id)
-        return self._call("PUT", path, body=self._body(body, fields))
+        return self._call("PUT", path, body=self._body(payload, fields))
 
     def get(self, id, **query: Any) -> Any:
         """Domain details
@@ -215,7 +215,7 @@ class DomainsResource(Resource):
         params = self._query({"page": page, "perpage": perpage, "orderby": orderby, "filter": filters}, query)
         return self._call("GET", "/domain", query=params)
 
-    def lookup(self, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def lookup(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Domain availability
 
         POST /domain/lookup — no authentication required, verified against the live API.
@@ -226,15 +226,20 @@ class DomainsResource(Resource):
         Body fields:
           - name (string): Domain name, ie. example.com
         """
-        return self._call("POST", "/domain/lookup", body=self._body(body, fields), authenticated=False)
+        return self._call("POST", "/domain/lookup", body=self._body(payload, fields), authenticated=False)
 
-    def order(self, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def order(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Order new domain
 
         POST /domain/order — Bearer token required, from the API specification.
 
+        DEPRECATED — kept for compatibility; see the note below for the replacement.
+
         Create new order for a domain, please check if requested domain is available first,
         otherwise your order may get cancelled.
+
+        Note: Domains are ordered through cart.order together with any other item. This route
+        remains for the standalone domain flow.
 
         Body fields:
           - name (string): Domain name
@@ -251,12 +256,12 @@ class DomainsResource(Resource):
           - data (array): Addditional data required for some TLDs
           - aff_id (integer): Affiliate ID
         """
-        return self._call("POST", "/domain/order", body=self._body(body, fields))
+        return self._call("POST", "/domain/order", body=self._body(payload, fields))
 
-    def register_nameserver(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def register_nameserver(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Register domain nameservers
 
-        POST /domain/{id}/reg — Bearer token required, from the API specification.
+        POST /domain/{id}/reg — Bearer token required, verified against the live API.
 
         Manage private/glue nameservers for a domain. Use the `action` parameter to select the
         operation:
@@ -274,9 +279,9 @@ class DomainsResource(Resource):
           - newip (string): New IP address – required for modifyNameServer
         """
         path = self._path("/domain/{id}/reg", id=id)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", path, body=self._body(payload, fields))
 
-    def remove_dnssec_key(self, id, key, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def remove_dnssec_key(self, id, key, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """removeDnssecKey
 
         DELETE /domain/{id}/dnssec/{key} — Bearer token required, from the API specification.
@@ -285,12 +290,12 @@ class DomainsResource(Resource):
           - id: Domain id
         """
         path = self._path("/domain/{id}/dnssec/{key}", id=id, key=key)
-        return self._call("DELETE", path, body=self._body(body, fields))
+        return self._call("DELETE", path, body=self._body(payload, fields))
 
-    def renew(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def renew(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Renew domain
 
-        POST /domain/{id}/renew — Bearer token required, from the API specification.
+        POST /domain/{id}/renew — Bearer token required, verified against the live API.
 
         Create new renew order for a domain, please check if requested domain is available
         first, otherwise your order may get cancelled.
@@ -300,9 +305,9 @@ class DomainsResource(Resource):
           - pay_method (integer): Payment method ID
         """
         path = self._path("/domain/{id}/renew", id=id)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", path, body=self._body(payload, fields))
 
-    def suggest(self, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def suggest(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Domain suggest
 
         POST /domain/suggest — no authentication required, verified against the live API.
@@ -313,7 +318,7 @@ class DomainsResource(Resource):
         Body fields:
           - name (string): Domain name, ie. example.com
         """
-        return self._call("POST", "/domain/suggest", body=self._body(body, fields), authenticated=False)
+        return self._call("POST", "/domain/suggest", body=self._body(payload, fields), authenticated=False)
 
     def sync(self, id, **query: Any) -> Any:
         """Synchronize domain
@@ -326,41 +331,24 @@ class DomainsResource(Resource):
         path = self._path("/domain/{id}/sync", id=id)
         return self._call("GET", path, query=query)
 
-    def update_auto_renew(self, id, autorenew, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def update_auto_renew(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Enable/disable domain autorenew
 
-        PUT /domain/{id}/autorenew — Bearer token required, from the API specification.
-
-        Path parameters:
-          - id: Domain id
-          - autorenew: true|false
-        """
-        path = self._path("/domain/{id}/autorenew", id=id, autorenew=autorenew)
-        return self._call("PUT", path, body=self._body(body, fields))
-
-    def update_contacts(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
-        """Update domain contact (WHOIS) information
-
-        PUT /domain/{id}/contact — Bearer token required, from the API specification.
-
-        Update the registrant, admin, tech and billing contacts of a domain.
+        PUT /domain/{id}/autorenew — Bearer token required, verified against the live API.
 
         Path parameters:
           - id: Domain id
 
         Body fields:
-          - registrant (object): Registrant contact fields
-          - admin (object): Administrative contact fields
-          - tech (object): Technical contact fields
-          - billing (object): Billing contact fields
+          - autorenew (boolean, required): true|false
         """
-        path = self._path("/domain/{id}/contact", id=id)
-        return self._call("PUT", path, body=self._body(body, fields))
+        path = self._path("/domain/{id}/autorenew", id=id)
+        return self._call("PUT", path, body=self._body(payload, fields))
 
-    def update_email_forwarding(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def update_email_forwarding(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Update email forwarding
 
-        PUT /domain/{id}/emforwarding — Bearer token required, from the API specification.
+        PUT /domain/{id}/emforwarding — Bearer token required, verified against the live API.
 
         Body fields:
           - id (integer): Domain id
@@ -369,20 +357,20 @@ class DomainsResource(Resource):
           - records (array): Multiple forwarding rules [{"from":"info","to":"dest@domain.com"},{"from":"support","to":"help@domain.com"}]
         """
         path = self._path("/domain/{id}/emforwarding", id=id)
-        return self._call("PUT", path, body=self._body(body, fields))
+        return self._call("PUT", path, body=self._body(payload, fields))
 
-    def update_forwarding(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def update_forwarding(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Update domain forwarding
 
-        PUT /domain/{id}/forwarding — Bearer token required, from the API specification.
+        PUT /domain/{id}/forwarding — Bearer token required, verified against the live API.
 
         Body fields:
           - id (integer): Domain id
         """
         path = self._path("/domain/{id}/forwarding", id=id)
-        return self._call("PUT", path, body=self._body(body, fields))
+        return self._call("PUT", path, body=self._body(payload, fields))
 
-    def update_id_protection(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def update_id_protection(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Update domain ID Protection
 
         PUT /domain/{id}/idprotection — Bearer token required, from the API specification.
@@ -394,12 +382,12 @@ class DomainsResource(Resource):
           - switch (boolean): true|false
         """
         path = self._path("/domain/{id}/idprotection", id=id)
-        return self._call("PUT", path, body=self._body(body, fields))
+        return self._call("PUT", path, body=self._body(payload, fields))
 
-    def update_nameservers(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def update_nameservers(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Update domain nameservers
 
-        PUT /domain/{id}/ns — Bearer token required, from the API specification.
+        PUT /domain/{id}/ns — Bearer token required, verified against the live API.
 
         Change domain nameservers, if `$nameservers` is left empty, default namesevers will be
         used
@@ -409,12 +397,12 @@ class DomainsResource(Resource):
           - nameservers (array): List of nameservers to use
         """
         path = self._path("/domain/{id}/ns", id=id)
-        return self._call("PUT", path, body=self._body(body, fields))
+        return self._call("PUT", path, body=self._body(payload, fields))
 
-    def update_registrar_lock(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def update_registrar_lock(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Update domain lock
 
-        PUT /domain/{id}/reglock — Bearer token required, from the API specification.
+        PUT /domain/{id}/reglock — Bearer token required, verified against the live API.
 
         Path parameters:
           - id: Domain id
@@ -423,7 +411,7 @@ class DomainsResource(Resource):
           - switch (boolean): true|false
         """
         path = self._path("/domain/{id}/reglock", id=id)
-        return self._call("PUT", path, body=self._body(body, fields))
+        return self._call("PUT", path, body=self._body(payload, fields))
 
     def whois(self, domain, **query: Any) -> Any:
         """Whois Domain

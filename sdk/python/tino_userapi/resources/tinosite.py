@@ -12,42 +12,50 @@ from .base import Resource
 class TinositeResource(Resource):
     """TinoSite (managed WordPress) — 10 operations."""
 
-    def auto_login(self, id, email, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def auto_login(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Auto Login
 
-        POST /tinosite/{id}/autologin — Bearer token required, from the API specification.
-        """
-        path = self._path("/tinosite/{id}/autologin", id=id, email=email)
-        return self._call("POST", path, body=self._body(body, fields))
+        POST /tinosite/{id}/autologin — Bearer token required, verified against the live API.
 
-    def backup(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+        Body fields:
+          - email (string, required)
+        """
+        path = self._path("/tinosite/{id}/autologin", id=id)
+        return self._call("POST", path, body=self._body(payload, fields))
+
+    def backup(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Backups
 
-        POST /tinosite/{id}/backups — Bearer token required, from the API specification.
+        POST /tinosite/{id}/backups — Bearer token required, verified against the live API.
         """
         path = self._path("/tinosite/{id}/backups", id=id)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", path, body=self._body(payload, fields))
 
-    def create_user(self, id, email, role, password, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def create_user(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Add User
 
-        POST /tinosite/{id}/users — Bearer token required, from the API specification.
-        """
-        path = self._path("/tinosite/{id}/users", id=id, email=email, role=role, password=password)
-        return self._call("POST", path, body=self._body(body, fields))
+        POST /tinosite/{id}/users — Bearer token required, verified against the live API.
 
-    def domain_pointer_action(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+        Body fields:
+          - email (string, required)
+          - role (string, required)
+          - password (string, required)
+        """
+        path = self._path("/tinosite/{id}/users", id=id)
+        return self._call("POST", path, body=self._body(payload, fields))
+
+    def domain_pointer_action(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Domain Pointer
 
-        POST /tinosite/{id}/domainpointers — Bearer token required, from the API specification.
+        POST /tinosite/{id}/domainpointers — Bearer token required, verified against the live API.
         """
         path = self._path("/tinosite/{id}/domainpointers", id=id)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", path, body=self._body(payload, fields))
 
     def get_metrics(self, id, **query: Any) -> Any:
         """Metrics
 
-        GET /tinosite/{id}/metrics — Bearer token required, from the API specification.
+        GET /tinosite/{id}/metrics — Bearer token required, verified against the live API.
         """
         path = self._path("/tinosite/{id}/metrics", id=id)
         return self._call("GET", path, query=query)
@@ -71,23 +79,23 @@ class TinositeResource(Resource):
     def list_users(self, id, **query: Any) -> Any:
         """List User
 
-        GET /tinosite/{id}/users — Bearer token required, from the API specification.
+        GET /tinosite/{id}/users — Bearer token required, verified against the live API.
         """
         path = self._path("/tinosite/{id}/users", id=id)
         return self._call("GET", path, query=query)
 
-    def ssl_certificate_action(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def ssl_certificate_action(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Action SSL
 
-        POST /tinosite/{id}/sslcerts — Bearer token required, from the API specification.
+        POST /tinosite/{id}/sslcerts — Bearer token required, verified against the live API.
         """
         path = self._path("/tinosite/{id}/sslcerts", id=id)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", path, body=self._body(payload, fields))
 
-    def toggle_ssl_certificate(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def toggle_ssl_certificate(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """on/off ssl certs
 
-        POST /tinosite/{id}/sslcerts/onoff — Bearer token required, from the API specification.
+        POST /tinosite/{id}/sslcerts/onoff — Bearer token required, verified against the live API.
         """
         path = self._path("/tinosite/{id}/sslcerts/onoff", id=id)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", path, body=self._body(payload, fields))

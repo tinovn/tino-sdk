@@ -114,6 +114,10 @@ def doc_lines(operation: Dict[str, Any]) -> List[str]:
     auth = "Bearer token required" if operation.get("auth") else "no authentication required"
     lines.append(f"{operation['method']} {operation['path']} — {auth}, {verified}.")
 
+    if operation.get("deprecated"):
+        lines.append("")
+        lines.append("DEPRECATED — kept for compatibility; see the note below for the replacement.")
+
     description = (operation.get("description") or "").strip()
     if description and description.lower() != summary.lower():
         lines.append("")

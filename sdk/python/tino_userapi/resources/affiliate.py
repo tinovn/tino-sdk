@@ -12,14 +12,14 @@ from .base import Resource
 class AffiliateResource(Resource):
     """Affiliate programme — 12 operations."""
 
-    def activate(self, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def activate(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Active Affiliate
 
         POST /affiliate/active — Bearer token required, from the API specification.
         """
-        return self._call("POST", "/affiliate/active", body=self._body(body, fields))
+        return self._call("POST", "/affiliate/active", body=self._body(payload, fields))
 
-    def add_voucher(self, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def add_voucher(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Add Vouchers
 
         POST /affiliates/addvoucher — Bearer token required, from the API specification.
@@ -33,9 +33,9 @@ class AffiliateResource(Resource):
           - expires (string): Expires Date
           - discount (string, one of Min: 1, Max: Commission Rate): Discount value
         """
-        return self._call("POST", "/affiliates/addvoucher", body=self._body(body, fields))
+        return self._call("POST", "/affiliates/addvoucher", body=self._body(payload, fields))
 
-    def add_voucher_legacy(self, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def add_voucher_legacy(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Add Vouchers
 
         POST /affiliate/addvoucher — Bearer token required, from the API specification.
@@ -49,7 +49,7 @@ class AffiliateResource(Resource):
           - expires (string): Expires Date
           - discount (string, one of Min: 1, Max: Commission Rate): Discount value
         """
-        return self._call("POST", "/affiliate/addvoucher", body=self._body(body, fields))
+        return self._call("POST", "/affiliate/addvoucher", body=self._body(payload, fields))
 
     def get_commission_plan(self, id, **query: Any) -> Any:
         """View Commision Plan
@@ -125,7 +125,7 @@ class AffiliateResource(Resource):
         params = self._query({"page": page, "perpage": perpage, "orderby": orderby, "filter": filters}, query)
         return self._call("GET", "/affiliates/vouchers", query=params)
 
-    def remove_voucher(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def remove_voucher(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Affiliate Delete Vouchers
 
         DELETE /affiliates/vouchers/{id}/remove — Bearer token required, from the API specification.
@@ -134,15 +134,15 @@ class AffiliateResource(Resource):
           - id: Plan ID, Empty if get list plans
         """
         path = self._path("/affiliates/vouchers/{id}/remove", id=id)
-        return self._call("DELETE", path, body=self._body(body, fields))
+        return self._call("DELETE", path, body=self._body(payload, fields))
 
-    def remove_voucher_legacy(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def remove_voucher_legacy(self, *, id: Any = None, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Affiliate Delete Vouchers
 
         DELETE /affiliate/removevoucher — Bearer token required, from the API specification.
 
-        Path parameters:
-          - id: Plan ID, Empty if get list plans
+        Query parameters:
+          - id (required): Plan ID, Empty if get list plans
         """
-        path = self._path("/affiliate/removevoucher", id=id)
-        return self._call("DELETE", path, body=self._body(body, fields))
+        params = self._query({"id": id}, {})
+        return self._call("DELETE", "/affiliate/removevoucher", query=params, body=self._body(payload, fields))

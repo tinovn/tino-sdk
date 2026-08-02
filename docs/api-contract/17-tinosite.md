@@ -2,7 +2,7 @@
 
 SDK namespace: `client.tinosite` (Python) · `client.tinosite` (Node.js, PHP).
 
-10 operation(s) in this chapter, 2 with a captured live response.
+10 operation(s) in this chapter, 10 with a captured live response.
 
 | Method | Path | SDK | Auth |
 | --- | --- | --- | --- |
@@ -21,7 +21,7 @@ SDK namespace: `client.tinosite` (Python) · `client.tinosite` (Node.js, PHP).
 
 ### `tinosite.autoLogin`
 
-`POST /tinosite/{id}/autologin` — Bearer token · spec only
+`POST /tinosite/{id}/autologin` — Bearer token · verified live
 
 **Auto Login**
 
@@ -30,31 +30,50 @@ SDK namespace: `client.tinosite` (Python) · `client.tinosite` (Node.js, PHP).
 | Name | In | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | `id` | path | integer | yes | — |
-| `email` | path | string | yes | — |
 
-**Request body** — none documented; any JSON object is forwarded as-is.
+**Request body**
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `email` | string | yes | — |
+
+```json
+{
+  "email": "<email>"
+}
+```
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true,
+ "service_id": "100001",
+ "login_url": null
+}
+```
+
+</details>
 
 **SDK**
 
 ```python
-client.tinosite.auto_login(id, email)
+client.tinosite.auto_login(id, email=...)
 ```
 ```javascript
-await client.tinosite.autoLogin(id, email);
+await client.tinosite.autoLogin(id, { email: ... });
 ```
 ```php
-$client->tinosite->autoLogin($id, $email);
+$client->tinosite->autoLogin($id, ['email' => ...]);
 ```
 
 ---
 
 ### `tinosite.backup`
 
-`POST /tinosite/{id}/backups` — Bearer token · spec only
+`POST /tinosite/{id}/backups` — Bearer token · verified live
 
 **Backups**
 
@@ -68,7 +87,17 @@ $client->tinosite->autoLogin($id, $email);
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true,
+ "service_id": "100001",
+ "backups": null
+}
+```
+
+</details>
 
 **SDK**
 
@@ -86,7 +115,7 @@ $client->tinosite->backup($id);
 
 ### `tinosite.domainPointerAction`
 
-`POST /tinosite/{id}/domainpointers` — Bearer token · spec only
+`POST /tinosite/{id}/domainpointers` — Bearer token · verified live
 
 **Domain Pointer**
 
@@ -100,7 +129,17 @@ $client->tinosite->backup($id);
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true,
+ "service_id": "100001",
+ "pointers": null
+}
+```
+
+</details>
 
 **SDK**
 
@@ -118,7 +157,7 @@ $client->tinosite->domainPointerAction($id);
 
 ### `tinosite.getMetrics`
 
-`GET /tinosite/{id}/metrics` — Bearer token · spec only
+`GET /tinosite/{id}/metrics` — Bearer token · verified live
 
 **Metrics**
 
@@ -200,7 +239,7 @@ $client->tinosite->listPlugins($id);
 
 ### `tinosite.sslCertificateAction`
 
-`POST /tinosite/{id}/sslcerts` — Bearer token · spec only
+`POST /tinosite/{id}/sslcerts` — Bearer token · verified live
 
 **Action SSL**
 
@@ -214,7 +253,17 @@ $client->tinosite->listPlugins($id);
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true,
+ "service_id": "100001",
+ "certs": null
+}
+```
+
+</details>
 
 **SDK**
 
@@ -232,7 +281,7 @@ $client->tinosite->sslCertificateAction($id);
 
 ### `tinosite.toggleSslCertificate`
 
-`POST /tinosite/{id}/sslcerts/onoff` — Bearer token · spec only
+`POST /tinosite/{id}/sslcerts/onoff` — Bearer token · verified live
 
 **on/off ssl certs**
 
@@ -246,7 +295,17 @@ $client->tinosite->sslCertificateAction($id);
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true,
+ "service_id": "100001",
+ "certs": null
+}
+```
+
+</details>
 
 **SDK**
 
@@ -304,7 +363,7 @@ $client->tinosite->listThemes($id);
 
 ### `tinosite.listUsers`
 
-`GET /tinosite/{id}/users` — Bearer token · spec only
+`GET /tinosite/{id}/users` — Bearer token · verified live
 
 **List User**
 
@@ -344,7 +403,7 @@ $client->tinosite->listUsers($id);
 
 ### `tinosite.createUser`
 
-`POST /tinosite/{id}/users` — Bearer token · spec only
+`POST /tinosite/{id}/users` — Bearer token · verified live
 
 **Add User**
 
@@ -353,26 +412,46 @@ $client->tinosite->listUsers($id);
 | Name | In | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | `id` | path | integer | yes | — |
-| `email` | path | string | yes | — |
-| `role` | path | string | yes | — |
-| `password` | path | string | yes | — |
 
-**Request body** — none documented; any JSON object is forwarded as-is.
+**Request body**
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `email` | string | yes | — |
+| `role` | string | yes | — |
+| `password` | string | yes | — |
+
+```json
+{
+  "email": "<email>",
+  "role": "<role>",
+  "password": "<password>"
+}
+```
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "success": true,
+ "service_id": "100001"
+}
+```
+
+</details>
 
 **SDK**
 
 ```python
-client.tinosite.create_user(id, email, role, password)
+client.tinosite.create_user(id, email=...)
 ```
 ```javascript
-await client.tinosite.createUser(id, email, role, password);
+await client.tinosite.createUser(id, { email: ... });
 ```
 ```php
-$client->tinosite->createUser($id, $email, $role, $password);
+$client->tinosite->createUser($id, ['email' => ...]);
 ```
 
 ---

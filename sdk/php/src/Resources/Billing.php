@@ -18,7 +18,7 @@ class Billing extends Resource
     /**
      * Add Funds
      *
-     * POST /billing/addfunds — Bearer token required, from the API specification.
+     * POST /billing/addfunds — Bearer token required, verified against the live API.
      *
      * Create Invoice Add Credits
      *
@@ -39,7 +39,7 @@ class Billing extends Resource
     /**
      * Add Funds
      *
-     * POST /addfunds — Bearer token required, from the API specification.
+     * POST /addfunds — Bearer token required, verified against the live API.
      *
      * Generate add funds invoice
      *
@@ -84,7 +84,7 @@ class Billing extends Resource
     /**
      * Delete Invoice
      *
-     * DELETE /invoice/{id} — Bearer token required, from the API specification.
+     * DELETE /invoice/{id} — Bearer token required, verified against the live API.
      *
      * Path parameters:
      *   - id: Invoice id
@@ -394,7 +394,7 @@ class Billing extends Resource
     /**
      * Payall Invoice
      *
-     * POST /invoices/payall — Bearer token required, from the API specification.
+     * POST /invoices/payall — Bearer token required, verified against the live API.
      *
      * Body fields:
      *   - selected (array): selected invoice id

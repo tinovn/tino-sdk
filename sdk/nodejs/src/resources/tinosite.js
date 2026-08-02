@@ -8,22 +8,24 @@ export class TinositeResource extends Resource {
   /**
    * Auto Login
    *
-   * POST /tinosite/{id}/autologin — Bearer token required, from the API specification.
+   * POST /tinosite/{id}/autologin — Bearer token required, verified against the live API.
+   *
+   * Body fields:
+   *   - email (string, required)
    * @param {string|number} id
-   * @param {string|number} email
    * @param {object} [body] Request payload.
    * @param {object} [query] Extra query-string parameters.
    * @returns {Promise<any>}
    */
-  autoLogin(id, email, body = undefined, query = {}) {
-    const path = this._path('/tinosite/{id}/autologin', { id: id, email: email });
+  autoLogin(id, body = undefined, query = {}) {
+    const path = this._path('/tinosite/{id}/autologin', { id: id });
     return this._call('POST', path, { query, body });
   }
 
   /**
    * Backups
    *
-   * POST /tinosite/{id}/backups — Bearer token required, from the API specification.
+   * POST /tinosite/{id}/backups — Bearer token required, verified against the live API.
    * @param {string|number} id
    * @param {object} [body] Request payload.
    * @param {object} [query] Extra query-string parameters.
@@ -37,24 +39,26 @@ export class TinositeResource extends Resource {
   /**
    * Add User
    *
-   * POST /tinosite/{id}/users — Bearer token required, from the API specification.
+   * POST /tinosite/{id}/users — Bearer token required, verified against the live API.
+   *
+   * Body fields:
+   *   - email (string, required)
+   *   - role (string, required)
+   *   - password (string, required)
    * @param {string|number} id
-   * @param {string|number} email
-   * @param {string|number} role
-   * @param {string|number} password
    * @param {object} [body] Request payload.
    * @param {object} [query] Extra query-string parameters.
    * @returns {Promise<any>}
    */
-  createUser(id, email, role, password, body = undefined, query = {}) {
-    const path = this._path('/tinosite/{id}/users', { id: id, email: email, role: role, password: password });
+  createUser(id, body = undefined, query = {}) {
+    const path = this._path('/tinosite/{id}/users', { id: id });
     return this._call('POST', path, { query, body });
   }
 
   /**
    * Domain Pointer
    *
-   * POST /tinosite/{id}/domainpointers — Bearer token required, from the API specification.
+   * POST /tinosite/{id}/domainpointers — Bearer token required, verified against the live API.
    * @param {string|number} id
    * @param {object} [body] Request payload.
    * @param {object} [query] Extra query-string parameters.
@@ -68,7 +72,7 @@ export class TinositeResource extends Resource {
   /**
    * Metrics
    *
-   * GET /tinosite/{id}/metrics — Bearer token required, from the API specification.
+   * GET /tinosite/{id}/metrics — Bearer token required, verified against the live API.
    * @param {string|number} id
    * @param {object} [query] Extra query-string parameters.
    * @returns {Promise<any>}
@@ -107,7 +111,7 @@ export class TinositeResource extends Resource {
   /**
    * List User
    *
-   * GET /tinosite/{id}/users — Bearer token required, from the API specification.
+   * GET /tinosite/{id}/users — Bearer token required, verified against the live API.
    * @param {string|number} id
    * @param {object} [query] Extra query-string parameters.
    * @returns {Promise<any>}
@@ -120,7 +124,7 @@ export class TinositeResource extends Resource {
   /**
    * Action SSL
    *
-   * POST /tinosite/{id}/sslcerts — Bearer token required, from the API specification.
+   * POST /tinosite/{id}/sslcerts — Bearer token required, verified against the live API.
    * @param {string|number} id
    * @param {object} [body] Request payload.
    * @param {object} [query] Extra query-string parameters.
@@ -134,7 +138,7 @@ export class TinositeResource extends Resource {
   /**
    * on/off ssl certs
    *
-   * POST /tinosite/{id}/sslcerts/onoff — Bearer token required, from the API specification.
+   * POST /tinosite/{id}/sslcerts/onoff — Bearer token required, verified against the live API.
    * @param {string|number} id
    * @param {object} [body] Request payload.
    * @param {object} [query] Extra query-string parameters.

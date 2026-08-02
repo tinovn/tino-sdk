@@ -7,7 +7,7 @@ export declare class VmsResource extends Resource {
   /** POST /service/{id}/vms/{vmid}/ippool/{pool} */
   allocateIps(id: string | number, vmid: string | number, pool: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** POST /service/{id}/vms/{vmid}/hostname */
-  changeHostname(id: string | number, vmid: string | number, serverName: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
+  changeHostname(id: string | number, vmid: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** POST /service/{id}/vms */
   create(id: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** POST /service/{id}/vms/{vmid}/backups/create */
@@ -15,9 +15,9 @@ export declare class VmsResource extends Resource {
   /** POST /service/{id}/vms/{vmid}/interfaces */
   createInterface(id: string | number, vmid: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** POST /service/{id}/vms/{vmid}/snapshots/create */
-  createSnapshot(id: string | number, vmid: string | number, description: string | number, vmstate: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
+  createSnapshot(id: string | number, vmid: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** POST /service/{id}/vms/{vmid}/snapshotschedule/create */
-  createSnapshotSchedule(id: string | number, vmid: string | number, dow: string | number, hour: string | number, min: string | number, vmstate: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
+  createSnapshotSchedule(id: string | number, vmid: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** DELETE /service/{id}/vms/{vmid}/backup/{backup_id}/delete */
   deleteBackup(id: string | number, vmid: string | number, backupId: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** DELETE /service/{id}/vms/{vmid}/snapshots/{snapshot_name}/delete */
@@ -65,7 +65,7 @@ export declare class VmsResource extends Resource {
   /** POST /service/{id}/vms/{vmid}/snapshots/{snapshot_id}/restore */
   restoreSnapshot(id: string | number, vmid: string | number, snapshotId: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** POST /service/{id}/vms/{vmid}/addsshkey */
-  setSshKeys(id: string | number, vmid: string | number, keys: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
+  setSshKeys(id: string | number, vmid: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** POST /service/{id}/vms/{vmid}/shutdown */
   shutdown(id: string | number, vmid: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** POST /service/{id}/vms/{vmid}/start */

@@ -9,7 +9,7 @@ support tickets for a Tino account.
 ```
 Base URL   https://api.tino.vn
 Auth       Authorization: Bearer <JWT>
-Surface    263 operations · 19 resource groups
+Surface    255 operations · 17 resource groups
 ```
 
 | | |
@@ -81,7 +81,7 @@ The Tino UserAPI has sharp edges. The SDKs absorb them:
 
 ```
 spec/
-  tino-userapi-catalog.json    canonical catalog — single source of truth (263 operations)
+  tino-userapi-catalog.json    canonical catalog — single source of truth (255 operations)
   response-samples.json        redacted live responses used as documentation samples
 docs/
   getting-started.md           base URL, login flows, token lifecycle
@@ -103,10 +103,11 @@ Every operation is described from three angles: the API's formal specification, 
 Tino's own client calls it in production, and what the live service actually answers —
 with the live service as the tie-breaker.
 
-134 operations were executed against `https://api.tino.vn` with a real account and their
-responses captured, redacted and embedded in the documentation. Operations that create,
-charge or delete were deliberately not called; they are documented and marked
-*spec only*.
+195 operations were executed against `https://api.tino.vn` with a real account and their
+responses captured, redacted and embedded in the documentation. The sweep covered the write endpoints too — orders, tickets, DNS records, VM power
+actions, cancellations — on a sandbox account, with each step restoring what it changed.
+The remainder are marked *spec only*: they need data the sandbox does not have, or they
+end the session.
 
 The catalog is committed, so the SDKs and the reference can be regenerated from a fresh
 clone without any additional input.
@@ -129,7 +130,7 @@ three languages in step.
 ## Status
 
 Version 1.0.0. The catalog and both generated layers are complete; response samples cover
-the 134 operations that are safe to call read-only. Contributions that add verified
+the 195 operations that could be exercised against a sandbox account. Contributions that add verified
 samples for the remaining operations are welcome — see
 [`tools/sanitize-samples.py`](tools/sanitize-samples.py) for the redaction rules that
 publishable samples must pass.

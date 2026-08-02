@@ -12,10 +12,10 @@ from .base import Resource
 class SupportResource(Resource):
     """Support tickets, news & knowledgebase — 13 operations."""
 
-    def close_ticket(self, number, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def close_ticket(self, number, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Close ticket
 
-        PUT /tickets/{number}/close — Bearer token required, from the API specification.
+        PUT /tickets/{number}/close — Bearer token required, verified against the live API.
 
         Send request to close a ticket
 
@@ -23,21 +23,24 @@ class SupportResource(Resource):
           - number (integer): Ticket number
         """
         path = self._path("/tickets/{number}/close", number=number)
-        return self._call("PUT", path, body=self._body(body, fields))
+        return self._call("PUT", path, body=self._body(payload, fields))
 
-    def create_ticket(self, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def create_ticket(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Create Ticket
 
-        POST /tickets — Bearer token required, from the API specification.
+        POST /tickets — Bearer token required, verified against the live API.
 
         Submit new ticket
+
+        Note: Returns the new ticket number as {"ticket": 690686} — the field is `ticket`, not
+        `ticket_number`. Use it as the {number} path parameter of the other ticket calls.
 
         Body fields:
           - dept_id (integer): Department id
           - subject (string): Ticket subject
           - body (string): Ticket message
         """
-        return self._call("POST", "/tickets", body=self._body(body, fields))
+        return self._call("POST", "/tickets", body=self._body(payload, fields))
 
     def get_attachment(self, file, *, number: Any = None, **query: Any) -> Any:
         """Ticket attachment
@@ -79,7 +82,7 @@ class SupportResource(Resource):
     def get_news(self, news_id, **query: Any) -> Any:
         """Get news item
 
-        GET /news/{news_id} — Bearer token required, from the API specification.
+        GET /news/{news_id} — Bearer token required, verified against the live API.
 
         Returns details of the news item
         """
@@ -147,10 +150,10 @@ class SupportResource(Resource):
         params = self._query({"page": page, "perpage": perpage, "orderby": orderby, "filter": filters}, query)
         return self._call("GET", "/tickets", query=params)
 
-    def reopen_ticket(self, number, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def reopen_ticket(self, number, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Re-open ticket
 
-        PUT /tickets/{number}/open — Bearer token required, from the API specification.
+        PUT /tickets/{number}/open — Bearer token required, verified against the live API.
 
         Try to re-open closed ticket
 
@@ -158,12 +161,12 @@ class SupportResource(Resource):
           - number (integer): Ticket number
         """
         path = self._path("/tickets/{number}/open", number=number)
-        return self._call("PUT", path, body=self._body(body, fields))
+        return self._call("PUT", path, body=self._body(payload, fields))
 
-    def reply_ticket(self, number, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def reply_ticket(self, number, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Create Reply
 
-        POST /tickets/{number} — Bearer token required, from the API specification.
+        POST /tickets/{number} — Bearer token required, verified against the live API.
 
         Reply to ticket
 
@@ -172,4 +175,4 @@ class SupportResource(Resource):
           - body (string): Reply message
         """
         path = self._path("/tickets/{number}", number=number)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", path, body=self._body(payload, fields))

@@ -8,7 +8,7 @@ export class LocationResource extends Resource {
   /**
    * Get city by State Name V2
    *
-   * GET /location/state/city-v2/{name} — Bearer token required, from the API specification.
+   * GET /location/state/city-v2/{name} — Bearer token required, verified against the live API.
    *
    * Path parameters:
    *   - name: State name

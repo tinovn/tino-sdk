@@ -181,16 +181,14 @@ export class AffiliateResource extends Resource {
    *
    * DELETE /affiliate/removevoucher — Bearer token required, from the API specification.
    *
-   * Path parameters:
-   *   - id: Plan ID, Empty if get list plans
-   * @param {string|number} id Plan ID, Empty if get list plans
+   * Query parameters:
+   *   - id (required): Plan ID, Empty if get list plans
    * @param {object} [body] Request payload.
    * @param {object} [query] Extra query-string parameters.
    * @returns {Promise<any>}
    */
-  removeVoucherLegacy(id, body = undefined, query = {}) {
-    const path = this._path('/affiliate/removevoucher', { id: id });
-    return this._call('DELETE', path, { query, body });
+  removeVoucherLegacy(body = undefined, query = {}) {
+    return this._call('DELETE', '/affiliate/removevoucher', { query, body });
   }
 
 }

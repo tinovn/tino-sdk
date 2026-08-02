@@ -5,7 +5,7 @@ import { Resource } from './base.js';
 
 export declare class LanguagesResource extends Resource {
   /** GET /languages/translate */
-  getBillingCycleLabels(key: string | number, query?: Record<string, any>): Promise<any>;
+  getBillingCycleLabels(query?: Record<string, any>): Promise<any>;
   /** GET /languages/file/{langname} */
   getFile(langname: string | number, query?: Record<string, any>): Promise<any>;
   /** GET /languages */

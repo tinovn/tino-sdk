@@ -27,5 +27,5 @@ export declare class DnsResource extends Resource {
   /** PUT /service/{service_id}/dns/{zone_id}/records/{record_id} */
   updateRecord(serviceId: string | number, zoneId: string | number, recordId: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
   /** PUT /service/{service_id}/dns/{zone_id}/dnssec */
-  updateZoneDnssec(serviceId: string | number, zoneId: string | number, widgetdo: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
+  updateZoneDnssec(serviceId: string | number, zoneId: string | number, body?: Record<string, any>, query?: Record<string, any>): Promise<any>;
 }

@@ -152,6 +152,30 @@ def build(swagger: dict) -> dict:
                 }
                 (path_params if where == "path" else query_params).append(entry)
 
+            # The spec marks several parameters `in: path` that never appear as a
+            # {placeholder} — they are really body fields on writes and query
+            # parameters on reads. Route them to where they actually belong.
+            placeholders = set(re.findall(r"\{(\w+)\}", path))
+            stray = [p for p in path_params if p["name"].strip() not in placeholders]
+            path_params = [p for p in path_params if p["name"].strip() in placeholders]
+            if stray:
+                if verb in ("post", "put", "patch"):
+                    fields = (body or {}).get("fields", [])
+                    known = {f["name"] for f in fields}
+                    for param in stray:
+                        field_name = param["name"].strip()
+                        if field_name not in known:
+                            fields.append({
+                                "name": field_name, "type": param.get("type", "string"),
+                                "required": param.get("required", False),
+                                "description": param.get("description", ""),
+                                "enum": param.get("enum"), "default": param.get("default"),
+                                "example": None,
+                            })
+                    body = {"fields": fields, "example": (body or {}).get("example")}
+                else:
+                    query_params.extend(stray)
+
             # Path placeholders missing from the parameter list still need arguments.
             declared = {p["name"] for p in path_params}
             for placeholder in re.findall(r"\{(\w+)\}", path):
@@ -243,6 +267,24 @@ def apply_corrections(catalog: dict, corrections: dict) -> dict:
     return catalog
 
 
+def mark_verified(catalog: dict, samples: dict) -> int:
+    """Flag every operation that has a captured live response."""
+    index = [(entry["method"], entry["path"]) for entry in samples.values()]
+    marked = 0
+    for operation in catalog["operations"]:
+        segments = operation["path"].split("/")
+        pattern = "/".join(
+            "[^/]+" if s.startswith("{") and s.endswith("}") else re.escape(s) for s in segments
+        )
+        compiled = re.compile(f"^{pattern}$")
+        for method, path in index:
+            if method == operation["method"] and compiled.match(path):
+                operation["verified"] = "live"
+                marked += 1
+                break
+    return marked
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("swagger")
@@ -256,6 +298,11 @@ def main() -> None:
 
     if os.path.exists(args.corrections):
         catalog = apply_corrections(catalog, json.load(open(args.corrections, encoding="utf-8")))
+
+    samples_path = os.path.join(ROOT, "spec", "response-samples.json")
+    if os.path.exists(samples_path):
+        marked = mark_verified(catalog, json.load(open(samples_path, encoding="utf-8")))
+        print(f"{marked} operations have a captured live response")
 
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
     with open(args.out, "w", encoding="utf-8") as fh:

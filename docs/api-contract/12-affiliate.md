@@ -105,7 +105,7 @@ $client->affiliate->addVoucherLegacy(['plan' => ...]);
 
 | Name | In | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| `id` | path | integer | yes | Plan ID, Empty if get list plans |
+| `id` | query | integer | yes | Plan ID, Empty if get list plans |
 
 **Request body** — none documented; any JSON object is forwarded as-is.
 
@@ -116,13 +116,13 @@ _Not captured live — this endpoint changes state, or it needs data the documen
 **SDK**
 
 ```python
-client.affiliate.remove_voucher_legacy(id)
+client.affiliate.remove_voucher_legacy()
 ```
 ```javascript
-await client.affiliate.removeVoucherLegacy(id);
+await client.affiliate.removeVoucherLegacy();
 ```
 ```php
-$client->affiliate->removeVoucherLegacy($id);
+$client->affiliate->removeVoucherLegacy();
 ```
 
 ---

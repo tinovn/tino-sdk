@@ -12,10 +12,10 @@ from .base import Resource
 class BillingResource(Resource):
     """Billing, invoices & payments — 21 operations."""
 
-    def add_funds(self, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def add_funds(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Add Funds
 
-        POST /billing/addfunds — Bearer token required, from the API specification.
+        POST /billing/addfunds — Bearer token required, verified against the live API.
 
         Create Invoice Add Credits
 
@@ -23,12 +23,12 @@ class BillingResource(Resource):
           - funds (integer): Amount of money
           - gateway (integer): Payment Method
         """
-        return self._call("POST", "/billing/addfunds", body=self._body(body, fields))
+        return self._call("POST", "/billing/addfunds", body=self._body(payload, fields))
 
-    def add_funds_legacy(self, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def add_funds_legacy(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Add Funds
 
-        POST /addfunds — Bearer token required, from the API specification.
+        POST /addfunds — Bearer token required, verified against the live API.
 
         Generate add funds invoice
 
@@ -36,9 +36,9 @@ class BillingResource(Resource):
           - amount (number): Amount to add to account
           - gateway (number): Payment gateway ID, use `GET /addfunds` to list available gateways
         """
-        return self._call("POST", "/addfunds", body=self._body(body, fields))
+        return self._call("POST", "/addfunds", body=self._body(payload, fields))
 
-    def apply_credit(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def apply_credit(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Apply Credit
 
         POST /invoice/{id}/credit — Bearer token required, from the API specification.
@@ -51,18 +51,18 @@ class BillingResource(Resource):
           - amount (string)
         """
         path = self._path("/invoice/{id}/credit", id=id)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", path, body=self._body(payload, fields))
 
-    def delete_invoice(self, id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def delete_invoice(self, id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Delete Invoice
 
-        DELETE /invoice/{id} — Bearer token required, from the API specification.
+        DELETE /invoice/{id} — Bearer token required, verified against the live API.
 
         Path parameters:
           - id: Invoice id
         """
         path = self._path("/invoice/{id}", id=id)
-        return self._call("DELETE", path, body=self._body(body, fields))
+        return self._call("DELETE", path, body=self._body(payload, fields))
 
     def get_add_funds_info(self, **query: Any) -> Any:
         """Get Add Funds Information
@@ -248,17 +248,17 @@ class BillingResource(Resource):
         """
         return self._call("GET", "/payment", query=query, authenticated=False)
 
-    def pay_all_invoices(self, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def pay_all_invoices(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Payall Invoice
 
-        POST /invoices/payall — Bearer token required, from the API specification.
+        POST /invoices/payall — Bearer token required, verified against the live API.
 
         Body fields:
           - selected (array): selected invoice id
         """
-        return self._call("POST", "/invoices/payall", body=self._body(body, fields))
+        return self._call("POST", "/invoices/payall", body=self._body(payload, fields))
 
-    def redeem_credit_voucher(self, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def redeem_credit_voucher(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Redeem a voucher
 
         POST /billing/creditvoucher — Bearer token required, from the API specification.
@@ -268,4 +268,4 @@ class BillingResource(Resource):
         Body fields:
           - code (string): Voucher Code
         """
-        return self._call("POST", "/billing/creditvoucher", body=self._body(body, fields))
+        return self._call("POST", "/billing/creditvoucher", body=self._body(payload, fields))

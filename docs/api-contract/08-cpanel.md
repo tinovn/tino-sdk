@@ -2,7 +2,7 @@
 
 SDK namespace: `client.cpanel` (Python) · `client.cpanel` (Node.js, PHP).
 
-7 operation(s) in this chapter, 4 with a captured live response.
+7 operation(s) in this chapter, 6 with a captured live response.
 
 | Method | Path | SDK | Auth |
 | --- | --- | --- | --- |
@@ -18,7 +18,7 @@ SDK namespace: `client.cpanel` (Python) · `client.cpanel` (Node.js, PHP).
 
 ### `cpanel.changePrimaryDomain`
 
-`POST /service/cpanel2/{id}/changedomain` — Bearer token · spec only
+`POST /service/cpanel2/{id}/changedomain` — Bearer token · verified live
 
 **Change Domain cPanel**
 
@@ -27,24 +27,43 @@ SDK namespace: `client.cpanel` (Python) · `client.cpanel` (Node.js, PHP).
 | Name | In | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | `id` | path | integer | yes | — |
-| `domain` | path | string | yes | — |
 
-**Request body** — none documented; any JSON object is forwarded as-is.
+**Request body**
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `domain` | string | yes | — |
+
+```json
+{
+  "domain": "<domain>"
+}
+```
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "info": [
+  "cpanel_cpd_domain_change"
+ ]
+}
+```
+
+</details>
 
 **SDK**
 
 ```python
-client.cpanel.change_primary_domain(id, domain)
+client.cpanel.change_primary_domain(id, domain=...)
 ```
 ```javascript
-await client.cpanel.changePrimaryDomain(id, domain);
+await client.cpanel.changePrimaryDomain(id, { domain: ... });
 ```
 ```php
-$client->cpanel->changePrimaryDomain($id, $domain);
+$client->cpanel->changePrimaryDomain($id, ['domain' => ...]);
 ```
 
 ---
@@ -177,7 +196,7 @@ $client->cpanel->getPhpMyAdminLink($id);
 
 ### `cpanel.resetAccount`
 
-`POST /service/cpanel2/{id}/resetacount` — Bearer token · spec only
+`POST /service/cpanel2/{id}/resetacount` — Bearer token · verified live
 
 **Reset Acount cPanel**
 
@@ -191,7 +210,17 @@ $client->cpanel->getPhpMyAdminLink($id);
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "info": [
+  "cpanel_reset_success"
+ ]
+}
+```
+
+</details>
 
 **SDK**
 

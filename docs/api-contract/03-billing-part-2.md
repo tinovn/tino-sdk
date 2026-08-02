@@ -2,15 +2,56 @@
 
 SDK namespace: `client.billing` (Python) · `client.billing` (Node.js, PHP).
 
-5 operation(s) in this chapter, 4 with a captured live response.
+6 operation(s) in this chapter, 6 with a captured live response.
 
 | Method | Path | SDK | Auth |
 | --- | --- | --- | --- |
+| `GET` | `/invoice/{id}/pdf` | [`getInvoicePdf`](#billinggetinvoicepdf) | Bearer |
 | `GET` | `/invoices` | [`listInvoices`](#billinglistinvoices) | Bearer |
 | `GET` | `/invoices/due` | [`listInvoicesDue`](#billinglistinvoicesdue) | Bearer |
 | `POST` | `/invoices/payall` | [`payAllInvoices`](#billingpayallinvoices) | Bearer |
 | `GET` | `/payment` | [`listPaymentMethods`](#billinglistpaymentmethods) | public |
 | `GET` | `/payment/fees` | [`listPaymentMethodFees`](#billinglistpaymentmethodfees) | public |
+
+---
+
+### `billing.getInvoicePdf`
+
+`GET /invoice/{id}/pdf` — Bearer token · verified live
+
+**Invoice PDF**
+
+Get specific invoice PDF as base64 string
+
+**Parameters**
+
+| Name | In | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| `id` | path | string | yes | — |
+
+**Response** `200`
+
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "invoice": "JVBERi0xLjQKJeLjz9MKMyAwIG9iago8PC9UeXBlIC9QYWdlCi9QYXJlbnQgMSAwIFIKL01lZGlhQm94IFswIDAgNTk1LjI4MCA4NDEuODkwXQovVHJpbUJveCBbMC4wMDAgMC4wMDAgNTk1LjI4MCA4NDEuODkwXQovUmVzb3VyY2VzIDIgMCBSCi9Hcm91cCA8PCAvVHlwZSAvR3JvdXAgL1MgL1RyYW5zcGFyZW5jeSAvQ1MgL0RldmljZVJHQiA+PiAKL0NvbnRlbnRzIDQgMCBSPj4KZW5kb2JqCjQg…"
+}
+```
+
+</details>
+
+**SDK**
+
+```python
+client.billing.get_invoice_pdf(id)
+```
+```javascript
+await client.billing.getInvoicePdf(id);
+```
+```php
+$client->billing->getInvoicePdf($id);
+```
 
 ---
 
@@ -51,7 +92,7 @@ filter[service_status]= search invoice by service status, filter[service]= searc
    "subtotal": "532151.00",
    "tax": "42572.00",
    "tax2": "0.00",
-   "datepaid": "0000-00-00 00:00:00",
+   "datepaid": "0000-00-00 2001:db8::1",
    "status": "Unpaid",
    "merge_id": null,
    "number": "TNG300001",
@@ -147,7 +188,7 @@ $client->billing->listInvoicesDue();
 
 ### `billing.payAllInvoices`
 
-`POST /invoices/payall` — Bearer token · spec only
+`POST /invoices/payall` — Bearer token · verified live
 
 **Payall Invoice**
 
@@ -165,7 +206,15 @@ $client->billing->listInvoicesDue();
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "invoice_id": null
+}
+```
+
+</details>
 
 **SDK**
 

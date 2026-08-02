@@ -2,7 +2,7 @@
 
 SDK namespace: `client.auth` (Python) · `client.auth` (Node.js, PHP).
 
-14 operation(s) in this chapter, 3 with a captured live response.
+14 operation(s) in this chapter, 4 with a captured live response.
 
 | Method | Path | SDK | Auth |
 | --- | --- | --- | --- |
@@ -430,7 +430,7 @@ $client->auth->signup(['type' => ...]);
 
 ### `auth.refreshToken`
 
-`POST /token` — Public · spec only
+`POST /token` — Public · verified live
 
 **Refresh Token**
 
@@ -450,7 +450,16 @@ Generate new authorization token using refresh token
 
 **Response** `200`
 
-_Not captured live — this endpoint changes state, or it needs data the documentation account does not have. Request shape above comes from the API specification; the response is a JSON object, and failures follow the standard error envelope described in [conventions](../conventions.md)._
+<details><summary>Live sample (values redacted, long arrays trimmed)</summary>
+
+```json
+{
+ "token": "<redacted>",
+ "refresh": "<redacted>"
+}
+```
+
+</details>
 
 **SDK**
 

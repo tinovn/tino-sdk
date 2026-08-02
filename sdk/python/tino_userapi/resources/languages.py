@@ -12,18 +12,18 @@ from .base import Resource
 class LanguagesResource(Resource):
     """Languages & translations — 3 operations."""
 
-    def get_billing_cycle_labels(self, key, **query: Any) -> Any:
+    def get_billing_cycle_labels(self, *, key: Any = None, **query: Any) -> Any:
         """Billing cycle labels in the active language
 
         GET /languages/translate — no authentication required, verified against the live API.
 
         Return languages translate
 
-        Path parameters:
-          - key: lang keyword
+        Query parameters:
+          - key (required): lang keyword
         """
-        path = self._path("/languages/translate", key=key)
-        return self._call("GET", path, query=query, authenticated=False)
+        params = self._query({"key": key}, query)
+        return self._call("GET", "/languages/translate", query=params, authenticated=False)
 
     def get_file(self, langname, **query: Any) -> Any:
         """Get Language File

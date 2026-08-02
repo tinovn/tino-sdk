@@ -8,7 +8,7 @@ export class AccountResource extends Resource {
   /**
    * Acknowledge notification
    *
-   * PUT /notifications/{id}/ack — Bearer token required, from the API specification.
+   * PUT /notifications/{id}/ack — Bearer token required, verified against the live API.
    *
    * Marks the notification as read
    *
@@ -87,13 +87,14 @@ export class AccountResource extends Resource {
    * Get business info
    *
    * GET /clientarea/businessinfo — Bearer token required, verified against the live API.
-   * @param {string|number} taxid
+   *
+   * Query parameters:
+   *   - taxid (required)
    * @param {object} [query] Extra query-string parameters.
    * @returns {Promise<any>}
    */
-  getBusinessInfo(taxid, query = {}) {
-    const path = this._path('/clientarea/businessinfo', { taxid: taxid });
-    return this._call('GET', path, { query });
+  getBusinessInfo(query = {}) {
+    return this._call('GET', '/clientarea/businessinfo', { query });
   }
 
   /**
@@ -499,14 +500,15 @@ export class AccountResource extends Resource {
    * Upload profile signed
    *
    * POST /clientarea/uploadprofile — Bearer token required, from the API specification.
-   * @param {string|number} base64Content
+   *
+   * Body fields:
+   *   - base64Content (string, required)
    * @param {object} [body] Request payload.
    * @param {object} [query] Extra query-string parameters.
    * @returns {Promise<any>}
    */
-  uploadSignedBusinessProfile(base64Content, body = undefined, query = {}) {
-    const path = this._path('/clientarea/uploadprofile', { base64Content: base64Content });
-    return this._call('POST', path, { query, body });
+  uploadSignedBusinessProfile(body = undefined, query = {}) {
+    return this._call('POST', '/clientarea/uploadprofile', { query, body });
   }
 
 }

@@ -12,44 +12,41 @@ from .base import Resource
 class EkycResource(Resource):
     """Domain documents & eKYC — 14 operations."""
 
-    def check_household(self, taxid, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def check_household(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """TaxID HKD
 
         POST /ekyc/households — Bearer token required, from the API specification.
 
         Kiểm tra thông tin hộ kinh doanh.
 
-        Path parameters:
-          - taxid: id
+        Body fields:
+          - taxid (string, required): id
         """
-        path = self._path("/ekyc/households", taxid=taxid)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", "/ekyc/households", body=self._body(payload, fields))
 
-    def check_national_id(self, idnumber, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def check_national_id(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Nationalid check
 
         POST /ekyc/checkid — Bearer token required, verified against the live API.
 
         Bóc tách dữ liệu cccd.
 
-        Path parameters:
-          - idnumber: id
+        Body fields:
+          - idnumber (string, required): id
         """
-        path = self._path("/ekyc/checkid", idnumber=idnumber)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", "/ekyc/checkid", body=self._body(payload, fields))
 
-    def check_url_status(self, request_id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def check_url_status(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Check Url eKYC Status
 
-        POST /ekyc/check-status-url-ekyc — Bearer token required, from the API specification.
+        POST /ekyc/check-status-url-ekyc — Bearer token required, verified against the live API.
 
         Bóc tách dữ liệu cccd.
 
-        Path parameters:
-          - request_id: id
+        Body fields:
+          - request_id (string, required): id
         """
-        path = self._path("/ekyc/check-status-url-ekyc", request_id=request_id)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", "/ekyc/check-status-url-ekyc", body=self._body(payload, fields))
 
     def download_domain_document(self, id, document_id, **query: Any) -> Any:
         """Download document
@@ -65,7 +62,7 @@ class EkycResource(Resource):
         path = self._path("/domain/{id}/documents/{document_id}/download", id=id, document_id=document_id)
         return self._call("GET", path, query=query)
 
-    def exists(self, idnumber, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def exists(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Ekyc exists check
 
         POST /ekyc/exists — Bearer token required, verified against the live API.
@@ -73,56 +70,53 @@ class EkycResource(Resource):
         Kiểm tra nhanh số CCCD đã có EKYC hay chưa. Trả true/false, không lộ thông tin khách
         hàng.
 
-        Path parameters:
-          - idnumber: Số CCCD cần kiểm tra
+        Body fields:
+          - idnumber (string, required): Số CCCD cần kiểm tra
         """
-        path = self._path("/ekyc/exists", idnumber=idnumber)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", "/ekyc/exists", body=self._body(payload, fields))
 
-    def face_id_verification(self, request_id, image_live, image_live_1, image_live_2, image_live_3, token, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def face_id_verification(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Faceid verification
 
-        POST /ekyc/faceid/verification — Bearer token required, from the API specification.
+        POST /ekyc/faceid/verification — Bearer token required, verified against the live API.
 
         Kiểm tra so sánh CCCD với khuôn mặt.
 
-        Path parameters:
-          - request_id: Request id, Phải trùng khớp với RequestID của OCR 2 mặt CCCD
-          - image_live: Live Face Image
-          - image_live_1 : Live Face Image
-          - image_live_2: Live Face Image
-          - image_live_3: Live Face Image
-          - token: Domain Token
+        Body fields:
+          - request_id (string, required): Request id, Phải trùng khớp với RequestID của OCR 2 mặt CCCD
+          - image_live (string, required): Live Face Image
+          - image_live_1 (string, required): Live Face Image
+          - image_live_2 (string, required): Live Face Image
+          - image_live_3 (string, required): Live Face Image
+          - token (string, required): Domain Token
         """
-        path = self._path("/ekyc/faceid/verification", request_id=request_id, image_live=image_live, image_live_1 =image_live_1, image_live_2=image_live_2, image_live_3=image_live_3, token=token)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", "/ekyc/faceid/verification", body=self._body(payload, fields))
 
-    def get_household(self, taxid, **query: Any) -> Any:
+    def get_household(self, *, taxid: Any = None, **query: Any) -> Any:
         """TaxID HKD
 
         GET /ekyc/households — Bearer token required, verified against the live API.
 
         Kiểm tra thông tin hộ kinh doanh.
 
-        Path parameters:
-          - taxid: id
+        Query parameters:
+          - taxid (required): id
         """
-        path = self._path("/ekyc/households", taxid=taxid)
-        return self._call("GET", path, query=query)
+        params = self._query({"taxid": taxid}, query)
+        return self._call("GET", "/ekyc/households", query=params)
 
-    def get_vnnic_promo_code(self, idnumber, domain, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def get_vnnic_promo_code(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Get Coupon VN Free
 
         POST /domain/vnnic/promocode — Bearer token required, from the API specification.
 
         Lấy mã giảm giá tên miền miễn phí.
 
-        Path parameters:
-          - idnumber: Số CCCD/Mã số thuế
-          - domain: domain name
+        Body fields:
+          - idnumber (integer, required): Số CCCD/Mã số thuế
+          - domain (string, required): domain name
         """
-        path = self._path("/domain/vnnic/promocode", idnumber=idnumber, domain=domain)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", "/domain/vnnic/promocode", body=self._body(payload, fields))
 
     def list_domain_documents(self, id, **query: Any) -> Any:
         """Get list documents
@@ -137,21 +131,21 @@ class EkycResource(Resource):
         path = self._path("/domain/{id}/documents", id=id)
         return self._call("GET", path, query=query)
 
-    def ocr_recognition(self, request_id, type, image, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def ocr_recognition(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """OCR Recognition
 
-        POST /ekyc/ocr/recognition — Bearer token required, from the API specification.
+        POST /ekyc/ocr/recognition — Bearer token required, verified against the live API.
 
         Bóc tách dữ liệu cccd.
 
-        Path parameters:
-          - request_id: Request id, Phải trùng khớp với RequestID OCR 2 mặt CCCD
-          - image: Image card
+        Body fields:
+          - request_id (string, required): Request id, Phải trùng khớp với RequestID OCR 2 mặt CCCD
+          - type (string, required, one of cardFront, cardBack)
+          - image (string, required): Image card
         """
-        path = self._path("/ekyc/ocr/recognition", request_id=request_id, type=type, image=image)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", "/ekyc/ocr/recognition", body=self._body(payload, fields))
 
-    def sign_document(self, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def sign_document(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Document Signatured
 
         POST /domain/documents/signed — Bearer token required, from the API specification.
@@ -162,12 +156,12 @@ class EkycResource(Resource):
           - token (string): Domain token
           - image (string): Signature value
         """
-        return self._call("POST", "/domain/documents/signed", body=self._body(body, fields))
+        return self._call("POST", "/domain/documents/signed", body=self._body(payload, fields))
 
-    def upload_company_profile(self, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def upload_company_profile(self, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Company Profile Signatured
 
-        POST /domain/documents/companyprofile — Bearer token required, from the API specification.
+        POST /domain/documents/companyprofile — Bearer token required, verified against the live API.
 
         Company Profile upload
 
@@ -175,9 +169,9 @@ class EkycResource(Resource):
           - token (string): Domain token
           - image (string): Signature value
         """
-        return self._call("POST", "/domain/documents/companyprofile", body=self._body(body, fields))
+        return self._call("POST", "/domain/documents/companyprofile", body=self._body(payload, fields))
 
-    def upload_domain_document(self, id, document_id, *, body: Optional[dict] = None, **fields: Any) -> Any:
+    def upload_domain_document(self, id, document_id, *, payload: Optional[dict] = None, **fields: Any) -> Any:
         """Upload document
 
         POST /domain/{id}/documents/{document_id}/upload — Bearer token required, from the API specification.
@@ -193,12 +187,12 @@ class EkycResource(Resource):
           - content (string): File content, must be base64 encoded content.
         """
         path = self._path("/domain/{id}/documents/{document_id}/upload", id=id, document_id=document_id)
-        return self._call("POST", path, body=self._body(body, fields))
+        return self._call("POST", path, body=self._body(payload, fields))
 
     def view_signable_document(self, token, **query: Any) -> Any:
         """Document Sign
 
-        GET /domain/documents/view/{token} — Bearer token required, from the API specification.
+        GET /domain/documents/view/{token} — Bearer token required, verified against the live API.
 
         View document signed.
 
