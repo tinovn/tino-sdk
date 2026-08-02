@@ -7,12 +7,12 @@
          failOnRisky="true">
     <testsuites>
         <testsuite name="tino-sdk">
-            <directory>tests</directory>
+            <directory>sdk/php/tests</directory>
         </testsuite>
     </testsuites>
     <source>
         <include>
-            <directory>src</directory>
+            <directory>sdk/php/src</directory>
         </include>
     </source>
 </phpunit>

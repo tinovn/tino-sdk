@@ -74,6 +74,13 @@ def _method(operation: Dict[str, Any]) -> List[str]:
     return lines
 
 
+def _prune(out_dir: str, keep: set) -> None:
+    """Delete generated files for groups the catalog no longer contains."""
+    for name in os.listdir(out_dir):
+        if name not in keep and os.path.isfile(os.path.join(out_dir, name)):
+            os.remove(os.path.join(out_dir, name))
+
+
 def emit(catalog: Dict[str, Any], root: str) -> List[str]:
     grouped = cat.by_group(catalog)
     out_dir = os.path.join(root, "sdk", "php", "src", "Resources")
@@ -114,6 +121,8 @@ def emit(catalog: Dict[str, Any], root: str) -> List[str]:
         registry.append(f"        '{cat.camel(group)}' => {cat.pascal(group)}::class,")
     registry.append("    ];")
     registry.append("}")
+    _prune(out_dir, {os.path.basename(p) for p in written}
+           | {"Resource.php", "ResourceRegistry.php"})
     registry_path = os.path.join(out_dir, "ResourceRegistry.php")
     with open(registry_path, "w", encoding="utf-8") as handle:
         handle.write("\n".join(registry) + "\n")

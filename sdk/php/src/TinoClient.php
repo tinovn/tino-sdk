@@ -35,9 +35,7 @@ use Tino\UserApi\Resources\ResourceRegistry;
  * @property-read Resources\Security     $security
  * @property-read Resources\Services     $services
  * @property-read Resources\Support      $support
- * @property-read Resources\Tinomail     $tinomail
  * @property-read Resources\Tinosite     $tinosite
- * @property-read Resources\UsageMonitor $usageMonitor
  * @property-read Resources\Vms          $vms
  */
 class TinoClient

@@ -23,6 +23,10 @@ Without Composer, the bundled autoloader is enough:
 require '/path/to/tino-sdk/sdk/php/autoload.php';
 ```
 
+The Composer manifest lives at the repository root (Packagist only reads a root
+`composer.json`) and maps `Tino\UserApi\` to `sdk/php/src/`. The source itself stays
+here alongside the other SDKs.
+
 ## Log in
 
 ```php

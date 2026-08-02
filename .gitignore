@@ -4,7 +4,7 @@ captured*/
 *.local
 .env
 .env.*
-.ref-tinov2/
+.ref-*/
 tinoapi.json
 
 # build / deps
@@ -20,3 +20,4 @@ composer.lock
 package-lock.json
 .DS_Store
 plans/
+.phpunit.result.cache

@@ -1,0 +1,13 @@
+# Keep the Composer/npm dist tarballs to the library itself.
+/docs               export-ignore
+/examples           export-ignore
+/plans              export-ignore
+/skills             export-ignore
+/tools              export-ignore
+/spec               export-ignore
+/sdk/python         export-ignore
+/sdk/nodejs         export-ignore
+/sdk/php/tests      export-ignore
+/.github            export-ignore
+/.gitattributes     export-ignore
+/.gitignore         export-ignore

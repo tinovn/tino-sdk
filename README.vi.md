@@ -18,6 +18,7 @@ Phạm vi    255 endpoint · 17 nhóm tài nguyên
 | 🟩 **Node.js** | [`sdk/nodejs`](sdk/nodejs) — 18+, ESM, có type definitions, không phụ thuộc |
 | 🐘 **PHP** | [`sdk/php`](sdk/php) — 7.4+, PSR-4, không phụ thuộc |
 | 📖 **Tài liệu** | [`docs/`](docs/README.md) — từng endpoint kèm request, response và cách gọi bằng SDK |
+| 🤖 **Skill cho agent** | [`skills/tino-userapi`](skills/README.md) — cắm thẳng vào Paperclip, Claude Code, Codex |
 
 ## Bắt đầu nhanh
 
@@ -94,6 +95,8 @@ tools/
   generate-sdk.py              catalog -> lớp resource cho cả ba ngôn ngữ
   generate-docs.py             catalog + samples -> docs/api-contract/
   sanitize-samples.py          response thật -> ví dụ công khai (đã lọc dữ liệu cá nhân)
+skills/
+  tino-userapi/                skill cho agent (SKILL.md + references)
 examples/                      script chạy được từ đầu đến cuối
 ```
 
@@ -121,6 +124,19 @@ python3 tools/generate-docs.py                        # catalog + samples -> doc
 Phần lõi viết tay của SDK (transport, auth, error, client) không bao giờ bị bộ sinh động
 tới; chỉ lớp resource theo từng endpoint là sinh tự động — đó là thứ giữ cho ba ngôn ngữ
 luôn khớp nhau.
+
+## Phát hành
+
+Gắn tag là publish cả ba gói:
+
+```bash
+git tag v1.0.0 && git push origin v1.0.0
+```
+
+[`.github/workflows/release.yml`](.github/workflows/release.yml) kiểm tra tag khớp
+version của cả ba gói, chạy đủ ba bộ test, xác nhận code sinh vẫn khớp catalog, rồi mới
+publish. PyPI dùng Trusted Publishing nên không lưu token; npm cần secret `NPM_TOKEN`;
+Packagist tự cập nhật theo tag sau khi repo được submit một lần.
 
 ## Trạng thái
 

@@ -1,0 +1,114 @@
+name: Release
+
+# Tag a release to publish all three packages:
+#   git tag v1.0.0 && git push origin v1.0.0
+#
+# One-time setup before the first run:
+#   PyPI      — add a Trusted Publisher for tinovn/tino-sdk, workflow release.yml,
+#               environment "pypi". No API token is stored anywhere.
+#   npm       — add an automation token as the NPM_TOKEN repository secret.
+#   Packagist — submit https://github.com/tinovn/tino-sdk once; the GitHub integration
+#               then updates it on every tag, so there is no job for it here.
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+jobs:
+  verify:
+    name: Verify before publishing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: curl, json
+
+      - name: Tag must match the version in every package
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          python_version=$(grep -m1 '^version' sdk/python/pyproject.toml | cut -d'"' -f2)
+          node_version=$(node -p "require('./sdk/nodejs/package.json').version")
+          sdk_version=$(grep -m1 'SDK_VERSION = ' sdk/python/tino_userapi/client.py | cut -d'"' -f2)
+          echo "tag=$tag python=$python_version node=$node_version sdk=$sdk_version"
+          test "$tag" = "$python_version" && test "$tag" = "$node_version" && test "$tag" = "$sdk_version"
+
+      - run: pip install pytest build twine
+      - run: pytest sdk/python/tests -q
+      - run: npm test
+        working-directory: sdk/nodejs
+      - run: composer install --no-interaction --prefer-dist
+      - run: vendor/bin/phpunit
+      - run: composer validate --strict
+
+      - name: Generated code must match the catalog
+        run: |
+          python3 tools/generate-sdk.py
+          python3 tools/generate-docs.py
+          python3 tools/generate-skill-reference.py
+          git diff --exit-code
+
+      - name: Build the Python distributions
+        run: python -m build sdk/python && twine check sdk/python/dist/*
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: python-dist
+          path: sdk/python/dist/
+
+  pypi:
+    name: Publish to PyPI
+    needs: verify
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write          # Trusted Publishing — no API token needed
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: python-dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1
+
+  npm:
+    name: Publish to npm
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write          # provenance attestation
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm publish --access public --provenance
+        working-directory: sdk/nodejs
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  github-release:
+    name: Create the GitHub release
+    needs: [pypi, npm]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: python-dist
+          path: dist/
+      - run: gh release create "$GITHUB_REF_NAME" dist/* --generate-notes
+        env:
+          GH_TOKEN: ${{ github.token }}

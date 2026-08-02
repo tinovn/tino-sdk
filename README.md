@@ -18,6 +18,7 @@ Surface    255 operations · 17 resource groups
 | 🟩 **Node.js** | [`sdk/nodejs`](sdk/nodejs) — 18+, ESM, TypeScript definitions, zero dependencies |
 | 🐘 **PHP** | [`sdk/php`](sdk/php) — 7.4+, PSR-4, zero dependencies |
 | 📖 **Docs** | [`docs/`](docs/README.md) — every endpoint with request, response and SDK call |
+| 🤖 **Agent skill** | [`skills/tino-userapi`](skills/README.md) — drop-in skill for Paperclip, Claude Code and Codex |
 
 ## Quick start
 
@@ -94,6 +95,8 @@ tools/
   generate-sdk.py              catalog -> resource layer for all three languages
   generate-docs.py             catalog + samples -> docs/api-contract/
   sanitize-samples.py          live captures -> publishable samples (PII stripped)
+skills/
+  tino-userapi/                agent skill (SKILL.md + references)
 examples/                      runnable end-to-end scripts
 ```
 
@@ -126,6 +129,20 @@ clone. `build-catalog.py` is only needed when a new specification export lands.
 Hand-written SDK code (transport, auth, errors, client) is never touched by the
 generator; only the per-endpoint resource layer is generated, which is what keeps the
 three languages in step.
+
+## Releasing
+
+Tagging publishes all three packages:
+
+```bash
+git tag v1.0.0 && git push origin v1.0.0
+```
+
+[`.github/workflows/release.yml`](.github/workflows/release.yml) verifies that the tag
+matches the version in every package, runs all three test suites, checks that the
+generated code still matches the catalog, and only then publishes. PyPI uses Trusted
+Publishing, so no API token is stored; npm needs an `NPM_TOKEN` secret; Packagist picks
+up tags through the GitHub integration once the repository has been submitted.
 
 ## Status
 

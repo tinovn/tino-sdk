@@ -15,9 +15,7 @@ import type { LocationResource } from './resources/location.js';
 import type { SecurityResource } from './resources/security.js';
 import type { ServicesResource } from './resources/services.js';
 import type { SupportResource } from './resources/support.js';
-import type { TinomailResource } from './resources/tinomail.js';
 import type { TinositeResource } from './resources/tinosite.js';
-import type { UsageMonitorResource } from './resources/usage-monitor.js';
 import type { VmsResource } from './resources/vms.js';
 
 export declare const DEFAULT_BASE_URL: string;
@@ -106,9 +104,7 @@ export declare class TinoClient {
   readonly security: SecurityResource;
   readonly services: ServicesResource;
   readonly support: SupportResource;
-  readonly tinomail: TinomailResource;
   readonly tinosite: TinositeResource;
-  readonly usageMonitor: UsageMonitorResource;
   readonly vms: VmsResource;
 }
 

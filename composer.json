@@ -3,7 +3,16 @@
   "description": "Official PHP SDK for the Tino UserAPI (https://api.tino.vn)",
   "type": "library",
   "license": "MIT",
-  "keywords": ["tino", "tinohost", "hosting", "domain", "vps", "hostbill", "sdk", "api"],
+  "keywords": [
+    "tino",
+    "tinohost",
+    "hosting",
+    "domain",
+    "vps",
+    "hostbill",
+    "sdk",
+    "api"
+  ],
   "homepage": "https://github.com/tinovn/tino-sdk",
   "require": {
     "php": ">=7.4",
@@ -15,12 +24,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Tino\\UserApi\\": "src/"
+      "Tino\\UserApi\\": "sdk/php/src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Tino\\UserApi\\Tests\\": "tests/"
+      "Tino\\UserApi\\Tests\\": "sdk/php/tests/"
     }
   },
   "scripts": {

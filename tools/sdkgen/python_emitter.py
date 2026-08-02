@@ -101,6 +101,13 @@ def _method(operation: Dict[str, Any]) -> List[str]:
     return lines
 
 
+def _prune(out_dir: str, keep: set) -> None:
+    """Delete generated files for groups the catalog no longer contains."""
+    for name in os.listdir(out_dir):
+        if name not in keep and os.path.isfile(os.path.join(out_dir, name)):
+            os.remove(os.path.join(out_dir, name))
+
+
 def emit(catalog: Dict[str, Any], root: str) -> List[str]:
     grouped = cat.by_group(catalog)
     out_dir = os.path.join(root, "sdk", "python", "tino_userapi", "resources")
@@ -141,6 +148,7 @@ def emit(catalog: Dict[str, Any], root: str) -> List[str]:
     for group in sorted(grouped):
         index.append(f'    "{cat.pascal(group)}Resource",')
     index.append("]")
+    _prune(out_dir, {os.path.basename(p) for p in written} | {"base.py", "__init__.py"})
     index_path = os.path.join(out_dir, "__init__.py")
     with open(index_path, "w", encoding="utf-8") as handle:
         handle.write("\n".join(index) + "\n")
