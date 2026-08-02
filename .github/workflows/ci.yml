@@ -49,10 +49,9 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: curl, json
+      # composer.json lives at the repository root — Packagist only reads a root manifest.
       - run: composer install --no-interaction --prefer-dist
-        working-directory: sdk/php
       - run: vendor/bin/phpunit
-        working-directory: sdk/php
 
   generated-code-is-current:
     name: Generated code matches the catalog
@@ -66,6 +65,7 @@ jobs:
       # spec/tino-userapi-catalog.json. Regenerate and fail if anything drifted.
       - run: python3 tools/generate-sdk.py
       - run: python3 tools/generate-docs.py
+      - run: python3 tools/generate-skill-reference.py
       - name: Fail if regeneration changed tracked files
         run: |
           if ! git diff --quiet; then
