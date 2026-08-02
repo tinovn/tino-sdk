@@ -21,3 +21,5 @@ package-lock.json
 .DS_Store
 plans/
 .phpunit.result.cache
+sdk/python/dist/
+sdk/python/build/
