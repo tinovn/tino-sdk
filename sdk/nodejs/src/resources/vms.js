@@ -1,0 +1,712 @@
+// Cloud instances / virtual machines.
+// Generated from spec/tino-userapi-catalog.json by tools/generate-sdk.py — do not edit by hand.
+
+import { Resource } from './base.js';
+
+/** Cloud instances / virtual machines — 35 operations. */
+export class VmsResource extends Resource {
+  /**
+   * Allocate IPs
+   *
+   * POST /service/{id}/vms/{vmid}/ippool/{pool} — Bearer token required, from the API specification.
+   *
+   * Allocate new IP for network interface.
+   *
+   * Body fields:
+   *   - pool (string): List ID to allocate new IP from
+   *   - type (string): ipv4 or ipv6
+   *   - iface (integer): Interface number
+   *   - bridge (string): Bridge name [optional, ignored if interface provided]
+   *   - number (integer): Number of IPs to allocate
+   * @param {string|number} id
+   * @param {string|number} vmid
+   * @param {string|number} pool
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  allocateIps(id, vmid, pool, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/ippool/{pool}', { id: id, vmid: vmid, pool: pool });
+    return this._call('POST', path, { query, body });
+  }
+
+  /**
+   * Change Hostname VM
+   *
+   * POST /service/{id}/vms/{vmid}/hostname — Bearer token required, from the API specification.
+   *
+   * Path parameters:
+   *   - vmid: Virtual server id
+   *   - server_name: Virtual server name
+   * @param {string|number} id
+   * @param {string|number} vmid Virtual server id
+   * @param {string|number} serverName Virtual server name
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  changeHostname(id, vmid, serverName, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/hostname', { id: id, vmid: vmid, server_name: serverName });
+    return this._call('POST', path, { query, body });
+  }
+
+  /**
+   * Create VM
+   *
+   * POST /service/{id}/vms — Bearer token required, from the API specification.
+   *
+   * Add new virtual server
+   *
+   * Body fields:
+   *   - label (string): VM label
+   *   - template (string): Template ID
+   *   - memory (string): Amount of RAM memory in MB
+   *   - cpu (string): Amount of CPU cores
+   *   - disk (string): Disk Space in GB
+   *   - interface (array): Interface configuration
+   * @param {string|number} id
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  create(id, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms', { id: id });
+    return this._call('POST', path, { query, body });
+  }
+
+  /**
+   * VM Create Backup
+   *
+   * POST /service/{id}/vms/{vmid}/backups/create — Bearer token required, from the API specification.
+   *
+   * Path parameters:
+   *   - vmid: Virtual server id
+   * @param {string|number} id
+   * @param {string|number} vmid Virtual server id
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  createBackup(id, vmid, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/backups/create', { id: id, vmid: vmid });
+    return this._call('POST', path, { query, body });
+  }
+
+  /**
+   * Add Network Interface
+   *
+   * POST /service/{id}/vms/{vmid}/interfaces — Bearer token required, from the API specification.
+   *
+   * Add new network interface to VM
+   *
+   * Body fields:
+   *   - bridge (string): Network bridge
+   *   - firewall (integer): Enable or disable firewall (may require specific permissions)
+   *   - ipv4 (array): List of IP v4 IDs
+   *   - ipv6 (array): List of IP v6 IDs
+   * @param {string|number} id
+   * @param {string|number} vmid
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  createInterface(id, vmid, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/interfaces', { id: id, vmid: vmid });
+    return this._call('POST', path, { query, body });
+  }
+
+  /**
+   * VM Create Snapshot
+   *
+   * POST /service/{id}/vms/{vmid}/snapshots/create — Bearer token required, from the API specification.
+   *
+   * Path parameters:
+   *   - vmid: Virtual server id
+   *   - description: description
+   *   - vmstate: vmstate
+   * @param {string|number} id
+   * @param {string|number} vmid Virtual server id
+   * @param {string|number} description description
+   * @param {string|number} vmstate vmstate
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  createSnapshot(id, vmid, description, vmstate, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/snapshots/create', { id: id, vmid: vmid, description: description, vmstate: vmstate });
+    return this._call('POST', path, { query, body });
+  }
+
+  /**
+   * VM snapshot schedule Create
+   *
+   * POST /service/{id}/vms/{vmid}/snapshotschedule/create — Bearer token required, from the API specification.
+   *
+   * Path parameters:
+   *   - vmid: Virtual server id
+   *   - dow: Array thứ
+   *   - hour: Giờ
+   *   - min: Phút
+   *   - vmstate: vmstate
+   * @param {string|number} id
+   * @param {string|number} vmid Virtual server id
+   * @param {string|number} dow Array thứ
+   * @param {string|number} hour Giờ
+   * @param {string|number} min Phút
+   * @param {string|number} vmstate vmstate
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  createSnapshotSchedule(id, vmid, dow, hour, min, vmstate, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/snapshotschedule/create', { id: id, vmid: vmid, dow: dow, hour: hour, min: min, vmstate: vmstate });
+    return this._call('POST', path, { query, body });
+  }
+
+  /**
+   * VM Delete Backup
+   *
+   * DELETE /service/{id}/vms/{vmid}/backup/{backup_id}/delete — Bearer token required, from the API specification.
+   *
+   * Path parameters:
+   *   - vmid: Virtual server id
+   *   - backup_id: Backup VM id
+   * @param {string|number} id
+   * @param {string|number} vmid Virtual server id
+   * @param {string|number} backupId Backup VM id
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  deleteBackup(id, vmid, backupId, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/backup/{backup_id}/delete', { id: id, vmid: vmid, backup_id: backupId });
+    return this._call('DELETE', path, { query, body });
+  }
+
+  /**
+   * VM Delete Snapshot
+   *
+   * DELETE /service/{id}/vms/{vmid}/snapshots/{snapshot_name}/delete — Bearer token required, from the API specification.
+   *
+   * Path parameters:
+   *   - vmid: Virtual server id
+   *   - snapshot_name: Snapshot VM id
+   * @param {string|number} id
+   * @param {string|number} vmid Virtual server id
+   * @param {string|number} snapshotName Snapshot VM id
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  deleteSnapshot(id, vmid, snapshotName, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/snapshots/{snapshot_name}/delete', { id: id, vmid: vmid, snapshot_name: snapshotName });
+    return this._call('DELETE', path, { query, body });
+  }
+
+  /**
+   * VM snapshot schedule delete
+   *
+   * DELETE /service/{id}/vms/{vmid}/snapshotschedule/{schedule_id}/delete — Bearer token required, from the API specification.
+   *
+   * Path parameters:
+   *   - vmid: Virtual server id
+   * @param {string|number} id
+   * @param {string|number} vmid Virtual server id
+   * @param {string|number} scheduleId
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  deleteSnapshotSchedule(id, vmid, scheduleId, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/snapshotschedule/{schedule_id}/delete', { id: id, vmid: vmid, schedule_id: scheduleId });
+    return this._call('DELETE', path, { query, body });
+  }
+
+  /**
+   * Destroy VM
+   *
+   * DELETE /service/{id}/vms/{vmid} — Bearer token required, from the API specification.
+   *
+   * Remove virtual server
+   *
+   * Path parameters:
+   *   - vmid: Virtual server id
+   * @param {string|number} id
+   * @param {string|number} vmid Virtual server id
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  destroy(id, vmid, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}', { id: id, vmid: vmid });
+    return this._call('DELETE', path, { query, body });
+  }
+
+  /**
+   * Get VM Details
+   *
+   * GET /service/{id}/vms/{vmid} — Bearer token required, verified against the live API.
+   *
+   * Get the details of a particular virtual server
+   *
+   * Path parameters:
+   *   - vmid: Virtual server id
+   * @param {string|number} id
+   * @param {string|number} vmid Virtual server id
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  get(id, vmid, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}', { id: id, vmid: vmid });
+    return this._call('GET', path, { query });
+  }
+
+  /**
+   * Get Network Interfaces
+   *
+   * GET /service/{id}/vms/{vmid}/interfaces/{iface} — Bearer token required, from the API specification.
+   *
+   * Get network Interface details
+   *
+   * Path parameters:
+   *   - iface: Interface name or id, ie '0' or 'net0'
+   * @param {string|number} id
+   * @param {string|number} vmid
+   * @param {string|number} iface Interface name or id, ie '0' or 'net0'
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  getInterface(id, vmid, iface, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/interfaces/{iface}', { id: id, vmid: vmid, iface: iface });
+    return this._call('GET', path, { query });
+  }
+
+  /**
+   * Get VM usage
+   *
+   * GET /service/{id}/vms/{vmid}/usage — Bearer token required, verified against the live API.
+   *
+   * Get the details of a particular virtual server
+   *
+   * Path parameters:
+   *   - vmid: Virtual server id
+   * @param {string|number} id
+   * @param {string|number} vmid Virtual server id
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  getUsage(id, vmid, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/usage', { id: id, vmid: vmid });
+    return this._call('GET', path, { query });
+  }
+
+  /**
+   * List VMs
+   *
+   * GET /service/{id}/vms — Bearer token required, verified against the live API.
+   *
+   * List virtual servers
+   * @param {string|number} id
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  list(id, query = {}) {
+    const path = this._path('/service/{id}/vms', { id: id });
+    return this._call('GET', path, { query });
+  }
+
+  /**
+   * VM List Backup
+   *
+   * GET /service/{id}/vms/{vmid}/backups — Bearer token required, verified against the live API.
+   *
+   * Path parameters:
+   *   - vmid: Virtual server id
+   * @param {string|number} id
+   * @param {string|number} vmid Virtual server id
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  listBackups(id, vmid, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/backups', { id: id, vmid: vmid });
+    return this._call('GET', path, { query });
+  }
+
+  /**
+   * List VM Network Interfaces
+   *
+   * GET /service/{id}/vms/{vmid}/interfaces — Bearer token required, verified against the live API.
+   *
+   * Get network interfaces assigned to virtual server
+   * @param {string|number} id
+   * @param {string|number} vmid
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  listInterfaces(id, vmid, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/interfaces', { id: id, vmid: vmid });
+    return this._call('GET', path, { query });
+  }
+
+  /**
+   * List IP Pools
+   *
+   * GET /service/{id}/vms/{vmid}/ippool — Bearer token required, verified against the live API.
+   *
+   * List IP pools for a specific interface or network bridge
+   *
+   * Query parameters:
+   *   - iface: Interface number [optional]
+   *   - bridge: Bridge name [optional, ignored if interface provided]
+   * @param {string|number} id
+   * @param {string|number} vmid
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  listIpPools(id, vmid, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/ippool', { id: id, vmid: vmid });
+    return this._call('GET', path, { query });
+  }
+
+  /**
+   * List IPs
+   *
+   * GET /service/{id}/vms/{vmid}/ips — Bearer token required, verified against the live API.
+   *
+   * List virtual machine IPs
+   *
+   * Query parameters:
+   *   - type: ipv4 or ipv6
+   *   - iface: Interface number [optional]
+   *   - bridge: Bridge name [optional, ignored if interface provided]
+   * @param {string|number} id
+   * @param {string|number} vmid
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  listIps(id, vmid, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/ips', { id: id, vmid: vmid });
+    return this._call('GET', path, { query });
+  }
+
+  /**
+   * VM snapshot schedule
+   *
+   * GET /service/{id}/vms/{vmid}/snapshotschedule — Bearer token required, verified against the live API.
+   *
+   * Path parameters:
+   *   - vmid: Virtual server id
+   * @param {string|number} id
+   * @param {string|number} vmid Virtual server id
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  listSnapshotSchedules(id, vmid, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/snapshotschedule', { id: id, vmid: vmid });
+    return this._call('GET', path, { query });
+  }
+
+  /**
+   * VM List Snapshot
+   *
+   * GET /service/{id}/vms/{vmid}/snapshots — Bearer token required, verified against the live API.
+   *
+   * Path parameters:
+   *   - vmid: Virtual server id
+   * @param {string|number} id
+   * @param {string|number} vmid Virtual server id
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  listSnapshots(id, vmid, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/snapshots', { id: id, vmid: vmid });
+    return this._call('GET', path, { query });
+  }
+
+  /**
+   * console VM
+   *
+   * POST /service/{id}/vms/{vmid}/console — Bearer token required, from the API specification.
+   *
+   * Path parameters:
+   *   - vmid: Virtual server id
+   * @param {string|number} id
+   * @param {string|number} vmid Virtual server id
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  openConsole(id, vmid, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/console', { id: id, vmid: vmid });
+    return this._call('POST', path, { query, body });
+  }
+
+  /**
+   * Reboot VM
+   *
+   * POST /service/{id}/vms/{vmid}/reboot — Bearer token required, from the API specification.
+   *
+   * Reboot virtual server
+   *
+   * Body fields:
+   *   - vmid (string): Virtual server id
+   * @param {string|number} id
+   * @param {string|number} vmid
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  reboot(id, vmid, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/reboot', { id: id, vmid: vmid });
+    return this._call('POST', path, { query, body });
+  }
+
+  /**
+   * Rebuild VM
+   *
+   * POST /service/{id}/vms/{vmid}/rebuild — Bearer token required, from the API specification.
+   *
+   * Rebuild server, you can get list of templates supported by this server
+   * using '''/service/$id/templates'''
+   *
+   * Body fields:
+   *   - template (string): Template ID
+   * @param {string|number} id
+   * @param {string|number} vmid
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  rebuild(id, vmid, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/rebuild', { id: id, vmid: vmid });
+    return this._call('POST', path, { query, body });
+  }
+
+  /**
+   * Remove Network Interface
+   *
+   * DELETE /service/{id}/vms/{vmid}/interfaces/{iface} — Bearer token required, from the API specification.
+   *
+   * Remove network interface from VM
+   *
+   * Path parameters:
+   *   - iface: Interface name or id to remove
+   * @param {string|number} id
+   * @param {string|number} vmid
+   * @param {string|number} iface Interface name or id to remove
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  removeInterface(id, vmid, iface, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/interfaces/{iface}', { id: id, vmid: vmid, iface: iface });
+    return this._call('DELETE', path, { query, body });
+  }
+
+  /**
+   * Reset VM
+   *
+   * POST /service/{id}/vms/{vmid}/reset — Bearer token required, from the API specification.
+   *
+   * Reset virtual server power
+   *
+   * Body fields:
+   *   - vmid (string): Virtual server id
+   * @param {string|number} id
+   * @param {string|number} vmid
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  reset(id, vmid, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/reset', { id: id, vmid: vmid });
+    return this._call('POST', path, { query, body });
+  }
+
+  /**
+   * Reset Root Password VM
+   *
+   * POST /service/{id}/vms/{vmid}/resetpwd — Bearer token required, from the API specification.
+   *
+   * Path parameters:
+   *   - vmid: Virtual server id
+   * @param {string|number} id
+   * @param {string|number} vmid Virtual server id
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  resetRootPassword(id, vmid, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/resetpwd', { id: id, vmid: vmid });
+    return this._call('POST', path, { query, body });
+  }
+
+  /**
+   * Resize VM
+   *
+   * PUT /service/{id}/vms/{vmid} — Bearer token required, from the API specification.
+   *
+   * Edit a virtual server
+   *
+   * Body fields:
+   *   - vmid (string): Virtual server id
+   *   - memory (string): Amount of RAM in MB
+   *   - cpu (string): Amount of CPU cores
+   * @param {string|number} id
+   * @param {string|number} vmid
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  resize(id, vmid, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}', { id: id, vmid: vmid });
+    return this._call('PUT', path, { query, body });
+  }
+
+  /**
+   * VM Restore Backup
+   *
+   * POST /service/{id}/vms/{vmid}/backups/{backup_id}/restore — Bearer token required, from the API specification.
+   *
+   * Path parameters:
+   *   - vmid: Virtual server id
+   *   - backup_id: Backup VM id
+   * @param {string|number} id
+   * @param {string|number} vmid Virtual server id
+   * @param {string|number} backupId Backup VM id
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  restoreBackup(id, vmid, backupId, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/backups/{backup_id}/restore', { id: id, vmid: vmid, backup_id: backupId });
+    return this._call('POST', path, { query, body });
+  }
+
+  /**
+   * VM Restore Snapshot
+   *
+   * POST /service/{id}/vms/{vmid}/snapshots/{snapshot_id}/restore — Bearer token required, from the API specification.
+   *
+   * Path parameters:
+   *   - vmid: Virtual server id
+   *   - snapshot_id: Snapshot VM id
+   * @param {string|number} id
+   * @param {string|number} vmid Virtual server id
+   * @param {string|number} snapshotId Snapshot VM id
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  restoreSnapshot(id, vmid, snapshotId, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/snapshots/{snapshot_id}/restore', { id: id, vmid: vmid, snapshot_id: snapshotId });
+    return this._call('POST', path, { query, body });
+  }
+
+  /**
+   * Change SSHKEY
+   *
+   * POST /service/{id}/vms/{vmid}/addsshkey — Bearer token required, from the API specification.
+   *
+   * Get the details of a particular virtual server
+   *
+   * Path parameters:
+   *   - vmid: Virtual server id
+   *   - keys: SSK Key ID
+   * @param {string|number} id
+   * @param {string|number} vmid Virtual server id
+   * @param {string|number} keys SSK Key ID
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  setSshKeys(id, vmid, keys, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/addsshkey', { id: id, vmid: vmid, keys: keys });
+    return this._call('POST', path, { query, body });
+  }
+
+  /**
+   * Shutdown VM
+   *
+   * POST /service/{id}/vms/{vmid}/shutdown — Bearer token required, from the API specification.
+   *
+   * Perform graceful shutdown
+   *
+   * Body fields:
+   *   - vmid (string): Virtual server id
+   * @param {string|number} id
+   * @param {string|number} vmid
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  shutdown(id, vmid, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/shutdown', { id: id, vmid: vmid });
+    return this._call('POST', path, { query, body });
+  }
+
+  /**
+   * Start VM
+   *
+   * POST /service/{id}/vms/{vmid}/start — Bearer token required, from the API specification.
+   *
+   * Start virtual server
+   *
+   * Body fields:
+   *   - vmid (string): Virtual server id
+   * @param {string|number} id
+   * @param {string|number} vmid
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  start(id, vmid, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/start', { id: id, vmid: vmid });
+    return this._call('POST', path, { query, body });
+  }
+
+  /**
+   * Stop VM
+   *
+   * POST /service/{id}/vms/{vmid}/stop — Bearer token required, from the API specification.
+   *
+   * Stop virtual server
+   *
+   * Body fields:
+   *   - vmid (string): Virtual server id
+   * @param {string|number} id
+   * @param {string|number} vmid
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  stop(id, vmid, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/stop', { id: id, vmid: vmid });
+    return this._call('POST', path, { query, body });
+  }
+
+  /**
+   * Update Network Interface
+   *
+   * PUT /service/{id}/vms/{vmid}/interfaces/{iface} — Bearer token required, from the API specification.
+   *
+   * Update network interface details
+   *
+   * Body fields:
+   *   - iface (integer): Interface number
+   *   - firewall (integer): Enable or disable firewall (may require specific permissions)
+   *   - ipv4 (array): List of IP v4 IDs
+   *   - ipv6 (array): List of IP v6 IDs
+   * @param {string|number} id
+   * @param {string|number} vmid
+   * @param {string|number} iface
+   * @param {object} [body] Request payload.
+   * @param {object} [query] Extra query-string parameters.
+   * @returns {Promise<any>}
+   */
+  updateInterface(id, vmid, iface, body = undefined, query = {}) {
+    const path = this._path('/service/{id}/vms/{vmid}/interfaces/{iface}', { id: id, vmid: vmid, iface: iface });
+    return this._call('PUT', path, { query, body });
+  }
+
+}

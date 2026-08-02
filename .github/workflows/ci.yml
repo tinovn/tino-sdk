@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  python:
+    name: Python ${{ matrix.python }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.8', '3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: pip install pytest
+      - run: pytest sdk/python/tests -q
+
+  nodejs:
+    name: Node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['18', '20', '22']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm test
+        working-directory: sdk/nodejs
+
+  php:
+    name: PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['7.4', '8.2', '8.4']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: curl, json
+      - run: composer install --no-interaction --prefer-dist
+        working-directory: sdk/php
+      - run: vendor/bin/phpunit
+        working-directory: sdk/php
+
+  generated-code-is-current:
+    name: Generated code matches the catalog
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      # The resource layer and the endpoint reference are generated from
+      # spec/tino-userapi-catalog.json. Regenerate and fail if anything drifted.
+      - run: python3 tools/generate-sdk.py
+      - run: python3 tools/generate-docs.py
+      - name: Fail if regeneration changed tracked files
+        run: |
+          if ! git diff --quiet; then
+            echo "::error::Generated files are out of date. Run tools/generate-sdk.py and tools/generate-docs.py."
+            git diff --stat
+            exit 1
+          fi

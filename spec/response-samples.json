@@ -1,0 +1,4835 @@
+{
+ "GET /status": {
+  "method": "GET",
+  "path": "/status",
+  "status": 200,
+  "sample": {
+   "REMOTE_ADDR": "<redacted>",
+   "HTTP_X_FORWARDED_FOR": "203.0.113.10"
+  }
+ },
+ "GET /currencies": {
+  "method": "GET",
+  "path": "/currencies",
+  "status": 200,
+  "sample": [
+   {
+    "code": "đ",
+    "iso": "VND",
+    "sign": "",
+    "format": "1,234.56",
+    "decimal": "0",
+    "rounding": "0",
+    "rounding_mode": "HALF_UP",
+    "id": 0,
+    "rate": 1
+   }
+  ]
+ },
+ "GET /location/countries": {
+  "method": "GET",
+  "path": "/location/countries",
+  "status": 200,
+  "sample": {
+   "AF": "Afghanistan",
+   "AX": "Aland Islands",
+   "AL": "Albania",
+   "DZ": "Algeria",
+   "AS": "American Samoa",
+   "AD": "Andorra",
+   "AO": "Angola",
+   "AI": "Anguilla",
+   "AQ": "Antarctica",
+   "AG": "Antigua And Barbuda",
+   "AR": "Argentina",
+   "AM": "Armenia",
+   "AW": "Aruba",
+   "AU": "Australia",
+   "AT": "Austria",
+   "AZ": "Azerbaijan",
+   "BS": "Bahamas",
+   "BH": "Bahrain",
+   "BD": "Bangladesh",
+   "BB": "Barbados",
+   "…": "226 more key(s)"
+  }
+ },
+ "GET /location/vn/state": {
+  "method": "GET",
+  "path": "/location/vn/state",
+  "status": 200,
+  "sample": [
+   {
+    "id": 1,
+    "name": "Thành phố Hà Nội",
+    "shortName": "Hà Nội",
+    "code": "HNI",
+    "placeType": null,
+    "country": "VN",
+    "order": "3"
+   },
+   {
+    "id": 4,
+    "name": "Tỉnh Cao Bằng",
+    "shortName": "Cao Bằng",
+    "code": "CBG",
+    "placeType": null,
+    "country": "VN",
+    "order": "3"
+   },
+   "… 32 more item(s)"
+  ]
+ },
+ "GET /location/vn/state-v2": {
+  "method": "GET",
+  "path": "/location/vn/state-v2",
+  "status": 200,
+  "sample": [
+   {
+    "id": 1,
+    "name": "Thành phố Hà Nội",
+    "shortName": "Hà Nội",
+    "code": "HNI",
+    "placeType": null,
+    "country": "VN",
+    "order": "3"
+   },
+   {
+    "id": 4,
+    "name": "Tỉnh Cao Bằng",
+    "shortName": "Cao Bằng",
+    "code": "CBG",
+    "placeType": null,
+    "country": "VN",
+    "order": "3"
+   },
+   "… 32 more item(s)"
+  ]
+ },
+ "GET /categories": {
+  "method": "GET",
+  "path": "/categories",
+  "status": 200,
+  "sample": {
+   "categories": [
+    {
+     "id": "84",
+     "name": "Cloud Instance",
+     "description": "",
+     "visible": "1",
+     "ptype": "0",
+     "slug": "cloud-instance",
+     "subcategories": {
+      "93": {
+       "id": "93",
+       "name": "Hermes Agent",
+       "description": "",
+       "visible": "1",
+       "ptype": "3",
+       "slug": "hermes-agent"
+      },
+      "70": {
+       "id": "70",
+       "name": "NVMe VPS ",
+       "description": "",
+       "visible": "1",
+       "ptype": "3",
+       "slug": "nvme-vps"
+      },
+      "89": {
+       "id": "89",
+       "name": "N8N - AI Workflow",
+       "description": "",
+       "visible": "1",
+       "ptype": "3",
+       "slug": "n8n-ai-workflow"
+      },
+      "79": {
+       "id": "79",
+       "name": "Pro AMD VPS",
+       "description": "",
+       "visible": "1",
+       "ptype": "3",
+       "slug": "pro-amd-vps"
+      },
+      "91": {
+       "id": "91",
+       "name": "OpenClaw — Personal AI Assistant",
+       "description": "",
+       "visible": "1",
+       "ptype": "3",
+       "slug": "openclaw"
+      }
+     }
+    },
+    {
+     "id": "54",
+     "name": "Web Hosting",
+     "description": "",
+     "visible": "1",
+     "ptype": "0",
+     "slug": "web-hosting",
+     "subcategories": {
+      "74": {
+       "id": "74",
+       "name": "Hosting NVMe",
+       "description": "<p>Trải nghiệm tốc độ siêu nhanh với ổ cứng NVMe Enterprise chuẩn U.2 với giá tốt nhất. Phần cứng máy chủ cao cấp và mạnh mẽ với vi xử lý Intel Xeon Scalable Gen 2, máy chủ Dell chuyên dụng cho mọi nhà.</p>",
+       "visible": "1",
+       "ptype": "1",
+       "slug": "hosting-nvme"
+      },
+      "53": {
+       "id": "53",
+       "name": "Business Hosting",
+       "description": "\n<p>Trải nghiệm tốc độ siêu nhanh với ổ cứng NVMe Enterprise chuẩn U.2 với giá tốt nhất. Phần cứng máy chủ cao cấp và mạnh mẽ với vi xử lý Intel Xeon Scalable Gen 2, máy chủ Dell chuyên dụng dành cho doanh nghiệp.</p>\n",
+       "visible": "1",
+       "ptype": "1",
+       "slug": "business-hosting"
+      },
+      "83": {
+       "id": "83",
+       "name": "Platinum Hosting",
+       "description": "<p>Trải nghiệm tốc độ siêu nhanh với ổ cứng NVMe Enterprise chuẩn U.2 với giá tốt nhất. Phần cứng máy chủ cao cấp và mạnh mẽ với vi xử lý Intel Xeon Scalable Gen 2, máy chủ Dell chuyên dụng cho mọi nhà.</p>",
+       "visible": "1",
+       "ptype": "1",
+       "slug": "platinum-hosting"
+      },
+      "86": {
+       "id": "86",
+       "name": "WordPress Hosting",
+       "description": "<p>Trải nghiệm tốc độ siêu nhanh với ổ cứng NVMe Enterprise chuẩn U.2 với giá tốt nhất. Phần cứng máy chủ cao cấp và mạnh mẽ với vi xử lý Intel Xeon Scalable Gen 2, máy chủ Dell chuyên dụng dành cho doanh nghiệp.</p>\n",
+       "visible": "1",
+       "ptype": "1",
+       "slug": "wordpress-hosting"
+      },
+      "32": {
+       "id": "32",
+       "name": "cPanel Reseller",
+       "description": "Dịch vụ chuyên dụng cho người bán lại với cấu hình cao, CPU Intel Xeon Gold và ổ cứng NVMe U.2",
+       "visible": "1",
+       "ptype": "2",
+       "slug": "cpanel-reseller"
+      },
+      "1": {
+       "id": "1",
+       "name": "Cloud Hosting",
+       "description": "Trải nghiệm tốc độ với ổ cứng NVME Enterprise chuẩn U.2 với giá tốt nhất. Phần cứng máy chủ cao cấp và mạnh mẽ với vi xử lý Intel Xeon Gold, máy chủ Dell chuyên dụng. Giá rẻ cho mọi nhu cầu.",
+       "visible": "1",
+       "ptype": "1",
+       "slug": "cloud-hosting"
+      }
+     }
+    },
+    "… 8 more item(s)"
+   ]
+  }
+ },
+ "GET /cart/domain/tlds": {
+  "method": "GET",
+  "path": "/cart/domain/tlds",
+  "status": 200,
+  "sample": {
+   "currency": "VND",
+   "tlds": [
+    {
+     "id": "1298",
+     "tld": ".io.vn",
+     "description": "",
+     "period": "1",
+     "periods": [
+      {
+       "period": "1",
+       "register": "50000.00",
+       "transfer": "0.00",
+       "renew": "50000.00",
+       "redemption": "-1.00",
+       "before": "-1.00",
+       "feeRegOrigin": 10000,
+       "feeRenOrigin": 20000,
+       "feeManOrigin": 18182,
+       "vatFee": 1818
+      },
+      {
+       "period": "2",
+       "register": "100000.00",
+       "transfer": "-1.00",
+       "renew": "100000.00",
+       "redemption": "-1.00",
+       "before": "-1.00",
+       "feeRegOrigin": 10000,
+       "feeRenOrigin": 40000,
+       "feeManOrigin": 45455,
+       "vatFee": 4546
+      },
+      "… 8 more item(s)"
+     ],
+     "domain_type": "vn"
+    },
+    {
+     "id": "567",
+     "tld": ".vn",
+     "description": "<p>Tên miền quốc gia VN</p>",
+     "period": "1",
+     "periods": [
+      {
+       "period": "1",
+       "register": "450000.00",
+       "transfer": "0.00",
+       "renew": "450000.00",
+       "redemption": "-1.00",
+       "before": "750000.00",
+       "feeRegOrigin": 100000,
+       "feeRenOrigin": 350000,
+       "feeManOrigin": 0,
+       "vatFee": 0
+      },
+      {
+       "period": "2",
+       "register": "900000.00",
+       "transfer": "-1.00",
+       "renew": "900000.00",
+       "redemption": "-1.00",
+       "before": "-1.00",
+       "feeRegOrigin": 100000,
+       "feeRenOrigin": 700000,
+       "feeManOrigin": 90909,
+       "vatFee": 9091
+      },
+      "… 8 more item(s)"
+     ],
+     "domain_type": "vn"
+    },
+    "… 50 more item(s)"
+   ]
+  }
+ },
+ "GET /v2/cart/domain/tlds": {
+  "method": "GET",
+  "path": "/v2/cart/domain/tlds",
+  "status": 200,
+  "sample": {
+   "currency": "VND",
+   "total": 52,
+   "tlds": [
+    {
+     "id": "1298",
+     "tld": ".io.vn",
+     "description": "",
+     "period": "1",
+     "periods": [
+      {
+       "period": 1,
+       "register": 18182,
+       "transfer": 0,
+       "renew": 27273,
+       "redemption": -1,
+       "before": -1,
+       "feeRegOrigin": 10000,
+       "feeRenOrigin": 20000,
+       "vatValue": 0
+      },
+      {
+       "period": 2,
+       "register": 45455,
+       "transfer": 0,
+       "renew": 54545,
+       "redemption": -1,
+       "before": -1,
+       "feeRegOrigin": 10000,
+       "feeRenOrigin": 40000,
+       "vatValue": 0
+      },
+      "… 8 more item(s)"
+     ],
+     "category_id": "58",
+     "tax_group_id": "1",
+     "ptype": "DomainsType",
+     "tags": {
+      "15": "vn"
+     }
+    },
+    {
+     "id": "567",
+     "tld": ".vn",
+     "description": "<p>Tên miền quốc gia VN</p>",
+     "period": "1",
+     "periods": [
+      {
+       "period": 1,
+       "register": 0,
+       "transfer": 0,
+       "renew": 90909,
+       "redemption": -1,
+       "before": 750000,
+       "feeRegOrigin": 100000,
+       "feeRenOrigin": 350000,
+       "vatValue": 0
+      },
+      {
+       "period": 2,
+       "register": 90909,
+       "transfer": 0,
+       "renew": 181818,
+       "redemption": -1,
+       "before": -1,
+       "feeRegOrigin": 100000,
+       "feeRenOrigin": 700000,
+       "vatValue": 0
+      },
+      "… 8 more item(s)"
+     ],
+     "category_id": "58",
+     "tax_group_id": "1",
+     "ptype": "DomainsType",
+     "tags": {
+      "13": "hot",
+      "18": "hot vn",
+      "15": "vn"
+     }
+    },
+    "… 50 more item(s)"
+   ]
+  }
+ },
+ "GET /cart/coupon": {
+  "method": "GET",
+  "path": "/cart/coupon",
+  "status": 200,
+  "sample": {
+   "coupons": []
+  }
+ },
+ "GET /languages": {
+  "method": "GET",
+  "path": "/languages",
+  "status": 200,
+  "sample": {
+   "languages": [
+    {
+     "id": "2",
+     "parent_id": "0",
+     "target": "user",
+     "name": "english",
+     "status": "1",
+     "direction": "ltr",
+     "iso": "en",
+     "date_format": ""
+    },
+    {
+     "id": "7",
+     "parent_id": "2",
+     "target": "user",
+     "name": "vietnamese",
+     "status": "1",
+     "direction": "ltr",
+     "iso": "vi",
+     "date_format": ""
+    }
+   ]
+  }
+ },
+ "GET /payment": {
+  "method": "GET",
+  "path": "/payment",
+  "status": 200,
+  "sample": {
+   "payments": {
+    "190": "Thanh toán bằng chuyển khoản - QR Code - Momo - ZaloPay",
+    "70": "Ví điện tử MoMo",
+    "71": "Thanh toán Thẻ tín dụng - ATM",
+    "43": "VCB - Ngân hàng TMCP Ngoại Thương Việt Nam"
+   }
+  }
+ },
+ "GET /payment/fees": {
+  "method": "GET",
+  "path": "/payment/fees",
+  "status": 200,
+  "sample": {
+   "payments": [
+    {
+     "id": 190,
+     "name": "Thanh toán bằng chuyển khoản - QR Code - Momo - ZaloPay",
+     "fixed_fee": "0",
+     "percent_fee": "0",
+     "icon": "payment-logo-190"
+    },
+    {
+     "id": 70,
+     "name": "Ví điện tử MoMo",
+     "fixed_fee": "0",
+     "percent_fee": "0",
+     "icon": "payment-logo-70"
+    },
+    "… 2 more item(s)"
+   ]
+  }
+ },
+ "POST /domain/lookup": {
+  "method": "POST",
+  "path": "/domain/lookup",
+  "status": 200,
+  "sample": {
+   "domain": "tino-sdk-demo-2026.com",
+   "name": "tino-sdk-demo-2026.com",
+   "sld": "tino-sdk-demo-2026",
+   "tld": ".com",
+   "description": "",
+   "premium": false,
+   "avaliable": true,
+   "transfer": false,
+   "status": "ok",
+   "type": "register",
+   "category_id": "58",
+   "tld_id": "346",
+   "periods": [
+    {
+     "id": "346",
+     "period": "1",
+     "register": "319000.00",
+     "transfer": "399000.00",
+     "renew": "399000.00",
+     "redemption": "3990000.00",
+     "before": "399000.00",
+     "vatFee": 29000,
+     "feeRegOrigin": 290000
+    },
+    {
+     "id": "346",
+     "period": "2",
+     "register": "638000.00",
+     "transfer": "798000.00",
+     "renew": "798000.00",
+     "redemption": "7980000.00",
+     "before": "-1.00",
+     "vatFee": 58000,
+     "feeRegOrigin": 580000
+    },
+    "… 8 more item(s)"
+   ]
+  }
+ },
+ "POST /checkemail": {
+  "method": "POST",
+  "path": "/checkemail",
+  "status": 200,
+  "sample": {
+   "email": "user@example.com",
+   "error": "",
+   "exists": false
+  }
+ },
+ "GET /logs": {
+  "method": "GET",
+  "path": "/logs",
+  "status": 200,
+  "sample": {
+   "logs": [
+    {
+     "logid": "950001",
+     "date": "2025-10-21 14:31:00",
+     "description": "Client placed new order #960001  (203.0.113.10)",
+     "result": "1",
+     "type": "client",
+     "id": null,
+     "ip": "203.0.113.10"
+    },
+    {
+     "logid": "44640",
+     "date": "2026-03-30 20:05:44",
+     "description": "Client placed new order #1143928092  (203.0.113.10)",
+     "result": "1",
+     "type": "client",
+     "id": null,
+     "ip": "203.0.113.10"
+    },
+    "… 90 more item(s)"
+   ]
+  }
+ },
+ "GET /affiliates/campaigns": {
+  "method": "GET",
+  "path": "/affiliates/campaigns",
+  "status": 200,
+  "sample": {
+   "campaigns": null
+  }
+ },
+ "GET /affiliates/payouts": {
+  "method": "GET",
+  "path": "/affiliates/payouts",
+  "status": 200,
+  "sample": {
+   "payouts": null
+  }
+ },
+ "GET /affiliates/vouchers": {
+  "method": "GET",
+  "path": "/affiliates/vouchers",
+  "status": 200,
+  "sample": {
+   "vouchers": null
+  }
+ },
+ "GET /affiliates/commissionplans": {
+  "method": "GET",
+  "path": "/affiliates/commissionplans",
+  "status": 200,
+  "sample": {
+   "commission_plans": null
+  }
+ },
+ "GET /contact": {
+  "method": "GET",
+  "path": "/contact",
+  "status": 200,
+  "sample": {
+   "contacts": null,
+   "page": {
+    "current": 0,
+    "total": 0
+   }
+  }
+ },
+ "GET /contact/privileges": {
+  "method": "GET",
+  "path": "/contact/privileges",
+  "status": 200,
+  "sample": {
+   "privileges": {
+    "billing": [
+     "emails",
+     "newinvoices",
+     "… 11 more item(s)"
+    ],
+    "support": [
+     "newticket",
+     "tickets",
+     "… 3 more item(s)"
+    ],
+    "disabled_support_departments": [
+     2,
+     3,
+     "… 5 more item(s)"
+    ],
+    "misc": [
+     "editmain",
+     "manageservicegroups",
+     "… 9 more item(s)"
+    ],
+    "services": {
+     "full": 1,
+     "100001": [
+      "basic",
+      "billing",
+      "… 18 more item(s)"
+     ],
+     "100002": [
+      "basic",
+      "billing",
+      "… 23 more item(s)"
+     ],
+     "100003": [
+      "basic",
+      "billing",
+      "… 5 more item(s)"
+     ]
+    },
+    "domains": {
+     "full": 1,
+     "200001": [
+      "basic",
+      "renew",
+      "… 12 more item(s)"
+     ],
+     "806612": [
+      "basic",
+      "renew",
+      "… 11 more item(s)"
+     ],
+     "806613": [
+      "basic",
+      "renew",
+      "… 11 more item(s)"
+     ],
+     "806615": [
+      "basic",
+      "renew",
+      "… 11 more item(s)"
+     ],
+     "807678": [
+      "basic",
+      "renew",
+      "… 11 more item(s)"
+     ]
+    }
+   }
+  }
+ },
+ "GET /details": {
+  "method": "GET",
+  "path": "/details",
+  "status": 200,
+  "sample": {
+   "client": {
+    "id": "700001",
+    "group_id": "0",
+    "email": "user@example.com",
+    "lastlogin": "2026-08-02 21:01:40",
+    "ip": "203.0.113.10",
+    "host": "host.example",
+    "firstname": "Nguyen Van",
+    "lastname": "A",
+    "companyname": "Example Company Ltd",
+    "address1": "123 Example Street",
+    "city": "Phường An Hội Tây",
+    "state": "Thành phố Hồ Chí Minh",
+    "country": "VN",
+    "phonenumber": "+84.900000000",
+    "language": "vietnamese",
+    "company": false,
+    "currency_id": "0",
+    "taxid": "0100000000",
+    "nationalid": "000000000000",
+    "birthday": "01/01/1990",
+    "…": "3 more key(s)"
+   },
+   "update_required": true,
+   "currency": {
+    "code": "đ",
+    "iso": "VND",
+    "sign": "",
+    "format": "1,234.56",
+    "decimal": "0",
+    "id": 0
+   },
+   "verify": {
+    "email": "user@example.com"
+   }
+  }
+ },
+ "GET /clientarea": {
+  "method": "GET",
+  "path": "/clientarea",
+  "status": 200,
+  "sample": {
+   "total": {
+    "invoices": 1,
+    "domains": 1,
+    "tickets": 3,
+    "services": 3
+   }
+  }
+ },
+ "GET /clientarea/statuses": {
+  "method": "GET",
+  "path": "/clientarea/statuses",
+  "status": 200,
+  "sample": {
+   "invoice": [
+    "Paid",
+    "Unpaid",
+    "… 4 more item(s)"
+   ],
+   "domain": [
+    "Pending",
+    "Active",
+    "… 4 more item(s)"
+   ],
+   "ticket": [
+    "Open",
+    "Closed",
+    "… 4 more item(s)"
+   ],
+   "service": [
+    "Pending",
+    "Active",
+    "… 4 more item(s)"
+   ],
+   "estimates": [
+    "Draft",
+    "Sent",
+    "… 3 more item(s)"
+   ]
+  }
+ },
+ "GET /clientarea/histories": {
+  "method": "GET",
+  "path": "/clientarea/histories",
+  "status": 200,
+  "sample": {
+   "logs": [
+    {
+     "logid": "940001",
+     "date": "2026-08-02 18:53:50",
+     "description": "Update Extended Info #ID 200001 ",
+     "result": "1",
+     "type": "domain",
+     "id": "200001",
+     "ip": "203.0.113.10"
+    },
+    {
+     "logid": "1149966",
+     "date": "2026-08-02 18:53:47",
+     "description": "Update Extended Info #ID 200001 ",
+     "result": "1",
+     "type": "domain",
+     "id": "200001",
+     "ip": "203.0.113.10"
+    },
+    "… 90 more item(s)"
+   ],
+   "page": {
+    "total": 92,
+    "pages": 1,
+    "current": 1
+   }
+  }
+ },
+ "GET /clientarea/history/emails": {
+  "method": "GET",
+  "path": "/clientarea/history/emails",
+  "status": 200,
+  "sample": {
+   "emails": [
+    {
+     "id": "800001",
+     "subject": "[Y&ecirc;u cầu hỗ trợ #400001] test suport.org",
+     "date": "2026-07-27 20:25:06",
+     "email": "user@example.com"
+    },
+    {
+     "id": "2769212",
+     "subject": "Th&ocirc;ng tin t&agrave;i khoản Hosting tại TinoGroup.",
+     "date": "2026-07-26 11:33:20",
+     "email": "user@example.com"
+    },
+    "… 31 more item(s)"
+   ],
+   "page": {
+    "total": 33,
+    "pages": 1,
+    "current": 1
+   }
+  }
+ },
+ "GET /clientarea/nav/service": {
+  "method": "GET",
+  "path": "/clientarea/nav/service",
+  "status": 200,
+  "sample": {
+   "categories": [
+    {
+     "id": 84,
+     "name": "Cloud Instance",
+     "description": "",
+     "slug": "cloud-instance",
+     "subcategories": [
+      {
+       "id": 93,
+       "name": "Hermes Agent",
+       "description": "",
+       "slug": "hermes-agent"
+      },
+      {
+       "id": 70,
+       "name": "NVMe VPS ",
+       "description": "",
+       "slug": "nvme-vps"
+      },
+      "… 3 more item(s)"
+     ]
+    },
+    {
+     "id": 54,
+     "name": "Web Hosting",
+     "description": "",
+     "slug": "web-hosting",
+     "subcategories": [
+      {
+       "id": 74,
+       "name": "Hosting NVMe",
+       "description": "<p>Trải nghiệm tốc độ siêu nhanh với ổ cứng NVMe Enterprise chuẩn U.2 với giá tốt nhất. Phần cứng máy chủ cao cấp và mạnh mẽ với vi xử lý Intel Xeon Scalable Gen 2, máy chủ Dell chuyên dụng cho mọi nhà.</p>",
+       "slug": "hosting-nvme"
+      },
+      {
+       "id": 53,
+       "name": "Business Hosting",
+       "description": "\n<p>Trải nghiệm tốc độ siêu nhanh với ổ cứng NVMe Enterprise chuẩn U.2 với giá tốt nhất. Phần cứng máy chủ cao cấp và mạnh mẽ với vi xử lý Intel Xeon Scalable Gen 2, máy chủ Dell chuyên dụng dành cho doanh nghiệp.</p>\n",
+       "slug": "business-hosting"
+      },
+      "… 4 more item(s)"
+     ]
+    },
+    "… 7 more item(s)"
+   ]
+  }
+ },
+ "GET /downloads": {
+  "method": "GET",
+  "path": "/downloads",
+  "status": 200,
+  "sample": {
+   "categories": {
+    "1": {
+     "id": "1",
+     "parent_cat": "0",
+     "name": "Rank Math SEO Pro",
+     "description": "",
+     "visible": "1",
+     "sort_order": "0",
+     "files": {
+      "1": {
+       "id": "10345",
+       "category_id": "1",
+       "filename": "746836_seo-by-rank-math-pro.zip",
+       "name": "Rank Math SEO PRO 3.0.41",
+       "description": "",
+       "size": "1 603",
+       "uploaded": "2023-08-06",
+       "downloads": "402",
+       "sort_order": "0",
+       "type": "zip"
+      }
+     },
+     "slug": "rank-math-seo-pro",
+     "categories": []
+    },
+    "4": {
+     "id": "4",
+     "parent_cat": "0",
+     "name": "Astra Pro &amp; Addons",
+     "description": "",
+     "visible": "1",
+     "sort_order": "0",
+     "files": [
+      {
+       "id": "10336",
+       "category_id": "4",
+       "filename": "166433_astra-portfolio-1.11.6.zip",
+       "name": "WP Portfolio",
+       "description": "",
+       "size": "295",
+       "uploaded": "2023-08-06",
+       "downloads": "144",
+       "sort_order": "0",
+       "type": "zip"
+      },
+      {
+       "id": "10337",
+       "category_id": "4",
+       "filename": "196727_ultimate-elementor-1.36.18.zip",
+       "name": "Ultimate Addons for Elementor\t",
+       "description": "",
+       "size": "3 424",
+       "uploaded": "2023-08-06",
+       "downloads": "208",
+       "sort_order": "0",
+       "type": "zip"
+      },
+      "… 7 more item(s)"
+     ],
+     "slug": "astra-pro--amp--addons",
+     "categories": []
+    },
+    "5": {
+     "id": "7",
+     "parent_cat": "0",
+     "name": "Plugin WPML",
+     "description": "",
+     "visible": "1",
+     "sort_order": "0",
+     "files": [
+      {
+       "id": "6499",
+       "category_id": "7",
+       "filename": "433775_otgs-installer-plugin.3.0.4.zip",
+       "name": "WPML",
+       "description": "",
+       "size": "1 285",
+       "uploaded": "2023-05-22",
+       "downloads": "358",
+       "sort_order": "0",
+       "type": "zip"
+      }
+     ],
+     "slug": "plugin-wpml",
+     "categories": []
+    }
+   },
+   "popular": [
+    {
+     "id": "10345",
+     "category_id": "1",
+     "filename": "746836_seo-by-rank-math-pro.zip",
+     "name": "Rank Math SEO PRO 3.0.41",
+     "description": "",
+     "size": "1 603",
+     "uploaded": "2023-08-06",
+     "downloads": "402",
+     "sort_order": "0",
+     "type": "zip"
+    },
+    {
+     "id": "10343",
+     "category_id": "4",
+     "filename": "635481_astra.4.1.6.zip",
+     "name": "Astra Theme",
+     "description": "",
+     "size": "5 297",
+     "uploaded": "2023-08-06",
+     "downloads": "288",
+     "sort_order": "0",
+     "type": "zip"
+    },
+    "… 3 more item(s)"
+   ],
+   "myfiles": []
+  }
+ },
+ "GET /changeowner": {
+  "method": "GET",
+  "path": "/changeowner",
+  "status": 200,
+  "sample": {
+   "transfers": null
+  }
+ },
+ "GET /contacts": {
+  "method": "GET",
+  "path": "/contacts",
+  "status": 200,
+  "sample": {
+   "contacts": null,
+   "page": {
+    "current": 0,
+    "total": 0
+   }
+  }
+ },
+ "GET /clientarea/settings": {
+  "method": "GET",
+  "path": "/clientarea/settings",
+  "status": 200,
+  "sample": {
+   "settings": {
+    "RecordsPerPage": {
+     "title": "Số dòng hiển thị mỗi trang",
+     "description": "",
+     "type": "select",
+     "items": [
+      {
+       "id": 51,
+       "option_id": "43",
+       "title": "25",
+       "description": "",
+       "value": "25",
+       "sort": "1",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[RecordsPerPage]"
+      },
+      {
+       "id": 52,
+       "option_id": "43",
+       "title": "50",
+       "description": "",
+       "value": "50",
+       "sort": "1",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[RecordsPerPage]"
+      },
+      "… 2 more item(s)"
+     ],
+     "name": "configs[RecordsPerPage]",
+     "selected": {
+      "id": 53,
+      "option_id": "43",
+      "title": "100",
+      "description": "",
+      "value": "100",
+      "sort": "1",
+      "admin_only": false
+     }
+    },
+    "DefaultTimezone": {
+     "title": "Múi giờ",
+     "description": "",
+     "type": "select",
+     "items": {
+      "1": {
+       "value": "Pacific/Tongatapu",
+       "title": "(GMT+13:00) Nukualofa",
+       "sort": 2,
+       "description": "",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[DefaultTimezone]"
+      },
+      "2": {
+       "value": "Pacific/Fiji",
+       "title": "(GMT+12:00) Fiji, Kamchatka, Marshall Is.",
+       "sort": 3,
+       "description": "",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[DefaultTimezone]"
+      },
+      "3": {
+       "value": "Pacific/Auckland",
+       "title": "(GMT+12:00) Auckland, Wellington",
+       "sort": 4,
+       "description": "",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[DefaultTimezone]"
+      },
+      "4": {
+       "value": "Asia/Magadan",
+       "title": "(GMT+11:00) Magadan, Solomon Is., New Caledonia",
+       "sort": 5,
+       "description": "",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[DefaultTimezone]"
+      },
+      "5": {
+       "value": "Asia/Vladivostok",
+       "title": "(GMT+10:00) Vladivostok",
+       "sort": 6,
+       "description": "",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[DefaultTimezone]"
+      },
+      "6": {
+       "value": "Australia/Hobart",
+       "title": "(GMT+10:00) Hobart",
+       "sort": 7,
+       "description": "",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[DefaultTimezone]"
+      },
+      "7": {
+       "value": "Pacific/Guam",
+       "title": "(GMT+10:00) Guam, Port Moresby",
+       "sort": 8,
+       "description": "",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[DefaultTimezone]"
+      },
+      "8": {
+       "value": "Australia/Sydney",
+       "title": "(GMT+10:00) Canberra, Melbourne, Sydney",
+       "sort": 9,
+       "description": "",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[DefaultTimezone]"
+      },
+      "9": {
+       "value": "Australia/Brisbane",
+       "title": "(GMT+10:00) Brisbane",
+       "sort": 10,
+       "description": "",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[DefaultTimezone]"
+      },
+      "10": {
+       "value": "Australia/Adelaide",
+       "title": "(GMT+09:30) Adelaide",
+       "sort": 11,
+       "description": "",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[DefaultTimezone]"
+      },
+      "11": {
+       "value": "Asia/Yakutsk",
+       "title": "(GMT+09:00) Yakutsk",
+       "sort": 12,
+       "description": "",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[DefaultTimezone]"
+      },
+      "12": {
+       "value": "Asia/Seoul",
+       "title": "(GMT+09:00) Seoul",
+       "sort": 13,
+       "description": "",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[DefaultTimezone]"
+      },
+      "13": {
+       "value": "Asia/Tokyo",
+       "title": "(GMT+09:00) Osaka, Sapporo, Tokyo",
+       "sort": 14,
+       "description": "",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[DefaultTimezone]"
+      },
+      "14": {
+       "value": "Asia/Taipei",
+       "title": "(GMT+08:00) Taipei",
+       "sort": 15,
+       "description": "",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[DefaultTimezone]"
+      },
+      "15": {
+       "value": "Australia/Perth",
+       "title": "(GMT+08:00) Perth",
+       "sort": 16,
+       "description": "",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[DefaultTimezone]"
+      },
+      "16": {
+       "value": "Asia/Kuala_Lumpur",
+       "title": "(GMT+08:00) Kuala Lumpur, Singapore",
+       "sort": 17,
+       "description": "",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[DefaultTimezone]"
+      },
+      "17": {
+       "value": "Asia/Shanghai",
+       "title": "(GMT+08:00) Beijing, Shanghai",
+       "sort": 18,
+       "description": "",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[DefaultTimezone]"
+      },
+      "18": {
+       "value": "Asia/Irkutsk",
+       "title": "(GMT+08:00) Irkutsk, Ulaan Bataar",
+       "sort": 19,
+       "description": "",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[DefaultTimezone]"
+      },
+      "19": {
+       "value": "Asia/Hong_Kong",
+       "title": "(GMT+08:00) Hong Kong",
+       "sort": 20,
+       "description": "",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[DefaultTimezone]"
+      },
+      "20": {
+       "value": "Asia/Krasnoyarsk",
+       "title": "(GMT+07:00) Krasnoyarsk",
+       "sort": 21,
+       "description": "",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[DefaultTimezone]"
+      },
+      "…": "71 more key(s)"
+     },
+     "name": "configs[DefaultTimezone]",
+     "selected": {
+      "value": "Asia/Bangkok",
+      "title": "(GMT+07:00) Bangkok, Hanoi, Jakarta",
+      "sort": 22,
+      "description": "",
+      "admin_only": false
+     }
+    },
+    "DefaultPaymentModule": {
+     "title": "Phương thức thanh toán mặc định",
+     "description": "",
+     "type": "tpl",
+     "items": [
+      {
+       "value": "0",
+       "title": "Không có thông tin hiển thị",
+       "description": "",
+       "admin_only": false,
+       "sort": 1,
+       "selected": false,
+       "name": "configs[DefaultPaymentModule]"
+      },
+      {
+       "value": "190",
+       "title": "Thanh toán bằng chuyển khoản - QR Code - Momo - ZaloPay",
+       "description": "",
+       "admin_only": false,
+       "sort": 1,
+       "selected": true,
+       "name": "configs[DefaultPaymentModule]"
+      },
+      "… 3 more item(s)"
+     ],
+     "name": "configs[DefaultPaymentModule]",
+     "selected": {
+      "value": "190",
+      "title": "Thanh toán bằng chuyển khoản - QR Code - Momo - ZaloPay",
+      "description": "",
+      "admin_only": false,
+      "sort": 1
+     }
+    },
+    "CreditAutoApply": {
+     "title": "Tự động sử dụng Credit",
+     "description": "",
+     "type": "select",
+     "items": [
+      {
+       "id": 9,
+       "option_id": "6",
+       "title": "Có",
+       "description": "áp dụng tín dụng có sẵn cho các đơn đặt hàng mới và hóa đơn định kỳ ngay lập tức.",
+       "value": "on",
+       "sort": "1",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[CreditAutoApply]"
+      },
+      {
+       "id": 11,
+       "option_id": "6",
+       "title": "Không",
+       "description": "không tự động áp dụng tín dụng có sẵn.",
+       "value": "off",
+       "sort": "1",
+       "admin_only": false,
+       "selected": true,
+       "name": "configs[CreditAutoApply]"
+      }
+     ],
+     "name": "configs[CreditAutoApply]",
+     "selected": {
+      "id": 11,
+      "option_id": "6",
+      "title": "Không",
+      "description": "không tự động áp dụng tín dụng có sẵn.",
+      "value": "off",
+      "sort": "1",
+      "admin_only": false
+     }
+    },
+    "GenerateSeparateInvoices": {
+     "title": "Merge Invoices",
+     "description": "",
+     "type": "radio",
+     "items": {
+      "1": {
+       "id": 27,
+       "option_id": "15",
+       "title": "Có",
+       "description": "Tự động gọp các hoá đơn được tạo cùng ngày",
+       "value": "off",
+       "sort": "1",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[GenerateSeparateInvoices]"
+      },
+      "2": {
+       "id": 28,
+       "option_id": "15",
+       "title": "Có",
+       "description": "Tự động gọp các hoá đơn có cùng ngày đến hạn",
+       "value": "due",
+       "sort": "1",
+       "admin_only": false,
+       "selected": false,
+       "name": "configs[GenerateSeparateInvoices]"
+      },
+      "3": {
+       "id": 29,
+       "option_id": "15",
+       "title": "Không",
+       "description": "Tạo hoá đơn riêng cho từng dịch vụ",
+       "value": "on",
+       "sort": "1",
+       "admin_only": false,
+       "selected": true,
+       "name": "configs[GenerateSeparateInvoices]"
+      }
+     },
+     "name": "configs[GenerateSeparateInvoices]",
+     "selected": {
+      "id": 29,
+      "option_id": "15",
+      "title": "Không",
+      "description": "Tạo hoá đơn riêng cho từng dịch vụ",
+      "value": "on",
+      "sort": "1",
+      "admin_only": false
+     }
+    },
+    "ClientNotifications": {
+     "title": "Thông báo email",
+     "description": "",
+     "type": "checkbox",
+     "items": [
+      {
+       "value": "notify_login",
+       "title": "Thông báo cho tôi khi ai đó đăng nhập tài khoản",
+       "description": "",
+       "admin_only": false,
+       "sort": 1,
+       "selected": true,
+       "name": "configs[ClientNotifications][]"
+      },
+      {
+       "value": "notify_contact_login",
+       "title": "Notify me when my contact logs into his account",
+       "description": "",
+       "admin_only": false,
+       "sort": 1,
+       "selected": false,
+       "name": "configs[ClientNotifications][]"
+      },
+      "… 4 more item(s)"
+     ],
+     "name": "configs[ClientNotifications]",
+     "selected": {
+      "value": "notify_domains",
+      "title": "Nhận thông báo email liên quan đến <strong>tên miền</strong>",
+      "description": "",
+      "admin_only": false,
+      "sort": 1
+     }
+    },
+    "DefaultNameservers": {
+     "title": "Nameservers",
+     "description": "",
+     "type": "tpl",
+     "items": [],
+     "name": "configs[DefaultNameservers]",
+     "selected": {
+      "switch": "off",
+      "items": [],
+      "title": "",
+      "description": ""
+     }
+    }
+   },
+   "group_settings": {
+    "General": [
+     "RecordsPerPage",
+     "DefaultTimezone"
+    ],
+    "Billing": [
+     "DefaultPaymentModule",
+     "CreditAutoApply",
+     "… 1 more item(s)"
+    ],
+    "Notifications": [
+     "ClientNotifications"
+    ],
+    "Domains": [
+     "DefaultNameservers"
+    ]
+   }
+  }
+ },
+ "GET /notifications": {
+  "method": "GET",
+  "path": "/notifications",
+  "status": 200,
+  "sample": {
+   "notifications": [
+    {
+     "id": 920001,
+     "client_id": "<redacted>",
+     "rel_type": "account",
+     "rel_id": "100001",
+     "seen": "0",
+     "subject": "Thông tin tài khoản Hosting tại TinoGroup.",
+     "body": "Dear B&igrave;nh Trần Tran,<br />\n<br />\nTh&ocirc;ng tin t&agrave;i khoản hosting của bạn đ&atilde; được khởi tạo.<br />\n<br />\nTh&ocirc;ng tin dịch vụ<br />\n<br />\nDịch vụ: WH 1<br />\nT&ecirc;n miền: example.com<br />\nThanh to&aacute;n lần đầu: 79,000 đ<br />\nThanh to&aacute;n gia hạn: 79,000 đ<br …",
+     "metadata": "[]",
+     "type": "direct",
+     "date_added": "2026-07-26 11:33:20",
+     "date_seen": null,
+     "url": false
+    },
+    {
+     "id": 171464,
+     "client_id": "<redacted>",
+     "rel_type": "ticket",
+     "rel_id": "445776",
+     "seen": "0",
+     "subject": "Nhân viên hỗ trợ đã phản hồi ticket",
+     "body": "On 24 Jul 2026, at 20:18, B&igrave;nh Trần &lt;user@example.com&gt; wrote:  Nơi tiếp nhận những y&ecirc;u cầu hỗ trợ bản khai, x&aacute;c thực t&ecirc;n miền. Kh&aacute;ch h&agrave;ng c&oacute; thể li&ecirc;n hệ trực tiếp qua hotline 0364.333.333 nhấn ph&iacute;m 2 \n\nBest Regards!\n\n/----------------…",
+     "metadata": "[]",
+     "type": "direct",
+     "date_added": "2026-07-24 20:25:23",
+     "date_seen": null,
+     "url": false
+    },
+    "… 12 more item(s)"
+   ],
+   "page": {
+    "total": 14,
+    "pages": 1,
+    "current": 1
+   }
+  }
+ },
+ "GET /notifications/new": {
+  "method": "GET",
+  "path": "/notifications/new",
+  "status": 200,
+  "sample": {
+   "notifications": [
+    {
+     "id": 920001,
+     "rel_type": "account",
+     "rel_id": "100001",
+     "seen": "0",
+     "subject": "Thông tin tài khoản Hosting tại TinoGroup.",
+     "body": "Dear B&igrave;nh Trần Tran,<br />\n<br />\nTh&ocirc;ng tin t&agrave;i khoản hosting của bạn đ&atilde; được khởi tạo.<br />\n<br />\nTh&ocirc;ng tin dịch vụ<br />\n<br />\nDịch vụ: WH 1<br />\nT&ecirc;n miền: example.com<br />\nThanh to&aacute;n lần đầu: 79,000 đ<br />\nThanh to&aacute;n gia hạn: 79,000 đ<br …",
+     "metadata": "[]",
+     "date_added": "2026-07-26 11:33:20",
+     "date_seen": null,
+     "url": false
+    },
+    {
+     "id": 171464,
+     "rel_type": "ticket",
+     "rel_id": "445776",
+     "seen": "0",
+     "subject": "Nhân viên hỗ trợ đã phản hồi ticket",
+     "body": "On 24 Jul 2026, at 20:18, B&igrave;nh Trần &lt;user@example.com&gt; wrote:  Nơi tiếp nhận những y&ecirc;u cầu hỗ trợ bản khai, x&aacute;c thực t&ecirc;n miền. Kh&aacute;ch h&agrave;ng c&oacute; thể li&ecirc;n hệ trực tiếp qua hotline 0364.333.333 nhấn ph&iacute;m 2 \n\nBest Regards!\n\n/----------------…",
+     "metadata": "[]",
+     "date_added": "2026-07-24 20:25:23",
+     "date_seen": null,
+     "url": false
+    },
+    "… 12 more item(s)"
+   ],
+   "success": true
+  }
+ },
+ "GET /clientarea/businessinfo": {
+  "method": "GET",
+  "path": "/clientarea/businessinfo",
+  "status": 200,
+  "sample": {
+   "error": [
+    "Please enter taxid"
+   ]
+  }
+ },
+ "GET /clientarea/downloadprofile": {
+  "method": "GET",
+  "path": "/clientarea/downloadprofile",
+  "status": 200,
+  "sample": "%PDF-1.4\n%����\n3 0 obj\n<</Type /Page\n/Parent 1 0 R\n/MediaBox [0 0 595.280 841.890]\n/TrimBox [0.000 0.000 595.280 841.890]\n/Resources 2 0 R\n/Group << /Type /Group /S /Transparency /CS /DeviceRGB >> \n/Annots [ 5 0 R ] \n/Contents 4 0 R>>\nendobj\n4 0 obj\n<</Filter /FlateDecode /Length 1571>>\nstream\nx��X_…"
+ },
+ "GET /balance": {
+  "method": "GET",
+  "path": "/balance",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "details": {
+    "currency": "đ",
+    "acc_balance": 574723,
+    "acc_credit": "0.00"
+   }
+  }
+ },
+ "GET /invoice": {
+  "method": "GET",
+  "path": "/invoice",
+  "status": 200,
+  "sample": {
+   "invoices": [
+    {
+     "id": "300001",
+     "date": "2026-03-30",
+     "dateorig": "2026-03-30",
+     "duedate": "2026-12-07",
+     "paybefore": "2026-12-07",
+     "total": "574723.00",
+     "subtotal": "532151.00",
+     "tax": "42572.00",
+     "tax2": "0.00",
+     "datepaid": "0000-00-00 00:00:00",
+     "status": "Unpaid",
+     "merge_id": null,
+     "number": "TNG300001",
+     "currency": "VND"
+    }
+   ]
+  }
+ },
+ "GET /addfunds": {
+  "method": "GET",
+  "path": "/addfunds",
+  "status": 200,
+  "sample": {
+   "min_amount": 50000,
+   "max_amount": 500000000,
+   "gateways": [
+    {
+     "id": 190,
+     "name": "Thanh toán bằng chuyển khoản - QR Code - Momo - ZaloPay"
+    },
+    {
+     "id": 70,
+     "name": "Ví điện tử MoMo"
+    },
+    "… 2 more item(s)"
+   ]
+  }
+ },
+ "GET /billing/creditlogs": {
+  "method": "GET",
+  "path": "/billing/creditlogs",
+  "status": 200,
+  "sample": {
+   "logs": [],
+   "page": {
+    "total": 0,
+    "pages": 0,
+    "current": 1
+   }
+  }
+ },
+ "GET /invoices": {
+  "method": "GET",
+  "path": "/invoices",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "invoices": [
+    {
+     "id": "300001",
+     "date": "2026-03-30",
+     "dateorig": "2026-03-30",
+     "duedate": "2026-12-07",
+     "paybefore": "2026-12-07",
+     "total": "574723.00",
+     "subtotal": "532151.00",
+     "tax": "42572.00",
+     "tax2": "0.00",
+     "datepaid": "0000-00-00 00:00:00",
+     "status": "Unpaid",
+     "merge_id": null,
+     "number": "TNG300001",
+     "currency": "VND"
+    }
+   ],
+   "total": 1,
+   "page": {
+    "total": 1,
+    "pages": 1,
+    "current": 1
+   }
+  }
+ },
+ "GET /invoices/due": {
+  "method": "GET",
+  "path": "/invoices/due",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "invoices_due": [
+    {
+     "id": "300001",
+     "date": "2026-03-30",
+     "duedate": "2026-12-07",
+     "paybefore": "2026-12-07",
+     "total": "574723.00",
+     "status": "Unpaid",
+     "number": "TNG300001",
+     "currency": "VND"
+    }
+   ],
+   "total": 1,
+   "page": {
+    "total": 1,
+    "pages": 1,
+    "current": 1
+   }
+  }
+ },
+ "GET /estimates": {
+  "method": "GET",
+  "path": "/estimates",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "estimates": [],
+   "total": 0,
+   "page": {
+    "total": 0,
+    "pages": 0,
+    "current": 1
+   }
+  }
+ },
+ "GET /tickets": {
+  "method": "GET",
+  "path": "/tickets",
+  "status": 200,
+  "sample": {
+   "tickets": [
+    {
+     "client_read": "1",
+     "ticket_number": "400001",
+     "date": "2026-07-24 20:20:01",
+     "deptname": "Phòng hỗ trợ kỹ thuật",
+     "subject": "test suport.org",
+     "status": "Closed",
+     "lastreply": "2026-07-24 20:20:01"
+    },
+    {
+     "client_read": "1",
+     "ticket_number": "400002",
+     "date": "2026-07-24 20:15:07",
+     "deptname": "Phòng quản lý tên miền",
+     "subject": "test email",
+     "status": "Answered",
+     "lastreply": "2026-07-24 20:15:07"
+    },
+    "… 5 more item(s)"
+   ],
+   "page": {
+    "current": 0,
+    "total": 1
+   }
+  }
+ },
+ "GET /ticket/departments": {
+  "method": "GET",
+  "path": "/ticket/departments",
+  "status": 200,
+  "sample": {
+   "departments": [
+    {
+     "id": "2",
+     "name": "Phòng hỗ trợ kỹ thuật",
+     "description": "Nơi tiếp nhận những yêu cầu hỗ trợ kỹ thuật. Khách hàng có thể liên hệ trực tiếp qua hotline 0364.333.333 nhấn phím 2 hoặc email user@example.com trong trường hợp khẩn cấp.",
+     "allow_priority": true
+    },
+    {
+     "id": "3",
+     "name": "Phòng Kinh Doanh",
+     "description": "Nơi tiếp nhận và giải quyết những vấn đề liên quan đến báo giá, hợp đồng và dịch vụ. Khách hàng có thể liên hệ trực tiếp hotline 0364.333.333 nhấn phím 1 hoặc email user@example.com trong trường hợp khẩn cấp.",
+     "allow_priority": false
+    },
+    "… 5 more item(s)"
+   ]
+  }
+ },
+ "GET /news": {
+  "method": "GET",
+  "path": "/news",
+  "status": 200,
+  "sample": {
+   "news": []
+  }
+ },
+ "GET /knowledgebase": {
+  "method": "GET",
+  "path": "/knowledgebase",
+  "status": 200,
+  "sample": {
+   "categories": []
+  }
+ },
+ "GET /domain": {
+  "method": "GET",
+  "path": "/domain",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "domains": [
+    {
+     "id": "200001",
+     "name": "example.com",
+     "expires": "2026-12-07",
+     "label": "",
+     "recurring_amount": "585366.00",
+     "date_created": "2025-12-07",
+     "status": "Active",
+     "period": "1",
+     "idprotection": "1",
+     "autorenew": "1",
+     "daytoexpire": "127"
+    }
+   ]
+  }
+ },
+ "GET /domains": {
+  "method": "GET",
+  "path": "/domains",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "domains": [
+    {
+     "id": "200001",
+     "name": "example.com",
+     "expires": "2026-12-07",
+     "label": "",
+     "recurring_amount": "585366.00",
+     "date_created": "2025-12-07",
+     "status": "Active",
+     "period": "1",
+     "idprotection": "1",
+     "autorenew": "1",
+     "daytoexpire": "127"
+    }
+   ],
+   "total": 1,
+   "page": {
+    "current": 0,
+    "total": 1
+   }
+  }
+ },
+ "GET /certificate/order": {
+  "method": "GET",
+  "path": "/certificate/order",
+  "status": 200,
+  "sample": {
+   "products": [
+    {
+     "id": "26",
+     "name": "Comodo PositiveSSL",
+     "description": "<ul></ul>",
+     "category": "Comodo SSL",
+     "category_url": "comodo-ssl",
+     "periods": [
+      {
+       "years": 1,
+       "price": 175000,
+       "renew": 175000
+      },
+      {
+       "years": 2,
+       "price": 297600,
+       "renew": 297600
+      },
+      "… 1 more item(s)"
+     ]
+    },
+    {
+     "id": "27",
+     "name": "Comodo PositiveSSL Wildcard",
+     "description": "<ul></ul>",
+     "category": "Comodo SSL",
+     "category_url": "comodo-ssl",
+     "periods": [
+      {
+       "years": 1,
+       "price": 2139000,
+       "renew": 2139000
+      },
+      {
+       "years": 2,
+       "price": 4278000,
+       "renew": 4278000
+      },
+      "… 1 more item(s)"
+     ]
+    },
+    "… 12 more item(s)"
+   ]
+  }
+ },
+ "GET /certificates": {
+  "method": "GET",
+  "path": "/certificates",
+  "status": 200,
+  "sample": {
+   "sslservices": []
+  }
+ },
+ "GET /service": {
+  "method": "GET",
+  "path": "/service",
+  "status": 200,
+  "sample": {
+   "services": [
+    {
+     "id": "100001",
+     "domain": "example.com",
+     "total": "79000.00",
+     "status": "Active",
+     "billingcycle": "Monthly",
+     "next_due": "2026-08-26",
+     "expires": "2026-08-26",
+     "category": "Platinum Hosting",
+     "category_url": "platinum-hosting",
+     "name": "WH 1"
+    },
+    {
+     "id": "100002",
+     "domain": "vps-demo.example.net",
+     "total": "199000.00",
+     "status": "Active",
+     "billingcycle": "Monthly",
+     "next_due": "2026-08-26",
+     "expires": "2026-08-26",
+     "category": "NVMe VPS ",
+     "category_url": "nvme-vps",
+     "name": "VPS 20 GB NVMe"
+    },
+    "… 9 more item(s)"
+   ]
+  }
+ },
+ "GET /services/active": {
+  "method": "GET",
+  "path": "/services/active",
+  "status": 200,
+  "sample": {
+   "services": [
+    {
+     "id": "100001",
+     "domain": "example.com",
+     "total": "79000.00",
+     "status": "Active",
+     "billingcycle": "Monthly",
+     "next_due": "2026-08-26",
+     "category": "Platinum Hosting",
+     "category_url": "platinum-hosting",
+     "name": "WH 1"
+    },
+    {
+     "id": "100002",
+     "domain": "vps-demo.example.net",
+     "total": "199000.00",
+     "status": "Active",
+     "billingcycle": "Monthly",
+     "next_due": "2026-08-26",
+     "category": "NVMe VPS ",
+     "category_url": "nvme-vps",
+     "name": "VPS 20 GB NVMe"
+    },
+    "… 1 more item(s)"
+   ],
+   "total": 3,
+   "page": {
+    "current": 0,
+    "total": 1
+   }
+  }
+ },
+ "GET /category": {
+  "method": "GET",
+  "path": "/category",
+  "status": 200,
+  "sample": {
+   "categories": [
+    {
+     "id": 58,
+     "name": "Tên miền",
+     "description": "",
+     "slug": "ten-mien"
+    },
+    {
+     "id": 84,
+     "name": "Cloud Instance",
+     "description": "",
+     "slug": "cloud-instance",
+     "subcategories": [
+      {
+       "id": 93,
+       "name": "Hermes Agent",
+       "description": "",
+       "slug": "hermes-agent"
+      },
+      {
+       "id": 70,
+       "name": "NVMe VPS ",
+       "description": "",
+       "slug": "nvme-vps"
+      },
+      "… 3 more item(s)"
+     ]
+    },
+    "… 8 more item(s)"
+   ]
+  }
+ },
+ "GET /dns": {
+  "method": "GET",
+  "path": "/dns",
+  "status": 200,
+  "sample": {
+   "service_ids": [
+    "100003"
+   ],
+   "zones": [
+    {
+     "domain_id": "500001",
+     "name": "example.com",
+     "service_id": "100003"
+    }
+   ]
+  }
+ },
+ "GET /dns/templates": {
+  "method": "GET",
+  "path": "/dns/templates",
+  "status": 200,
+  "sample": {
+   "templates": {
+    "1": [
+     {
+      "id": "1",
+      "template": "Default template",
+      "flags": "12",
+      "name": " {domain}",
+      "type": "A",
+      "content": "<redacted>",
+      "ttl": "3600",
+      "prio": "0",
+      "record_id": "1",
+      "sort_order": "0"
+     },
+     {
+      "id": "1",
+      "template": "Default template",
+      "flags": "12",
+      "name": "www",
+      "type": "CNAME",
+      "content": "<redacted>",
+      "ttl": "3600",
+      "prio": "0",
+      "record_id": "2",
+      "sort_order": "0"
+     },
+     "… 2 more item(s)"
+    ],
+    "4": [
+     {
+      "id": "4",
+      "template": "LadiPage",
+      "flags": "0",
+      "name": "www.{domain}",
+      "type": "CNAME",
+      "content": "<redacted>",
+      "ttl": "3600",
+      "prio": "0",
+      "record_id": "16",
+      "sort_order": "0"
+     },
+     {
+      "id": "4",
+      "template": "LadiPage",
+      "flags": "0",
+      "name": "{domain}",
+      "type": "CNAME",
+      "content": "<redacted>",
+      "ttl": "3600",
+      "prio": "0",
+      "record_id": "15",
+      "sort_order": "0"
+     }
+    ],
+    "2": [
+     {
+      "id": "2",
+      "template": "Hosting DNS",
+      "flags": "0",
+      "name": "webmail.{domain}",
+      "type": "CNAME",
+      "content": "<redacted>",
+      "ttl": "3600",
+      "prio": "0",
+      "record_id": "9",
+      "sort_order": "0"
+     },
+     {
+      "id": "2",
+      "template": "Hosting DNS",
+      "flags": "0",
+      "name": "www",
+      "type": "CNAME",
+      "content": "<redacted>",
+      "ttl": "3600",
+      "prio": "0",
+      "record_id": "6",
+      "sort_order": "0"
+     },
+     "… 1 more item(s)"
+    ],
+    "3": [
+     {
+      "id": "3",
+      "template": "Google Email",
+      "flags": "0",
+      "name": " {domain}",
+      "type": "MX",
+      "content": "<redacted>",
+      "ttl": "3600",
+      "prio": "1",
+      "record_id": "10",
+      "sort_order": "0"
+     },
+     {
+      "id": "3",
+      "template": "Google Email",
+      "flags": "0",
+      "name": "{domain}",
+      "type": "MX",
+      "content": "<redacted>",
+      "ttl": "3600",
+      "prio": "5",
+      "record_id": "12",
+      "sort_order": "0"
+     },
+     "… 3 more item(s)"
+    ]
+   }
+  }
+ },
+ "GET /affiliates/summary": {
+  "method": "GET",
+  "path": "/affiliates/summary",
+  "status": 200,
+  "sample": {
+   "config": {
+    "AffType": "Percent",
+    "AffValue": 30,
+    "AffBonus": 0
+   },
+   "nosidemenu": true
+  }
+ },
+ "GET /affiliates/commissions": {
+  "method": "GET",
+  "path": "/affiliates/commissions",
+  "status": 200,
+  "sample": {
+   "commissions": null
+  }
+ },
+ "GET /security": {
+  "method": "GET",
+  "path": "/security",
+  "status": 200,
+  "sample": {
+   "mfamodules": true,
+   "otherauth": [],
+   "acl": {
+    "editipaccess": {
+     "admin": "EnableClientScurity",
+     "visible": true
+    },
+    "editsshkeys": {
+     "admin": "EnableClientScuritySSHKey",
+     "visible": true
+    }
+   },
+   "yourip": "203.0.113.10",
+   "rules": [],
+   "sshkeys": []
+  }
+ },
+ "GET /location/citys": {
+  "method": "GET",
+  "path": "/location/citys",
+  "status": 200,
+  "sample": {
+   "Thành phố Hà Nội": [
+    "Phường Ba Đình",
+    "Phường Ngọc Hà",
+    "… 124 more item(s)"
+   ],
+   "Tỉnh Tuyên Quang": [
+    "Phường Hà Giang 2",
+    "Phường Hà Giang 1",
+    "… 122 more item(s)"
+   ],
+   "Tỉnh Cao Bằng": [
+    "Phường Thục Phán",
+    "Phường Nùng Trí Cao",
+    "… 54 more item(s)"
+   ],
+   "Tỉnh Thái Nguyên": [
+    "Phường Đức Xuân",
+    "Phường Bắc Kạn",
+    "… 90 more item(s)"
+   ],
+   "Tỉnh Lào Cai": [
+    "Phường Lào Cai",
+    "Phường Cam Đường",
+    "… 97 more item(s)"
+   ],
+   "Tỉnh Điện Biên": [
+    "Phường Điện Biên Phủ",
+    "Phường Mường Lay",
+    "… 43 more item(s)"
+   ],
+   "Tỉnh Lai Châu": [
+    "Phường Đoàn Kết",
+    "Xã Bình Lư",
+    "… 36 more item(s)"
+   ],
+   "Tỉnh Sơn La": [
+    "Phường Tô Hiệu",
+    "Phường Chiềng An",
+    "… 73 more item(s)"
+   ],
+   "Tỉnh Phú Thọ": [
+    "Phường Tân Hòa",
+    "Phường Hòa Bình",
+    "… 146 more item(s)"
+   ],
+   "Tỉnh Lạng Sơn": [
+    "Phường Đông Kinh",
+    "Phường Lương Văn Tri",
+    "… 63 more item(s)"
+   ],
+   "Tỉnh Quảng Ninh": [
+    "Phường Hà Tu",
+    "Phường Cao Xanh",
+    "… 52 more item(s)"
+   ],
+   "Tỉnh Bắc Ninh": [
+    "Phường Bắc Giang",
+    "Phường Đa Mai",
+    "… 97 more item(s)"
+   ],
+   "Thành phố Hải Phòng": [
+    "Phường Thành Đông",
+    "Phường Hải Dương",
+    "… 112 more item(s)"
+   ],
+   "Tỉnh Hưng Yên": [
+    "Phường Phố Hiến",
+    "Xã Tân Hưng",
+    "… 102 more item(s)"
+   ],
+   "Tỉnh Ninh Bình": [
+    "Phường Phủ Lý",
+    "Phường Phù Vân",
+    "… 127 more item(s)"
+   ],
+   "Tỉnh Thanh Hóa": [
+    "Phường Hàm Rồng",
+    "Phường Hạc Thành",
+    "… 164 more item(s)"
+   ],
+   "Tỉnh Nghệ An": [
+    "Phường Thành Vinh",
+    "Phường Trường Vinh",
+    "… 128 more item(s)"
+   ],
+   "Tỉnh Hà Tĩnh": [
+    "Phường Thành Sen",
+    "Phường Trần Phú",
+    "… 67 more item(s)"
+   ],
+   "Tỉnh Quảng Trị": [
+    "Phường Đồng Thuận",
+    "Phường Đồng Sơn",
+    "… 76 more item(s)"
+   ],
+   "Thành phố Huế": [
+    "Phường Phú Xuân",
+    "Phường Kim Long",
+    "… 38 more item(s)"
+   ],
+   "…": "14 more key(s)"
+  }
+ },
+ "GET /ekyc/households": {
+  "method": "GET",
+  "path": "/ekyc/households",
+  "status": 200,
+  "sample": {
+   "0": false,
+   "error": [
+    "Please enter taxid."
+   ]
+  }
+ },
+ "GET /usage-monitor/products": {
+  "method": "GET",
+  "path": "/usage-monitor/products",
+  "status": 200,
+  "sample": {
+   "error": [
+    "internal_error_0"
+   ]
+  }
+ },
+ "GET /contact/700001": {
+  "method": "GET",
+  "path": "/contact/700001",
+  "status": 200,
+  "sample": {
+   "contact": {
+    "privileges": []
+   }
+  }
+ },
+ "GET /clientarea/history/emails/800001": {
+  "method": "GET",
+  "path": "/clientarea/history/emails/800001",
+  "status": 200,
+  "sample": {
+   "email": {
+    "id": "800001",
+    "email": "user@example.com",
+    "subject": "[Y&ecirc;u cầu hỗ trợ #400001] test suport.org",
+    "message": "Xin ch&agrave;o, B&igrave;nh Trần Tran,<br />\n<br />\nY&ecirc;u cầu hỗ trợ/Ticket: #400001 đ&atilde; được thay đổi trạng th&aacute;i từ mở sang đ&oacute;ng.<br />\nThời gian trả lời cuối: 72 giờ trước.<br />\n<br />\nNếu vấn đề của bạn chưa được ho&agrave;n tất v&agrave; đ&acirc;y l&agrave; một sự nhầm …",
+    "date": "2026-07-27 20:25:06",
+    "status": "1",
+    "flag": "email"
+   }
+  }
+ },
+ "GET /invoice/300001": {
+  "method": "GET",
+  "path": "/invoice/300001",
+  "status": 200,
+  "sample": {
+   "invoice": {
+    "id": "300001",
+    "status": "Unpaid",
+    "contact_id": "0",
+    "date": "2026-03-30",
+    "duedate": "2026-12-07",
+    "paybefore": "2026-12-07",
+    "datepaid": "0000-00-00 00:00:00",
+    "subtotal": 532151,
+    "credit": 0,
+    "tax": 42572,
+    "taxrate": 10,
+    "tax2": 0,
+    "taxrate2": 0,
+    "taxexempt": "0",
+    "total": 574723,
+    "grandtotal": 574723,
+    "payment_module": "190",
+    "rate": 1,
+    "rate2": 0,
+    "rate3": 1,
+    "…": "11 more key(s)"
+   },
+   "cancancelinvoice": false,
+   "invoicebody": "",
+   "transactions": []
+  }
+ },
+ "GET /billing/300001/pay/190": {
+  "method": "GET",
+  "path": "/billing/300001/pay/190",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "content": "<redacted>"
+  }
+ },
+ "GET /invoice/300001/pdf": {
+  "method": "GET",
+  "path": "/invoice/300001/pdf",
+  "status": 200,
+  "sample": {
+   "invoice": "JVBERi0xLjQKJeLjz9MKMyAwIG9iago8PC9UeXBlIC9QYWdlCi9QYXJlbnQgMSAwIFIKL01lZGlhQm94IFswIDAgNTk1LjI4MCA4NDEuODkwXQovVHJpbUJveCBbMC4wMDAgMC4wMDAgNTk1LjI4MCA4NDEuODkwXQovUmVzb3VyY2VzIDIgMCBSCi9Hcm91cCA8PCAvVHlwZSAvR3JvdXAgL1MgL1RyYW5zcGFyZW5jeSAvQ1MgL0RldmljZVJHQiA+PiAKL0NvbnRlbnRzIDQgMCBSPj4KZW5kb2JqCjQg…"
+  }
+ },
+ "GET /tickets/400001": {
+  "method": "GET",
+  "path": "/tickets/400001",
+  "status": 200,
+  "sample": {
+   "ticket": {
+    "date": "2026-07-24 20:20:01",
+    "ticket_number": "400001",
+    "name": "Nguyen Van A",
+    "email": "user@example.com",
+    "subject": "test suport.org",
+    "body": "Nơi tiếp nhận những yêu cầu hỗ trợ bản khai, xác thực tên miền. Khách hàng có thể liên hệ trực tiếp qua hotline 0364.333.333 nhấn phím 2",
+    "status": "Closed",
+    "client_read": "1",
+    "type": "Email",
+    "deptname": "Phòng hỗ trợ kỹ thuật",
+    "attachments": []
+   },
+   "replies": []
+  }
+ },
+ "GET /domain/200001": {
+  "method": "GET",
+  "path": "/domain/200001",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "details": {
+    "id": "200001",
+    "name": "example.com",
+    "reg_module": "172",
+    "date_created": "2025-12-07",
+    "firstpayment": "50000.00",
+    "recurring_amount": "585366.00",
+    "period": "1",
+    "expires": "2026-12-07",
+    "status": "Active",
+    "next_due": "2026-12-07",
+    "next_invoice": "2026-11-22",
+    "idprotection": "1",
+    "nameservers": [
+     "ns1.tino.vn",
+     "ns2.tino.vn"
+    ],
+    "autorenew": "1",
+    "reglock": "0",
+    "daytoexpire": "127",
+    "contacts": {
+     "registrant": {
+      "registrant": "1",
+      "type": "ind",
+      "name": "Tran Thanh Binh",
+      "nationalid": "000000000000",
+      "phonenumber": "+84.900000000",
+      "email": "user@example.com",
+      "gender": "Male",
+      "birthday": "01/01/1990",
+      "country": "VN",
+      "state": "Thành phố Hồ Chí Minh",
+      "city": "Phuong Tan Dinh",
+      "ward": null,
+      "address1": "123 Example Street",
+      "address2": "<redacted>",
+      "postcode": "760000"
+     },
+     "admin": {
+      "registrant": "0",
+      "type": "ind",
+      "name": "Tran Thanh Binh",
+      "nationalid": "000000000000",
+      "phonenumber": "+84.900000000",
+      "email": "user@example.com",
+      "gender": "Male",
+      "birthday": "01/01/1990",
+      "country": "VN",
+      "state": "Thành phố Hồ Chí Minh",
+      "city": "Phuong Tan Dinh",
+      "ward": null,
+      "address1": "123 Example Street",
+      "address2": "<redacted>",
+      "postcode": "760000"
+     },
+     "tech": {
+      "registrant": "0",
+      "type": "ind",
+      "name": "Tran Thanh Binh",
+      "nationalid": "000000000000",
+      "phonenumber": "+84.900000000",
+      "email": "user@example.com",
+      "gender": "Male",
+      "birthday": "01/01/1990",
+      "country": "VN",
+      "state": "Thành phố Hồ Chí Minh",
+      "city": "Phuong Tan Dinh",
+      "ward": null,
+      "address1": "123 Example Street",
+      "address2": "<redacted>",
+      "postcode": "760000"
+     },
+     "billing": {
+      "registrant": "0",
+      "type": "ind",
+      "name": "Tran Thanh Binh",
+      "nationalid": "000000000000",
+      "phonenumber": "+84.900000000",
+      "email": "user@example.com",
+      "gender": "Male",
+      "birthday": "01/01/1990",
+      "country": "VN",
+      "state": "Thành phố Hồ Chí Minh",
+      "city": "Phuong Tan Dinh",
+      "ward": null,
+      "address1": "123 Example Street",
+      "address2": "<redacted>",
+      "postcode": "760000"
+     }
+    },
+    "dns": {
+     "service_id": "100003",
+     "zone_id": "500001"
+    },
+    "tino_dns": true,
+    "ddocs": {
+     "status": "not_found",
+     "ekyc_token": "JDIkWE8xYnkzS1UzM1lxOWY2R1VRd1NFcW5hTWp2Y0ZKeWpjSnRUb1cwSXVmWER2OTJUQkJmSzNmOUovejVXejBYQktlZkJKVEV3YktGUkR3SkxqM2RhdkxnWmhvR0s=",
+     "bankhai": false,
+     "cccd": 0,
+     "is_company": false,
+     "docs": [
+      {
+       "id": 14,
+       "name": "Bản khai tên miền",
+       "allowed_extensions": "pdf",
+       "required": "1",
+       "ekyc": null,
+       "uploaded": [],
+       "template": true
+      },
+      {
+       "id": 15,
+       "name": "Căn cước công dân (Mặt trước)",
+       "allowed_extensions": "png,jpg,jpeg",
+       "required": "1",
+       "ekyc": "1",
+       "uploaded": [],
+       "template": false
+      },
+      "… 7 more item(s)"
+     ]
+    },
+    "…": "1 more key(s)"
+   }
+  }
+ },
+ "GET /domain/200001/ns": {
+  "method": "GET",
+  "path": "/domain/200001/ns",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "domain_id": "200001",
+   "nameservers": [
+    "ns1.tino.vn",
+    "ns2.tino.vn"
+   ]
+  }
+ },
+ "GET /domain/200001/reg": {
+  "method": "GET",
+  "path": "/domain/200001/reg",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "domain_id": "200001",
+   "nameservers": []
+  }
+ },
+ "GET /domain/200001/epp": {
+  "method": "GET",
+  "path": "/domain/200001/epp",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "domain_id": "200001",
+   "epp_code": "<redacted>"
+  }
+ },
+ "GET /domain/200001/reglock": {
+  "method": "GET",
+  "path": "/domain/200001/reglock",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "registrar_lock": null
+  }
+ },
+ "GET /domain/200001/contact": {
+  "method": "GET",
+  "path": "/domain/200001/contact",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "domain_id": "200001",
+   "contact_info": {
+    "registrant": {
+     "phonenumber": "+84.900000000",
+     "email": "user@example.com",
+     "country": "VN",
+     "state": "Thành phố Hồ Chí Minh",
+     "city": "Phuong Tan Dinh",
+     "address1": "123 Example Street",
+     "address2": "<redacted>",
+     "postcode": "760000"
+    },
+    "admin": {
+     "phonenumber": "+84.900000000",
+     "email": "user@example.com",
+     "country": "VN",
+     "state": "Thành phố Hồ Chí Minh",
+     "city": "Phuong Tan Dinh",
+     "address1": "123 Example Street",
+     "address2": "<redacted>",
+     "postcode": "760000"
+    },
+    "billing": {
+     "phonenumber": "+84.900000000",
+     "email": "user@example.com",
+     "country": "VN",
+     "state": "Thành phố Hồ Chí Minh",
+     "city": "Phuong Tan Dinh",
+     "address1": "123 Example Street",
+     "address2": "<redacted>",
+     "postcode": "760000"
+    },
+    "tech": {
+     "phonenumber": "+84.900000000",
+     "email": "user@example.com",
+     "country": "VN",
+     "state": "Thành phố Hồ Chí Minh",
+     "city": "Phuong Tan Dinh",
+     "address1": "123 Example Street",
+     "address2": "<redacted>",
+     "postcode": "760000"
+    }
+   }
+  }
+ },
+ "GET /domain/200001/emforwarding": {
+  "method": "GET",
+  "path": "/domain/200001/emforwarding",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "domain_id": "200001",
+   "email_forwarding": null
+  }
+ },
+ "GET /domain/200001/dnssec": {
+  "method": "GET",
+  "path": "/domain/200001/dnssec",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "ds_list": null,
+   "key_list": null
+  }
+ },
+ "GET /domain/200001/dnssec/flags": {
+  "method": "GET",
+  "path": "/domain/200001/dnssec/flags",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "flag": null,
+   "protocol": null,
+   "algorithm": null,
+   "digest": null,
+   "form_type": null
+  }
+ },
+ "GET /domain/200001/autorenew": {
+  "method": "GET",
+  "path": "/domain/200001/autorenew",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "allowrenew": null,
+   "autorenew": "1"
+  }
+ },
+ "GET /domain/200001/invoices": {
+  "method": "GET",
+  "path": "/domain/200001/invoices",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "rel_invoices": [
+    {
+     "id": "300001",
+     "client_id": "<redacted>",
+     "date": "2026-03-30",
+     "dateorig": "2026-03-30",
+     "duedate": "2026-12-07",
+     "paybefore": "2026-12-07",
+     "currency_id": "0",
+     "total": "574723.00",
+     "paid_id": "",
+     "subtotal": "532151.00",
+     "tax": "42572.00",
+     "tax2": "0.00",
+     "datepaid": "0000-00-00 00:00:00",
+     "status": "Unpaid",
+     "merge_id": "300001"
+    }
+   ]
+  }
+ },
+ "GET /domain/200001/documents": {
+  "method": "GET",
+  "path": "/domain/200001/documents",
+  "status": 200,
+  "sample": {
+   "error": [
+    "internal_error_0"
+   ]
+  }
+ },
+ "GET /domain/200001/sync": {
+  "method": "GET",
+  "path": "/domain/200001/sync",
+  "status": 200,
+  "sample": {
+   "success": true
+  }
+ },
+ "GET /domain/name/example.com": {
+  "method": "GET",
+  "path": "/domain/name/example.com",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "domains": [
+    {
+     "id": "200001",
+     "name": "example.com",
+     "date_created": "2025-12-07",
+     "firstpayment": "50000.00",
+     "recurring_amount": "585366.00",
+     "period": "1",
+     "expires": "2026-12-07",
+     "status": "Active",
+     "next_due": "2026-12-07",
+     "next_invoice": "2026-11-22",
+     "idprotection": "1",
+     "nameservers": [
+      "ns1.tino.vn",
+      "ns2.tino.vn"
+     ],
+     "autorenew": "1"
+    }
+   ],
+   "page": {
+    "current": 0,
+    "total": 1
+   }
+  }
+ },
+ "GET /whois/example.com": {
+  "method": "GET",
+  "path": "/whois/example.com",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "domain": "example.com",
+   "available": false,
+   "status": "",
+   "whois": {
+    "domain": "example.com",
+    "registrar": "Web Commerce Communications Ltd.",
+    "createDate": "2025-12-07T11:33:03.471Z",
+    "expiredDate": "2026-12-07T11:33:03.471Z",
+    "updatedDate": "2026-03-30T16:45:54.697Z",
+    "nameservers": [
+     "ns1.tino.vn",
+     "ns2.tino.vn"
+    ],
+    "status": [
+     "clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited",
+     "clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited",
+     "… 1 more item(s)"
+    ],
+    "WhoisServer": "whois.webnic.cc"
+   },
+   "raw": "Domain Name: example.com<br />Registry Domain ID: DO_d59b4fbe41112c70f4c72e6116f376a3-ARUBA<br />Registrar WHOIS Server: whois.webnic.cc<br />Registrar URL: https://www.webnic.cc<br />Updated Date: 2026-03-30T16:45:54.697Z<br />Creation Date: 2025-12-07T11:33:03.471Z<br />Registry Expiry Date: 2026-…"
+  }
+ },
+ "GET /domain/order/200001/form": {
+  "method": "GET",
+  "path": "/domain/order/200001/form",
+  "status": 200,
+  "sample": {
+   "forms": []
+  }
+ },
+ "GET /service/100001": {
+  "method": "GET",
+  "path": "/service/100001",
+  "status": 200,
+  "sample": {
+   "service": {
+    "id": "100001",
+    "product_id": "2122",
+    "date_created": "2026-07-26",
+    "domain": "example.com",
+    "firstpayment": "79000.00",
+    "total": "79000.00",
+    "billingcycle": "Monthly",
+    "next_due": "2026-08-26",
+    "due_day": "26",
+    "expires": "2026-08-26",
+    "autorenew": "1",
+    "next_invoice": "2026-08-11",
+    "status": "Active",
+    "label": "",
+    "username": "tranbinh18",
+    "password": "<redacted>",
+    "rootpassword": null,
+    "commitment_date": null,
+    "date_suspended": "0000-00-00",
+    "date_terminated": "0000-00-00",
+    "…": "9 more key(s)"
+   },
+   "addons": [],
+   "haveaddons": [],
+   "unpaid_invoice": []
+  }
+ },
+ "GET /service/100001/methods": {
+  "method": "GET",
+  "path": "/service/100001/methods",
+  "status": 200,
+  "sample": {
+   "methods": [
+    {
+     "name": "Upgrade Options",
+     "method": "GET",
+     "route": "/service/@id/upgrade"
+    },
+    {
+     "name": "Upgrade Request",
+     "method": "POST",
+     "route": "/service/@id/upgrade"
+    },
+    "… 30 more item(s)"
+   ]
+  }
+ },
+ "GET /service/100001/upgrade": {
+  "method": "GET",
+  "path": "/service/100001/upgrade",
+  "status": 200,
+  "sample": {
+   "resources": [],
+   "package": [
+    {
+     "id": "2007",
+     "name": "Host 5GB NVMe",
+     "category": "Hosting NVMe",
+     "price": {
+      "Monthly": "79000.00",
+      "Quarterly": "237000.00",
+      "Semi-Annually": "474000.00",
+      "Annually": "853200.00",
+      "Biennially": "1611600.00",
+      "Triennially": "2275200.00",
+      "Quadrennially": "2844000.00",
+      "Quinquennially": "3318000.00"
+     }
+    },
+    {
+     "id": "2008",
+     "name": "Host Starter NVMe",
+     "category": "Hosting NVMe",
+     "price": {
+      "Monthly": "339000.00",
+      "Quarterly": "1017000.00",
+      "Semi-Annually": "1830600.00",
+      "Annually": "3254400.00",
+      "Biennially": "5695200.00",
+      "Triennially": "7322400.00",
+      "Quadrennially": "8136000.00",
+      "Quinquennially": "9153000.00"
+     }
+    },
+    "… 6 more item(s)"
+   ]
+  }
+ },
+ "GET /service/100001/label": {
+  "method": "GET",
+  "path": "/service/100001/label",
+  "status": 200,
+  "sample": {
+   "label": ""
+  }
+ },
+ "GET /service/100001/cycle": {
+  "method": "GET",
+  "path": "/service/100001/cycle",
+  "status": 200,
+  "sample": {
+   "current": "m",
+   "cycles": []
+  }
+ },
+ "GET /service/100001/ip": {
+  "method": "GET",
+  "path": "/service/100001/ip",
+  "status": 200,
+  "sample": {
+   "ips": []
+  }
+ },
+ "GET /service/100001/rdns": {
+  "method": "GET",
+  "path": "/service/100001/rdns",
+  "status": 200,
+  "sample": {
+   "rdns": null
+  }
+ },
+ "GET /service/100001/widgets": {
+  "method": "GET",
+  "path": "/service/100001/widgets",
+  "status": 200,
+  "sample": {
+   "methods": [
+    {
+     "name": "Upgrade Options",
+     "method": "GET",
+     "route": "/service/@id/upgrade"
+    },
+    {
+     "name": "Upgrade Request",
+     "method": "POST",
+     "route": "/service/@id/upgrade"
+    },
+    "… 30 more item(s)"
+   ]
+  }
+ },
+ "GET /service/100001/emails": {
+  "method": "GET",
+  "path": "/service/100001/emails",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "listentrys": null
+  }
+ },
+ "GET /service/100001/invoices": {
+  "method": "GET",
+  "path": "/service/100001/invoices",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "rel_invoices": null
+  }
+ },
+ "GET /services/54": {
+  "method": "GET",
+  "path": "/services/54",
+  "status": 200,
+  "sample": {
+   "category_name": "Web Hosting",
+   "services": [
+    {
+     "id": "100001",
+     "product_id": "2122",
+     "domain": "example.com",
+     "label": "",
+     "total": "79000.00",
+     "status": "Active",
+     "billingcycle": "Monthly",
+     "next_due": "2026-08-26",
+     "expires": "2026-08-26",
+     "catname": "Platinum Hosting",
+     "slug": "platinum-hosting",
+     "name": "WH 1",
+     "parent_category_id": "54",
+     "parent_category_name": "Web Hosting",
+     "parent_category_slug": "web-hosting",
+     "paytype": "Regular",
+     "category": "Platinum Hosting",
+     "ptype": null
+    }
+   ],
+   "total": 1,
+   "page": {
+    "current": 0,
+    "total": 1
+   }
+  }
+ },
+ "GET /service/cpanel2/100001/login": {
+  "method": "GET",
+  "path": "/service/cpanel2/100001/login",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "token": "<redacted>",
+   "expiry_time": 1785679554
+  }
+ },
+ "GET /service/cpanel2/100001/statistics": {
+  "method": "GET",
+  "path": "/service/cpanel2/100001/statistics",
+  "status": 200,
+  "sample": {
+   "statistics": {
+    "bandwidthusage": {
+     "is_maxed": 0,
+     "module": "Stats",
+     "item": "Monthly Bandwidth Transfer",
+     "role": "WebServer",
+     "maxed_phrase": "You have transferred your maximum allotment of data ([format_bytes,_1]) for this month.",
+     "percent5": 0,
+     "phrase": "Monthly Bandwidth Transfer",
+     "normalized": 1,
+     "_max": "unlimited",
+     "name": "bandwidthusage",
+     "near_limit_phrase": "You have transferred [format_bytes,_1] of your [format_bytes,_2] data allotment for this month.",
+     "max": "unlimited",
+     "percent20": 0,
+     "feature": "bandwidth",
+     "id": "bandwidthusage",
+     "percent": 0,
+     "_maxed": 0,
+     "_count": "0.00",
+     "zeroisunlimited": 1,
+     "count": "0 bytes",
+     "…": "2 more key(s)"
+    },
+    "diskusage": {
+     "near_limit_phrase": "You are using [format_bytes,_1] of the [format_bytes,_2] of storage available to you.",
+     "max": "5 GB",
+     "percent10": 0,
+     "name": "diskusage",
+     "_max": "5120",
+     "normalized": 1,
+     "phrase": "Disk Space Usage",
+     "percent5": 0,
+     "count": "0 bytes",
+     "units": "MB",
+     "_count": "0",
+     "zeroisunlimited": 1,
+     "item": "Disk Space Usage",
+     "maxed_phrase": "You are using your maximum storage allotment, [format_bytes,_1].",
+     "percent": 0,
+     "_maxed": 0,
+     "is_maxed": 0,
+     "percent20": 0,
+     "module": "Quota",
+     "id": "diskusage"
+    },
+    "emailaccounts": {
+     "percent5": 0,
+     "count": "0",
+     "phrase": "Email Accounts",
+     "name": "emailaccounts",
+     "_max": "1",
+     "percent10": 0,
+     "near_limit_phrase": "You are using [numf,_1] of [numf,_2] available email [numerate,_2,account,accounts].",
+     "max": "1",
+     "percent20": 0,
+     "feature": "popaccts",
+     "is_maxed": 0,
+     "id": "emailaccounts",
+     "percent": 0,
+     "_maxed": 0,
+     "role": "MailReceive",
+     "item": "Email Accounts",
+     "maxed_phrase": "You are using your maximum allotment ([numf,_1]) of email accounts.",
+     "_count": "0",
+     "zeroisunlimited": 0
+    },
+    "addondomains": {
+     "zeroisunlimited": 0,
+     "_count": "0",
+     "role": "WebServer",
+     "item": "Addon Domains",
+     "maxed_phrase": "You are using your maximum allotment ([numf,_1]) of addon domains.",
+     "_maxed": 0,
+     "percent": 0,
+     "module": "Park",
+     "id": "addondomains",
+     "percent20": 0,
+     "feature": "addondomains",
+     "is_maxed": 0,
+     "max": "0",
+     "near_limit_phrase": "You are using [numf,_1] of [numf,_2] available addon [numerate,_2,domain,domains].",
+     "percent10": 0,
+     "name": "addondomains",
+     "_max": "0",
+     "percent5": 0,
+     "count": "0",
+     "phrase": "Addon Domains"
+    },
+    "subdomains": {
+     "role": "WebServer",
+     "item": "Subdomains",
+     "maxed_phrase": "You are using your maximum allotment ([numf,_1]) of subdomains.",
+     "zeroisunlimited": 0,
+     "_count": "0",
+     "module": "SubDomain",
+     "id": "subdomains",
+     "is_maxed": 0,
+     "feature": "subdomains",
+     "percent20": 0,
+     "_maxed": 0,
+     "percent": 0,
+     "percent10": 0,
+     "max": "unlimited",
+     "near_limit_phrase": "You are using [numf,_1] of [numf,_2] available [numerate,_2,subdomain,subdomains].",
+     "phrase": "Subdomains",
+     "count": "0",
+     "percent5": 0,
+     "_max": "unlimited",
+     "name": "subdomains"
+    },
+    "parkeddomains": {
+     "name": "parkeddomains",
+     "_max": "unlimited",
+     "phrase": "Parked Domains",
+     "count": "0",
+     "percent5": 0,
+     "max": "unlimited",
+     "near_limit_phrase": "You are using [numf,_1] of [numf,_2] available [numerate,_2,alias,aliases].",
+     "percent10": 0,
+     "_maxed": 0,
+     "percent": 0,
+     "id": "parkeddomains",
+     "module": "Park",
+     "is_maxed": 0,
+     "feature": "parkeddomains",
+     "percent20": 0,
+     "zeroisunlimited": 0,
+     "_count": "0",
+     "item": "Parked Domains",
+     "role": {
+      "roles": [
+       "WebServer",
+       "MailReceive"
+      ],
+      "match": "any"
+     },
+     "maxed_phrase": "You are using your maximum allotment ([numf,_1]) of aliases."
+    },
+    "ftpaccounts": {
+     "percent20": 0,
+     "feature": "ftpaccts",
+     "is_maxed": 0,
+     "module": "API::Ftp",
+     "id": "ftpaccounts",
+     "percent": 0,
+     "_maxed": 0,
+     "item": "FTP Accounts",
+     "role": "FTP",
+     "maxed_phrase": "You are using your maximum allotment ([numf,_1]) of [output,abbr,FTP,File Transfer Protocol] accounts.",
+     "_count": "0",
+     "zeroisunlimited": 0,
+     "count": "0",
+     "percent5": 0,
+     "phrase": "FTP Accounts",
+     "name": "ftpaccounts",
+     "_max": "unlimited",
+     "condition": "1",
+     "percent10": 0,
+     "near_limit_phrase": "You are using [numf,_1] of [numf,_2] available [output,abbr,FTP,File Transfer Protocol] [numerate,_2,account,accounts].",
+     "…": "1 more key(s)"
+    },
+    "sqldatabases": {
+     "percent10": 0,
+     "max": "unlimited",
+     "near_limit_phrase": "You are using [numf,_1] of [numf,_2] available [asis,SQL] [numerate,_2,database,databases].",
+     "phrase": "All SQL Databases",
+     "percent5": 0,
+     "count": "0",
+     "name": "sqldatabases",
+     "_max": "unlimited",
+     "maxed_phrase": "You are using your maximum allotment ([numf,_1]) of [asis,SQL] databases.",
+     "item": "All SQL Databases",
+     "zeroisunlimited": 0,
+     "_count": "0",
+     "id": "sqldatabases",
+     "is_maxed": 0,
+     "percent20": 0,
+     "_maxed": 0,
+     "percent": 0
+    },
+    "mysqldiskusage": {
+     "_maxed": 0,
+     "percent": 0,
+     "module": "MysqlFE",
+     "id": "mysqldiskusage",
+     "percent20": 0,
+     "is_maxed": 0,
+     "zeroisunlimited": 0,
+     "_count": "0",
+     "item": "Database Disk Space",
+     "role": "MySQLClient",
+     "name": "mysqldiskusage",
+     "_max": "5368389632",
+     "normalized": 0,
+     "units": "MB",
+     "count": 0,
+     "percent5": 0,
+     "phrase": "Database Disk Space",
+     "max": "5,119.7",
+     "percent10": 0
+    },
+    "emailforwarders": {
+     "percent20": 0,
+     "is_maxed": 0,
+     "id": "emailforwarders",
+     "percent": 0,
+     "_maxed": 0,
+     "role": "MailReceive",
+     "item": "Email Forwarders",
+     "_count": "0",
+     "zeroisunlimited": 1,
+     "percent5": 0,
+     "count": "0",
+     "phrase": "Email Forwarders",
+     "_max": "unlimited",
+     "name": "emailforwarders",
+     "percent10": 0,
+     "max": "unlimited"
+    },
+    "emailfilters": {
+     "phrase": "Email Filters",
+     "percent5": 0,
+     "count": "0",
+     "_max": "unlimited",
+     "name": "emailfilters",
+     "percent10": 0,
+     "max": "unlimited",
+     "id": "emailfilters",
+     "is_maxed": 0,
+     "percent20": 0,
+     "_maxed": 0,
+     "percent": 0,
+     "item": "Email Filters",
+     "role": "MailReceive",
+     "zeroisunlimited": 1,
+     "_count": "0"
+    }
+   }
+  }
+ },
+ "GET /service/cpanel2/100001/phpmyadminlogin": {
+  "method": "GET",
+  "path": "/service/cpanel2/100001/phpmyadminlogin",
+  "status": 200,
+  "sample": {
+   "error": [
+    "unknown error"
+   ]
+  }
+ },
+ "GET /service/cpanel2/100001/changepasss": {
+  "method": "GET",
+  "path": "/service/cpanel2/100001/changepasss",
+  "status": 200,
+  "sample": {
+   "info": [
+    "func_scheduled_for_execute"
+   ]
+  }
+ },
+ "GET /service/100002": {
+  "method": "GET",
+  "path": "/service/100002",
+  "status": 200,
+  "sample": {
+   "service": {
+    "id": "100002",
+    "product_id": "1316",
+    "date_created": "2026-07-26",
+    "domain": "vps-demo.example.net",
+    "firstpayment": "199000.00",
+    "total": "199000.00",
+    "billingcycle": "Monthly",
+    "next_due": "2026-08-26",
+    "due_day": "26",
+    "expires": "2026-08-26",
+    "autorenew": "1",
+    "next_invoice": "2026-08-11",
+    "status": "Active",
+    "label": "",
+    "username": "root",
+    "rootpassword": "*z%B=E*L81-v",
+    "commitment_date": null,
+    "date_suspended": "0000-00-00",
+    "date_terminated": "0000-00-00",
+    "name": "VPS 20 GB NVMe",
+    "…": "9 more key(s)"
+   },
+   "addons": [],
+   "haveaddons": [],
+   "unpaid_invoice": []
+  }
+ },
+ "GET /service/100002/methods": {
+  "method": "GET",
+  "path": "/service/100002/methods",
+  "status": 200,
+  "sample": {
+   "methods": [
+    {
+     "name": "Upgrade Options",
+     "method": "GET",
+     "route": "/service/@id/upgrade"
+    },
+    {
+     "name": "Upgrade Request",
+     "method": "POST",
+     "route": "/service/@id/upgrade"
+    },
+    "… 57 more item(s)"
+   ]
+  }
+ },
+ "GET /service/100002/vms": {
+  "method": "GET",
+  "path": "/service/100002/vms",
+  "status": 200,
+  "sample": {
+   "vms": {
+    "600001": {
+     "id": 600001,
+     "ha": false,
+     "built": true,
+     "locked": false,
+     "power": true,
+     "status": "running",
+     "status_lang": "vm_state_running",
+     "password": "<redacted>",
+     "sshkeys": [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII+Gmwk9Yz3YLyc/2h1PxmTY8Wedfr3+LUra/sgZnG3T task29-verify-1785204819"
+     ],
+     "username": "root",
+     "memory": 1024,
+     "disk": 20,
+     "swap": null,
+     "additional_storage": [],
+     "uptime": 639603,
+     "template_id": "template-vm:321/321/base-321-disk-0.raw",
+     "template_name": "Ubuntu 26.04",
+     "template_data": [],
+     "replication": false,
+     "cloudinit": true,
+     "…": "14 more key(s)"
+    }
+   }
+  }
+ },
+ "GET /service/100002/ip": {
+  "method": "GET",
+  "path": "/service/100002/ip",
+  "status": 200,
+  "sample": {
+   "ips": [
+    {
+     "ipaddress": "2405:2840:0:136::14d",
+     "mask": "ffff:ffff:ffff:ffff::",
+     "client_description": "",
+     "status": "assigned"
+    },
+    {
+     "ipaddress": "203.0.113.10",
+     "mask": "203.0.113.10",
+     "client_description": "",
+     "status": "assigned"
+    }
+   ]
+  }
+ },
+ "GET /service/100002/rdns": {
+  "method": "GET",
+  "path": "/service/100002/rdns",
+  "status": 200,
+  "sample": {
+   "rdns": {
+    "180.93.136.34": {
+     "ipaddress": "203.0.113.10"
+    }
+   },
+   "error": [
+    "revdnsnoarpa"
+   ]
+  }
+ },
+ "GET /service/100002/templates": {
+  "method": "GET",
+  "path": "/service/100002/templates",
+  "status": 200,
+  "sample": {
+   "templates": [
+    {
+     "id": "a37411b5-4136-29f6-9dc0-d07f78a6ad5e",
+     "name": "Ubuntu 26.04",
+     "price": 0,
+     "type": "template",
+     "group": "public",
+     "size_gb": 4,
+     "interfaces": [
+      {
+       "name": "net0",
+       "zones": null,
+       "zone": "vmbr0",
+       "ip_required": true
+      }
+     ]
+    },
+    {
+     "id": "8c93b9af-1bd8-5a73-8190-f7e272bd4157",
+     "name": "Almalinux 10",
+     "price": 0,
+     "type": "template",
+     "group": "public",
+     "size_gb": 10,
+     "interfaces": [
+      {
+       "name": "net0",
+       "zones": null,
+       "zone": "vmbr0",
+       "ip_required": true
+      }
+     ]
+    },
+    "… 12 more item(s)"
+   ]
+  }
+ },
+ "GET /service/100002/networks": {
+  "method": "GET",
+  "path": "/service/100002/networks",
+  "status": 200,
+  "sample": {
+   "network": {
+    "devices": [],
+    "zones": [
+     {
+      "value": "vmbr0:218",
+      "zone": "vmbr0",
+      "vlan": "218",
+      "label": "vmbr0 VLAN #218"
+     },
+     {
+      "value": "vmbr0:24",
+      "zone": "vmbr0",
+      "vlan": "24",
+      "label": "vmbr0 VLAN #24"
+     },
+     "… 20 more item(s)"
+    ],
+    "limits": [
+     {
+      "name": "IPv4 Pool",
+      "type": "ipv4",
+      "options": [
+       {
+        "label": "Public IP(s)",
+        "value": "public",
+        "max": 0,
+        "type": "ipv4",
+        "zones": [
+         "vmbr0",
+         "vmbr20"
+        ],
+        "vlan": [
+         "218",
+         "24",
+         "… 9 more item(s)"
+        ],
+        "gateways": []
+       }
+      ]
+     },
+     {
+      "name": "IPv6 Pool",
+      "type": "ipv6",
+      "options": [
+       {
+        "label": "Public IP(s)",
+        "value": "public",
+        "max": 0,
+        "type": "ipv6",
+        "zones": [
+         "vmbr0"
+        ],
+        "vlan": [
+         "24",
+         "218",
+         "… 8 more item(s)"
+        ],
+        "gateways": []
+       }
+      ]
+     }
+    ],
+    "ip_required": [
+     "vmbr0",
+     "vmbr20"
+    ]
+   }
+  }
+ },
+ "GET /service/100002/resources": {
+  "method": "GET",
+  "path": "/service/100002/resources",
+  "status": 200,
+  "sample": {
+   "limit": {
+    "mem": 0,
+    "cpu": 0,
+    "ips": 0,
+    "priv_ips": 0,
+    "disk": 0,
+    "additional_storage": 0
+   },
+   "total": {
+    "cpu": 1,
+    "mem": 1024,
+    "ips": 1,
+    "priv_ips": 0,
+    "disk": 20,
+    "additional_storage": 0
+   }
+  }
+ },
+ "GET /service/100002/upgrade": {
+  "method": "GET",
+  "path": "/service/100002/upgrade",
+  "status": 200,
+  "sample": {
+   "resources": [],
+   "package": [
+    {
+     "id": "1318",
+     "name": "VPS 30 GB NVMe",
+     "category": "NVMe VPS ",
+     "price": {
+      "Monthly": "299000.00",
+      "Quarterly": "897000.00",
+      "Semi-Annually": "1614600.00",
+      "Annually": "2870400.00",
+      "Biennially": "5023200.00",
+      "Triennially": "6996600.00",
+      "Quadrennially": "8611200.00",
+      "Quinquennially": "9867000.00"
+     }
+    },
+    {
+     "id": "1319",
+     "name": "VPS 50 GB NVMe",
+     "category": "NVMe VPS ",
+     "price": {
+      "Monthly": "639000.00",
+      "Quarterly": "1917000.00",
+      "Semi-Annually": "3450600.00",
+      "Annually": "6134400.00",
+      "Biennially": "10735200.00",
+      "Triennially": "14952600.00",
+      "Quadrennially": "18403200.00",
+      "Quinquennially": "21087000.00"
+     }
+    },
+    "… 4 more item(s)"
+   ]
+  }
+ },
+ "GET /service/100002/cycle": {
+  "method": "GET",
+  "path": "/service/100002/cycle",
+  "status": 200,
+  "sample": {
+   "current": "m",
+   "cycles": []
+  }
+ },
+ "GET /service/100003/dns": {
+  "method": "GET",
+  "path": "/service/100003/dns",
+  "status": 200,
+  "sample": {
+   "zones": [
+    {
+     "domain_id": "500001",
+     "name": "example.com",
+     "service_id": "100003"
+    }
+   ]
+  }
+ },
+ "GET /service/100003/dns/500001": {
+  "method": "GET",
+  "path": "/service/100003/dns/500001",
+  "status": 200,
+  "sample": {
+   "service_id": "100003",
+   "name": "example.com",
+   "records": {
+    "0": {
+     "id": 910001,
+     "domain_id": 500001,
+     "name": "example.com",
+     "type": "SOA",
+     "content": "<redacted>",
+     "ttl": 7200,
+     "prio": 0,
+     "change_date": 0,
+     "priority": 0
+    },
+    "1": {
+     "id": 337915,
+     "domain_id": 500001,
+     "name": "example.com",
+     "type": "NS",
+     "content": "<redacted>",
+     "ttl": 86400,
+     "prio": 0,
+     "change_date": 0,
+     "priority": 0
+    },
+    "2": {
+     "id": 337916,
+     "domain_id": 500001,
+     "name": "example.com",
+     "type": "NS",
+     "content": "<redacted>",
+     "ttl": 86400,
+     "prio": 0,
+     "change_date": 0,
+     "priority": 0
+    },
+    "3": {
+     "id": 337917,
+     "domain_id": 500001,
+     "name": "webmail.example.com",
+     "type": "CNAME",
+     "content": "<redacted>",
+     "ttl": 3600,
+     "prio": 0,
+     "change_date": 0,
+     "priority": 0
+    },
+    "4": {
+     "id": 337918,
+     "domain_id": 500001,
+     "name": "www.example.com",
+     "type": "CNAME",
+     "content": "<redacted>",
+     "ttl": 3600,
+     "prio": 0,
+     "change_date": 0,
+     "priority": 0
+    },
+    "5": {
+     "id": 337919,
+     "domain_id": 500001,
+     "name": "example.com",
+     "type": "MX",
+     "content": "<redacted>",
+     "ttl": 3600,
+     "prio": 0,
+     "change_date": 0,
+     "priority": 0
+    },
+    "6": {
+     "id": 338121,
+     "domain_id": 500001,
+     "name": "get.example.com",
+     "type": "A",
+     "content": "<redacted>",
+     "ttl": 60,
+     "prio": 0,
+     "change_date": 0,
+     "priority": 0
+    },
+    "7": {
+     "id": 338643,
+     "domain_id": 500001,
+     "name": "example.com",
+     "type": "A",
+     "content": "<redacted>",
+     "ttl": 60,
+     "prio": 0,
+     "change_date": 0,
+     "priority": 0
+    },
+    "8": {
+     "id": 395278,
+     "domain_id": 500001,
+     "name": "ai.example.com",
+     "type": "A",
+     "content": "<redacted>",
+     "ttl": 3600,
+     "prio": 0,
+     "change_date": 0,
+     "priority": 0
+    },
+    "9": {
+     "id": 395283,
+     "domain_id": 500001,
+     "name": "example.com",
+     "type": "MX",
+     "content": "<redacted>",
+     "ttl": 3600,
+     "prio": 10,
+     "change_date": 0,
+     "priority": 10
+    },
+    "10": {
+     "id": 395284,
+     "domain_id": 500001,
+     "name": "example.com",
+     "type": "MX",
+     "content": "<redacted>",
+     "ttl": 3600,
+     "prio": 20,
+     "change_date": 0,
+     "priority": 20
+    },
+    "11": {
+     "id": 395285,
+     "domain_id": 500001,
+     "name": "example.com",
+     "type": "TXT",
+     "content": "<redacted>",
+     "ttl": 3600,
+     "prio": 0,
+     "change_date": 0,
+     "priority": 0
+    },
+    "12": {
+     "id": 395286,
+     "domain_id": 500001,
+     "name": "tino._domainkey.example.com",
+     "type": "TXT",
+     "content": "<redacted>",
+     "ttl": 3600,
+     "prio": 0,
+     "change_date": 0,
+     "priority": 0
+    },
+    "14": {
+     "id": 395288,
+     "domain_id": 500001,
+     "name": "_dmarc.example.com",
+     "type": "TXT",
+     "content": "<redacted>",
+     "ttl": 3600,
+     "prio": 0,
+     "change_date": 0,
+     "priority": 0
+    },
+    "15": {
+     "id": 395289,
+     "domain_id": 500001,
+     "name": "autodiscover.example.com",
+     "type": "CNAME",
+     "content": "<redacted>",
+     "ttl": 3600,
+     "prio": 0,
+     "change_date": 0,
+     "priority": 0
+    }
+   }
+  }
+ },
+ "GET /service/100003/dns/500001/dnssec": {
+  "method": "GET",
+  "path": "/service/100003/dns/500001/dnssec",
+  "status": 200,
+  "sample": {
+   "dnssec": false
+  }
+ },
+ "GET /category/54/product": {
+  "method": "GET",
+  "path": "/category/54/product",
+  "status": 200,
+  "sample": {
+   "products": null,
+   "error": [
+    "category_not_found"
+   ]
+  }
+ },
+ "GET /category/58/product": {
+  "method": "GET",
+  "path": "/category/58/product",
+  "status": 200,
+  "sample": {
+   "products": [
+    {
+     "id": 1298,
+     "category_id": "58",
+     "type": "9",
+     "name": ".io.vn",
+     "paytype": "DomainRegular",
+     "description": "",
+     "tax_group_id": "1",
+     "p_options": "0",
+     "out_of_stock": false,
+     "tags": [
+      "vn"
+     ],
+     "stock": false,
+     "qty": 0,
+     "periods": [
+      {
+       "title": "1 Năm",
+       "value": "1",
+       "register": "50000.00",
+       "transfer": "0.00",
+       "renew": "50000.00",
+       "before": -1,
+       "selected": true
+      },
+      {
+       "title": "2 Năm",
+       "value": "2",
+       "register": "100000.00",
+       "transfer": -1,
+       "renew": "100000.00",
+       "before": -1,
+       "selected": false
+      },
+      "… 8 more item(s)"
+     ],
+     "aditional": ""
+    },
+    {
+     "id": 567,
+     "category_id": "58",
+     "type": "9",
+     "name": ".vn",
+     "paytype": "DomainRegular",
+     "description": "",
+     "tax_group_id": "1",
+     "p_options": "0",
+     "out_of_stock": false,
+     "tags": [
+      "hot",
+      "hot vn",
+      "… 1 more item(s)"
+     ],
+     "stock": false,
+     "qty": 0,
+     "periods": [
+      {
+       "title": "1 Năm",
+       "value": "1",
+       "register": "450000.00",
+       "transfer": "0.00",
+       "renew": "450000.00",
+       "before": "750000.00",
+       "selected": true
+      },
+      {
+       "title": "2 Năm",
+       "value": "2",
+       "register": "900000.00",
+       "transfer": -1,
+       "renew": "900000.00",
+       "before": -1,
+       "selected": false
+      },
+      "… 8 more item(s)"
+     ],
+     "aditional": "<p>Tên miền quốc gia VN</p>"
+    },
+    "… 47 more item(s)"
+   ]
+  }
+ },
+ "GET /order/26": {
+  "method": "GET",
+  "path": "/order/26",
+  "status": 200,
+  "sample": {
+   "product": {
+    "id": 26,
+    "category_name": "Comodo SSL",
+    "_category_name": "Comodo SSL",
+    "category_id": 9,
+    "name": "Comodo PositiveSSL",
+    "_name": "Comodo PositiveSSL",
+    "template": "onestep_cloud_2019",
+    "slug": "comodo-ssl",
+    "domain": "",
+    "prorata_date": false,
+    "price": 0,
+    "recurring": "free",
+    "setup": 0,
+    "billingtype": "PrePay",
+    "paytype": "Free",
+    "price_today": 0,
+    "customdata": [],
+    "tax": "1",
+    "tax_group_id": "3",
+    "config": {
+     "product": [
+      {
+       "type": "select",
+       "title": "pickcycle",
+       "id": "cycle",
+       "name": "cycle",
+       "items": [
+        {
+         "title": "1 năm",
+         "formatted": null,
+         "value": "a",
+         "price": "175000.00",
+         "setup": 0,
+         "selected": true
+        },
+        {
+         "title": "2 năm",
+         "formatted": null,
+         "value": "b",
+         "price": "297600.00",
+         "setup": 0,
+         "selected": false
+        },
+        "… 1 more item(s)"
+       ],
+       "value": "free",
+       "price": 0,
+       "setup": 0
+      },
+      {
+       "type": "input",
+       "title": "Tên miền/ Hostname",
+       "id": "domain",
+       "name": "domain",
+       "value": null
+      }
+     ],
+     "forms": [],
+     "addons": [],
+     "subproducts": []
+    },
+    "…": "14 more key(s)"
+   },
+   "summary": {
+    "subtotal": 0,
+    "total": 0,
+    "setup_fee": 0,
+    "credit": 0,
+    "discount": 0,
+    "cost": 0,
+    "recurring": [
+     {
+      "title": "Miễn phí!",
+      "price": 0,
+      "value": "free"
+     }
+    ],
+    "recurring_discount": [],
+    "tax": [
+     {
+      "name": "VAT",
+      "tax": 0,
+      "value": 8
+     }
+    ]
+   }
+  }
+ },
+ "GET /location/state/1/city": {
+  "method": "GET",
+  "path": "/location/state/1/city",
+  "status": 200,
+  "sample": [
+   {
+    "id": 4,
+    "name": "Phường Ba Đình",
+    "state_id": "1",
+    "code": null
+   },
+   {
+    "id": 292,
+    "name": "Phường Bạch Mai",
+    "state_id": "1",
+    "code": null
+   },
+   "… 124 more item(s)"
+  ]
+ },
+ "GET /location/state/1/city-v2": {
+  "method": "GET",
+  "path": "/location/state/1/city-v2",
+  "status": 200,
+  "sample": [
+   {
+    "id": 4,
+    "name": "Phường Ba Đình",
+    "state_id": "1",
+    "code": null
+   },
+   {
+    "id": 292,
+    "name": "Phường Bạch Mai",
+    "state_id": "1",
+    "code": null
+   },
+   "… 124 more item(s)"
+  ]
+ },
+ "GET /certificate/order/26/software": {
+  "method": "GET",
+  "path": "/certificate/order/26/software",
+  "status": 200,
+  "sample": {
+   "software": [
+    {
+     "id": 1,
+     "name": "Apache + MOD SSL"
+    },
+    {
+     "id": 2,
+     "name": "Apache + Raven"
+    },
+    "… 26 more item(s)"
+   ]
+  }
+ },
+ "GET /languages/file/vietnamese": {
+  "method": "GET",
+  "path": "/languages/file/vietnamese",
+  "status": 200,
+  "sample": {
+   "Accepted": "Chấp nhận",
+   "Active": "Kích hoạt",
+   "Annually": "12 tháng",
+   "Answered": "Đã trả lời",
+   "Cancelled": "Huỷ bỏ",
+   "Client-Reply": "Khách hàng trả lời",
+   "Closed": "Đóng",
+   "Collections": "Collections",
+   "Credited": "Đã chuyển vào ví",
+   "Dead": "Huỷ bỏ",
+   "Draft": "Nháp",
+   "Expired": "Hết hạn",
+   "Fraud": "Gian lận",
+   "Free": "Miễn phí",
+   "Grace": "Grace",
+   "In-Progress": "Đang xử lý",
+   "Invoiced": "Đã phát hành hoá đơn",
+   "Manager Service": "Quản lý dịch vụ",
+   "Monthly": "Hàng tháng",
+   "Open": "Mở",
+   "…": "331 more key(s)"
+  }
+ },
+ "GET /service/100002/vms/600001": {
+  "method": "GET",
+  "path": "/service/100002/vms/600001",
+  "status": 200,
+  "sample": {
+   "vm": {
+    "id": 600001,
+    "ha": false,
+    "built": true,
+    "locked": false,
+    "power": true,
+    "status": "running",
+    "status_lang": "vm_state_running",
+    "password": "<redacted>",
+    "sshkeys": [
+     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII+Gmwk9Yz3YLyc/2h1PxmTY8Wedfr3+LUra/sgZnG3T task29-verify-1785204819"
+    ],
+    "username": "root",
+    "memory": 1024,
+    "disk": 20,
+    "swap": null,
+    "additional_storage": [],
+    "uptime": 639639,
+    "template_id": "template-vm:321/321/base-321-disk-0.raw",
+    "template_name": "Ubuntu 26.04",
+    "template_data": [],
+    "replication": false,
+    "cloudinit": true,
+    "…": "14 more key(s)"
+   }
+  }
+ },
+ "GET /service/100002/vms/600001/ips": {
+  "method": "GET",
+  "path": "/service/100002/vms/600001/ips",
+  "status": 200,
+  "sample": [
+   {
+    "id": 930001,
+    "interface": 0,
+    "mac": "A0:35:D1:3B:C3:A8",
+    "ip": "203.0.113.10",
+    "wanip": "",
+    "mask": "/24",
+    "network": "203.0.113.10/24",
+    "gateway": "203.0.113.10",
+    "main": 1,
+    "type": "ipv4"
+   },
+   {
+    "id": 27930,
+    "interface": 0,
+    "mac": "A0:35:D1:3B:C3:A8",
+    "ip": "203.0.113.10",
+    "wanip": "",
+    "mask": "/64",
+    "network": "2405:2840:0:136::/64",
+    "gateway": "2405:2840:0:136::1",
+    "main": 1,
+    "type": "ipv6"
+   }
+  ]
+ },
+ "GET /service/100002/vms/600001/ippool": {
+  "method": "GET",
+  "path": "/service/100002/vms/600001/ippool",
+  "status": 200,
+  "sample": [
+   {
+    "id": "public",
+    "name": "Public IP(s)",
+    "type": "ipv4",
+    "vlan_id": "41",
+    "firstip": "203.0.113.10",
+    "mask": "/24",
+    "gateway": "203.0.113.10"
+   },
+   {
+    "id": "public",
+    "name": "Public IP(s)",
+    "type": "ipv6",
+    "vlan_id": "42",
+    "firstip": "2405:2840:0:137::",
+    "mask": "/64",
+    "gateway": "2405:2840:0:137::1"
+   }
+  ]
+ },
+ "GET /service/100002/vms/600001/interfaces": {
+  "method": "GET",
+  "path": "/service/100002/vms/600001/interfaces",
+  "status": 200,
+  "sample": [
+   {
+    "id": 0,
+    "name": "net0",
+    "model": "virtio",
+    "mac": "A0:35:D1:3B:C3:A8",
+    "firewall": "1",
+    "ip": [
+     {
+      "id": 930001,
+      "interface": 0,
+      "mac": "A0:35:D1:3B:C3:A8",
+      "ip": "203.0.113.10",
+      "wanip": "",
+      "mask": "/24",
+      "network": "203.0.113.10/24",
+      "gateway": "203.0.113.10",
+      "main": 1,
+      "type": "ipv4"
+     },
+     {
+      "id": 27930,
+      "interface": 0,
+      "mac": "A0:35:D1:3B:C3:A8",
+      "ip": "203.0.113.10",
+      "wanip": "",
+      "mask": "/64",
+      "network": "2405:2840:0:136::/64",
+      "gateway": "2405:2840:0:136::1",
+      "main": 1,
+      "type": "ipv6"
+     }
+    ],
+    "bridge": "vmbr0",
+    "vlan": "136",
+    "link_down": null,
+    "can_edit": true,
+    "can_remove": false
+   }
+  ]
+ },
+ "GET /service/100002/vms/600001/usage": {
+  "method": "GET",
+  "path": "/service/100002/vms/600001/usage",
+  "status": 200,
+  "sample": {
+   "last": {
+    "maxmem": 1073741824,
+    "time": 1785679440,
+    "diskread": 0,
+    "maxcpu": 1,
+    "netout": 250.616666666667,
+    "cpu": 1.83,
+    "maxdisk": 21474836480,
+    "mem": 596055608,
+    "disk": 0,
+    "netin": 966.106666666666,
+    "diskwrite": 20964.6933333333,
+    "date_time": "2026-08-02 21:04:00"
+   },
+   "usage": [
+    {
+     "diskwrite": 12349.44,
+     "netin": 934.313333333333,
+     "mem": 596055608,
+     "disk": 0,
+     "maxdisk": 21474836480,
+     "diskread": 0,
+     "maxcpu": 1,
+     "netout": 274.256666666667,
+     "cpu": 1.24,
+     "time": 1785675300,
+     "maxmem": 1073741824,
+     "date_time": "2026-08-02 19:55:00"
+    },
+    {
+     "diskwrite": 23278.9333333333,
+     "mem": 596055608,
+     "disk": 0,
+     "netin": 991.83,
+     "diskread": 0,
+     "maxcpu": 1,
+     "netout": 303.44,
+     "cpu": 1.39,
+     "maxdisk": 21474836480,
+     "maxmem": 1073741824,
+     "time": 1785675360,
+     "date_time": "2026-08-02 19:56:00"
+    },
+    "… 68 more item(s)"
+   ]
+  }
+ },
+ "GET /service/100002/vms/600001/backups": {
+  "method": "GET",
+  "path": "/service/100002/vms/600001/backups",
+  "status": 200,
+  "sample": {
+   "backups": [
+    {
+     "vmid": 600001,
+     "date": "2026-08-02 01:08:08",
+     "size": 21474838049,
+     "id": 900001,
+     "status": "created",
+     "delete_warning": "",
+     "can": {
+      "restore": true,
+      "filerestore": true,
+      "delete": false
+     }
+    }
+   ],
+   "limit": {
+    "unlimited": false,
+    "can_create": true,
+    "size_left": -1,
+    "num_left": 1,
+    "size_total": -1,
+    "num_total": "2",
+    "size_used": 0,
+    "size_percent": 100
+   }
+  }
+ },
+ "GET /service/100002/vms/600001/snapshots": {
+  "method": "GET",
+  "path": "/service/100002/vms/600001/snapshots",
+  "status": 200,
+  "sample": {
+   "snapshots": null,
+   "limit": {
+    "unlimited": false,
+    "can_create": true,
+    "num_left": 1
+   }
+  }
+ },
+ "GET /service/100002/vms/600001/snapshotschedule": {
+  "method": "GET",
+  "path": "/service/100002/vms/600001/snapshotschedule",
+  "status": 200,
+  "sample": {
+   "schedules": [],
+   "limit": 1
+  }
+ },
+ "GET /location/state/city/Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh": {
+  "method": "GET",
+  "path": "/location/state/city/Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh",
+  "status": 200,
+  "sample": [
+   {
+    "id": 26882,
+    "name": "Phường An Hội Tây",
+    "state_id": "79",
+    "code": null
+   },
+   {
+    "id": 26878,
+    "name": "Phường An Hội Đông",
+    "state_id": "79",
+    "code": null
+   },
+   "… 166 more item(s)"
+  ]
+ },
+ "GET /location/state/city-v2/Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh": {
+  "method": "GET",
+  "path": "/location/state/city-v2/Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh",
+  "status": 200,
+  "sample": [
+   {
+    "id": 26882,
+    "name": "Phường An Hội Tây",
+    "state_id": "79",
+    "code": null
+   },
+   {
+    "id": 26878,
+    "name": "Phường An Hội Đông",
+    "state_id": "79",
+    "code": null
+   },
+   "… 166 more item(s)"
+  ]
+ },
+ "GET /tinosite/100001/themes": {
+  "method": "GET",
+  "path": "/tinosite/100001/themes",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "service_id": "100001",
+   "list": null
+  }
+ },
+ "GET /tinosite/100001/plugins": {
+  "method": "GET",
+  "path": "/tinosite/100001/plugins",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "service_id": "100001",
+   "list": null
+  }
+ },
+ "POST /domain/suggest": {
+  "method": "POST",
+  "path": "/domain/suggest",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "suggestions": [
+    {
+     "domain": "tinosdk.vn",
+     "avaliable": true,
+     "price": 450000,
+     "reason": "Tên thương hiệu gốc, dễ nhận diện"
+    },
+    {
+     "domain": "tinosdk.com",
+     "avaliable": true,
+     "price": 319000,
+     "reason": "Phổ biến toàn cầu, chuyên nghiệp"
+    },
+    "… 8 more item(s)"
+   ]
+  }
+ },
+ "POST /quote": {
+  "method": "POST",
+  "path": "/quote",
+  "status": 200,
+  "sample": {
+   "summary": {
+    "subtotal": 79000,
+    "total": 85320,
+    "setup_fee": 0,
+    "credit": 0,
+    "discount": 0,
+    "cost": 79000,
+    "recurring": [
+     {
+      "title": "1 tháng",
+      "price": 85320,
+      "value": "m"
+     }
+    ],
+    "recurring_discount": [],
+    "tax": [
+     {
+      "name": "VAT",
+      "tax": 6320,
+      "value": 8
+     }
+    ]
+   },
+   "items": []
+  }
+ },
+ "POST /ekyc/exists": {
+  "method": "POST",
+  "path": "/ekyc/exists",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "exists": true
+  }
+ },
+ "POST /clientarea/search/": {
+  "method": "POST",
+  "path": "/clientarea/search/",
+  "status": 200,
+  "sample": {
+   "results": {
+    "Domains": {
+     "name": "Domains",
+     "results": [
+      {
+       "id": "200001",
+       "name": "example.com",
+       "next_due": "2026-12-07",
+       "expires": "07/12/2026",
+       "status": "Active",
+       "label": "",
+       "url": "<panel-link>",
+       "title": "#200001 - example.com - <span class=\"badge badge-Active\">Hoạt động</span> - <span class=\"badge badge-details\">07/12/2026</span>"
+      }
+     ]
+    },
+    "Accounts": {
+     "name": "Accounts",
+     "results": [
+      {
+       "id": "100001",
+       "username": "tranbinh18",
+       "domain": "example.com",
+       "label": "",
+       "product_name": "WH 1",
+       "category_name": "Platinum Hosting",
+       "next_due": "26/08/2026",
+       "status": "Active",
+       "title": "#100001 - WH 1: Platinum Hosting (example.com) - <span class=\"badge badge-Active\">Hoạt động</span> - <span class=\"badge badge-details\">26/08/2026</span>",
+       "url": "<panel-link>"
+      },
+      {
+       "id": "100005",
+       "username": "kscvgvgs",
+       "domain": "demo1.example.net",
+       "label": "",
+       "product_name": "Host NVMe 2 GB",
+       "category_name": "Cloud Hosting",
+       "next_due": "31/03/2027",
+       "status": "Cancelled",
+       "title": "#100005 - Host NVMe 2 GB: Cloud Hosting (demo1.example.net) - <span class=\"badge badge-Cancelled\">Đã huỷ</span> - <span class=\"badge badge-details\">31/03/2027</span>",
+       "url": "<panel-link>"
+      },
+      "… 3 more item(s)"
+     ]
+    }
+   }
+  }
+ },
+ "GET /order/2122": {
+  "method": "GET",
+  "path": "/order/2122",
+  "status": 200,
+  "sample": {
+   "product": {
+    "id": 2122,
+    "category_name": "Platinum Hosting",
+    "_category_name": "Platinum Hosting",
+    "category_id": 83,
+    "name": "WH 1",
+    "_name": "WH 1",
+    "template": "onestep_cloud_2019",
+    "slug": "platinum-hosting",
+    "domain": "",
+    "prorata_date": false,
+    "price": "758400.00",
+    "recurring": "a",
+    "setup": 0,
+    "billingtype": "PrePay",
+    "paytype": "Regular",
+    "price_today": "758400.00",
+    "customdata": [],
+    "tax": "1",
+    "tax_group_id": "3",
+    "config": {
+     "product": [
+      {
+       "type": "select",
+       "title": "pickcycle",
+       "id": "cycle",
+       "name": "cycle",
+       "items": [
+        {
+         "title": "1 tháng",
+         "formatted": "1 tháng ",
+         "value": "m",
+         "price": "79000.00",
+         "setup": 0,
+         "selected": false
+        },
+        {
+         "title": "3 tháng",
+         "formatted": "3 tháng ",
+         "value": "q",
+         "price": "237000.00",
+         "setup": 0,
+         "selected": false
+        },
+        "… 6 more item(s)"
+       ],
+       "value": "a",
+       "price": "758400.00",
+       "setup": 0
+      },
+      {
+       "type": "input",
+       "title": "Tên miền",
+       "id": "domain",
+       "name": "domain",
+       "value": null
+      }
+     ],
+     "forms": [],
+     "addons": [],
+     "subproducts": [
+      {
+       "type": "subitem",
+       "title": "VIP Support",
+       "id": 2113,
+       "value": null,
+       "description": "<ul></ul>",
+       "config": [
+        {
+         "type": "checkbox",
+         "title": "Thêm",
+         "name": "subproducts[2113]",
+         "checked": false
+        },
+        {
+         "type": "select",
+         "title": "Billing cycle",
+         "name": "subproducts_cycles[2113]",
+         "items": [
+          {
+           "title": "1 tháng",
+           "formatted": "1 tháng ",
+           "value": "m",
+           "price": "390000.00",
+           "setup": 0,
+           "selected": false
+          },
+          {
+           "title": "3 tháng",
+           "formatted": "3 tháng ",
+           "value": "q",
+           "price": "1170000.00",
+           "setup": 0,
+           "selected": false
+          },
+          "… 6 more item(s)"
+         ]
+        }
+       ],
+       "price": null,
+       "recurring_price": null,
+       "setup": null,
+       "prorata_amount": null,
+       "prorata_date": null,
+       "paytype": "Regular"
+      },
+      {
+       "type": "subitem",
+       "title": "Email Pro A",
+       "id": 276,
+       "value": null,
+       "description": "Số lượng email:1<br>Dung lượng:2GB<br><ul></ul>",
+       "config": [
+        {
+         "type": "checkbox",
+         "title": "Thêm",
+         "name": "subproducts[276]",
+         "checked": false
+        },
+        {
+         "type": "select",
+         "title": "Billing cycle",
+         "name": "subproducts_cycles[276]",
+         "items": [
+          {
+           "title": "1 năm",
+           "formatted": "1 năm ",
+           "value": "a",
+           "price": "228000.00",
+           "setup": 0,
+           "selected": true
+          },
+          {
+           "title": "2 năm",
+           "formatted": "2 năm -9% discount",
+           "value": "b",
+           "price": "416000.00",
+           "setup": 0,
+           "selected": false
+          },
+          "… 3 more item(s)"
+         ]
+        }
+       ],
+       "price": null,
+       "recurring_price": null,
+       "setup": null,
+       "prorata_amount": null,
+       "prorata_date": null,
+       "paytype": "Regular"
+      },
+      "… 1 more item(s)"
+     ]
+    },
+    "…": "15 more key(s)"
+   },
+   "summary": {
+    "subtotal": 758400,
+    "total": 819072,
+    "setup_fee": 0,
+    "credit": 0,
+    "discount": 0,
+    "cost": 758400,
+    "recurring": [
+     {
+      "title": "1 năm",
+      "price": 819072,
+      "value": "a"
+     }
+    ],
+    "recurring_discount": [],
+    "tax": [
+     {
+      "name": "VAT",
+      "tax": 60672,
+      "value": 8
+     }
+    ]
+   }
+  }
+ },
+ "GET /knowledgebase/1": {
+  "method": "GET",
+  "path": "/knowledgebase/1",
+  "status": 200,
+  "sample": {
+   "subcategories": null,
+   "articles": null
+  }
+ },
+ "GET /affiliates/plans/1": {
+  "method": "GET",
+  "path": "/affiliates/plans/1",
+  "status": 200,
+  "sample": {
+   "plan": null
+  }
+ },
+ "GET /service/100003": {
+  "method": "GET",
+  "path": "/service/100003",
+  "status": 200,
+  "sample": {
+   "service": {
+    "id": "100003",
+    "product_id": "301",
+    "date_created": "2026-03-30",
+    "domain": "",
+    "firstpayment": "0.00",
+    "total": "0.00",
+    "billingcycle": "Free",
+    "next_due": "2026-03-30",
+    "due_day": "30",
+    "expires": "2026-03-30",
+    "autorenew": "1",
+    "next_invoice": "2026-03-30",
+    "status": "Active",
+    "label": "",
+    "username": "jueczadj",
+    "rootpassword": "mM$t!4-0+#ujHOH2",
+    "commitment_date": "0000-00-00",
+    "date_suspended": "0000-00-00",
+    "date_terminated": "0000-00-00",
+    "name": "DNS Domain",
+    "…": "7 more key(s)"
+   },
+   "addons": [],
+   "haveaddons": [],
+   "unpaid_invoice": []
+  }
+ },
+ "POST /ekyc/checkid": {
+  "method": "POST",
+  "path": "/ekyc/checkid",
+  "status": 200,
+  "sample": {
+   "success": false,
+   "token": "<redacted>"
+  }
+ },
+ "GET /clientarea/history/emails/700001": {
+  "method": "GET",
+  "path": "/clientarea/history/emails/700001",
+  "status": 200,
+  "sample": {
+   "email": []
+  }
+ },
+ "GET /certificate/1": {
+  "method": "GET",
+  "path": "/certificate/1",
+  "status": 200,
+  "sample": {
+   "error": [
+    "unauthorized"
+   ]
+  }
+ },
+ "GET /certificate/100003/crt": {
+  "method": "GET",
+  "path": "/certificate/100003/crt",
+  "status": 200,
+  "sample": []
+ },
+ "GET /service/100003/dns/500001/password": {
+  "method": "GET",
+  "path": "/service/100003/dns/500001/password",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "newpass": "<redacted>"
+  }
+ },
+ "GET /domain/documents/view/x": {
+  "method": "GET",
+  "path": "/domain/documents/view/x",
+  "status": 200,
+  "sample": []
+ },
+ "GET /languages/translate": {
+  "method": "GET",
+  "path": "/languages/translate",
+  "status": 200,
+  "sample": {
+   "d": "Ngày",
+   "m": "1 tháng",
+   "a": "1 năm",
+   "q": "3 tháng",
+   "s": "6 tháng",
+   "t": "3 năm",
+   "p4": "4 năm",
+   "p5": "5 năm"
+  }
+ },
+ "GET /location/state/city-v2/example.com": {
+  "method": "GET",
+  "path": "/location/state/city-v2/example.com",
+  "status": 200,
+  "sample": []
+ },
+ "GET /location/state/city/example.com": {
+  "method": "GET",
+  "path": "/location/state/city/example.com",
+  "status": 200,
+  "sample": []
+ },
+ "GET /knowledgebase/article/1": {
+  "method": "GET",
+  "path": "/knowledgebase/article/1",
+  "status": 200,
+  "sample": {
+   "article": null
+  }
+ },
+ "GET /knowledgebase/58": {
+  "method": "GET",
+  "path": "/knowledgebase/58",
+  "status": 200,
+  "sample": {
+   "subcategories": null,
+   "articles": null
+  }
+ },
+ "GET /news/1": {
+  "method": "GET",
+  "path": "/news/1",
+  "status": 200,
+  "sample": {
+   "annoucement": null
+  }
+ },
+ "GET /ticket/attachment/1": {
+  "method": "GET",
+  "path": "/ticket/attachment/1",
+  "status": 200,
+  "sample": [
+   "file_not_found"
+  ]
+ },
+ "GET /tinosite/100001/metrics": {
+  "method": "GET",
+  "path": "/tinosite/100001/metrics",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "service_id": "100001",
+   "metrics": null,
+   "bandwidths": null,
+   "infostat": null
+  }
+ },
+ "GET /tinosite/100001/users": {
+  "method": "GET",
+  "path": "/tinosite/100001/users",
+  "status": 200,
+  "sample": {
+   "success": true,
+   "service_id": "100001",
+   "list": null
+  }
+ },
+ "GET /usage-monitor/account/100001": {
+  "method": "GET",
+  "path": "/usage-monitor/account/100001",
+  "status": 200,
+  "sample": {
+   "error": [
+    "internal_error_0"
+   ]
+  }
+ },
+ "GET /usage-monitor/nodes/1": {
+  "method": "GET",
+  "path": "/usage-monitor/nodes/1",
+  "status": 200,
+  "sample": {
+   "error": [
+    "internal_error_0"
+   ]
+  }
+ },
+ "GET /service/100002/vms/600001/interfaces/0": {
+  "method": "GET",
+  "path": "/service/100002/vms/600001/interfaces/0",
+  "status": 200,
+  "sample": []
+ },
+ "POST /login-otp": {
+  "method": "POST",
+  "path": "/login-otp",
+  "status": 200,
+  "sample": {
+   "status": false,
+   "message": "If this account exists, an OTP has been sent.",
+   "via": "email"
+  }
+ }
+}

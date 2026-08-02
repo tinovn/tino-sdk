@@ -1,0 +1,22 @@
+# secrets & raw captures (contain real PII/tokens) — never commit
+.token
+captured*/
+*.local
+.env
+.env.*
+.ref-tinov2/
+tinoapi.json
+
+# build / deps
+node_modules/
+vendor/
+dist/
+build/
+*.egg-info/
+.venv/
+*.pyc
+.pytest_cache/
+composer.lock
+package-lock.json
+.DS_Store
+plans/

@@ -1,0 +1,45 @@
+{
+  "name": "@tinovn/tino-sdk",
+  "version": "1.0.0",
+  "description": "Official Node.js SDK for the Tino UserAPI (https://api.tino.vn)",
+  "license": "MIT",
+  "type": "module",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js"
+    }
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "keywords": [
+    "tino",
+    "tinohost",
+    "hosting",
+    "domain",
+    "vps",
+    "hostbill",
+    "sdk",
+    "api"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tinovn/tino-sdk.git",
+    "directory": "sdk/nodejs"
+  },
+  "homepage": "https://github.com/tinovn/tino-sdk/tree/main/sdk/nodejs",
+  "bugs": {
+    "url": "https://github.com/tinovn/tino-sdk/issues"
+  }
+}
