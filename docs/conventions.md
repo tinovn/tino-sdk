@@ -165,8 +165,11 @@ account's phone number:
 | `taken_by_other` | Another account already proved ownership of this number |
 | `missing` | No number on file, or an obviously fake one |
 
-A number belongs to exactly one account. Ownership is proved by entering a code sent
-over Zalo ZNS — see `phone.requestOtp` and `phone.verify`.
+A number belongs to exactly one account. Ownership is proved by entering a code sent to
+the handset — see `phone.requestOtp` and `phone.verify`. The code goes out over Zalo ZNS
+when the number has a Zalo account and over SMS when it does not; `phone.requestOtp`
+reports which channel it used in `via`. Email is never used for this, because it proves
+control of a mailbox rather than possession of the SIM.
 
 Do not confuse the `phone` block with the top-level `update_required`, which is about
 the **profile** (national id, address, date of birth) and says nothing about the phone.
