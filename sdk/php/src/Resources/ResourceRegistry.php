@@ -26,6 +26,7 @@ final class ResourceRegistry
         'ekyc' => Ekyc::class,
         'languages' => Languages::class,
         'location' => Location::class,
+        'phone' => Phone::class,
         'security' => Security::class,
         'services' => Services::class,
         'support' => Support::class,

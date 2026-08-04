@@ -58,6 +58,11 @@ export class AuthResource extends Resource {
    *
    * Return Client details
    *
+   * Note: The response now carries verify.phone (bool) and a phone block {status,
+   * verified_at}. status is one of verified | unverified | taken_by_other | missing. Note
+   * that the top-level update_required is about the profile (national id, address), not the
+   * phone.
+   *
    * Body fields:
    *   - username (string): Your acount email address
    *   - password (string): Account password
@@ -76,6 +81,11 @@ export class AuthResource extends Resource {
    * POST /login-sso — no authentication required, from the API specification.
    *
    * Return Client
+   *
+   * Note: The response now carries verify.phone (bool) and a phone block {status,
+   * verified_at}. status is one of verified | unverified | taken_by_other | missing. Note
+   * that the top-level update_required is about the profile (national id, address), not the
+   * phone.
    * @param {object} [body] Request payload.
    * @param {object} [query] Extra query-string parameters.
    * @returns {Promise<any>}
@@ -121,6 +131,10 @@ export class AuthResource extends Resource {
    * POST /login-otp — no authentication required, verified against the live API.
    *
    * Return Client details
+   *
+   * Note: via reports the delivery channel. It falls back to email when the account's phone
+   * number is already verified by a different account, so an OTP is never sent to a SIM the
+   * account holder may not control.
    *
    * Body fields:
    *   - email (string): Your acount email address
@@ -190,6 +204,9 @@ export class AuthResource extends Resource {
    *
    * Create new account
    *
+   * Note: Rejects a duplicate phone number with phone_invalid, phone_already_verified or
+   * phone_already_used, so one number registers exactly one account.
+   *
    * Body fields:
    *   - type (string, one of Private, Company): Account Type
    *   - companyname (string): Organization - Quý khách vui lòng nhập đầy đủ tên công ty chính xác, Nếu không có tên công ty đầy đủ vui lòng chọn loại tài khoản là cá nhân
@@ -237,6 +254,11 @@ export class AuthResource extends Resource {
    * POST /verify-login-otp — no authentication required, verified against the live API.
    *
    * Return Client details
+   *
+   * Note: The response now carries verify.phone (bool) and a phone block {status,
+   * verified_at}. status is one of verified | unverified | taken_by_other | missing. Note
+   * that the top-level update_required is about the profile (national id, address), not the
+   * phone.
    *
    * Body fields:
    *   - email (string): Your acount email address

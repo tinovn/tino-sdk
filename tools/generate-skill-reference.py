@@ -21,7 +21,7 @@ from sdkgen import catalog as cat  # noqa: E402
 # Same reading order as the documentation chapters.
 GROUP_ORDER = [
     "auth", "account", "billing", "support", "domains", "dns", "services", "cpanel",
-    "vms", "cart", "certificates", "affiliate", "security", "location", "languages",
+    "vms", "cart", "certificates", "affiliate", "security", "phone", "location", "languages",
     "ekyc", "tinosite",
 ]
 

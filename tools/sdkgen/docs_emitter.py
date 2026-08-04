@@ -11,7 +11,7 @@ from . import catalog as cat
 # Order the chapters the way a reader discovers the API.
 GROUP_ORDER = [
     "auth", "account", "billing", "support", "domains", "dns", "services", "cpanel",
-    "vms", "cart", "certificates", "affiliate", "security", "location", "languages",
+    "vms", "cart", "certificates", "affiliate", "security", "phone", "location", "languages",
     "ekyc", "tinosite", "tinomail", "usageMonitor",
 ]
 MAX_CHAPTER_LINES = 750     # split a group across files rather than exceed this

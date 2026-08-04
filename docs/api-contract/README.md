@@ -2,7 +2,7 @@
 
 Base URL: `https://api.tino.vn`
 
-255 operations across 17 resource groups. 195 were called against the live API and carry a captured response sample; the rest are documented from the API specification and marked *spec only*.
+257 operations across 18 resource groups. 195 were called against the live API and carry a captured response sample; the rest are documented from the API specification and marked *spec only*.
 
 See [../getting-started.md](../getting-started.md) for authentication and [../conventions.md](../conventions.md) for pagination, error handling and encoding rules.
 
@@ -32,10 +32,11 @@ See [../getting-started.md](../getting-started.md) for authentication and [../co
 | [SSL certificates](11-certificates.md) | `certificates` | 6 |
 | [Affiliate programme](12-affiliate.md) | `affiliate` | 12 |
 | [Account security (SSH keys, IP access)](13-security.md) | `security` | 5 |
-| [Countries, states & cities](14-location.md) | `location` | 8 |
-| [Languages & translations](15-languages.md) | `languages` | 3 |
-| [Domain documents & eKYC](16-ekyc.md) | `ekyc` | 14 |
-| [TinoSite (managed WordPress)](17-tinosite.md) | `tinosite` | 10 |
+| [Phone number verification](14-phone.md) | `phone` | 2 |
+| [Countries, states & cities](15-location.md) | `location` | 8 |
+| [Languages & translations](16-languages.md) | `languages` | 3 |
+| [Domain documents & eKYC](17-ekyc.md) | `ekyc` | 14 |
+| [TinoSite (managed WordPress)](18-tinosite.md) | `tinosite` | 10 |
 
 ## All endpoints
 
@@ -184,6 +185,8 @@ See [../getting-started.md](../getting-started.md) for authentication and [../co
 | `POST` | `/password/passreset` | `auth.resetPassword` | public | spec |
 | `GET` | `/payment` | `billing.listPaymentMethods` | public | live |
 | `GET` | `/payment/fees` | `billing.listPaymentMethodFees` | public | live |
+| `POST` | `/phone/otp` | `phone.requestOtp` | Bearer | spec |
+| `POST` | `/phone/verify` | `phone.verify` | Bearer | spec |
 | `POST` | `/quote` | `cart.quote` | Bearer | live |
 | `POST` | `/revoke` | `auth.revokeToken` | Bearer | spec |
 | `GET` | `/security` | `security.get` | Bearer | live |

@@ -79,6 +79,8 @@ $client->auth->checkEmail(['email' => ...]);
 
 Return Client details
 
+> **Note.** The response now carries verify.phone (bool) and a phone block {status, verified_at}. status is one of verified | unverified | taken_by_other | missing. Note that the top-level update_required is about the profile (national id, address), not the phone.
+
 **Request body**
 
 | Field | Type | Required | Description |
@@ -120,6 +122,8 @@ $client->auth->login(['username' => ...]);
 **User Request OTP Login**
 
 Return Client details
+
+> **Note.** via reports the delivery channel. It falls back to email when the account's phone number is already verified by a different account, so an OTP is never sent to a SIM the account holder may not control.
 
 **Request body**
 
@@ -168,6 +172,8 @@ $client->auth->requestLoginOtp(['email' => ...]);
 **Login**
 
 Return Client
+
+> **Note.** The response now carries verify.phone (bool) and a phone block {status, verified_at}. status is one of verified | unverified | taken_by_other | missing. Note that the top-level update_required is about the profile (national id, address), not the phone.
 
 **Request body** — none documented; any JSON object is forwarded as-is.
 
@@ -368,6 +374,8 @@ $client->auth->revokeToken(['refresh_token' => ...]);
 
 Create new account
 
+> **Note.** Rejects a duplicate phone number with phone_invalid, phone_already_verified or phone_already_used, so one number registers exactly one account.
+
 **Request body**
 
 | Field | Type | Required | Description |
@@ -557,6 +565,8 @@ $client->auth->verifyAccount(['code' => ...]);
 **User Login OTP**
 
 Return Client details
+
+> **Note.** The response now carries verify.phone (bool) and a phone block {status, verified_at}. status is one of verified | unverified | taken_by_other | missing. Note that the top-level update_required is about the profile (national id, address), not the phone.
 
 **Request body**
 

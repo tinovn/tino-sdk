@@ -17,6 +17,7 @@ from .domains import DomainsResource
 from .ekyc import EkycResource
 from .languages import LanguagesResource
 from .location import LocationResource
+from .phone import PhoneResource
 from .security import SecurityResource
 from .services import ServicesResource
 from .support import SupportResource
@@ -37,6 +38,7 @@ RESOURCE_CLASSES = {
     "ekyc": EkycResource,
     "languages": LanguagesResource,
     "location": LocationResource,
+    "phone": PhoneResource,
     "security": SecurityResource,
     "services": ServicesResource,
     "support": SupportResource,
@@ -59,6 +61,7 @@ __all__ = [
     "EkycResource",
     "LanguagesResource",
     "LocationResource",
+    "PhoneResource",
     "SecurityResource",
     "ServicesResource",
     "SupportResource",

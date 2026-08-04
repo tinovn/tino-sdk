@@ -167,6 +167,11 @@ class Account extends Resource
      *
      * Return registration details for my account
      *
+     * Note: The response now carries verify.phone (bool) and a phone block {status,
+     * verified_at}. status is one of verified | unverified | taken_by_other | missing. Note
+     * that the top-level update_required is about the profile (national id, address), not the
+     * phone.
+     *
      * @param array<string,mixed> $query Extra query-string parameters.
      *
      * @return mixed Decoded response body.
@@ -543,6 +548,9 @@ class Account extends Resource
      * PUT /details — Bearer token required, from the API specification.
      *
      * Update registration details under my account
+     *
+     * Note: Changing phonenumber clears the phone verification: phone.status returns to
+     * unverified and the old number is released for another account to claim.
      *
      * Body fields:
      *   - type (string, one of Private, Company): Account Type

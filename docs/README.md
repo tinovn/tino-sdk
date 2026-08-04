@@ -9,7 +9,7 @@
 ## Quick orientation
 
 The API is the customer-facing surface of Tino's HostBill deployment. One token = one
-client account. There are 255 operations across 17 resource groups:
+client account. There are 257 operations across 18 resource groups:
 
 | Group | What lives there |
 | --- | --- |
@@ -26,6 +26,7 @@ client account. There are 255 operations across 17 resource groups:
 | `certificates` | SSL products and issued certificates |
 | `affiliate` | commissions, payouts, vouchers, campaigns |
 | `security` | SSH keys and IP access rules |
+| `phone` | Phone-number verification (prove SIM ownership over ZNS) |
 | `location` | countries, states, cities (Vietnam post-2025 administrative units) |
 | `languages` | language list and translation files |
 | `ekyc` | domain documents, OCR, face verification, national id checks |

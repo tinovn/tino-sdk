@@ -147,6 +147,30 @@ All three SDKs encode path arguments automatically.
 * **HTML entities appear in text fields** — ticket subjects and email bodies come back
   as `Y&ecirc;u cầu`. Decode before display.
 
+## Phone verification state
+
+Every endpoint that returns account details — `GET /details`, `POST /login`,
+`POST /login-sso`, `POST /verify-login-otp` — now carries the verification state of the
+account's phone number:
+
+```json
+"verify": { "email": true, "phone": false },
+"phone":  { "status": "unverified", "verified_at": null }
+```
+
+| `phone.status` | Meaning |
+| --- | --- |
+| `verified` | This account proved it holds the SIM |
+| `unverified` | The number is free; nobody has claimed it |
+| `taken_by_other` | Another account already proved ownership of this number |
+| `missing` | No number on file, or an obviously fake one |
+
+A number belongs to exactly one account. Ownership is proved by entering a code sent
+over Zalo ZNS — see `phone.requestOtp` and `phone.verify`.
+
+Do not confuse the `phone` block with the top-level `update_required`, which is about
+the **profile** (national id, address, date of birth) and says nothing about the phone.
+
 ## Non-JSON responses
 
 Some endpoints return a document rather than a JSON object:

@@ -9,7 +9,7 @@ của một tài khoản Tino.
 ```
 Base URL   https://api.tino.vn
 Auth       Authorization: Bearer <JWT>
-Phạm vi    255 endpoint · 17 nhóm tài nguyên
+Phạm vi    257 endpoint · 18 nhóm tài nguyên
 ```
 
 | | |
@@ -82,7 +82,7 @@ Tino UserAPI có vài điểm dễ sập bẫy. SDK xử lý sẵn:
 
 ```
 spec/
-  tino-userapi-catalog.json    catalog chuẩn — nguồn sự thật duy nhất (255 endpoint)
+  tino-userapi-catalog.json    catalog chuẩn — nguồn sự thật duy nhất (257 endpoint)
   response-samples.json        response thật đã che thông tin, dùng làm ví dụ
 docs/
   getting-started.md           base URL, các luồng đăng nhập, vòng đời token

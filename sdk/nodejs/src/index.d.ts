@@ -12,6 +12,7 @@ import type { DomainsResource } from './resources/domains.js';
 import type { EkycResource } from './resources/ekyc.js';
 import type { LanguagesResource } from './resources/languages.js';
 import type { LocationResource } from './resources/location.js';
+import type { PhoneResource } from './resources/phone.js';
 import type { SecurityResource } from './resources/security.js';
 import type { ServicesResource } from './resources/services.js';
 import type { SupportResource } from './resources/support.js';
@@ -101,6 +102,7 @@ export declare class TinoClient {
   readonly ekyc: EkycResource;
   readonly languages: LanguagesResource;
   readonly location: LocationResource;
+  readonly phone: PhoneResource;
   readonly security: SecurityResource;
   readonly services: ServicesResource;
   readonly support: SupportResource;

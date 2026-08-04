@@ -20,6 +20,7 @@ GROUP_TITLES = {
     "certificates": "SSL certificates",
     "affiliate": "Affiliate programme",
     "security": "Account security (SSH keys, IP access)",
+    "phone": "Phone number verification",
     "location": "Countries, states & cities",
     "languages": "Languages & translations",
     "ekyc": "Domain documents & eKYC",

@@ -32,6 +32,7 @@ use Tino\UserApi\Resources\ResourceRegistry;
  * @property-read Resources\Ekyc         $ekyc
  * @property-read Resources\Languages    $languages
  * @property-read Resources\Location     $location
+ * @property-read Resources\Phone        $phone
  * @property-read Resources\Security     $security
  * @property-read Resources\Services     $services
  * @property-read Resources\Support      $support
@@ -41,7 +42,7 @@ use Tino\UserApi\Resources\ResourceRegistry;
 class TinoClient
 {
     public const DEFAULT_BASE_URL = 'https://api.tino.vn';
-    public const SDK_VERSION = '1.0.0';
+    public const SDK_VERSION = '1.1.0';
 
     /** Error strings the API uses to signal an authentication problem. */
     private const AUTH_ERROR_CODES = ['unauthorized', 'token_expired', 'invalid_token', 'notloggedin'];

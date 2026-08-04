@@ -14,6 +14,7 @@ import { DomainsResource } from './domains.js';
 import { EkycResource } from './ekyc.js';
 import { LanguagesResource } from './languages.js';
 import { LocationResource } from './location.js';
+import { PhoneResource } from './phone.js';
 import { SecurityResource } from './security.js';
 import { ServicesResource } from './services.js';
 import { SupportResource } from './support.js';
@@ -34,6 +35,7 @@ export const RESOURCE_CLASSES = {
   ekyc: EkycResource,
   languages: LanguagesResource,
   location: LocationResource,
+  phone: PhoneResource,
   security: SecurityResource,
   services: ServicesResource,
   support: SupportResource,
@@ -54,6 +56,7 @@ export {
   EkycResource,
   LanguagesResource,
   LocationResource,
+  PhoneResource,
   SecurityResource,
   ServicesResource,
   SupportResource,

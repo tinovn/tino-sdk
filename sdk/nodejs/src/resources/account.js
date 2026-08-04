@@ -135,6 +135,11 @@ export class AccountResource extends Resource {
    * GET /details — Bearer token required, verified against the live API.
    *
    * Return registration details for my account
+   *
+   * Note: The response now carries verify.phone (bool) and a phone block {status,
+   * verified_at}. status is one of verified | unverified | taken_by_other | missing. Note
+   * that the top-level update_required is about the profile (national id, address), not the
+   * phone.
    * @param {object} [query] Extra query-string parameters.
    * @returns {Promise<any>}
    */
@@ -455,6 +460,9 @@ export class AccountResource extends Resource {
    * PUT /details — Bearer token required, from the API specification.
    *
    * Update registration details under my account
+   *
+   * Note: Changing phonenumber clears the phone verification: phone.status returns to
+   * unverified and the old number is released for another account to claim.
    *
    * Body fields:
    *   - type (string, one of Private, Company): Account Type

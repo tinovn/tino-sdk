@@ -404,6 +404,8 @@ $client->account->listContactsLegacy();
 
 Return registration details for my account
 
+> **Note.** The response now carries verify.phone (bool) and a phone block {status, verified_at}. status is one of verified | unverified | taken_by_other | missing. Note that the top-level update_required is about the profile (national id, address), not the phone.
+
 **Response** `200`
 
 <details><summary>Live sample (values redacted, long arrays trimmed)</summary>
@@ -471,6 +473,8 @@ $client->account->getDetails();
 **Update User Details**
 
 Update registration details under my account
+
+> **Note.** Changing phonenumber clears the phone verification: phone.status returns to unverified and the old number is released for another account to claim.
 
 **Request body**
 
