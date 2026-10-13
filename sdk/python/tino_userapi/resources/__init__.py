@@ -8,6 +8,7 @@ from .base import Resource
 from .account import AccountResource
 from .affiliate import AffiliateResource
 from .auth import AuthResource
+from .backorder import BackorderResource
 from .billing import BillingResource
 from .cart import CartResource
 from .certificates import CertificatesResource
@@ -29,6 +30,7 @@ RESOURCE_CLASSES = {
     "account": AccountResource,
     "affiliate": AffiliateResource,
     "auth": AuthResource,
+    "backorder": BackorderResource,
     "billing": BillingResource,
     "cart": CartResource,
     "certificates": CertificatesResource,
@@ -52,6 +54,7 @@ __all__ = [
     "AccountResource",
     "AffiliateResource",
     "AuthResource",
+    "BackorderResource",
     "BillingResource",
     "CartResource",
     "CertificatesResource",

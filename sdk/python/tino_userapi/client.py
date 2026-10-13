@@ -15,7 +15,7 @@ from .errors import (
 from .resources import RESOURCE_CLASSES
 
 DEFAULT_BASE_URL = "https://api.tino.vn"
-SDK_VERSION = "1.1.0"
+SDK_VERSION = "1.2.0"
 
 
 def _extract_errors(body: Any) -> list[str]:

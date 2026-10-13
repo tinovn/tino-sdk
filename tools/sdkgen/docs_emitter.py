@@ -12,7 +12,7 @@ from . import catalog as cat
 GROUP_ORDER = [
     "auth", "account", "billing", "support", "domains", "dns", "services", "cpanel",
     "vms", "cart", "certificates", "affiliate", "security", "phone", "location", "languages",
-    "ekyc", "tinosite", "tinomail", "usageMonitor",
+    "ekyc", "tinosite", "tinomail", "usageMonitor", "backorder",
 ]
 MAX_CHAPTER_LINES = 750     # split a group across files rather than exceed this
 MAX_SAMPLE_LINES = 45       # a sample should show the shape, not dump the data

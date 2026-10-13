@@ -12,7 +12,7 @@ import {
 import { RESOURCE_CLASSES } from './resources/index.js';
 
 export const DEFAULT_BASE_URL = 'https://api.tino.vn';
-export const SDK_VERSION = '1.1.0';
+export const SDK_VERSION = '1.2.0';
 
 /**
  * Pull the error strings out of a response body, whatever shape it uses.

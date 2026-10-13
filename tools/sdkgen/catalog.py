@@ -25,6 +25,7 @@ GROUP_TITLES = {
     "languages": "Languages & translations",
     "ekyc": "Domain documents & eKYC",
     "tinosite": "TinoSite (managed WordPress)",
+    "backorder": "Domain backorder auctions (.vn)",
     "tinomail": "TinoMail",
     "usageMonitor": "Proxmox2 usage monitor",
 }

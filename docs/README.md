@@ -9,7 +9,7 @@
 ## Quick orientation
 
 The API is the customer-facing surface of Tino's HostBill deployment. One token = one
-client account. There are 257 operations across 18 resource groups:
+client account. There are 261 operations across 19 resource groups:
 
 | Group | What lives there |
 | --- | --- |
@@ -31,6 +31,7 @@ client account. There are 257 operations across 18 resource groups:
 | `languages` | language list and translation files |
 | `ekyc` | domain documents, OCR, face verification, national id checks |
 | `tinosite` | managed WordPress: themes, plugins, users, SSL, backups |
+| `backorder` | .vn backorder auctions: schedule, current price, bids, rounds taken part in |
 
 ## How this documentation was produced
 

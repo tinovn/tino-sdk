@@ -9,7 +9,7 @@ support tickets for a Tino account.
 ```
 Base URL   https://api.tino.vn
 Auth       Authorization: Bearer <JWT>
-Surface    257 operations · 18 resource groups
+Surface    261 operations · 19 resource groups
 ```
 
 | | |
@@ -82,7 +82,7 @@ The Tino UserAPI has sharp edges. The SDKs absorb them:
 
 ```
 spec/
-  tino-userapi-catalog.json    canonical catalog — single source of truth (257 operations)
+  tino-userapi-catalog.json    canonical catalog — single source of truth (261 operations)
   response-samples.json        redacted live responses used as documentation samples
 docs/
   getting-started.md           base URL, login flows, token lifecycle

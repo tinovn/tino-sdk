@@ -17,6 +17,7 @@ final class ResourceRegistry
         'account' => Account::class,
         'affiliate' => Affiliate::class,
         'auth' => Auth::class,
+        'backorder' => Backorder::class,
         'billing' => Billing::class,
         'cart' => Cart::class,
         'certificates' => Certificates::class,

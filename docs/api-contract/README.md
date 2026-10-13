@@ -2,7 +2,7 @@
 
 Base URL: `https://api.tino.vn`
 
-257 operations across 18 resource groups. 195 were called against the live API and carry a captured response sample; the rest are documented from the API specification and marked *spec only*.
+261 operations across 19 resource groups. 195 were called against the live API and carry a captured response sample; the rest are documented from the API specification and marked *spec only*.
 
 See [../getting-started.md](../getting-started.md) for authentication and [../conventions.md](../conventions.md) for pagination, error handling and encoding rules.
 
@@ -37,6 +37,7 @@ See [../getting-started.md](../getting-started.md) for authentication and [../co
 | [Languages & translations](16-languages.md) | `languages` | 3 |
 | [Domain documents & eKYC](17-ekyc.md) | `ekyc` | 14 |
 | [TinoSite (managed WordPress)](18-tinosite.md) | `tinosite` | 10 |
+| [Domain backorder auctions (.vn)](19-backorder.md) | `backorder` | 4 |
 
 ## All endpoints
 
@@ -56,6 +57,10 @@ See [../getting-started.md](../getting-started.md) for authentication and [../co
 | `GET` | `/affiliates/summary` | `affiliate.getSummary` | Bearer | live |
 | `GET` | `/affiliates/vouchers` | `affiliate.listVouchers` | Bearer | live |
 | `DELETE` | `/affiliates/vouchers/{id}/remove` | `affiliate.removeVoucher` | Bearer | spec |
+| `GET` | `/backorder/domains` | `backorder.listDomains` | public | spec |
+| `GET` | `/backorder/domains/{id}` | `backorder.getDomain` | Bearer | spec |
+| `POST` | `/backorder/domains/{id}/bid` | `backorder.placeBid` | Bearer | spec |
+| `GET` | `/backorder/my` | `backorder.listMyRounds` | Bearer | spec |
 | `GET` | `/balance` | `billing.getBalance` | Bearer | live |
 | `POST` | `/billing/addfunds` | `billing.addFunds` | Bearer | live |
 | `GET` | `/billing/creditlogs` | `billing.getCreditLogs` | Bearer | live |

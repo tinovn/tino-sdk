@@ -3,6 +3,7 @@
 import type { AccountResource } from './resources/account.js';
 import type { AffiliateResource } from './resources/affiliate.js';
 import type { AuthResource } from './resources/auth.js';
+import type { BackorderResource } from './resources/backorder.js';
 import type { BillingResource } from './resources/billing.js';
 import type { CartResource } from './resources/cart.js';
 import type { CertificatesResource } from './resources/certificates.js';
@@ -93,6 +94,7 @@ export declare class TinoClient {
   readonly account: AccountResource;
   readonly affiliate: AffiliateResource;
   readonly auth: AuthResource;
+  readonly backorder: BackorderResource;
   readonly billing: BillingResource;
   readonly cart: CartResource;
   readonly certificates: CertificatesResource;

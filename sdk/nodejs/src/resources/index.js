@@ -5,6 +5,7 @@ import { Resource } from './base.js';
 import { AccountResource } from './account.js';
 import { AffiliateResource } from './affiliate.js';
 import { AuthResource } from './auth.js';
+import { BackorderResource } from './backorder.js';
 import { BillingResource } from './billing.js';
 import { CartResource } from './cart.js';
 import { CertificatesResource } from './certificates.js';
@@ -26,6 +27,7 @@ export const RESOURCE_CLASSES = {
   account: AccountResource,
   affiliate: AffiliateResource,
   auth: AuthResource,
+  backorder: BackorderResource,
   billing: BillingResource,
   cart: CartResource,
   certificates: CertificatesResource,
@@ -47,6 +49,7 @@ export {
   AccountResource,
   AffiliateResource,
   AuthResource,
+  BackorderResource,
   BillingResource,
   CartResource,
   CertificatesResource,

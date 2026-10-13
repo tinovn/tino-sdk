@@ -38,6 +38,10 @@ HTTP status codes that *are* meaningful:
 A `404` usually means the path does not exist on this deployment, not that the record is
 missing. A missing record is normally `200` with `null` (`{"article": null}`).
 
+The `backorder` group is the exception: its module uses HTTP statuses. A refused bid is `422`
+with `{"success": false, "error": "<code>", "message": "..."}`, `error` being a string, and an
+unknown auction on `backorder.getDomain` is `404` with `{"success": false, "error": "not_found"}`.
+
 ### Error codes worth handling
 
 | Code | Meaning |
